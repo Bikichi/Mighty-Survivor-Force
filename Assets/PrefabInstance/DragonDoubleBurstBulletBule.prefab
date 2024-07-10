@@ -1,0 +1,291 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1562348112872438
+GameObject:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Component:
+  - component: {fileID: 4845931272814933}
+  - component: {fileID: 33200574116120912}
+  - component: {fileID: 23002147196616506}
+  - component: {fileID: 135296493798453361}
+  - component: {fileID: 114152715320874326}
+  - component: {fileID: 54548539792198770}
+  - component: {fileID: 114688034081732013}
+  - component: {fileID: 114265673096247914}
+  - component: {fileID: 114794570350186227}
+  - component: {fileID: 114628608519384434}
+  - component: {fileID: 114430948628408860}
+  m_Layer: 15
+  m_Name: DragonDoubleBurstBulletBule
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4845931272814933
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562348112872438}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!33 &33200574116120912
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562348112872438}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &23002147196616506
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562348112872438}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: f4e1df4016385ff4a8fd2441993d1e45, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &135296493798453361
+SphereCollider:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562348112872438}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114152715320874326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562348112872438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d01aea3fe6fff3c9e945e3135a60e4b3, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  onProjectileHit:
+    m_PersistentCalls:
+      m_Calls: []
+  projectileType: 0
+  isBouncyProjectile: 0
+  speed:
+    stat: 10
+    clipToZero: 1
+  duration:
+    stat: 4
+    clipToZero: 1
+  target: {fileID: 0}
+  targetSmoothness: 0.5
+  homingDamping: 0
+--- !u!54 &54548539792198770
+Rigidbody:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562348112872438}
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &114688034081732013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562348112872438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0af13261b39dfd621b65e3515e8649f7, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  damageInfo:
+    Damage: 5
+    IsCritical: 0
+    DamageType: 2
+  affectedLayer:
+    serializedVersion: 2
+    m_Bits: 4608
+  onDamageApplied:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114794570350186227}
+        m_TargetAssemblyTypeName: EpicToonFX.ImpactParticlePlayer, Assembly-CSharp
+        m_MethodName: PlayImpactParticle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument:
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 114265673096247914}
+        m_TargetAssemblyTypeName: Utils.DisableAfterTime, Assembly-CSharp
+        m_MethodName: DestroyOrDisableAfterTime
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument:
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1562348112872438}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SendMessage
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: asdasdas
+          m_BoolArgument: 0
+        m_CallState: 2
+  characterStatHolder: {fileID: 114430948628408860}
+  isTriggerDamage: 1
+--- !u!114 &114265673096247914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562348112872438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33337c0d74bb93cea3f836878f5ea55d, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  useExtraFeature: 1
+  playOnEnable: 0
+  activeTime: 0.1
+  shouldDestroy: 1
+--- !u!114 &114794570350186227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562348112872438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6b22033162fde1383b9ba40e969e3cc, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  impactParticle: {fileID: 1306346964245379, guid: 17803865d6f18ea4193c9b79c60fe969, type: 2}
+  projectileParticle: {fileID: 1276902625232543, guid: 7796382b729f56d4990fe715abba9268, type: 2}
+  muzzleParticle: {fileID: 0}
+  useIsGrounded: 0
+  groundCheckPoint: {fileID: 0}
+  hitObjectList: []
+  collideLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  sphereRadius: 0
+  numberOfHit: 0
+--- !u!114 &114628608519384434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562348112872438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dc62240c07d0b885e5bc8ce3a02d21e, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  activeTime: 5
+--- !u!114 &114430948628408860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562348112872438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85beddd6eabbc2ce7098236ca6d71e7c, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  characterType: 0
+  physique: 0
+  characterStat:
+    characterName:
+    characterHealthAmount: 0
+    characterDamageAmount: 0
+    characterCriticalDamageAmount: 0
+    characterCriticalChance: 0
+    characterAttackRate: 0
+    characterMoveSpeed: 0
+    characterAttackRange: 0
+    characterSkillPower: 0
+    characterMedKitBoost: 0
+  firstSpeedThreshold: 6
+  secondSpeedThreshold: 8
+  thirdSpeedThreshold: 10
+  isNotProjectile: 0
+  isPlayer: 0
+  agent: {fileID: 0}
