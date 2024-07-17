@@ -75,9 +75,6 @@ GameObject:
   m_Component:
   - component: {fileID: 687}
   - component: {fileID: 1103}
-  - component: {fileID: 1180}
-  - component: {fileID: 1846}
-  - component: {fileID: 1847}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -3657,14 +3654,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 880}
-  - component: {fileID: 1926}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &224
 GameObject:
   m_ObjectHideFlags: 0
@@ -20373,14 +20369,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!81 &1180
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9}
-  m_Enabled: 1
 --- !u!81 &1181
 AudioListener:
   m_ObjectHideFlags: 0
@@ -109103,30 +109091,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 938447500, guid: c88ab7b37c4f350242674d2efd621c19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5e2666dbabea77da6f8b20a8ded80ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110230,18 +110194,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a8af1e01f93e5fd56f028999ca9848e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 223}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb76c110a3de5805156cac5965e97a40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1927
