@@ -2,15 +2,13 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!1 &1419997457226209
 GameObject:
-  serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 4258592491524496}
-  - component: {fileID: 114156026993306612}
-  - component: {fileID: 114051534999854026}
   m_Layer: 0
   m_Name: SkillLightning_lv5
   m_TagString: Untagged
@@ -25,59 +23,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1419997457226209}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.36, y: 2.0700002, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114156026993306612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1419997457226209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c2d87743735905fe1d6fe8e671dbcae, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  target: {fileID: 0}
-  offset: {x: 1.36, y: 1, z: 0}
-  smoothingRate: 5
-  velocity: {x: 0, y: 0, z: 0}
-  updateMode: 2
---- !u!114 &114051534999854026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1419997457226209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e1b15b9f061cbdce4bbf4853dc1e985, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  skillData:
-    skillImage: {fileID: 21300000, guid: 017df3b65a4a214489aaae3933e50624, type: 2}
-    skillName: High Voltage
-    description: Summon 10 lightning to strike enemies
-  Owner: {fileID: 11400000, guid: efa4ed259c64f4c41a43468e8283c5f7, type: 2}
-  OnSkillUseBegin:
-    m_PersistentCalls:
-      m_Calls: []
-  OnSkillUseComplete:
-    m_PersistentCalls:
-      m_Calls: []
-  coolDown: 4
-  initialSkillUseDelay: 1
-  lightningRadius: 20
-  totalLightningsToShoot: 10
-  lightiningObj: {fileID: 1602628216631834, guid: d49b126c34eecc7469eba49e7be91dfc, type: 2}
-  playerSkillDamage: 0
-  damageMultiplier: 0.5
-  affectedTag: Enemy

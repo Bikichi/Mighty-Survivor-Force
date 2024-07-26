@@ -2,14 +2,13 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!1 &1857822526420672
 GameObject:
-  serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 4881900268363086}
-  - component: {fileID: 114721840624442324}
   m_Layer: 0
   m_Name: RadiationL3
   m_TagString: Untagged
@@ -24,29 +23,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1857822526420672}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
---- !u!114 &114721840624442324
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1857822526420672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f2353d34a16c7541718dc2c01b59acb, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  skillData:
-    skillImage: {fileID: 21300000, guid: d38ad1767966f8b4db10b2a690bb740b, type: 2}
-    skillName: Radiation
-    description: Increases damage and radius of the radioactive area
-  Owner: {fileID: 11400000, guid: cfa20adfa14ad6648829ba83afdd1236, type: 2}
-  radiationDamageHandler: {fileID: 1270421396022745, guid: e4e08841170583143a0b336c2cf46c9a, type: 2}

@@ -2,23 +2,17 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!1 &1656490243079584
 GameObject:
-  serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 4139123196896536}
   - component: {fileID: 33962743412941389}
   - component: {fileID: 23248413479752425}
   - component: {fileID: 135838532454262426}
-  - component: {fileID: 114559459089040912}
   - component: {fileID: 54456260277541916}
-  - component: {fileID: 114455761472834590}
-  - component: {fileID: 114248693539430019}
-  - component: {fileID: 114932152459583666}
-  - component: {fileID: 114847534592403823}
-  - component: {fileID: 114455104629123780}
   m_Layer: 15
   m_Name: PurpleCreeperBullet
   m_TagString: Untagged
@@ -33,13 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1656490243079584}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
 --- !u!33 &33962743412941389
 MeshFilter:
@@ -93,187 +87,49 @@ MeshRenderer:
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!135 &135838532454262426
 SphereCollider:
-  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1656490243079584}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 1
+  m_ProvidesContacts: 0
   m_Enabled: 1
+  serializedVersion: 3
   m_Radius: 0.25
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114559459089040912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1656490243079584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d01aea3fe6fff3c9e945e3135a60e4b3, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  onProjectileHit:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114932152459583666}
-        m_TargetAssemblyTypeName: EpicToonFX.ImpactParticlePlayer, Assembly-CSharp
-        m_MethodName: PlayImpactParticle
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument:
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1656490243079584}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument:
-          m_BoolArgument: 0
-        m_CallState: 2
-  projectileType: 0
-  isBouncyProjectile: 0
-  speed:
-    stat: 20
-    clipToZero: 1
-  duration:
-    stat: 4
-    clipToZero: 1
-  target: {fileID: 0}
-  targetSmoothness: 0.5
-  homingDamping: 0
 --- !u!54 &54456260277541916
 Rigidbody:
-  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1656490243079584}
+  serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114455761472834590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1656490243079584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0af13261b39dfd621b65e3515e8649f7, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  damageInfo:
-    Damage: 5
-    IsCritical: 0
-    DamageType: 2
-  affectedLayer:
-    serializedVersion: 2
-    m_Bits: 4096
-  onDamageApplied:
-    m_PersistentCalls:
-      m_Calls: []
-  characterStatHolder: {fileID: 114455104629123780}
-  isTriggerDamage: 1
---- !u!114 &114248693539430019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1656490243079584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33337c0d74bb93cea3f836878f5ea55d, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  useExtraFeature: 1
-  playOnEnable: 1
-  activeTime: 2
-  shouldDestroy: 0
---- !u!114 &114932152459583666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1656490243079584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6b22033162fde1383b9ba40e969e3cc, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  impactParticle: {fileID: 1821035500829793, guid: 6790ce9c61ea874419b2c01dfa83d054, type: 2}
-  projectileParticle: {fileID: 1944013829520460, guid: 8d1a05e823ad66441bf1192f07be5b03, type: 2}
-  muzzleParticle: {fileID: 1678438116014235, guid: d6c513b69201e234ca0d82ff319312c1, type: 2}
-  useIsGrounded: 0
-  groundCheckPoint: {fileID: 0}
-  hitObjectList: []
-  collideLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  sphereRadius: 0
-  numberOfHit: 0
---- !u!114 &114847534592403823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1656490243079584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dc62240c07d0b885e5bc8ce3a02d21e, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  activeTime: 5
---- !u!114 &114455104629123780
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1656490243079584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85beddd6eabbc2ce7098236ca6d71e7c, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  characterType: 0
-  physique: 0
-  characterStat:
-    characterName:
-    characterHealthAmount: 0
-    characterDamageAmount: 0
-    characterCriticalDamageAmount: 0
-    characterCriticalChance: 0
-    characterAttackRate: 0
-    characterMoveSpeed: 0
-    characterAttackRange: 0
-    characterSkillPower: 0
-    characterMedKitBoost: 0
-  firstSpeedThreshold: 6
-  secondSpeedThreshold: 8
-  thirdSpeedThreshold: 10
-  isNotProjectile: 0
-  isPlayer: 0
-  agent: {fileID: 0}

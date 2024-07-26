@@ -2,15 +2,13 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!1 &1329283559300526
 GameObject:
-  serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 4221673251354896}
-  - component: {fileID: 114678455880165354}
-  - component: {fileID: 114090393714664567}
   m_Layer: 0
   m_Name: MineSpawnerT3
   m_TagString: Untagged
@@ -25,56 +23,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1329283559300526}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1.07, z: -11.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114678455880165354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1329283559300526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9618f7b352a31ad3c59020715fdd159b, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  skillData:
-    skillImage: {fileID: 21300000, guid: 15e4e3f597c519a448c75837c7781d04, type: 2}
-    skillName: Terra-mine
-    description: Mine radius / damage increased
-  Owner: {fileID: 11400000, guid: 74bf27e66a6d2644caed19a359f1a50e, type: 2}
-  OnSkillUseBegin:
-    m_PersistentCalls:
-      m_Calls: []
-  OnSkillUseComplete:
-    m_PersistentCalls:
-      m_Calls: []
-  coolDown: 6
-  initialSkillUseDelay: 5
-  mineToSpawn: {fileID: 1083925286304186, guid: 8ffb098c4b1043840882e4eb57bdbcd2, type: 2}
-  playerSkillDamage: 0
-  damageMultiplier: 1.5
---- !u!114 &114090393714664567
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1329283559300526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c2d87743735905fe1d6fe8e671dbcae, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  target: {fileID: 0}
-  offset: {x: 0, y: 0, z: 0}
-  smoothingRate: 100
-  velocity: {x: 0, y: 0, z: 0}
-  updateMode: 0

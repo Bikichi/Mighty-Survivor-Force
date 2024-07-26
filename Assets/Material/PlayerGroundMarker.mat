@@ -8,12 +8,13 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PlayerGroundMarker
-  m_Shader: {fileID: 4800000, guid: 2d5ffdd08ccd8ac409b5889af9eee5bc, type: 3}
+  m_Shader: {fileID: 10101, guid: 0000000000000000e000000000000000, type: 0}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords:
   - _SURFACE_TYPE_TRANSPARENT
+  - _USEDARK_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -60,6 +61,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 6eb317c90edee7840a9779d01866d841, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Noise:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OutlineDistortTex:
@@ -114,10 +123,14 @@ Material:
     - _ColorSwapBlueLuminosity: 0.5
     - _ColorSwapGreenLuminosity: 0.5
     - _ColorSwapRedLuminosity: 0.5
+    - _Colorpower: 1
+    - _Colorrange: 1
     - _Contrast: 1
     - _Cull: 2
+    - _CullMode: 2
     - _CullingOption: 0
     - _Cutoff: 0.5
+    - _Depthpower: 1
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DistortAmount: 0.5
@@ -125,6 +138,7 @@ Material:
     - _DistortTexYSpeed: 5
     - _DstBlend: 10
     - _EditorDrawers: 6
+    - _Emission: 2
     - _EnvironmentReflections: 1
     - _FadeAmount: -0.1
     - _FadeBurnGlow: 2
@@ -172,6 +186,8 @@ Material:
     - _InnerOutlineAlpha: 1
     - _InnerOutlineGlow: 4
     - _InnerOutlineThickness: 1
+    - _Mask: 0
+    - _Maskpower: 10
     - _MaxXUV: 1
     - _MaxYUV: 1
     - _Metallic: 0
@@ -233,6 +249,8 @@ Material:
     - _TwistUvPosX: 0.5
     - _TwistUvPosY: 0.5
     - _TwistUvRadius: 0.75
+    - _Usedark: 1
+    - _Usedepth: 0
     - _WaveAmount: 7
     - _WaveSpeed: 10
     - _WaveStrength: 7.5
@@ -256,6 +274,7 @@ Material:
     - _ColorSwapGreen: {r: 1, g: 1, b: 1, a: 1}
     - _ColorSwapRed: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EndColor: {r: 1, g: 1, b: 0, a: 1}
     - _FadeBurnColor: {r: 1, g: 1, b: 0, a: 1}
     - _GlowColor: {r: 1, g: 1, b: 1, a: 1}
     - _GradBotLeftCol: {r: 0, g: 0, b: 1, a: 1}
@@ -271,4 +290,6 @@ Material:
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
     - _ShineColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _SpeedMainTexUVNoiseZW: {r: 0, g: 0, b: 0, a: 0}
+    - _StartColor: {r: 1, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
