@@ -1872,6 +1872,7 @@ GameObject:
   - component: {fileID: 1199}
   - component: {fileID: 1161}
   - component: {fileID: 1182}
+  - component: {fileID: 246782799}
   - component: {fileID: 246782798}
   - component: {fileID: 246782797}
   - component: {fileID: 246782796}
@@ -112596,8 +112597,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 50
-  moveSpeed: 100
-  startingPosition: {x: 0, y: 184.51, z: 0}
+  health: 0
+  moveSpeed: 10
+  startingPosition: {x: 0.080755, y: 0, z: 0.7762849}
 --- !u!114 &246782797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112627,6 +112629,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myRigidbody: {fileID: 0}
   velocity: {x: 0, y: 0, z: 0}
+--- !u!114 &246782799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c3265187854fce48adb86ec3a883276, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 50
+  health: 0
 --- !u!114 &1750140972
 MonoBehaviour:
   m_ObjectHideFlags: 0

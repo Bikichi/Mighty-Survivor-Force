@@ -26,12 +26,13 @@ public class Player : LivingEntity
 		mainCamera = Camera.main;
 		controller = GetComponent<PlayerController> ();
 		weaponController = GetComponent<WeaponController> ();
+		Initialize();
 
 	}
 
 	void Update()
 	{
-		if(IsActive && !IsDead)
+		if (IsActive && !IsDead)
 		{
 			Vector3 moveInput = new Vector3 (Input.GetAxisRaw ("Horizontal"), 0, Input.GetAxisRaw ("Vertical"));
 			Vector3 moveVelocity = moveInput.normalized * moveSpeed;

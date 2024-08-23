@@ -5,11 +5,11 @@ public class LivingEntity : MonoBehaviour, IDamageable
 {
 	public float startingHealth;
 
-	protected float health;
-	protected RaycastHit lastHit;
+	[SerializeField] protected float health;
+    [SerializeField] protected RaycastHit lastHit;
 
-	public bool IsActive { get; protected set; }
-	public bool IsDead { get; protected set; }
+    [SerializeField] public bool IsActive { get; protected set; }
+    [SerializeField] public bool IsDead { get; protected set; }
 
 	public event Action OnDeath;
 
@@ -48,6 +48,6 @@ public class LivingEntity : MonoBehaviour, IDamageable
 		IsActive = false;
 		IsDead = true;
 		if (OnDeath != null)
-			OnDeath ();
+			OnDeath();
 	}
 }
