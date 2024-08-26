@@ -5,10 +5,19 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour {
 
 	public Transform followTarget;
+	public Vector3 offset;
+	public float smoothTime;
+	public Vector3 currentVelocity = Vector3.zero;
 
-	void LateUpdate()
+	private void Awake()
 	{
 		if(followTarget != null)
-			transform.position = followTarget.position;
+            offset = transform.position - followTarget.position;
 	}
+
+    private void LateUpdate()
+    {
+        Vector3 targetPosition = followTarget.position + offset;	
+		transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref currentVelocity, smoothTime);
+    }
 }
