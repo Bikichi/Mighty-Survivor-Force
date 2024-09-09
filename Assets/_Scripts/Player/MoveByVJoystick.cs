@@ -1,23 +1,46 @@
-//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using System.Reflection;
+using UnityEngine;
 
-//public class MoveByVJoystick : MonoBehaviour
-//{
-//    public CharacterController characterController;
-//    public float movingSpeed;
-//    public Joystick joystick;
+public class MoveByVJoystick : MonoBehaviour
+{
+    private const string runParaname = "Run";
 
-//    private void OnValidate()
-//    {
-//        characterController = GetComponent<CharacterController>();
-//    }
+    public CharacterController characterController;
+    public Animator anim;
+    public Joystick joystick;
+    public RotatePlayer rotatePlayer;
 
-//    private void Update()
-//    {
-//        float hInput = joystick.Horizontal;
-//        float vInput = joystick.Vertical;
-//        Vector3 direction = transform.right * hInput + transform.forward * vInput;
-//        characterController.SimpleMove(direction * movingSpeed);
-//    }
-//}
+    public float movingSpeed;
+
+    private void OnValidate()
+    {
+        characterController = GetComponent<CharacterController>();
+    }
+
+    private void Update()
+    {
+        Move();
+    }
+
+    public void Move()
+    {
+
+        float hInput = joystick.Horizontal;
+        float vInput = joystick.Vertical;
+        Vector3 directionOfMovement = new Vector3(hInput, 0, vInput);
+
+        characterController.SimpleMove(directionOfMovement * movingSpeed);
+
+        if (characterController.velocity != Vector3.zero)
+        {
+            rotatePlayer.RotareMovePointerInDirection();
+            anim.SetBool(runParaname, true);
+        }
+        else
+        {
+            anim.SetBool(runParaname, false);
+        }
+    }
+}

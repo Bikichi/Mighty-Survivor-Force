@@ -3,24 +3,16 @@ using UnityEngine;
 
 public class LivingEntity : MonoBehaviour, IDamageable
 {
-	public float startingHealth;
+    [SerializeField] public float startingHealth;
 
 	[SerializeField] protected float health;
     [SerializeField] protected RaycastHit lastHit;
-
     [SerializeField] public bool IsActive { get; protected set; }
     [SerializeField] public bool IsDead { get; protected set; }
 
 	public event Action OnDeath;
 
 	protected virtual void Start()
-	{
-		health = startingHealth;
-		IsActive = false;
-		IsDead = false;
-	}
-
-	public virtual void Initialize()
 	{
 		health = startingHealth;
 		IsActive = true;
