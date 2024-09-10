@@ -5,43 +5,65 @@ using UnityEngine;
 public class RotatePlayer : MonoBehaviour
 {
     public CharacterController characterController;
-    public Transform playerTransform;
     public Transform enemyTransform;
     public Transform movePointerTransform;
-    [SerializeField] private float rotationSpeed; 
+    
+    [SerializeField] private float rotationSpeed;
     [SerializeField] private float rotateDistance; // Khoảng cách tối thiểu để quay về phía kẻ địch
 
     void Update()
     {
-        RotatePlayerTowardsEnemy();
+        RotateMovePointerInDirection();
+        RotatePlayerInDirection();
     }
 
     public void RotateInDirection(Vector3 direction, Transform transform)
     {
-        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
+        // Quaternion.LookRotation tạo ra một góc quay theo hướng mong muốn với trục y được giữ theo hướng Vector3.up
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        //transform.rotation = targetRotation;    
     }
 
-    public void RotatePlayerTowardsEnemy()
+    public void RotateInMoveDirection(Transform transform)
+    {
+        Vector3 moveDirection = characterController.velocity;
+        moveDirection.y = 0; // Chỉ xoay trục y mà không muốn xoay các trục xz bằng cách đặt y = 0
+        // Kiểm tra xem velocity có phải Vector3.zero hay không
+        // Khi gọi Quaternion.LookRotation với một vector có độ dài bằng 0, Unity không thể xác định hướng, dẫn tới lỗi.
+        if (moveDirection != Vector3.zero)
+        {
+            // Nếu nhân vật đang di chuyển, xoay movePointer theo hướng di chuyển
+            RotateInDirection(moveDirection, transform);
+        }
+    }
+
+    public void RotateMovePointerInDirection()
+    {
+        RotateInMoveDirection(movePointerTransform);
+
+    }
+    public void RotatePlayerInDirection()
     {
         float distanceToEnemy = Vector3.Distance(transform.position, enemyTransform.position); //Khoảng cách từ Player đến Enemy
         if (distanceToEnemy <= rotateDistance)
         {
-            Vector3 directionToEnemy = enemyTransform.position - transform.position; //Hướng từ Player đến Enemy
-            RotateInDirection(directionToEnemy, playerTransform);
-        } else if (characterController.velocity != Vector3.zero && distanceToEnemy > rotateDistance)
+            RotatePlayerTowardsEnemy();
+        }
+        else
         {
-            RotarePlayerInDirection();
+            RotarePlayerInMoveDirection();
         }
     }
 
-    public void RotarePlayerInDirection()
+    public void RotatePlayerTowardsEnemy()
     {
-        RotateInDirection(characterController.velocity, playerTransform);
+        Vector3 directionToEnemy = enemyTransform.position - transform.position; //Hướng từ Player đến Enemy
+        RotateInDirection(directionToEnemy, transform);
     }
 
-    public void RotareMovePointerInDirection()
+    public void RotarePlayerInMoveDirection()
     {
-        RotateInDirection(characterController.velocity, movePointerTransform);
+        RotateInMoveDirection(transform);
     }
 }

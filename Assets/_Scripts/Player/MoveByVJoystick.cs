@@ -10,7 +10,6 @@ public class MoveByVJoystick : MonoBehaviour
     public CharacterController characterController;
     public Animator anim;
     public Joystick joystick;
-    public RotatePlayer rotatePlayer;
 
     public float movingSpeed;
 
@@ -33,9 +32,8 @@ public class MoveByVJoystick : MonoBehaviour
 
         characterController.SimpleMove(directionOfMovement * movingSpeed);
 
-        if (characterController.velocity != Vector3.zero)
+        if (directionOfMovement != Vector3.zero)
         {
-            rotatePlayer.RotareMovePointerInDirection();
             anim.SetBool(runParaname, true);
         }
         else
