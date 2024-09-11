@@ -26,15 +26,15 @@ public class BulletShoot : MonoBehaviour
         {
             GameObject player = GameObject.Find("ShootPoint");
 
-            float distanceTocloseEnemy = Mathf.Infinity;
+            float distanceToCloseEnemy = Mathf.Infinity;
             EnemyMovement closestEnemies = null;
             EnemyMovement[] allEnenies = GameObject.FindObjectsOfType<EnemyMovement>();
             foreach (EnemyMovement currentEnemy in allEnenies)
             {
                 float distanceToEnemy = (currentEnemy.transform.position - player.transform.position).magnitude;
-                if (distanceToEnemy < distanceTocloseEnemy)
+                if (distanceToEnemy < distanceToCloseEnemy)
                 {
-                    distanceTocloseEnemy = distanceToEnemy;
+                    distanceToCloseEnemy = distanceToEnemy;
                     closestEnemies = currentEnemy;
                 }
             }

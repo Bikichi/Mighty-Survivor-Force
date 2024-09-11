@@ -5,11 +5,11 @@ using UnityEngine;
 public class RotatePlayer : MonoBehaviour
 {
     public CharacterController characterController;
+
     public Transform enemyTransform;
     public Transform movePointerTransform;
     
     [SerializeField] private float rotationSpeed;
-    [SerializeField] private float rotateDistance; // Khoảng cách tối thiểu để quay về phía kẻ địch
 
     void Update()
     {
@@ -45,8 +45,8 @@ public class RotatePlayer : MonoBehaviour
     }
     public void RotatePlayerInDirection()
     {
-        float distanceToEnemy = Vector3.Distance(transform.position, enemyTransform.position); //Khoảng cách từ Player đến Enemy
-        if (distanceToEnemy <= rotateDistance)
+
+        if (CheckDistance.Instance.CheckPlayerEnemyDistance())
         {
             RotatePlayerTowardsEnemy();
         }
