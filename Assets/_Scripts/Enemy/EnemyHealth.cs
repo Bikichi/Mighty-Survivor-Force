@@ -24,7 +24,7 @@ public class EnemyHealth : MonoBehaviour
         _health -= damage;
 
         _damgeTaken = damage;
-        if(_health <= 0)
+        if (_health <= 0)
         {
             Die();
         }

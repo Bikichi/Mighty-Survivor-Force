@@ -24,7 +24,7 @@ public class FollowEnemy : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
 
         DetectionByPlayer();
-        DetectionBoss();
+        //DetectionBoss();
     }
 
     public void DetectionByPlayer()
@@ -58,21 +58,21 @@ public class FollowEnemy : MonoBehaviour
     }
 
 
-    public void DetectionBoss()
-    {
-        GameObject boss = GameObject.FindGameObjectWithTag("Boss");
+    //public void DetectionBoss()
+    //{
+    //    GameObject boss = GameObject.FindGameObjectWithTag("Boss");
         
-        if(boss != null)
-        {
-            float distance = Vector3.Distance(transform.position, boss.transform.position);
-            if (distance < _distanceDetectionByPlayer && Time.time - shootingInterval > _delayShoot)
-            {
-                Vector3 direction = boss.transform.position - transform.position;
-                transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
+    //    if(boss != null)
+    //    {
+    //        float distance = Vector3.Distance(transform.position, boss.transform.position);
+    //        if (distance < _distanceDetectionByPlayer && Time.time - shootingInterval > _delayShoot)
+    //        {
+    //            Vector3 direction = boss.transform.position - transform.position;
+    //            transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
 
-                Instantiate(_bulletPrefabs, _shootPoint.position, _shootPoint.rotation).SetActive(true);
-                shootingInterval = Time.time;
-            }
-        }
-    }
+    //            Instantiate(_bulletPrefabs, _shootPoint.position, _shootPoint.rotation).SetActive(true);
+    //            shootingInterval = Time.time;
+    //        }
+    //    }
+    //}
 }

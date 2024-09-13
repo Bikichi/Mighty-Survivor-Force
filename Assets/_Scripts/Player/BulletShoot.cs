@@ -1,43 +1,28 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletShoot : MonoBehaviour
 {
-    private GameObject enemy;
-    private bool _detection = true;
+    //[SerializeField] private Transform enemy;
+    //[SerializeField] private bool _detection = true;
+    //[SerializeField] private Rigidbody _rigidbody;
+    [SerializeField] private GameObject _bulletPrefabs;
+    [SerializeField] private Transform _shootPoint;
+    [SerializeField] private float shootingInterval;
+    [SerializeField] private float _delayShoot = 1.5f;
 
-    [SerializeField]
-    private float _speedBullet;
-
-    private Rigidbody _rigidbody;
-
-    private void Start()
+    private void Update()
     {
-        _rigidbody = gameObject.GetComponent<Rigidbody>();
-        _rigidbody.velocity = transform.forward * _speedBullet;
-
-        Destroy(gameObject, 2.4f);
+        ShootBullet();
     }
-
-    public void FindClosestEnemy()
+    public void ShootBullet()
     {
-        if (_detection == true)
+        if (CheckDistance.Instance.CheckPlayerEnemyDistance(CheckDistance.Instance.FindClosestEnemy()) && Time.time - shootingInterval > _delayShoot)
         {
-            GameObject player = GameObject.Find("ShootPoint");
-
-            float distanceToCloseEnemy = Mathf.Infinity;
-            EnemyMovement closestEnemies = null;
-            EnemyMovement[] allEnenies = GameObject.FindObjectsOfType<EnemyMovement>();
-            foreach (EnemyMovement currentEnemy in allEnenies)
-            {
-                float distanceToEnemy = (currentEnemy.transform.position - player.transform.position).magnitude;
-                if (distanceToEnemy < distanceToCloseEnemy)
-                {
-                    distanceToCloseEnemy = distanceToEnemy;
-                    closestEnemies = currentEnemy;
-                }
-            }
+            Debug.Log("ShootBullet");
+            Instantiate(_bulletPrefabs, _shootPoint.position, _shootPoint.rotation);
+            shootingInterval = Time.time;  // Cập nhật thời gian bắn
         }
     }
 }

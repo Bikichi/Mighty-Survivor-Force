@@ -8,20 +8,22 @@ public class CheckDistance : Singleton<CheckDistance>
     [SerializeField] public Transform enemyTransform;
     [SerializeField] public float lookAtDistance;  // Khoảng cách tối thiểu để quay về phía kẻ địch
 
+    public BulletShoot BulletShoot;
+
     public float CalculateDistanceToEnemy()
     {
         float distanceToEnemy = Vector3.Distance(transform.position, enemyTransform.position);
         return distanceToEnemy;
     }
 
-    public bool CheckPlayerEnemyDistance()
+    public bool CheckPlayerEnemyDistance(Transform enemyTransform)
     {
         float distanceToEnemy = Vector3.Distance(transform.position, enemyTransform.position);
-        bool isWithinRotationDistance = distanceToEnemy <= lookAtDistance;
-        return isWithinRotationDistance;
+        bool isDetecionDistance = distanceToEnemy <= lookAtDistance;
+        return isDetecionDistance;
     }
 
-    public void FindClosestEnemy()
+    public Transform FindClosestEnemy()
     {
         float distanceToCloseEnemy = Mathf.Infinity; // khởi tạo khoảng cách này là vô cực
         EnemyMovement closestEnemies = null;
@@ -35,5 +37,6 @@ public class CheckDistance : Singleton<CheckDistance>
                 closestEnemies = currentEnemy;
             }
         }
+        return closestEnemies.transform;
     }
 }

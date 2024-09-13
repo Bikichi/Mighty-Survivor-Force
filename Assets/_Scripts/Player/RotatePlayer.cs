@@ -46,7 +46,7 @@ public class RotatePlayer : MonoBehaviour
     public void RotatePlayerInDirection()
     {
 
-        if (CheckDistance.Instance.CheckPlayerEnemyDistance())
+        if (CheckDistance.Instance.CheckPlayerEnemyDistance(CheckDistance.Instance.FindClosestEnemy()))
         {
             RotatePlayerTowardsEnemy();
         }
