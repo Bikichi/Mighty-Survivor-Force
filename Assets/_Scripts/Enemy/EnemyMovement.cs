@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private GameObject _targetPlayer;
-    [SerializeField] private GameObject _bullet;
+    
+    [SerializeField] private GameObject _enemyBullet;
 
     [SerializeField] private float _speed;
 
@@ -16,7 +17,7 @@ public class EnemyMovement : MonoBehaviour
 
     public void MoveEnemy()
     {
-        if (CheckDistance.Instance.CalculateDistanceToEnemy() <= 3.5f)
+        if (CheckDistance.Instance.CalculateDistanceFromPlayerToEnemy(_targetPlayer.transform, transform) <= 3.5f)
         {
             return;
         } 

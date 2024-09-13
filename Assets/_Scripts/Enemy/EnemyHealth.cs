@@ -3,41 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyHealth : MonoBehaviour
+public class EnemyHealth : LivingEntity
 {
-    [SerializeField]
-    private float _health;
-
-    [SerializeField]
-    private GameObject _experience;
-    [SerializeField]
-    private GameObject _skull;
-    [SerializeField]
-    private GameObject _enemy;
-
+    [SerializeField] private GameObject _coin;
+    public PlayerBullet playerBullet;
     public static float _damgeTaken;
-
-    public bool NoExperience;
-
-    public void TakeDamage(float damage)
-    {
-        _health -= damage;
-
-        _damgeTaken = damage;
-        if (_health <= 0)
-        {
-            Die();
-        }
-    }
+    private bool hasCoin;
 
     private void Die()
     {
-        //Play.quantityEnenyDie++;
-        if (NoExperience == false)
+        if (hasCoin)
         {
-            Instantiate(_experience, gameObject.transform.position + new Vector3(0, 0.37f, 0), _experience.transform.rotation);
+            Instantiate(_coin, transform.position, transform.rotation);
         }
-        Instantiate(_skull, gameObject.transform.position + new Vector3(0, 1.5f, -0.5f), _skull.transform.rotation);
-        Destroy(_enemy);
+        Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        
     }
 }

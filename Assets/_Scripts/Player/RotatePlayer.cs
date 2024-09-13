@@ -6,7 +6,6 @@ public class RotatePlayer : MonoBehaviour
 {
     public CharacterController characterController;
 
-    public Transform enemyTransform;
     public Transform movePointerTransform;
     
     [SerializeField] private float rotationSpeed;
@@ -58,7 +57,7 @@ public class RotatePlayer : MonoBehaviour
 
     public void RotatePlayerTowardsEnemy()
     {
-        Vector3 directionToEnemy = enemyTransform.position - transform.position; //Hướng từ Player đến Enemy
+        Vector3 directionToEnemy = CheckDistance.Instance.FindClosestEnemy().position - transform.position; //Hướng từ Player đến Enemy
         RotateInDirection(directionToEnemy, transform);
     }
 

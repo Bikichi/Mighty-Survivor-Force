@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 33234602564992920}
   - component: {fileID: 23141259119995794}
   - component: {fileID: -7981237809458904390}
+  - component: {fileID: -7547088979820685115}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,4 +97,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e928c0b322ede3429c9e456a511dd95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speedBullet: 15
+  _speedBullet: 10
+  _closetEnemy: {fileID: 0}
+  _damageBullet: 0
+--- !u!65 &-7547088979820685115
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1869274061641270}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.99999994, y: 1, z: 3.2499998}
+  m_Center: {x: 0, y: -0.0000000745058, z: 0.12499999}

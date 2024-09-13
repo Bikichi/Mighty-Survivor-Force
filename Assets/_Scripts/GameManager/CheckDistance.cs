@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class CheckDistance : Singleton<CheckDistance>
 {
-    [SerializeField] public Transform playerTransform;
-    [SerializeField] public Transform enemyTransform;
     [SerializeField] public float lookAtDistance;  // Khoảng cách tối thiểu để quay về phía kẻ địch
 
-    public BulletShoot BulletShoot;
-
-    public float CalculateDistanceToEnemy()
+    public float CalculateDistanceFromPlayerToEnemy(Transform playerTransform, Transform enemyTransform)
     {
-        float distanceToEnemy = Vector3.Distance(transform.position, enemyTransform.position);
+        float distanceToEnemy = Vector3.Distance(playerTransform.position, enemyTransform.position);
         return distanceToEnemy;
     }
 
@@ -30,7 +26,7 @@ public class CheckDistance : Singleton<CheckDistance>
         EnemyMovement[] allEnenies = GameObject.FindObjectsOfType<EnemyMovement>();
         foreach (EnemyMovement currentEnemy in allEnenies)
         {
-            float distanceToEnemy = (currentEnemy.transform.position - playerTransform.position).magnitude;
+            float distanceToEnemy = (currentEnemy.transform.position - transform.position).magnitude;
             if (distanceToEnemy < distanceToCloseEnemy)
             {
                 distanceToCloseEnemy = distanceToEnemy;

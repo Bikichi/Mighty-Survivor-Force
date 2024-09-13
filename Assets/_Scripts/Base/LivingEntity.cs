@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class LivingEntity : MonoBehaviour, IDamageable
 {
-    [SerializeField] public float startingHealth;
-
+    [SerializeField] protected float startingHealth;
 	[SerializeField] protected float health;
+
     [SerializeField] protected RaycastHit lastHit;
     [SerializeField] public bool IsActive { get; protected set; }
     [SerializeField] public bool IsDead { get; protected set; }
