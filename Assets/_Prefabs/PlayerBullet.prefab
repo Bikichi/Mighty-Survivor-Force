@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -7981237809458904390}
   - component: {fileID: -7547088979820685115}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: PlayerBullet
   m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,9 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e928c0b322ede3429c9e456a511dd95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speedBullet: 10
   _closetEnemy: {fileID: 0}
-  _damageBullet: 0
+  _speedBullet: 30
+  damageBullet: 10
 --- !u!65 &-7547088979820685115
 BoxCollider:
   m_ObjectHideFlags: 0

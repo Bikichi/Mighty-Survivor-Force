@@ -14,8 +14,8 @@ public class CheckDistance : Singleton<CheckDistance>
 
     public bool CheckPlayerEnemyDistance(Transform enemyTransform)
     {
-        float distanceToEnemy = Vector3.Distance(transform.position, enemyTransform.position);
-        bool isDetecionDistance = distanceToEnemy <= lookAtDistance;
+        float distancePlayerToEnemy = CalculateDistanceFromPlayerToEnemy(transform, enemyTransform);
+        bool isDetecionDistance = distancePlayerToEnemy <= lookAtDistance;
         return isDetecionDistance;
     }
 
@@ -23,8 +23,15 @@ public class CheckDistance : Singleton<CheckDistance>
     {
         float distanceToCloseEnemy = Mathf.Infinity; // khởi tạo khoảng cách này là vô cực
         EnemyMovement closestEnemies = null;
-        EnemyMovement[] allEnenies = GameObject.FindObjectsOfType<EnemyMovement>();
-        foreach (EnemyMovement currentEnemy in allEnenies)
+        EnemyMovement[] allEnemies = GameObject.FindObjectsOfType<EnemyMovement>();
+        
+        if (allEnemies.Length == 0)
+        {
+            Debug.Log("No enemies found.");
+            return null;
+        }
+        
+        foreach (EnemyMovement currentEnemy in allEnemies)
         {
             float distanceToEnemy = (currentEnemy.transform.position - transform.position).magnitude;
             if (distanceToEnemy < distanceToCloseEnemy)
@@ -33,6 +40,7 @@ public class CheckDistance : Singleton<CheckDistance>
                 closestEnemies = currentEnemy;
             }
         }
-        return closestEnemies.transform;
+
+        return closestEnemies?.transform; // Trả về transform nếu closestEnemies không null
     }
 }

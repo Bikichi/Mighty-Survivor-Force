@@ -5,10 +5,8 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private GameObject _targetPlayer;
-    
-    [SerializeField] private GameObject _enemyBullet;
 
-    [SerializeField] private float _speed;
+    public EnemyScriptableObject enemyData;
 
     void Update()
     {
@@ -24,7 +22,7 @@ public class EnemyMovement : MonoBehaviour
         else
         {
             transform.LookAt(_targetPlayer.transform, Vector3.up);
-            transform.Translate(Vector3.forward * Time.deltaTime * _speed);
+            transform.Translate(Vector3.forward * Time.deltaTime * enemyData.enemyMoveSpeed);
         }
     }
 }
