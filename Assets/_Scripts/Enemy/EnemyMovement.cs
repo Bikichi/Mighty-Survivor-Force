@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private GameObject _targetPlayer;
-
+    public Animator anim;
     public EnemyScriptableObject enemyData;
 
     void Update()

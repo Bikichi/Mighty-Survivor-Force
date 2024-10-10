@@ -27,7 +27,6 @@ public class CheckDistance : Singleton<CheckDistance>
         
         if (allEnemies.Length == 0)
         {
-            Debug.Log("No enemies found.");
             return null;
         }
         

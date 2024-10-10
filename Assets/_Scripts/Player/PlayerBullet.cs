@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerBullet : MonoBehaviour
 {
-    [SerializeField] private Transform _closetEnemy;
+    [SerializeField] private Transform _closestEnemy;
     [SerializeField] private float _speedBullet;
     [SerializeField] public float damageBullet;
 
@@ -15,13 +15,19 @@ public class PlayerBullet : MonoBehaviour
         transform.Translate(Vector3.forward * Time.deltaTime * _speedBullet);
     }
 
+    public void MoveBulletToClosestEnemy()
+    {
+        if (_closestEnemy == null) { return; }
+        MoveBullet(_closestEnemy);
+    }
+
     public void Start()
     {
-        _closetEnemy = CheckDistance.Instance.FindClosestEnemy();
+        _closestEnemy = CheckDistance.Instance.FindClosestEnemy();
     }
 
     private void Update()
     {
-        MoveBullet(_closetEnemy);
+        MoveBulletToClosestEnemy();
     }
 }
