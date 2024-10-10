@@ -19,21 +19,38 @@ public class CameraFollow : MonoBehaviour
 
     private void LateUpdate()
     {
+        MoveCameraFlowPlayer();
+    }
+
+    public void MoveCameraFlowPlayer()
+    {
         Vector3 targetPosition = followTarget.position + offset;
 
-        // Tính toán vị trí camera mới dựa trên SmoothDamp
-        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref currentVelocity, smoothTime);
+        // Tính toán vị trí camera mới dựa trên SmoothDamp, chỉ tính trên trục x và y
+        Vector3 newPosition = Vector3.SmoothDamp(transform.position, targetPosition, ref currentVelocity, smoothTime);
 
-        // Giới hạn vị trí camera sau khi SmoothDamp tính toán xong
+        if (followTarget.position.z > 8 || followTarget.position.z < -17)
+        {
+            // Nếu điều kiện thỏa mãn, không di chuyển camera theo trục z (giữ nguyên vị trí z hiện tại của camera)
+            newPosition.z = transform.position.z;
+        }
+
+        // Cập nhật vị trí của camera với newPosition
+        transform.position = newPosition;
+
+        // Giới hạn vị trí camera sau khi SmoothDamp tính toán xong (giới hạn trục x nếu cần)
         ClampXPosCamera();
+    }
+
+    public void ClampZPosCamera()
+    {
+
     }
 
     public void ClampXPosCamera()
     {
         // Giới hạn giá trị x của camera
         float xPos = Mathf.Clamp(transform.position.x, xPosMin, xPosMax);
-        //float zPos = Mathf.Clamp(transform.position.z, zPosMin, zPosMax);
-
         // Cập nhật vị trí camera với giá trị x đã bị giới hạn
         transform.position = new Vector3(xPos, transform.position.y, transform.position.z);
     }
