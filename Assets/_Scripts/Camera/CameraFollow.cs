@@ -5,16 +5,16 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public Transform followTarget;
+    
     public Vector3 offset;
-    public float smoothTime;
     public Vector3 currentVelocity = Vector3.zero;
 
+    public float smoothTime;
     private float xPosMin = -12.5f, xPosMax = 12.5f;
 
     private void Awake()
     {
-        if (followTarget != null)
-            offset = transform.position - followTarget.position;
+        FindOffsetPosition();
     }
 
     private void LateUpdate()
@@ -22,36 +22,43 @@ public class CameraFollow : MonoBehaviour
         MoveCameraFlowPlayer();
     }
 
+    public void FindOffsetPosition()
+    {
+        if (followTarget != null)
+            offset = transform.position - followTarget.position;
+    }
+
     public void MoveCameraFlowPlayer()
     {
-        Vector3 targetPosition = followTarget.position + offset;
+        Vector3 cameraPosition = followTarget.position + offset;
 
-        // Tính toán vị trí camera mới dựa trên SmoothDamp, chỉ tính trên trục x và y
-        Vector3 newPosition = Vector3.SmoothDamp(transform.position, targetPosition, ref currentVelocity, smoothTime);
+        // Tính toán vị trí camera mới dựa trên SmoothDamp
+        Vector3 newCameraPosition = Vector3.SmoothDamp(transform.position, cameraPosition, ref currentVelocity, smoothTime);
 
-        if (followTarget.position.z > 8 || followTarget.position.z < -17)
-        {
-            // Nếu điều kiện thỏa mãn, không di chuyển camera theo trục z (giữ nguyên vị trí z hiện tại của camera)
-            newPosition.z = transform.position.z;
-        }
+        // Nếu chỉ truyền newCameraPosition mà không có từ khóa "ref" thì sẽ chỉ là truyền tham trị của biến vào hàm 
+        // truyền tham trị chỉ thay đổi giá trị của biến trong hàm truyền vào mà không thay đổi giá trị của biến gốc
+        // sử dụng từ khóa ref truyền tham chiếu sẽ thay đổi cả giá trị của biến gốc, bằng việc truyền địa chỉ của biến gốc
+        ClampXPosCamera(ref newCameraPosition);
+        ClampZPosCamera(ref newCameraPosition);
 
-        // Cập nhật vị trí của camera với newPosition
-        transform.position = newPosition;
-
-        // Giới hạn vị trí camera sau khi SmoothDamp tính toán xong (giới hạn trục x nếu cần)
-        ClampXPosCamera();
+        // Cập nhật vị trí camera sau khi giới hạn
+        transform.position = newCameraPosition;
     }
 
-    public void ClampZPosCamera()
-    {
-
-    }
-
-    public void ClampXPosCamera()
+    public void ClampXPosCamera(ref Vector3 newPosition)
     {
         // Giới hạn giá trị x của camera
-        float xPos = Mathf.Clamp(transform.position.x, xPosMin, xPosMax);
-        // Cập nhật vị trí camera với giá trị x đã bị giới hạn
-        transform.position = new Vector3(xPos, transform.position.y, transform.position.z);
+        float xPos = Mathf.Clamp(newPosition.x, xPosMin, xPosMax);
+        newPosition.x = xPos; // Cập nhật newPosition
+    }
+
+    public void ClampZPosCamera(ref Vector3 newPosition)
+    {
+        // Giới hạn giá trị z của camera dựa trên điều kiện vị trí của nhận vật. Không thể làm tương tự như trục X bởi vì camera đang nhìn nhân vật theo góc chéo
+        if (followTarget.position.z > 8 || followTarget.position.z < -15.5)
+        {
+            // Nếu điều kiện thỏa mãn, giữ nguyên z, tức là camera không di chuyển theo trục Z
+            newPosition.z = transform.position.z;
+        }
     }
 }
