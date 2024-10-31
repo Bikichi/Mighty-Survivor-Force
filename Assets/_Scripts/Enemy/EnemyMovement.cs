@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private GameObject _targetPlayer;
+    private const string runParaname = "Run";
     public Animator anim;
     public EnemyScriptableObject enemyData;
 
@@ -17,10 +18,12 @@ public class EnemyMovement : MonoBehaviour
     {
         if (CheckDistance.Instance.CalculateDistanceFromPlayerToEnemy(_targetPlayer.transform, transform) <= 3.5f)
         {
+            anim.SetBool(runParaname, false);
             return;
         } 
         else
         {
+            anim.SetBool(runParaname, true);
             transform.LookAt(_targetPlayer.transform, Vector3.up);
             transform.Translate(Vector3.forward * Time.deltaTime * enemyData.enemyMoveSpeed);
         }
