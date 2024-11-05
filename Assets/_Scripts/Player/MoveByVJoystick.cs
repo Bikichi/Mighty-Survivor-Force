@@ -17,7 +17,6 @@ public class MoveByVJoystick : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
     }
-
     private void Update()
     {
         Move();
