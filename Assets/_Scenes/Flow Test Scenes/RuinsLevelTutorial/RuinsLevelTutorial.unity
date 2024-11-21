@@ -25743,8 +25743,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 54344747664657210, guid: 2ddbb6e1eb18c9e46ac57f5bbf48e24a, type: 3}
+      propertyPath: m_Drag
+      value: 0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 54344747664657210, guid: 2ddbb6e1eb18c9e46ac57f5bbf48e24a, type: 3}
       propertyPath: m_Mass
-      value: 0.0000001
+      value: 3.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 54344747664657210, guid: 2ddbb6e1eb18c9e46ac57f5bbf48e24a, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 54344747664657210, guid: 2ddbb6e1eb18c9e46ac57f5bbf48e24a, type: 3}
       propertyPath: m_Constraints
@@ -25752,19 +25760,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 54344747664657210, guid: 2ddbb6e1eb18c9e46ac57f5bbf48e24a, type: 3}
       propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 135185801853320443, guid: 2ddbb6e1eb18c9e46ac57f5bbf48e24a, type: 3}
-      propertyPath: m_Radius
-      value: 1.0510534
-      objectReference: {fileID: 0}
-    - target: {fileID: 135185801853320443, guid: 2ddbb6e1eb18c9e46ac57f5bbf48e24a, type: 3}
-      propertyPath: m_Center.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 135185801853320443, guid: 2ddbb6e1eb18c9e46ac57f5bbf48e24a, type: 3}
+      propertyPath: m_Radius
+      value: 0.76691884
+      objectReference: {fileID: 0}
+    - target: {fileID: 135185801853320443, guid: 2ddbb6e1eb18c9e46ac57f5bbf48e24a, type: 3}
+      propertyPath: m_Center.x
+      value: -0.0069302097
+      objectReference: {fileID: 0}
+    - target: {fileID: 135185801853320443, guid: 2ddbb6e1eb18c9e46ac57f5bbf48e24a, type: 3}
       propertyPath: m_Center.y
-      value: 1.1489462
+      value: 0.83
       objectReference: {fileID: 0}
     - target: {fileID: 135185801853320443, guid: 2ddbb6e1eb18c9e46ac57f5bbf48e24a, type: 3}
       propertyPath: m_Center.z
@@ -25818,7 +25826,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targetPlayer: {fileID: 119}
   anim: {fileID: 949379403}
-  enemyData: {fileID: 11400000, guid: 13afbac863f04f6469e887648575982c, type: 2}
+  enemyMoveSpeed: 11
   rb: {fileID: 0}
   distance: 3.5
   isMoving: 0
@@ -25839,6 +25847,27 @@ MonoBehaviour:
   playerBullet: {fileID: 0}
   _coinDrop: {fileID: 1880245074145146, guid: b3c12d3b558716b4b83fc1088b5990e5, type: 3}
   hasCoin: 1
+--- !u!65 &330723253
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330723240}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.0365337, z: 1.2484303}
+  m_Center: {x: 0, y: 0.48173305, z: 0}
 --- !u!1 &478288397 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1877392981567997, guid: 2ddbb6e1eb18c9e46ac57f5bbf48e24a, type: 3}
@@ -25858,7 +25887,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targetPlayer: {fileID: 119}
   anim: {fileID: 588283189}
-  enemyData: {fileID: 11400000, guid: 13afbac863f04f6469e887648575982c, type: 2}
+  enemyMoveSpeed: 8
   rb: {fileID: 0}
   distance: 3.5
   isMoving: 0
@@ -25898,7 +25927,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targetPlayer: {fileID: 119}
   anim: {fileID: 1922790866}
-  enemyData: {fileID: 11400000, guid: 13afbac863f04f6469e887648575982c, type: 2}
+  enemyMoveSpeed: 5
   rb: {fileID: 0}
   distance: 3.5
   isMoving: 0
@@ -26269,6 +26298,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1321798023574162, guid: 7de2a7c5a6715c348b982b146f557f87, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1321906869273345, guid: 7de2a7c5a6715c348b982b146f557f87, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -26356,6 +26389,10 @@ PrefabInstance:
     - target: {fileID: 1751762108397465, guid: 7de2a7c5a6715c348b982b146f557f87, type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1751762108397465, guid: 7de2a7c5a6715c348b982b146f557f87, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1791963096433186, guid: 7de2a7c5a6715c348b982b146f557f87, type: 3}
       propertyPath: m_Layer
@@ -26446,8 +26483,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 54860595420376276, guid: 7de2a7c5a6715c348b982b146f557f87, type: 3}
+      propertyPath: m_Drag
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54860595420376276, guid: 7de2a7c5a6715c348b982b146f557f87, type: 3}
       propertyPath: m_Mass
-      value: 0.0000001
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54860595420376276, guid: 7de2a7c5a6715c348b982b146f557f87, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 54860595420376276, guid: 7de2a7c5a6715c348b982b146f557f87, type: 3}
       propertyPath: m_Constraints
@@ -26455,14 +26500,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 54860595420376276, guid: 7de2a7c5a6715c348b982b146f557f87, type: 3}
       propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 135023528116934593, guid: 7de2a7c5a6715c348b982b146f557f87, type: 3}
+      propertyPath: m_Radius
+      value: 0.7755601
+      objectReference: {fileID: 0}
+    - target: {fileID: 135023528116934593, guid: 7de2a7c5a6715c348b982b146f557f87, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 135023528116934593, guid: 7de2a7c5a6715c348b982b146f557f87, type: 3}
       propertyPath: m_Center.y
-      value: 0.46
+      value: 0.4797272
+      objectReference: {fileID: 0}
+    - target: {fileID: 135023528116934593, guid: 7de2a7c5a6715c348b982b146f557f87, type: 3}
+      propertyPath: m_Center.z
+      value: 0.012764754
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 195159611888303820, guid: 7de2a7c5a6715c348b982b146f557f87, type: 3}
+    - {fileID: 135023528116934593, guid: 7de2a7c5a6715c348b982b146f557f87, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -26472,6 +26530,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1262647022455045, guid: 7de2a7c5a6715c348b982b146f557f87, type: 3}
       insertIndex: -1
       addedObject: {fileID: 330723249}
+    - targetCorrespondingSourceObject: {fileID: 1262647022455045, guid: 7de2a7c5a6715c348b982b146f557f87, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 330723253}
   m_SourcePrefab: {fileID: 100100000, guid: 7de2a7c5a6715c348b982b146f557f87, type: 3}
 --- !u!95 &949379403 stripped
 Animator:
@@ -27101,6 +27162,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1541470566164238, guid: 082cfd42ae391b84a9f5cf6e2841563d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1548230076574850, guid: 082cfd42ae391b84a9f5cf6e2841563d, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -27238,12 +27303,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 54169564570110548, guid: 082cfd42ae391b84a9f5cf6e2841563d, type: 3}
+      propertyPath: m_Drag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54169564570110548, guid: 082cfd42ae391b84a9f5cf6e2841563d, type: 3}
       propertyPath: m_Mass
-      value: 0.0000001
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 54169564570110548, guid: 082cfd42ae391b84a9f5cf6e2841563d, type: 3}
       propertyPath: m_UseGravity
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 54169564570110548, guid: 082cfd42ae391b84a9f5cf6e2841563d, type: 3}
       propertyPath: m_Constraints
@@ -27251,15 +27320,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 54169564570110548, guid: 082cfd42ae391b84a9f5cf6e2841563d, type: 3}
       propertyPath: m_IsKinematic
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 135921041034148730, guid: 082cfd42ae391b84a9f5cf6e2841563d, type: 3}
       propertyPath: m_Radius
-      value: 1.7564822
+      value: 1.5901607
+      objectReference: {fileID: 0}
+    - target: {fileID: 135921041034148730, guid: 082cfd42ae391b84a9f5cf6e2841563d, type: 3}
+      propertyPath: m_Center.x
+      value: 0.013860772
       objectReference: {fileID: 0}
     - target: {fileID: 135921041034148730, guid: 082cfd42ae391b84a9f5cf6e2841563d, type: 3}
       propertyPath: m_Center.y
-      value: 1.7164823
+      value: 1.6056004
       objectReference: {fileID: 0}
     - target: {fileID: 224368034698570441, guid: 082cfd42ae391b84a9f5cf6e2841563d, type: 3}
       propertyPath: m_AnchorMax.x
@@ -28008,7 +28081,7 @@ PrefabInstance:
       objectReference: {fileID: 1525287067}
     - target: {fileID: 5249342022966716316, guid: c20f1201e3ed1d9419c2ca26383e1586, type: 3}
       propertyPath: movingSpeed
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5249760580638803153, guid: c20f1201e3ed1d9419c2ca26383e1586, type: 3}
       propertyPath: m_Height
@@ -28285,6 +28358,10 @@ PrefabInstance:
     - target: {fileID: 7744249667485033331, guid: c20f1201e3ed1d9419c2ca26383e1586, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761154865839768188, guid: c20f1201e3ed1d9419c2ca26383e1586, type: 3}
+      propertyPath: rotationSpeed
+      value: 66
       objectReference: {fileID: 0}
     - target: {fileID: 7766832165131763384, guid: c20f1201e3ed1d9419c2ca26383e1586, type: 3}
       propertyPath: m_Layer

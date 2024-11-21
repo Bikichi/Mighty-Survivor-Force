@@ -20,8 +20,8 @@ public class RotatePlayer : MonoBehaviour
     {
         Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
         // Quaternion.LookRotation tạo ra một góc quay theo hướng mong muốn với trục y được giữ theo hướng Vector3.up
-        //transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-        transform.rotation = targetRotation;
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        //transform.rotation = targetRotation;
     }
 
     public void RotateInMoveDirection(Transform transform)
