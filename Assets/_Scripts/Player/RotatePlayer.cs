@@ -44,10 +44,10 @@ public class RotatePlayer : MonoBehaviour
     }
     public void RotatePlayerInDirection()
     {
-        var closestEnemy = CheckDistance.Instance.FindClosestEnemy();
-        if (closestEnemy != null && CheckDistance.Instance.CheckPlayerEnemyDistance(closestEnemy))
+        var targetEnemy = CheckDistance.Instance.FindTargetEnemy();
+        if (targetEnemy != null)
         {
-            RotatePlayerTowardsEnemy();
+            RotatePlayerToTargetEnemy();
         }
         else
         {
@@ -55,9 +55,9 @@ public class RotatePlayer : MonoBehaviour
         }
     }
 
-    public void RotatePlayerTowardsEnemy()
+    public void RotatePlayerToTargetEnemy()
     {
-        Vector3 directionToEnemy = CheckDistance.Instance.FindClosestEnemy().position - transform.position; //Hướng từ Player đến Enemy
+        Vector3 directionToEnemy = CheckDistance.Instance.FindTargetEnemy().position - transform.position; //Hướng từ Player đến Enemy
         RotateInDirection(directionToEnemy, transform);
     }
 

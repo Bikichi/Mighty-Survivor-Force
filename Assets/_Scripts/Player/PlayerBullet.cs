@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PlayerBullet : MonoBehaviour
 {
-    [SerializeField] private Transform _closestEnemy;
+    [SerializeField] private Transform _targetEnemy;
     [SerializeField] private float _speedBullet;
     [SerializeField] public float damageBullet;
 
     public void Start()
     {
-        _closestEnemy = CheckDistance.Instance.FindClosestEnemy();
+        _targetEnemy = CheckDistance.Instance.FindTargetEnemy();
     }
 
     private void Update()
@@ -27,7 +27,7 @@ public class PlayerBullet : MonoBehaviour
 
     public void MoveBulletToClosestEnemy()
     {
-        if (_closestEnemy == null) { return; }
-        MoveBullet(_closestEnemy);
+        if (_targetEnemy == null) { return; }
+        MoveBullet(_targetEnemy);
     }
 }

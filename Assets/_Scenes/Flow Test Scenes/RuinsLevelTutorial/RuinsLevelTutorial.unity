@@ -25828,7 +25828,7 @@ MonoBehaviour:
   anim: {fileID: 949379403}
   enemyMoveSpeed: 11
   rb: {fileID: 0}
-  distance: 3.5
+  distance: 4
   isMoving: 0
 --- !u!114 &330723249
 MonoBehaviour:
@@ -25842,7 +25842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca8d883a57f3414a803641df6ad81cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 9999
+  startingHealth: 999999
   currentHealth: 0
   playerBullet: {fileID: 0}
   _coinDrop: {fileID: 1880245074145146, guid: b3c12d3b558716b4b83fc1088b5990e5, type: 3}
@@ -25889,7 +25889,7 @@ MonoBehaviour:
   anim: {fileID: 588283189}
   enemyMoveSpeed: 8
   rb: {fileID: 0}
-  distance: 3.5
+  distance: 4
   isMoving: 0
 --- !u!114 &478288406
 MonoBehaviour:
@@ -25903,7 +25903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca8d883a57f3414a803641df6ad81cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 99999
+  startingHealth: 9999
   currentHealth: 0
   playerBullet: {fileID: 0}
   _coinDrop: {fileID: 1880245074145146, guid: b3c12d3b558716b4b83fc1088b5990e5, type: 3}
@@ -25929,8 +25929,8 @@ MonoBehaviour:
   anim: {fileID: 1922790866}
   enemyMoveSpeed: 5
   rb: {fileID: 0}
-  distance: 3.5
-  isMoving: 0
+  distance: 4
+  isMoving: 1
 --- !u!114 &478901907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25943,7 +25943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca8d883a57f3414a803641df6ad81cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 999999
+  startingHealth: 99999
   currentHealth: 0
   playerBullet: {fileID: 0}
   _coinDrop: {fileID: 1880245074145146, guid: b3c12d3b558716b4b83fc1088b5990e5, type: 3}

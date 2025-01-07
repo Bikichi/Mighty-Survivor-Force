@@ -1,12 +1,10 @@
 ﻿using System;
 using UnityEngine;
 
-public class LivingEntity : MonoBehaviour, IDamageable
+public class LivingEntity : MonoBehaviour
 {
     [SerializeField] protected float startingHealth;
-	[SerializeField] protected float currentHealth;
-
-    [SerializeField] protected RaycastHit lastHit;
+	[SerializeField] public float currentHealth;
     [SerializeField] public bool IsActive { get; protected set; }
     [SerializeField] public bool IsDead { get; protected set; }
 
@@ -17,12 +15,6 @@ public class LivingEntity : MonoBehaviour, IDamageable
         currentHealth = startingHealth;
 		IsActive = true;
 		IsDead = false;
-	}
-
-	public virtual void TakeHit(float damage, RaycastHit hit)
-	{
-		lastHit = hit;
-		TakeDamage (damage);
 	}
 
 	public virtual void TakeDamage(float damage)

@@ -28,24 +28,23 @@ public class EnemyMovement : MonoBehaviour
 
     public void MoveEnemy()
     {
+        // Kiểm tra khoảng cách và dừng di chuyển nếu đủ gần
         if (CheckDistance.Instance.CalculateDistanceFromPlayerToEnemy(_targetPlayer.transform, transform) <= distance)
         {
             anim.SetBool(runParaname, false);
             isMoving = false;
-            return;
+            return; // Dừng hàm tại đây nếu đủ gần
         }
         else
         {
             anim.SetBool(runParaname, true);
             isMoving = true;
 
-            transform.Translate(Vector3.forward * Time.deltaTime * enemyMoveSpeed);
-            Vector3 direction = (_targetPlayer.transform.position - transform.position).normalized;
-            //Vector3 movement = direction * Time.deltaTime * enemyMoveSpeed;
-
-            //// Di chuyển thông qua Rigidbody và áp dụng một lực nhỏ để tránh va chạm mạnh
-            //Vector3 currentVelocity = rb.velocity;
-            //rb.velocity = new Vector3(currentVelocity.x, movement.y, currentVelocity.z); // Chỉ thay đổi vận tốc trên mặt đất
+            // Di chuyển quái vật về phía người chơi nếu đang di chuyển
+            if (isMoving)
+            {
+                transform.Translate(Vector3.forward * Time.deltaTime * enemyMoveSpeed);
+            }
         }
     }
 }

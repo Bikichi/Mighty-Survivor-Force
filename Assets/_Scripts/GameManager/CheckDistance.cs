@@ -19,10 +19,11 @@ public class CheckDistance : Singleton<CheckDistance>
         return isDetecionDistance;
     }
 
-    public Transform FindClosestEnemy()
+    public Transform FindTargetEnemy()
     {
-        float distanceToCloseEnemy = Mathf.Infinity; // khởi tạo khoảng cách này là vô cực
-        EnemyMovement closestEnemies = null;
+        float distanceToClosetEnemy = Mathf.Infinity; // khởi tạo khoảng cách này là vô cực
+        float lowestHealth = Mathf.Infinity; // Khởi tạo lượng máu thấp nhất là vô cực
+        EnemyMovement targetEnemy = null;
         EnemyMovement[] allEnemies = GameObject.FindObjectsOfType<EnemyMovement>();
         
         if (allEnemies.Length == 0)
@@ -33,13 +34,20 @@ public class CheckDistance : Singleton<CheckDistance>
         foreach (EnemyMovement currentEnemy in allEnemies)
         {
             float distanceToEnemy = (currentEnemy.transform.position - transform.position).magnitude;
-            if (distanceToEnemy < distanceToCloseEnemy)
+            EnemyHealth enemyHealth = currentEnemy.GetComponent<EnemyHealth>(); // lấy ra Component EnemyHealth của GameObject mà Component EnemyMovement đang đại diện
+            if (distanceToEnemy < distanceToClosetEnemy)
             {
-                distanceToCloseEnemy = distanceToEnemy;
-                closestEnemies = currentEnemy;
+                distanceToClosetEnemy = distanceToEnemy;
+                targetEnemy = currentEnemy;
+            }
+
+            else if (distanceToEnemy == distanceToClosetEnemy && enemyHealth.currentHealth < lowestHealth)
+            {
+                lowestHealth = enemyHealth.currentHealth;
+                targetEnemy = currentEnemy;
             }
         }
 
-        return closestEnemies?.transform; // Trả về transform nếu closestEnemies không null
+        return targetEnemy?.transform; // Trả về transform nếu targetEnemies không null
     }
 }

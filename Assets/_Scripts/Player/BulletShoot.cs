@@ -16,13 +16,13 @@ public class BulletShoot : MonoBehaviour
     public void ShootBullet()
     {
         bool isReadyToShoot = Time.time - shootingInterval > _delayShoot;
-        var closestEnemy = CheckDistance.Instance.FindClosestEnemy();
+        var targetEnemy = CheckDistance.Instance.FindTargetEnemy();
         
-        if (closestEnemy == null)
+        if (targetEnemy == null)
         {
             return;
         }
-        if (CheckDistance.Instance.CheckPlayerEnemyDistance(closestEnemy) && isReadyToShoot)
+        if (CheckDistance.Instance.CheckPlayerEnemyDistance(targetEnemy) && isReadyToShoot)
         {
             Debug.Log("ShootBullet");
             Instantiate(_bulletPrefabs, _shootPoint.position, _shootPoint.rotation);
