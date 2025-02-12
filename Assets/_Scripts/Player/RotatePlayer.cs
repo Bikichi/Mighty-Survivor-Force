@@ -8,7 +8,10 @@ public class RotatePlayer : MonoBehaviour
 
     public Transform movePointerTransform;
     
-    [SerializeField] private float rotationSpeed;
+    //[SerializeField] private float rotationSpeed;
+
+    public float rotateTimer;
+    public float rotateInterval;
 
     void Update()
     {
@@ -20,8 +23,8 @@ public class RotatePlayer : MonoBehaviour
     {
         Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
         // Quaternion.LookRotation tạo ra một góc quay theo hướng mong muốn với trục y được giữ theo hướng Vector3.up
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-        //transform.rotation = targetRotation;
+        //transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        transform.rotation = targetRotation;
     }
 
     public void RotateInMoveDirection(Transform transform)
@@ -42,18 +45,6 @@ public class RotatePlayer : MonoBehaviour
         RotateInMoveDirection(movePointerTransform);
 
     }
-    public void RotatePlayerInDirection()
-    {
-        var targetEnemy = CheckDistance.Instance.FindTargetEnemy();
-        if (targetEnemy != null)
-        {
-            RotatePlayerToTargetEnemy();
-        }
-        else
-        {
-            RotarePlayerInMoveDirection();
-        }
-    }
 
     public void RotatePlayerToTargetEnemy()
     {
@@ -64,5 +55,24 @@ public class RotatePlayer : MonoBehaviour
     public void RotarePlayerInMoveDirection()
     {
         RotateInMoveDirection(transform);
+    }
+
+    public void RotatePlayerInDirection()
+    {
+        var targetEnemy = CheckDistance.Instance.FindTargetEnemy();
+        if (targetEnemy != null)
+        {
+            rotateTimer += Time.deltaTime;
+            if (rotateTimer >= rotateInterval)
+            {
+                RotatePlayerToTargetEnemy(); //targetEnemy không đổi thì hàm này thực chất vẫn chạy chỉ cần thoả mãn điều kiện if
+                //targetEnemy không đổi tức là lúc này góc quay là 0 độ nên thực tế trên scene không nhìn ra được là nó đang chạy @@
+                rotateTimer = 0f;
+            }
+        }
+        else
+        {
+            RotarePlayerInMoveDirection();
+        }
     }
 }

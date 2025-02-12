@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] private GameObject _targetPlayer;
+    [SerializeField] public GameObject targetPlayer;
     private const string runParaname = "Run";
     public Animator anim;
     //public EnemyScriptableObject enemyData;
@@ -14,22 +14,21 @@ public class EnemyMovement : MonoBehaviour
     public float distance;
     public bool isMoving;
 
-    private void Start()
+    public void Start()
     {
         rb = GetComponent<Rigidbody>();
-        //rb.drag = 0f;
-        //rb.angularDrag = 0f;
+        targetPlayer = GameObject.FindGameObjectWithTag("Player");
     }
     void Update()
     {
-        transform.LookAt(_targetPlayer.transform, Vector3.up);
+        transform.LookAt(targetPlayer.transform, Vector3.up);
         MoveEnemy();
     }
 
     public void MoveEnemy()
     {
         // Kiểm tra khoảng cách và dừng di chuyển nếu đủ gần
-        if (CheckDistance.Instance.CalculateDistanceFromPlayerToEnemy(_targetPlayer.transform, transform) <= distance)
+        if (CheckDistance.Instance.CalculateDistanceFromPlayerToEnemy(targetPlayer.transform, transform) <= distance)
         {
             anim.SetBool(runParaname, false);
             isMoving = false;
