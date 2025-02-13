@@ -6,4 +6,5 @@ public class Const : MonoBehaviour
 {
     public const string ENEMY_TAG = "Enemy";
     public const string PLAYERBULLET_TAG = "PlayerBullet";
+    public const string PLAYER_TAG = "Player";
 }

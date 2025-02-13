@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyHealth : LivingEntity
+public class EnemyHealth : LivingEntity 
 {
     public PlayerBullet playerBullet;
     [SerializeField] private GameObject _coinDrop;
@@ -27,13 +27,13 @@ public class EnemyHealth : LivingEntity
         es.OnEnemyKilled();
     }
 
-    private void OnTriggerEnter(Collider col)
-    {
-        if (col.CompareTag(Const.PLAYERBULLET_TAG)) //nếu đối tượng này va chạm với đối tượng có tag là PLAYERBULLET_TAG thì thực thi
-        {
-            //Debug.Log("BANG!!!");
-            TakeDamage(playerBullet.damageBullet);
-            Destroy(col.gameObject); ; //hủy đối tượng va chạm với đối tượng mà phương thức gắn vào
-        }
-    }
+    //private void OnTriggerEnter(Collider col)
+    //{
+    //    if (col.CompareTag(Const.PLAYERBULLET_TAG)) //nếu đối tượng này va chạm với đối tượng có tag là PLAYERBULLET_TAG thì thực thi
+    //    {
+    //        //Debug.Log("BANG!!!");
+    //        TakeDamage(playerBullet.damageBullet);
+    //        Destroy(col.gameObject); ; //hủy đối tượng va chạm với đối tượng mà phương thức gắn vào
+    //    }
+    //}
 }

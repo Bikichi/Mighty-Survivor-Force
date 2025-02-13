@@ -11,7 +11,7 @@ public class EnemyMovement : MonoBehaviour
     public float enemyMoveSpeed;
     public Rigidbody rb;
 
-    public float distance;
+    public float distanceToPlayer;
     public bool isMoving;
 
     public void Start()
@@ -28,7 +28,7 @@ public class EnemyMovement : MonoBehaviour
     public void MoveEnemy()
     {
         // Kiểm tra khoảng cách và dừng di chuyển nếu đủ gần
-        if (CheckDistance.Instance.CalculateDistanceFromPlayerToEnemy(targetPlayer.transform, transform) <= distance)
+        if (CheckDistance.Instance.CalculateDistanceFromPlayerToEnemy(targetPlayer.transform, transform) <= distanceToPlayer)
         {
             anim.SetBool(runParaname, false);
             isMoving = false;

@@ -8168,6 +8168,7 @@ GameObject:
   - component: {fileID: 2607453827391696879}
   - component: {fileID: 2280123793151490445}
   - component: {fileID: 435053808370863451}
+  - component: {fileID: 8221931988322626705}
   m_Layer: 8
   m_Name: Golem 1
   m_TagString: Enemy
@@ -8262,7 +8263,7 @@ MonoBehaviour:
   anim: {fileID: 5855755328469367166}
   enemyMoveSpeed: 5
   rb: {fileID: 2607453827391696879}
-  distance: 4
+  distanceToPlayer: 0
   isMoving: 1
 --- !u!114 &435053808370863451
 MonoBehaviour:
@@ -8281,6 +8282,24 @@ MonoBehaviour:
   playerBullet: {fileID: 0}
   _coinDrop: {fileID: 1880245074145146, guid: b3c12d3b558716b4b83fc1088b5990e5, type: 3}
   hasCoin: 1
+--- !u!114 &8221931988322626705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4459301653538735250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf4cccc2ed8f7cd42a73120c29ec2d27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetPlayer: {fileID: 0}
+  damageArea: {fileID: 0}
+  anim: {fileID: 5855755328469367166}
+  attackTimer: 0
+  attackInterval: 3
+  distanceToPlayer: 4
 --- !u!1 &4684050166033397021
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,7 +24,7 @@ public class BulletShoot : MonoBehaviour
         }
         if (CheckDistance.Instance.CheckPlayerEnemyDistance(targetEnemy) && isReadyToShoot)
         {
-            Debug.Log("ShootBullet");
+            //Debug.Log("ShootBullet");
             Instantiate(_bulletPrefabs, _shootPoint.position, _shootPoint.rotation);
             shootingInterval = Time.time;  // Cập nhật thời gian bắn
         }

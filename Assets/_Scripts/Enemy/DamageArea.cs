@@ -1,15 +1,19 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DamageArea : MonoBehaviour
 {
     public PlayerHealth playerHealth;
-    private void OnTriggerEnter3D(Collider col, float damage)
+    public int enemyDamage;
+
+    private void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "Player")
+        //tại sao Player vẫn không nhận Damage
+        if (col.CompareTag(Const.PLAYER_TAG))
         {
-            playerHealth.TakeDamage(damage);
+            Debug.Log("Aaa!!!");
+            playerHealth.TakeDamage(enemyDamage);
         }
     }
 }

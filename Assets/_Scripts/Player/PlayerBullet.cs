@@ -30,4 +30,14 @@ public class PlayerBullet : MonoBehaviour
         if (_targetEnemy == null) { return; }
         MoveBullet(_targetEnemy);
     }
+
+    private void OnTriggerEnter(Collider col)
+    {
+        if (col.CompareTag(Const.ENEMY_TAG)) //nếu đối tượng này va chạm với đối tượng có tag là ENEMY_TAG thì thực thi
+        {
+            EnemyHealth eh = FindObjectOfType<EnemyHealth>();
+            eh.TakeDamage(damageBullet);
+            Destroy(gameObject); ; //hủy đối tượng mà phương thức gắn vào
+        }
+    }
 }
