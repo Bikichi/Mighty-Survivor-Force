@@ -9,7 +9,6 @@ public class DamageArea : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        //tại sao Player vẫn không nhận Damage
         if (col.CompareTag(Const.PLAYER_TAG))
         {
             Debug.Log("Aaa!!!");

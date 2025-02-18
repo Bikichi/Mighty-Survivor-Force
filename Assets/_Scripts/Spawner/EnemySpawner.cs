@@ -76,7 +76,7 @@ public class EnemySpawner : MonoBehaviour
         }
 
         waves[currentWaveCount].waveQuota = currentWaveQuota;
-        Debug.Log(currentWaveQuota);
+        //Debug.Log(currentWaveQuota);
     }
 
     public Vector3 GetRandomSpawnPosition()
@@ -101,7 +101,7 @@ public class EnemySpawner : MonoBehaviour
                 }
                 if (enemyGroup.spawnCount < enemyGroup.enemyCount)
                 {
-                    Debug.Log("Spawn!");
+                    //Debug.Log("Spawn!");
                     Instantiate(enemyGroup.enemyPrefab, GetRandomSpawnPosition(), Quaternion.identity);
                     enemiesAlive++;
                     enemyGroup.spawnCount++;

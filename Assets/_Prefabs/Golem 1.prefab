@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4289911387267406610}
   - component: {fileID: 5855755328469367166}
+  - component: {fileID: 6342854502215516746}
   m_Layer: 8
   m_Name: GolemMelee
   m_TagString: Enemy
@@ -55,6 +56,29 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6342854502215516746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16424699876778550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf4cccc2ed8f7cd42a73120c29ec2d27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetPlayer: {fileID: 0}
+  anim: {fileID: 0}
+  attackPoint: {fileID: 0}
+  attackMask:
+    serializedVersion: 2
+    m_Bits: 64
+  attackDamage: 50
+  attackTimer: 0
+  attackInterval: 3
+  attackRanged: 4
+  isAttacking: 0
 --- !u!1 &64473046120004796
 GameObject:
   m_ObjectHideFlags: 0
@@ -2862,12 +2886,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 795797714073539012}
+  - component: {fileID: 3893233732207457401}
   - component: {fileID: 6494572305761485866}
   - component: {fileID: 7437538732425640641}
   - component: {fileID: 1574290636315277307}
   m_Layer: 8
   m_Name: DamageArea
-  m_TagString: Untagged
+  m_TagString: DA
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2887,6 +2912,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4231261234218737188}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3893233732207457401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1127352545079700142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea107619e373ddf4ebee6c1fdac729c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: {fileID: 0}
+  enemyDamage: 10
 --- !u!33 &6494572305761485866
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -8168,7 +8207,6 @@ GameObject:
   - component: {fileID: 2607453827391696879}
   - component: {fileID: 2280123793151490445}
   - component: {fileID: 435053808370863451}
-  - component: {fileID: 8221931988322626705}
   m_Layer: 8
   m_Name: Golem 1
   m_TagString: Enemy
@@ -8260,10 +8298,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPlayer: {fileID: 2125946824219224542, guid: c20f1201e3ed1d9419c2ca26383e1586, type: 3}
+  enemyAttack: {fileID: 0}
   anim: {fileID: 5855755328469367166}
   enemyMoveSpeed: 5
   rb: {fileID: 2607453827391696879}
-  distanceToPlayer: 0
+  distanceToPlayer: 4
   isMoving: 1
 --- !u!114 &435053808370863451
 MonoBehaviour:
@@ -8279,27 +8318,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 50
   currentHealth: 0
-  playerBullet: {fileID: 0}
   _coinDrop: {fileID: 1880245074145146, guid: b3c12d3b558716b4b83fc1088b5990e5, type: 3}
   hasCoin: 1
---- !u!114 &8221931988322626705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4459301653538735250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf4cccc2ed8f7cd42a73120c29ec2d27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetPlayer: {fileID: 0}
-  damageArea: {fileID: 0}
-  anim: {fileID: 5855755328469367166}
-  attackTimer: 0
-  attackInterval: 3
-  distanceToPlayer: 4
 --- !u!1 &4684050166033397021
 GameObject:
   m_ObjectHideFlags: 0

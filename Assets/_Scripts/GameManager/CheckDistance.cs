@@ -12,13 +12,6 @@ public class CheckDistance : Singleton<CheckDistance>
         return distanceToEnemy;
     }
 
-    public bool CheckPlayerEnemyDistance(Transform enemyTransform)
-    {
-        float distancePlayerToEnemy = CalculateDistanceFromPlayerToEnemy(transform, enemyTransform);
-        bool isDetecionDistance = distancePlayerToEnemy <= lookAtDistance;
-        return isDetecionDistance;
-    }
-
     public Transform FindTargetEnemy()
     {
         float distanceToClosetEnemy = Mathf.Infinity; // Khởi tạo khoảng cách là vô cực
@@ -44,11 +37,11 @@ public class CheckDistance : Singleton<CheckDistance>
             {
                 distanceToClosetEnemy = distanceToEnemy;
                 targetEnemy = currentEnemy;
-                targetEnemyHealth = enemyHealth.currentHealth; // Cập nhật máu của mục tiêu mới
+                targetEnemyHealth = enemyHealth.currentHealth;
             }
             else if (distanceToEnemy == distanceToClosetEnemy)
             {
-                if (enemyHealth.currentHealth < targetEnemyHealth) // So sánh máu
+                if (enemyHealth.currentHealth < targetEnemyHealth)
                 {
                     targetEnemy = currentEnemy;
                     targetEnemyHealth = enemyHealth.currentHealth; // Cập nhật máu của mục tiêu mới

@@ -1,24 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] public GameObject targetPlayer;
+    public EnemyAttack enemyAttack;
     private const string runParaname = "Run";
     public Animator anim;
-    //public EnemyScriptableObject enemyData;
     public float enemyMoveSpeed;
     public Rigidbody rb;
 
     public float distanceToPlayer;
     public bool isMoving;
 
+
     public void Start()
     {
         rb = GetComponent<Rigidbody>();
         targetPlayer = GameObject.FindGameObjectWithTag("Player");
+        enemyAttack = GetComponentInChildren<EnemyAttack>();
     }
+
     void Update()
     {
         transform.LookAt(targetPlayer.transform, Vector3.up);
@@ -27,19 +28,16 @@ public class EnemyMovement : MonoBehaviour
 
     public void MoveEnemy()
     {
-        // Kiểm tra khoảng cách và dừng di chuyển nếu đủ gần
-        if (CheckDistance.Instance.CalculateDistanceFromPlayerToEnemy(targetPlayer.transform, transform) <= distanceToPlayer)
+        if (CheckDistance.Instance.CalculateDistanceFromPlayerToEnemy(targetPlayer.transform, transform) <= distanceToPlayer || enemyAttack.isAttacking)
         {
             anim.SetBool(runParaname, false);
             isMoving = false;
-            return; // Dừng hàm tại đây nếu đủ gần
+            return;
         }
-        else
+        else if (CheckDistance.Instance.CalculateDistanceFromPlayerToEnemy(targetPlayer.transform, transform) > distanceToPlayer && !enemyAttack.isAttacking)
         {
             anim.SetBool(runParaname, true);
             isMoving = true;
-
-            // Di chuyển quái vật về phía người chơi nếu đang di chuyển
             if (isMoving)
             {
                 transform.Translate(Vector3.forward * Time.deltaTime * enemyMoveSpeed);

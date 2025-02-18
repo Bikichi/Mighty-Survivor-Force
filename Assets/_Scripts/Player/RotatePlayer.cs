@@ -35,7 +35,6 @@ public class RotatePlayer : MonoBehaviour
         // Khi gọi Quaternion.LookRotation với một vector có độ dài bằng 0, Unity không thể xác định hướng, dẫn tới lỗi.
         if (moveDirection != Vector3.zero)
         {
-            // Nếu nhân vật đang di chuyển, xoay movePointer theo hướng di chuyển
             RotateInDirection(moveDirection, transform);
         }
     }

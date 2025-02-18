@@ -1,22 +1,25 @@
-﻿    using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    //public EnemyScriptableObject enemyData;
-    public GameObject targetPlayer;
-    public GameObject damageArea;
     private const string attackParaname = "Attack";
+    public GameObject targetPlayer;
     public Animator anim;
+    public Transform attackPoint;
+    public LayerMask attackMask;
+
+    public float attackDamage;
     public float attackTimer;
     public float attackInterval;
-    public float distanceToPlayer;
+    public float attackRanged;
 
-    private void Start()
+    public bool isAttacking = false;
+
+    public void Start()
     {
+        anim = GetComponent<Animator>();
         targetPlayer = GameObject.FindGameObjectWithTag("Player");
-        damageArea = GameObject.FindGameObjectWithTag("DA"); // không chạy?
+        attackPoint = transform;
         attackTimer = attackInterval;
     }
 
@@ -24,7 +27,7 @@ public class EnemyAttack : MonoBehaviour
     {
         attackTimer += Time.deltaTime;
         bool isReadyToAttack = attackTimer >= attackInterval;
-        if (isReadyToAttack) 
+        if (isReadyToAttack)
         {
             Attack();
         }
@@ -32,14 +35,49 @@ public class EnemyAttack : MonoBehaviour
 
     public void Attack()
     {
-        EnemyMovement em = FindObjectOfType<EnemyMovement>();
-        if (CheckDistance.Instance.CalculateDistanceFromPlayerToEnemy(targetPlayer.transform, transform) <= distanceToPlayer) 
+        if (CheckDistance.Instance.CalculateDistanceFromPlayerToEnemy(targetPlayer.transform, transform) <= attackRanged)
         {
+            isAttacking = true;
             anim.SetTrigger(attackParaname);
-            //damageArea.SetActive(true);
-            //làm thế nào để bật tắt damageArea
-            //khi attack thì đứng yên, attack xong mới được di chuyển
             attackTimer = 0f;
         }
     }
+    //Dùng Animetion Event
+    //Hàm này được gọi khi animation Attack kết thúc
+    public void OnAttackAnimationEnd()
+    {
+        isAttacking = false;
+    }
+
+    public void DealDamage()
+    {
+        PlayerHealth playerHealth = GetComponent<PlayerHealth>();
+        Collider[] colInfo = Physics.OverlapSphere(attackPoint.position, attackRanged, attackMask, QueryTriggerInteraction.Collide);
+        if (colInfo != null)
+        {
+            foreach (Collider player in colInfo)
+            {
+                PlayerHealth pl = player.GetComponent<PlayerHealth>();
+                if (pl == null)
+                {
+                    Debug.LogError(player.name + " không có component PlayerHealth!");
+                }
+                else
+                {
+                    pl.TakeDamage(attackDamage);
+                    Debug.Log("Gây sát thương lên " + player.name);
+                }
+            }
+        }
+
+    }
+
+    //private void OnDrawGizmosSelected()
+    //{
+    //    if (attackPoint = null)
+    //    {
+    //        return;
+    //    }
+    //    Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    //}
 }

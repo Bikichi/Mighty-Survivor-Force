@@ -8,6 +8,5 @@ public class PlayerHealth : LivingEntity
     {
         base.Die();
         Debug.Log("Player Die!!!");
-        //Destroy(gameObject);
     }
 }
