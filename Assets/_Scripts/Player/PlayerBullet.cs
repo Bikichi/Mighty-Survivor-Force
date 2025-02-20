@@ -7,9 +7,11 @@ public class PlayerBullet : MonoBehaviour
     [SerializeField] private Transform _targetEnemy;
     [SerializeField] private float _speedBullet;
     [SerializeField] public float damageBullet;
+    public EnemyHealth enemyHealth;
 
     public void Start()
     {
+        enemyHealth = FindObjectOfType<EnemyHealth>();
         _targetEnemy = CheckDistance.Instance.FindTargetEnemy();
     }
 
@@ -27,7 +29,11 @@ public class PlayerBullet : MonoBehaviour
 
     public void MoveBulletToClosestEnemy()
     {
-        if (_targetEnemy == null) { return; }
+        if (_targetEnemy == null) 
+        { 
+            Destroy(gameObject);
+            return; 
+        }
         MoveBullet(_targetEnemy);
     }
 
@@ -35,8 +41,7 @@ public class PlayerBullet : MonoBehaviour
     {
         if (col.CompareTag(Const.ENEMY_TAG)) //nếu đối tượng này va chạm với đối tượng có tag là ENEMY_TAG thì thực thi
         {
-            EnemyHealth eh = FindObjectOfType<EnemyHealth>();
-            eh.TakeDamage(damageBullet);
+            enemyHealth.TakeDamage(damageBullet);
             Destroy(gameObject); ; //hủy đối tượng mà phương thức gắn vào
         }
     }

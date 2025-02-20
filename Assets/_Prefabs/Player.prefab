@@ -104,6 +104,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7925344110130723030}
+  - component: {fileID: 9029094676123591445}
   - component: {fileID: 3948403161761732579}
   m_Layer: 6
   m_Name: AttackRange
@@ -127,6 +128,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2125946824219224542}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &9029094676123591445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503533124363837316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcee172130d9e3f4588c154122041ce8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &3948403161761732579
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5609,6 +5622,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bulletPrefabs: {fileID: 1869274061641270, guid: d24552c21e192c64092bc2b7df0a3b6e, type: 3}
   _shootPoint: {fileID: 6552831417199173470}
+  anim: {fileID: 9156871893072542431}
   shootingInterval: 0
   _delayShoot: 1.5
 --- !u!114 &4572539493674233624
@@ -5625,6 +5639,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 100
   currentHealth: 0
+  onHealthChange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1312066643087591386
 GameObject:
   m_ObjectHideFlags: 0
@@ -8625,7 +8642,7 @@ GameObject:
   - component: {fileID: 4189033136803097669}
   - component: {fileID: 4728665134115352660}
   m_Layer: 6
-  m_Name: Fill
+  m_Name: HealthValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8646,7 +8663,7 @@ RectTransform:
   m_Father: {fileID: 4293807144395039270}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -8679,10 +8696,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: bfbe3e23603c35d42ada3e9dc44bed54, type: 2}
-  m_Type: 1
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -26110,7 +26127,7 @@ GameObject:
   - component: {fileID: 1395130244522061394}
   - component: {fileID: 5764582947457377873}
   - component: {fileID: 7465471536511538702}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32315,7 +32332,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3108356245951286207}
   - component: {fileID: 7286271620079750822}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Sensor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35208,7 +35225,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2563571954351263237}
-  - component: {fileID: 5689327177471896439}
+  - component: {fileID: 8372579886533716419}
   - component: {fileID: 1452337547229602237}
   m_Layer: 6
   m_Name: HealthBar
@@ -35235,10 +35252,10 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1.04}
-  m_SizeDelta: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.125, y: 1.117299}
+  m_SizeDelta: {x: 1, y: 1.3093}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5689327177471896439
+--- !u!114 &8372579886533716419
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -35247,48 +35264,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6744026168994303041}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Script: {fileID: 11500000, guid: d717afa867c697d49871ad28835637da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 0
-  m_TargetGraphic: {fileID: 0}
-  m_FillRect: {fileID: 1412643501405128128}
-  m_HandleRect: {fileID: 0}
-  m_Direction: 1
-  m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
-  m_Value: 1
-  m_OnValueChanged:
-    m_PersistentCalls:
-      m_Calls: []
+  livingEntity: {fileID: 4572539493674233624}
+  healthValue: {fileID: 4728665134115352660}
 --- !u!114 &1452337547229602237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35301,8 +35281,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcee172130d9e3f4588c154122041ce8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
-  rectTransform: {fileID: 2563571954351263237}
 --- !u!1 &6780701995150849164
 GameObject:
   m_ObjectHideFlags: 0
@@ -38032,7 +38010,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3901356148691929855
 RectTransform:
   m_ObjectHideFlags: 0

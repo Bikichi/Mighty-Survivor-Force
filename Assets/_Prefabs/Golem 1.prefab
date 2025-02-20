@@ -2766,7 +2766,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7051512730199238626}
-  - component: {fileID: 3678435641607265372}
+  - component: {fileID: 1558383539059040816}
+  - component: {fileID: 8103948278915251380}
   m_Layer: 8
   m_Name: HealthBar
   m_TagString: Untagged
@@ -2792,10 +2793,10 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.5}
-  m_SizeDelta: {x: 0.7, y: 1}
+  m_AnchoredPosition: {x: 0.0201, y: 0.6122}
+  m_SizeDelta: {x: 1.1409, y: 1.2244}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &3678435641607265372
+--- !u!114 &1558383539059040816
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2804,48 +2805,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 901129155931308287}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Script: {fileID: 11500000, guid: d717afa867c697d49871ad28835637da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
-  m_FillRect: {fileID: 391395490251691712}
-  m_HandleRect: {fileID: 0}
-  m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
-  m_Value: 1
-  m_OnValueChanged:
-    m_PersistentCalls:
-      m_Calls: []
+  livingEntity: {fileID: 435053808370863451}
+  healthValue: {fileID: 9119300229975611513}
+--- !u!114 &8103948278915251380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901129155931308287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcee172130d9e3f4588c154122041ce8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &904976527494386630
 GameObject:
   m_ObjectHideFlags: 0
@@ -3031,8 +3007,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2.5521, y: 0}
+  m_AnchoredPosition: {x: -0.0137, y: -0.0101}
+  m_SizeDelta: {x: 1.6175, y: -0.3173}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1817374403491967367
 CanvasRenderer:
@@ -8318,6 +8294,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 50
   currentHealth: 0
+  onHealthChange:
+    m_PersistentCalls:
+      m_Calls: []
   _coinDrop: {fileID: 1880245074145146, guid: b3c12d3b558716b4b83fc1088b5990e5, type: 3}
   hasCoin: 1
 --- !u!1 &4684050166033397021
@@ -8338,7 +8317,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &441355545680941006
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14078,7 +14057,7 @@ RectTransform:
   m_Father: {fileID: 1419461415110985364}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -14103,7 +14082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6603774, g: 0.13394447, b: 0.13394447, a: 1}
+  m_Color: {r: 1, g: 0.105356075, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -14111,10 +14090,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0

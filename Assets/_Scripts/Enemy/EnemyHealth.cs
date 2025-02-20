@@ -10,14 +10,14 @@ public class EnemyHealth : LivingEntity
 
     protected override void Die()
     {
-        base.Die();
         //Debug.Log("ENEMYDIE!!!");
+        base.Die();
         if (hasCoin)
         {
             Instantiate(_coinDrop, transform.position, transform.rotation);
         }
         Destroy(gameObject);
-        EnemySpawner es = FindAnyObjectByType<EnemySpawner>();
-        es.OnEnemyKilled();
+        EnemySpawner enemySpawner = FindAnyObjectByType<EnemySpawner>();
+        enemySpawner.OnEnemyKilled();
     }
 }

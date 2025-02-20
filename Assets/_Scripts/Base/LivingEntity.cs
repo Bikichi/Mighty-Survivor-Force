@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LivingEntity : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class LivingEntity : MonoBehaviour
     [SerializeField] public bool IsActive { get; protected set; }
     [SerializeField] public bool IsDead { get; protected set; }
 
-	public event Action OnDeath;
+    public UnityEvent<float, float> onHealthChange;
 
 	protected virtual void Start()
 	{
@@ -20,8 +21,8 @@ public class LivingEntity : MonoBehaviour
 	public virtual void TakeDamage(float damage)
 	{
         currentHealth -= damage;
-
-		if (currentHealth <= 0 && !IsDead)
+        onHealthChange.Invoke(currentHealth, startingHealth);
+        if (currentHealth <= 0 && !IsDead)
 		{
 			Die();
 		}
@@ -31,7 +32,5 @@ public class LivingEntity : MonoBehaviour
 	{
 		IsActive = false;
 		IsDead = true;
-		if (OnDeath != null)
-			OnDeath();
 	}
 }

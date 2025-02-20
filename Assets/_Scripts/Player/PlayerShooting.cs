@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shooting : MonoBehaviour
+public class PlayerShooting : MonoBehaviour
 {
     private const string shootParaname = "Shoot";
     [SerializeField] private GameObject _bulletPrefabs;
