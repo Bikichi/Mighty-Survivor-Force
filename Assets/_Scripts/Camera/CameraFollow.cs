@@ -10,7 +10,7 @@ public class CameraFollow : MonoBehaviour
     public Vector3 currentVelocity = Vector3.zero;
 
     public float smoothTime;
-    private float xPosMin = -12.5f, xPosMax = 12.5f;
+    public float xPosMin, xPosMax;
 
     private void Awake()
     {

@@ -9,6 +9,7 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private Transform _shootPoint;
     [SerializeField] private Animator anim;
     [SerializeField] private float shootingInterval;
+    [SerializeField] private float shootingRanged;
     [SerializeField] private float _delayShoot = 1.5f;
 
     private void Start()
@@ -24,12 +25,14 @@ public class PlayerShooting : MonoBehaviour
     {
         bool isReadyToShoot = Time.time - shootingInterval > _delayShoot;
         var targetEnemy = CheckDistance.Instance.FindTargetEnemy();
-        
-        if (targetEnemy == null)
+        var distance = CheckDistance.Instance.CalculateDistanceFromPlayerToEnemy(transform, targetEnemy);
+
+        if (targetEnemy == null || targetEnemy.GetComponent<EnemyHealth>().IsDead)
         {
             return;
         }
-        if (isReadyToShoot)
+
+        if (isReadyToShoot && distance <= shootingRanged)
         {
             //Debug.Log("ShootBullet");
             anim.SetTrigger(shootParaname);

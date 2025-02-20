@@ -4,7 +4,7 @@ public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] public GameObject targetPlayer;
     public EnemyAttack enemyAttack;
-    private const string runParaname = "Run";
+    private const string runParaname = "Move";
     public Animator anim;
     public float enemyMoveSpeed;
     public Rigidbody rb;

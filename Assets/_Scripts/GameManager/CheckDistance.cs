@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class CheckDistance : Singleton<CheckDistance>
 {
-    [SerializeField] public float lookAtDistance;  // Khoảng cách tối thiểu để quay về phía kẻ địch
-
     public float CalculateDistanceFromPlayerToEnemy(Transform playerTransform, Transform enemyTransform)
     {
+        if (playerTransform == null || enemyTransform == null) return 0;
         float distanceToEnemy = Vector3.Distance(playerTransform.position, enemyTransform.position);
         return distanceToEnemy;
     }
@@ -31,7 +30,7 @@ public class CheckDistance : Singleton<CheckDistance>
             float distanceToEnemy = (currentEnemy.transform.position - transform.position).magnitude;
             EnemyHealth enemyHealth = currentEnemy.GetComponent<EnemyHealth>(); // Lấy Component EnemyHealth của GameObject mà Component EnemyMovement đang đại diện
 
-            if (enemyHealth == null) continue; // Bỏ qua nếu không có EnemyHealth
+            if (enemyHealth == null || enemyHealth.IsDead) continue; // Bỏ qua nếu không có EnemyHealth hoặc đã chết
 
             if (distanceToEnemy < distanceToClosetEnemy)
             {

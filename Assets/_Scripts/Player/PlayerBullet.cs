@@ -17,17 +17,10 @@ public class PlayerBullet : MonoBehaviour
 
     private void Update()
     {
-        MoveBulletToClosestEnemy();
+        MoveBulletToTargetEnemy();
     }
 
-    public void MoveBullet(Transform enemy)
-    {
-        Vector3 targetPosition = enemy.position + new Vector3(0, enemy.GetComponent<Collider>().bounds.size.y / 2, 0); // Nhắm vào giữa thân enemy
-        transform.LookAt(targetPosition);
-        transform.Translate(Vector3.forward * Time.deltaTime * _speedBullet);
-    }
-
-    public void MoveBulletToClosestEnemy()
+    public void MoveBulletToTargetEnemy()
     {
         if (_targetEnemy == null) 
         { 
@@ -37,12 +30,10 @@ public class PlayerBullet : MonoBehaviour
         MoveBullet(_targetEnemy);
     }
 
-    private void OnTriggerEnter(Collider col)
+    public void MoveBullet(Transform enemy)
     {
-        if (col.CompareTag(Const.ENEMY_TAG)) //nếu đối tượng này va chạm với đối tượng có tag là ENEMY_TAG thì thực thi
-        {
-            enemyHealth.TakeDamage(damageBullet);
-            Destroy(gameObject); ; //hủy đối tượng mà phương thức gắn vào
-        }
+        Vector3 targetPosition = enemy.position + new Vector3(0, enemy.GetComponent<Collider>().bounds.size.y / 2, 0); // Nhắm vào giữa thân enemy
+        transform.LookAt(targetPosition);
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, _speedBullet * Time.deltaTime);
     }
 }

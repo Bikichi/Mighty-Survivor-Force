@@ -12,6 +12,7 @@ public class RotatePlayer : MonoBehaviour
 
     public float rotateTimer;
     public float rotateInterval;
+    [SerializeField] public float lookAtDistance;  // Khoảng cách tối thiểu để quay về phía kẻ địch
 
     void Update()
     {
@@ -58,11 +59,13 @@ public class RotatePlayer : MonoBehaviour
 
     public void RotatePlayerInDirection()
     {
+        rotateTimer += Time.deltaTime;
+        bool isReadyToRotate = rotateTimer >= rotateInterval;
         var targetEnemy = CheckDistance.Instance.FindTargetEnemy();
-        if (targetEnemy != null)
+        bool canSeeEnemy = CheckDistance.Instance.CalculateDistanceFromPlayerToEnemy(transform, targetEnemy) <= lookAtDistance;
+        if (targetEnemy != null && canSeeEnemy)
         {
-            rotateTimer += Time.deltaTime;
-            if (rotateTimer >= rotateInterval)
+            if (isReadyToRotate)
             {
                 RotatePlayerToTargetEnemy(); //targetEnemy không đổi thì hàm này thực chất vẫn chạy chỉ cần thoả mãn điều kiện if
                 //targetEnemy không đổi tức là lúc này góc quay là 0 độ nên thực tế trên scene không nhìn ra được là nó đang chạy @@

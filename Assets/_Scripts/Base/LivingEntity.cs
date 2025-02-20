@@ -11,7 +11,9 @@ public class LivingEntity : MonoBehaviour
 
     public UnityEvent<float, float> onHealthChange;
 
-	protected virtual void Start()
+	public UnityEvent onDeath;
+
+	protected virtual void Awake()
 	{
         currentHealth = startingHealth;
 		IsActive = true;
@@ -32,5 +34,6 @@ public class LivingEntity : MonoBehaviour
 	{
 		IsActive = false;
 		IsDead = true;
+		onDeath?.Invoke();
 	}
 }

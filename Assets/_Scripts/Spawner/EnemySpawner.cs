@@ -90,35 +90,43 @@ public class EnemySpawner : MonoBehaviour
 
     void SpawnEnemies()
     {
-        if (waves[currentWaveCount].spawnCount < waves[currentWaveCount].waveQuota && !maxEnemiesReached)
+        if (waves[currentWaveCount].spawnCount >= waves[currentWaveCount].waveQuota)
         {
-            foreach (var enemyGroup in waves[currentWaveCount].enemyGroups)
-            { 
-                if (enemiesAlive >= maxEnemiesAllowed) //đặt điều kiện ở trong vòng lặp thay vì đặt ở ngoài để tối ưu, kiểm tra mỗi lần lặp
-                {
-                    maxEnemiesReached = true;
-                    return;
-                }
-                if (enemyGroup.spawnCount < enemyGroup.enemyCount)
-                {
-                    //Debug.Log("Spawn!");
-                    Instantiate(enemyGroup.enemyPrefab, GetRandomSpawnPosition(), Quaternion.identity);
-                    enemiesAlive++;
-                    enemyGroup.spawnCount++;
-                    waves[currentWaveCount].spawnCount++;
-                }
-            }
+            return; // Nếu đã spawn đủ quái trong wave, dừng lại
         }
 
-        if (enemiesAlive < maxEnemiesAllowed)
+        if (enemiesAlive >= maxEnemiesAllowed)
         {
-            maxEnemiesReached = false;
+            maxEnemiesReached = true;
+            return;
+        }
+
+        foreach (var enemyGroup in waves[currentWaveCount].enemyGroups)
+        {
+            if (enemyGroup.spawnCount < enemyGroup.enemyCount)
+            {
+                Instantiate(enemyGroup.enemyPrefab, GetRandomSpawnPosition(), Quaternion.identity);
+                enemiesAlive++;
+                enemyGroup.spawnCount++;
+                waves[currentWaveCount].spawnCount++;
+
+                if (enemiesAlive >= maxEnemiesAllowed)
+                {
+                    maxEnemiesReached = true;
+                    break;
+                }
+            }
         }
     }
 
     public void OnEnemyKilled()
     {
         enemiesAlive--;
+        if (enemiesAlive < maxEnemiesAllowed)
+        {
+            maxEnemiesReached = false; // Cho phép spawn thêm nếu chưa đạt giới hạn
+            SpawnEnemies(); // Gọi spawn ngay khi có slot trống
+        }
     }
 }
     
