@@ -13613,10 +13613,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPlayer: {fileID: 2125946824219224542, guid: c20f1201e3ed1d9419c2ca26383e1586, type: 3}
+  enemyAttack: {fileID: 0}
   anim: {fileID: 1915859285371239603}
   enemyMoveSpeed: 11
   rb: {fileID: 1658747276766063313}
-  distance: 4
+  distanceToPlayer: 0
   isMoving: 0
 --- !u!114 &8717380183846545915
 MonoBehaviour:
@@ -13632,9 +13633,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 20
   currentHealth: 0
-  playerBullet: {fileID: 0}
-  _coinDrop: {fileID: 1880245074145146, guid: b3c12d3b558716b4b83fc1088b5990e5, type: 3}
+  onHealthChange:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  _coinDrop: {fileID: 1880245074145146, guid: 81848b6677705f2418649c87a28b45d4, type: 3}
   hasCoin: 1
+  deathAnimationTime: 0
+  anim: {fileID: 0}
 --- !u!65 &1925339801218277520
 BoxCollider:
   m_ObjectHideFlags: 0

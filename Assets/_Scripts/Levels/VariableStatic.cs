@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,14 +14,11 @@ public class VariableStatic : MonoBehaviour
     //Upgrade unit lv1 -> lv4
     public static int _currentLevel = 1;
 
-    //Check Upgrade each every Card
-    public static bool[] checkUpgrade = new bool[13];
+    //Kiểm tra xem trong tất cả 10 skill có trong game, skill nào đã được học
+    public static bool[] checkUpgrade = new bool[10];
 
     //check upgrade and display ui or disable ui
     public static bool displayUIUpgrade = true;
-
-    //
-    public static bool isBuildForceField = false;
 
     //Check main raft Player;
     public static bool isMainRaft = true;

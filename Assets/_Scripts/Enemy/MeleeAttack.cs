@@ -25,7 +25,7 @@ public class MeleeAttack : EnemyAttack
                 else
                 {
                     pl.TakeDamage(attackDamage);
-                    Debug.Log("Gây sát thương lên " + player.name);
+                    //Debug.Log("Gây sát thương lên " + player.name);
                 }
             }
         }
