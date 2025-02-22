@@ -24,4 +24,9 @@ public class RangedAttack : EnemyAttack
             attackTimer = 0f;
         }
     }
+
+    public void OnAttackAnimationEnd()
+    {
+        isAttacking = false;
+    }
 }

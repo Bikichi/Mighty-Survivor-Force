@@ -38,8 +38,9 @@ public class EnemyAttack : MonoBehaviour
             attackTimer = 0f;
         }
     }
-    //Dùng Animetion Event
-    //Hàm này được gọi khi animation Attack kết thúc
+    //Dùng Animation Event
+    //khi Animation Attack chạy xong gọi hàm
+    //Lưu ý khi set Animation Event đảm bảo Animation Clip chạy tới đoạn có gắn Event ấy
     public void OnAttackAnimationEnd()
     {
         isAttacking = false;

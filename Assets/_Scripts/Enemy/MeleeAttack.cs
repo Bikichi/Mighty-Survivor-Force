@@ -33,7 +33,7 @@ public class MeleeAttack : EnemyAttack
 
     //private void OnDrawGizmosSelected()
     //{
-    //    if (attackPoint = null)
+    //    if (attackPoint == null)
     //    {
     //        return;
     //    }
