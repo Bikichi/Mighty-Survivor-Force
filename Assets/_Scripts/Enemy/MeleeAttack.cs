@@ -31,6 +31,12 @@ public class MeleeAttack : EnemyAttack
         }
     }
 
+    public override void OnAttackAnimationEnd()
+    {
+        //Debug.Log("Ranged attack animation ended.");
+        base.OnAttackAnimationEnd();
+    }
+
     //private void OnDrawGizmosSelected()
     //{
     //    if (attackPoint == null)

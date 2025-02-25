@@ -25,8 +25,9 @@ public class RangedAttack : EnemyAttack
         }
     }
 
-    public void OnAttackAnimationEnd()
+    public override void OnAttackAnimationEnd()
     {
-        isAttacking = false;
+        //Debug.Log("Ranged attack animation ended.");
+        base.OnAttackAnimationEnd();
     }
 }

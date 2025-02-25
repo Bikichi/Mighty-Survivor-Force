@@ -636,7 +636,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.953}
+  m_AnchoredPosition: {x: 0, y: -0.796}
   m_SizeDelta: {x: 0.7, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6978650194015897439
@@ -951,8 +951,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3677971375640770530}
   serializedVersion: 4
-  m_Mass: 3.3
-  m_Drag: 0.33
+  m_Mass: 7.5
+  m_Drag: 0.75
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -1001,7 +1001,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca8d883a57f3414a803641df6ad81cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 20
+  startingHealth: 30
   currentHealth: 0
   onHealthChange:
     m_PersistentCalls:
@@ -2340,8 +2340,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPlayer: {fileID: 0}
-  anim: {fileID: 0}
-  attackPoint: {fileID: 0}
+  anim: {fileID: 1878592244905028432}
+  attackPoint: {fileID: 5759168111187786916}
   attackDamage: 20
   attackTimer: 0
   attackCooldown: 2.5
