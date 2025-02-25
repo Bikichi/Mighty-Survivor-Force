@@ -9,5 +9,6 @@ public class Const : MonoBehaviour
     public const string ENEMY_TAG = "Enemy";
     public const string ENEMYBULLET_TAG = "EnemyBullet";
     public const string WALL_TAG = "wall";
+    public const string SAWBLADE_TAG = "SawBlade";
 
 }

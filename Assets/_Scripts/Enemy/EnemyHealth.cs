@@ -8,7 +8,6 @@ public class EnemyHealth : LivingEntity
     [SerializeField] private GameObject _coinDrop;
     [SerializeField] private bool hasCoin;
     public float deathAnimationTime;
-
     public Animator anim;
 
     private void Start()
@@ -28,7 +27,7 @@ public class EnemyHealth : LivingEntity
 
     private IEnumerator HandleDeath()
     {
-        yield return new WaitForSeconds(deathAnimationTime); // Chờ animation kết thúc
+        yield return new WaitForSeconds(deathAnimationTime); //chờ animation kết thúc
 
         if (hasCoin)
         {
@@ -62,6 +61,12 @@ public class EnemyHealth : LivingEntity
             PlayerBullet playerBullet = col.GetComponent<PlayerBullet>();
             TakeDamage(playerBullet.damageBullet);
             Destroy(col.gameObject); ; //hủy viên đạn
+        }
+        if (col.CompareTag(Const.SAWBLADE_TAG))
+        {
+            //Debug.Log("Saw Blade damage!");
+            SawBlade sawBlade = FindObjectOfType<SawBlade>();
+            TakeDamage(sawBlade.sawBladeDamage);
         }
     }
     //public void OnEnemiesDieAnimationEnd()

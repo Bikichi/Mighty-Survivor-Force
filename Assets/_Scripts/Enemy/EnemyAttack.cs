@@ -14,6 +14,11 @@ public class EnemyAttack : MonoBehaviour
 
     public bool isAttacking = false;
 
+    public GameObject attackFlashPrefab;
+    public Transform attackFlashPoint;
+    public float flashDuration = 0.3f;
+
+
     public virtual void Start()
     {
         anim = GetComponent<Animator>();
@@ -35,7 +40,16 @@ public class EnemyAttack : MonoBehaviour
         {
             isAttacking = true;
             anim.SetTrigger(attackParaname);
+            SpawnAttackFlash();
             attackTimer = 0f;
+        }
+    }
+    public void SpawnAttackFlash()
+    {
+        if (attackFlashPrefab != null && attackFlashPoint != null)
+        {
+            GameObject flash = Instantiate(attackFlashPrefab, attackFlashPoint.position, Quaternion.identity);
+            Destroy(flash, flashDuration);
         }
     }
     //Dùng Animation Event
