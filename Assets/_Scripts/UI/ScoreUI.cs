@@ -16,7 +16,7 @@ public class ScoreUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_scoreText != null)
+        if (_scoreText != null && enemySpawner != null)
         {
             _scoreText.text = enemySpawner.totalEnemiesKilled.ToString();
         }
