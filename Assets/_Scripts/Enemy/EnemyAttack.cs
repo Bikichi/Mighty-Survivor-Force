@@ -16,7 +16,7 @@ public class EnemyAttack : MonoBehaviour
 
     public GameObject attackFlashPrefab;
     public Transform attackFlashPoint;
-    public float flashDuration = 0.3f;
+    public float flashDuration = 1.5f;
 
 
     public virtual void Start()
@@ -36,7 +36,7 @@ public class EnemyAttack : MonoBehaviour
     {
         attackTimer += Time.deltaTime;
         bool isReadyToAttack = attackTimer >= attackCooldown;
-        if (isReadyToAttack && CheckDistance.Instance.CalculateDistanceFromPlayerToEnemy(targetPlayer.transform, transform) <= attackRanged)
+        if (isReadyToAttack && CheckDistance.Instance.CalculateDistanceToEnemy(targetPlayer.transform, transform) <= attackRanged)
         {
             isAttacking = true;
             anim.SetTrigger(attackParaname);
@@ -48,7 +48,8 @@ public class EnemyAttack : MonoBehaviour
     {
         if (attackFlashPrefab != null && attackFlashPoint != null)
         {
-            GameObject flash = Instantiate(attackFlashPrefab, attackFlashPoint.position, Quaternion.identity);
+            Quaternion flippedRotation = attackFlashPoint.rotation * Quaternion.Euler(180, 0, 0);
+            GameObject flash = Instantiate(attackFlashPrefab, attackFlashPoint.position, flippedRotation);
             Destroy(flash, flashDuration);
         }
     }

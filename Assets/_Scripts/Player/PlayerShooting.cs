@@ -25,7 +25,7 @@ public class PlayerShooting : MonoBehaviour
     {
         bool isReadyToShoot = Time.time - shootingInterval > _delayShoot;
         var targetEnemy = CheckDistance.Instance.FindTargetEnemy();
-        var distance = CheckDistance.Instance.CalculateDistanceFromPlayerToEnemy(transform, targetEnemy);
+        var distance = CheckDistance.Instance.CalculateDistanceToEnemy(transform, targetEnemy);
 
         if (targetEnemy == null || targetEnemy.GetComponent<EnemyHealth>().IsDead)
         {

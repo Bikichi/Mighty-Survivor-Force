@@ -21,6 +21,7 @@ public class VariableStatic : MonoBehaviour
     public static bool displayUIUpgrade = true;
 
     public static bool isLearnSawBladeSkill = false;
+    public static bool isLearnSwordBladeSkill = false;
 
     private void Update()
     {

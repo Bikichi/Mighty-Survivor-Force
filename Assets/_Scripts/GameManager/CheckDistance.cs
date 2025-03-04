@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CheckDistance : Singleton<CheckDistance>
 {
-    public float CalculateDistanceFromPlayerToEnemy(Transform playerTransform, Transform enemyTransform)
+    public float CalculateDistanceToEnemy(Transform playerTransform, Transform enemyTransform)
     {
         if (playerTransform == null || enemyTransform == null) return 0;
         float distanceToEnemy = Vector3.Distance(playerTransform.position, enemyTransform.position);

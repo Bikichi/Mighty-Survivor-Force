@@ -3,21 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyHealth : LivingEntity 
+public class EnemyHealth : LivingEntity
 {
     [SerializeField] private GameObject _coinDrop;
-    [SerializeField] private bool hasCoin;
+    [SerializeField] private bool _hasCoin;
+    [SerializeField] private GameObject _bulletHitEffect;
+    [SerializeField] private GameObject _sawBladeHitEffect;
+    [SerializeField] private GameObject _swordHitEffect;
     public float deathAnimationTime;
-    public Animator anim;
+    public Animator _anim;
 
     private void Start()
     {
-        anim = GetComponentInChildren<Animator>();
+        _anim = GetComponentInChildren<Animator>();
     }
 
     protected override void Die()
     {
-        //Debug.Log("ENEMYDIE!!!");
         base.Die();
         DisableEnemyActions();
         StartCoroutine(HandleDeath());
@@ -27,9 +29,9 @@ public class EnemyHealth : LivingEntity
 
     private IEnumerator HandleDeath()
     {
-        yield return new WaitForSeconds(deathAnimationTime); //chờ animation kết thúc
+        yield return new WaitForSeconds(deathAnimationTime);
 
-        if (hasCoin)
+        if (_hasCoin)
         {
             Instantiate(_coinDrop, transform.position, transform.rotation);
         }
@@ -56,21 +58,47 @@ public class EnemyHealth : LivingEntity
 
     private void OnTriggerEnter(Collider col)
     {
-        if (col.CompareTag(Const.PLAYERBULLET_TAG)) //nếu đối tượng này va chạm với đối tượng có tag thì thực thi
+        Vector3 hitPosition = col.ClosestPoint(transform.position); //lấy vị trí va chạm gần nhất
+        Vector3 impactDirection = (transform.position - col.transform.position).normalized; //hướng vật thể va chạm tới Enemy
+
+        if (col.CompareTag(Const.PLAYERBULLET_TAG))
         {
             PlayerBullet playerBullet = col.GetComponent<PlayerBullet>();
             TakeDamage(playerBullet.damageBullet);
-            Destroy(col.gameObject); ; //hủy viên đạn
+            Destroy(col.gameObject, 0.2f);
+
+            if (_bulletHitEffect != null)
+            {
+                Quaternion hitRotation = Quaternion.LookRotation(-impactDirection); //quay ngược lại hướng va chạm
+                GameObject effect = Instantiate(_bulletHitEffect, hitPosition, hitRotation); //effect sinh ra với hướng ngược với hướng của vật thể lao tới
+                Destroy(effect, 1f);
+            }
         }
+
         if (col.CompareTag(Const.SAWBLADE_TAG))
         {
-            //Debug.Log("Saw Blade damage!");
             SawBlade sawBlade = FindObjectOfType<SawBlade>();
             TakeDamage(sawBlade.sawBladeDamage);
+
+            if (_sawBladeHitEffect != null)
+            {
+                Quaternion hitRotation = Quaternion.LookRotation(-impactDirection);
+                GameObject effect = Instantiate(_sawBladeHitEffect, hitPosition, hitRotation);
+                Destroy(effect, 1f);
+            }
+        }
+
+        if (col.CompareTag(Const.SWORD_TAG))
+        {
+            SwordController swordController = col.GetComponent<SwordController>();
+            TakeDamage(swordController.attackDamage);
+
+            if (_swordHitEffect != null)
+            {
+                Quaternion hitRotation = Quaternion.LookRotation(-impactDirection);
+                GameObject effect = Instantiate(_swordHitEffect, hitPosition, hitRotation);
+                Destroy(effect, 1f);
+            }
         }
     }
-    //public void OnEnemiesDieAnimationEnd()
-    //{
-    //    Destroy(gameObject);
-    //}
 }

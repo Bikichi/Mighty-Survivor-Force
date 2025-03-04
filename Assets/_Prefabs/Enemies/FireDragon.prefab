@@ -1022,9 +1022,12 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _coinDrop: {fileID: 1880245074145146, guid: 81848b6677705f2418649c87a28b45d4, type: 3}
-  hasCoin: 1
+  _hasCoin: 0
+  _bulletHitEffect: {fileID: 358637981425055526, guid: 8eb503696b886e04faff8fc0f480d473, type: 3}
+  _sawBladeHitEffect: {fileID: 2944396702758532163, guid: e190bf97c041e58448af6b043116cba0, type: 3}
+  _swordHitEffect: {fileID: 4924508274929071776, guid: 0edef91621bb6b34384ccc9dbb98729c, type: 3}
   deathAnimationTime: 1.2
-  anim: {fileID: 0}
+  _anim: {fileID: 0}
 --- !u!1 &3689314199111042851
 GameObject:
   m_ObjectHideFlags: 0
@@ -1350,8 +1353,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.0187, y: 0.0119999945}
-  m_SizeDelta: {x: -0.0374, y: -0.1313}
+  m_AnchoredPosition: {x: 0.00000023841858, y: -0.000000059604645}
+  m_SizeDelta: {x: 0, y: -0.000000089407}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8755638663055605720
 CanvasRenderer:
@@ -1381,7 +1384,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9ecae428400e99c4fb14ff1f12b6c551, type: 2}
+  m_Sprite: {fileID: 21300000, guid: 91ac892889b2da74db442a23debf0857, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2347,6 +2350,9 @@ MonoBehaviour:
   attackCooldown: 2.5
   attackRanged: 35
   isAttacking: 0
+  attackFlashPrefab: {fileID: 0}
+  attackFlashPoint: {fileID: 0}
+  flashDuration: 1.5
   enemyBulletPrefabs: {fileID: 8793510976239746625, guid: 6ecc79d77b3685141af2c0408a2217e3, type: 3}
   shootPoint: {fileID: 5759168111187786916}
 --- !u!1 &7579834190128083645
@@ -2578,8 +2584,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bfbe3e23603c35d42ada3e9dc44bed54, type: 2}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 91ac892889b2da74db442a23debf0857, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

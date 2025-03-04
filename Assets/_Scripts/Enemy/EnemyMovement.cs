@@ -28,13 +28,13 @@ public class EnemyMovement : MonoBehaviour
 
     public void MoveEnemy()
     {
-        if (CheckDistance.Instance.CalculateDistanceFromPlayerToEnemy(targetPlayer.transform, transform) <= distanceToPlayer || enemyAttack.isAttacking)
+        if (CheckDistance.Instance.CalculateDistanceToEnemy(targetPlayer.transform, transform) <= distanceToPlayer || enemyAttack.isAttacking)
         {
             anim.SetBool(runParaname, false);
             isMoving = false;
             return;
         }
-        else if (CheckDistance.Instance.CalculateDistanceFromPlayerToEnemy(targetPlayer.transform, transform) > distanceToPlayer && !enemyAttack.isAttacking)
+        else if (CheckDistance.Instance.CalculateDistanceToEnemy(targetPlayer.transform, transform) > distanceToPlayer && !enemyAttack.isAttacking)
         {
             anim.SetBool(runParaname, true);
             isMoving = true;
