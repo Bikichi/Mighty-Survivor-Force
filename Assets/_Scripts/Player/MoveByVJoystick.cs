@@ -14,7 +14,7 @@ public class MoveByVJoystick : MonoBehaviour
     public float movingSpeed;
     private void Awake()
     {
-        transform.position = new Vector3(0.02f, 1.580615f, -2.5f);
+        transform.position = new Vector3(0.02f, 1.58f, -2.5f);
     }
 
     private void OnValidate()

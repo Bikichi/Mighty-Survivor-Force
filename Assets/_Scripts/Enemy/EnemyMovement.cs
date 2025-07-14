@@ -28,19 +28,26 @@ public class EnemyMovement : MonoBehaviour
 
     public void MoveEnemy()
     {
-        if (CheckDistance.Instance.CalculateDistanceToEnemy(targetPlayer.transform, transform) <= distanceToPlayer || enemyAttack.isAttacking)
+        Vector3 direction = (targetPlayer.transform.position - transform.position).normalized;
+        direction.y = 0; //giữ nguyên chiều dọc để chỉ di chuyển theo chiều ngang
+
+        float distance = CheckDistance.Instance.CalculateDistanceToEnemy(targetPlayer.transform, transform);
+
+        if (distance <= distanceToPlayer || enemyAttack.isAttacking)
         {
             anim.SetBool(runParaname, false);
             isMoving = false;
+            rb.velocity = Vector3.zero;
             return;
         }
-        else if (CheckDistance.Instance.CalculateDistanceToEnemy(targetPlayer.transform, transform) > distanceToPlayer && !enemyAttack.isAttacking)
+        else if (distance > distanceToPlayer && !enemyAttack.isAttacking)
         {
             anim.SetBool(runParaname, true);
             isMoving = true;
+
             if (isMoving)
             {
-                transform.Translate(Vector3.forward * Time.deltaTime * enemyMoveSpeed);
+                rb.velocity = direction * enemyMoveSpeed;
             }
         }
     }

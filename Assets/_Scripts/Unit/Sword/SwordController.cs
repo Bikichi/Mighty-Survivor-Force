@@ -45,9 +45,9 @@ public class SwordController : MonoBehaviour
         distanceToEnemy = CheckDistance.Instance.CalculateDistanceToEnemy(transform, targetEnemy);
 
         UpdateOffset();
-        RotateSword();
-
         FollowPlayer();
+
+        RotateSword();
 
         StartAttack();
         AttackEnemy();

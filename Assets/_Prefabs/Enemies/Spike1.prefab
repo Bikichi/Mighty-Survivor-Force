@@ -13513,10 +13513,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5227369519336421102}
+  - component: {fileID: 1925339801218277520}
   - component: {fileID: 1658747276766063313}
   - component: {fileID: 655191390987146707}
   - component: {fileID: 8717380183846545915}
-  - component: {fileID: 1925339801218277520}
   m_Layer: 8
   m_Name: Spike1
   m_TagString: Enemy
@@ -13549,6 +13549,27 @@ Transform:
   - {fileID: 5965063908537343751}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1925339801218277520
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6643027116863268232}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.0365337, z: 1.2484303}
+  m_Center: {x: 0, y: 0.48173305, z: 0}
 --- !u!54 &1658747276766063313
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13557,8 +13578,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6643027116863268232}
   serializedVersion: 4
-  m_Mass: 5
-  m_Drag: 0.5
+  m_Mass: 3
+  m_Drag: 1
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -13634,27 +13655,6 @@ MonoBehaviour:
   _swordHitEffect: {fileID: 4924508274929071776, guid: 0edef91621bb6b34384ccc9dbb98729c, type: 3}
   deathAnimationTime: 1.2
   _anim: {fileID: 0}
---- !u!65 &1925339801218277520
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6643027116863268232}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1.0365337, z: 1.2484303}
-  m_Center: {x: 0, y: 0.48173305, z: 0}
 --- !u!1 &6757061416252486119
 GameObject:
   m_ObjectHideFlags: 0
