@@ -1,24 +1,12 @@
 ﻿using UnityEngine;
 
-public class SwordController : MonoBehaviour
+public class SwordController : UnitFollowerBase
 {
-    [Header("Player & Movement")]
-    public Transform player;
-    public float followSpeed = 5f;
-    public Vector3 baseOffset = new Vector3(0, 0, 0);
-    public Vector3 currentOffset;
-
-    [Header("Rotation")]
-    public float rotationSpeed = 5f;
+    [Header("Sword Rotation")]
     public float rotationReturnSpeed = 10f;
 
-    [Header("Attack Settings")]
-    public float attackSpeed = 10f;
-    public float attackDamage;
-    public float minAttackSpeed = 2f;
-    public float attackRange = 8f;
-    public float distanceToEnemy;
-    public float penetrationDistance = 1f; //kiếm sẽ lao xuyên qua quái vật 1 khoảng bao nhiêu
+    [Header("Sword Attack Settings")]
+    public float penetrationDistance = 1f;
     public float stopDistance = 0.5f;
 
     [Header("Cooldown & Delay")]
@@ -30,37 +18,18 @@ public class SwordController : MonoBehaviour
     public bool isReturning = false;
     public bool isAttacking = false;
 
-    [Header("Target Tracking")]
-    public Transform targetEnemy;
     private Vector3 targetPosition;
 
-    void Start()
+    protected override void Update()
     {
-        currentOffset = baseOffset;
-    }
-
-    void Update()
-    {
-        targetEnemy = CheckDistance.Instance.FindTargetEnemy();
-        distanceToEnemy = CheckDistance.Instance.CalculateDistanceToEnemy(transform, targetEnemy);
-
-        UpdateOffset();
-        FollowPlayer();
-
-        RotateSword();
+        base.Update();
 
         StartAttack();
         AttackEnemy();
         ReturnToPlayer();
     }
 
-    void UpdateOffset()
-    {
-        Vector3 newOffset = Quaternion.Euler(0, player.rotation.eulerAngles.y, 0) * baseOffset;
-        currentOffset = Vector3.Lerp(currentOffset, newOffset, Time.deltaTime * followSpeed);
-    }
-
-    void FollowPlayer()
+    protected override void FollowPlayer()
     {
         if (player != null && !isAttacking && !isReturning)
         {
@@ -68,7 +37,7 @@ public class SwordController : MonoBehaviour
         }
     }
 
-    void RotateSword()
+    protected override void RotateUnit()
     {
         if (isReturning) return;
 
@@ -80,43 +49,38 @@ public class SwordController : MonoBehaviour
             if (directionToEnemy != Vector3.zero)
             {
                 Quaternion targetRotation = Quaternion.LookRotation(directionToEnemy);
-                Quaternion newRotation = Quaternion.Euler(0, targetRotation.eulerAngles.y - 90, 270); //do model thanh kiếm ban đầu là hướng thẳng đứng nên:
-                                                                                                       //+ trừ đi 90 độ ở trục Y để mũi kiếm hướng theo Player
-                                                                                                      //+ giữ trục Z là 270 để lưỡi kiếm hướng xuống
+                Quaternion newRotation = Quaternion.Euler(0, targetRotation.eulerAngles.y - 90, 270);
                 transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, rotationSpeed * Time.deltaTime);
             }
         }
-        else
+        else if (player != null)
         {
             Quaternion newRotation = Quaternion.Euler(0, player.rotation.eulerAngles.y - 90, 270);
             transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, rotationSpeed * Time.deltaTime);
         }
     }
 
-    public void StartAttack()
+    private void StartAttack()
     {
-        if (!isAttacking && !isReturning)
+        if (!isAttacking && !isReturning && targetEnemy != null)
         {
-            if (targetEnemy != null)
+            bool readyToAttack = Time.time >= lastAttackTime + attackCooldown;
+            if (distanceToEnemy <= attackRange && readyToAttack)
             {
-                bool readyToAttack = Time.time >= lastAttackTime + attackCooldown;
-                if (distanceToEnemy <= attackRange && readyToAttack)
-                {
-                    isAttacking = true;
-                    isReturning = false;
-                    lastAttackTime = Time.time;
+                isAttacking = true;
+                isReturning = false;
+                lastAttackTime = Time.time;
 
-                    float enemyHeight = targetEnemy.GetComponent<Collider>().bounds.size.y;
-                    Vector3 enemyHeadPosition = targetEnemy.position + new Vector3(0, enemyHeight / 2, 0);
+                float enemyHeight = targetEnemy.GetComponent<Collider>().bounds.size.y;
+                Vector3 enemyHeadPosition = targetEnemy.position + new Vector3(0, enemyHeight / 2, 0);
 
-                    Vector3 directionToEnemy = (targetEnemy.position - transform.position).normalized;
-                    targetPosition = enemyHeadPosition + (directionToEnemy * penetrationDistance);
-                }
+                Vector3 directionToEnemy = (targetEnemy.position - transform.position).normalized;
+                targetPosition = enemyHeadPosition + (directionToEnemy * penetrationDistance);
             }
         }
     }
 
-    void AttackEnemy()
+    private void AttackEnemy()
     {
         if (isAttacking && !isReturning)
         {
@@ -132,17 +96,16 @@ public class SwordController : MonoBehaviour
         }
     }
 
-    void ReturnToPlayer()
+    private void ReturnToPlayer()
     {
         if (!isAttacking && isReturning)
         {
             Vector3 returnPosition = player.position + currentOffset;
-
             float distance = Vector3.Distance(transform.position, returnPosition);
             transform.position = Vector3.MoveTowards(transform.position, returnPosition, returnSpeed * Time.deltaTime);
 
             Vector3 directionToReturn = returnPosition - transform.position;
-            directionToReturn.y = 0; //đảm bảo chỉ xoay trên mặt phẳng ngang
+            directionToReturn.y = 0;
 
             if (directionToReturn != Vector3.zero)
             {
