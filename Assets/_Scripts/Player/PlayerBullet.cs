@@ -1,39 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class PlayerBullet : MonoBehaviour
+public class PlayerBullet : BaseBullet
 {
     [SerializeField] private Transform _targetEnemy;
-    [SerializeField] private float _speedBullet;
-    [SerializeField] public float damageBullet;
-    public EnemyHealth enemyHealth;
 
-    public void Start()
+    protected override void Start()
     {
-        enemyHealth = FindObjectOfType<EnemyHealth>();
+        base.Start();
         _targetEnemy = CheckDistance.Instance.FindTargetEnemy();
     }
 
-    private void Update()
+    protected override void MoveBullet()
     {
-        MoveBulletToTargetEnemy();
-    }
-
-    public void MoveBulletToTargetEnemy()
-    {
-        if (_targetEnemy == null) 
-        { 
+        if (_targetEnemy == null)
+        {
             Destroy(gameObject);
-            return; 
+            return;
         }
-        MoveBullet(_targetEnemy);
-    }
 
-    public void MoveBullet(Transform enemy)
-    {
-        Vector3 targetPosition = enemy.position + new Vector3(0, enemy.GetComponent<Collider>().bounds.size.y / 2, 0); // Nhắm vào giữa thân enemy
+        Vector3 targetPosition = _targetEnemy.position + new Vector3(0, _targetEnemy.GetComponent<Collider>().bounds.size.y / 2, 0);
         transform.LookAt(targetPosition);
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, _speedBullet * Time.deltaTime);
     }
+
 }

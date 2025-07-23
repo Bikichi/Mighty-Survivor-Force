@@ -7,7 +7,8 @@ public class EnemyHealth : LivingEntity
 {
     [SerializeField] private GameObject _coinDrop;
     [SerializeField] private bool _hasCoin;
-    [SerializeField] private GameObject _bulletHitEffect;
+    [SerializeField] private GameObject _playerBulletHitEffect;
+    [SerializeField] private GameObject _droneBulletHitEffect;
     [SerializeField] private GameObject _sawBladeHitEffect;
     [SerializeField] private GameObject _swordHitEffect;
     public float deathAnimationTime;
@@ -56,49 +57,63 @@ public class EnemyHealth : LivingEntity
         if (rb != null) rb.isKinematic = true;
     }
 
-    private void OnTriggerEnter(Collider col)
-    {
-        Vector3 hitPosition = col.ClosestPoint(transform.position); //lấy vị trí va chạm gần nhất
-        Vector3 impactDirection = (transform.position - col.transform.position).normalized; //hướng vật thể va chạm tới Enemy
+    //private void /*OnTriggerEnter*/(Collider col)
+    //{
+    //    Vector3 hitPosition = col.ClosestPoint(transform.position); //lấy vị trí va chạm gần nhất
+    //    Vector3 impactDirection = (transform.position - col.transform.position).normalized; //hướng vật thể va chạm tới Enemy
 
-        if (col.CompareTag(Const.PLAYERBULLET_TAG))
-        {
-            PlayerBullet playerBullet = col.GetComponent<PlayerBullet>();
-            TakeDamage(playerBullet.damageBullet);
-            Destroy(col.gameObject, 0.2f);
+    //    if (col.CompareTag(Const.PLAYERBULLET_TAG))
+    //    {
+    //        PlayerBullet playerBullet = col.GetComponent<PlayerBullet>();
+    //        TakeDamage(playerBullet.damageBullet);
+    //        Destroy(col.gameObject, 0.2f);
 
-            if (_bulletHitEffect != null)
-            {
-                Quaternion hitRotation = Quaternion.LookRotation(-impactDirection); //quay ngược lại hướng va chạm
-                GameObject effect = Instantiate(_bulletHitEffect, hitPosition, hitRotation); //effect sinh ra với hướng ngược với hướng của vật thể lao tới
-                Destroy(effect, 1f);
-            }
-        }
+    //        if (_playerBulletHitEffect != null)
+    //        {
+    //            Quaternion hitRotation = Quaternion.LookRotation(-impactDirection); //quay ngược lại hướng va chạm
+    //            GameObject effect = Instantiate(_playerBulletHitEffect, hitPosition, hitRotation); //effect sinh ra với hướng ngược với hướng của vật thể lao tới
+    //            Destroy(effect, 1f);
+    //        }
+    //    }
 
-        if (col.CompareTag(Const.SAWBLADE_TAG))
-        {
-            SawBlade sawBlade = FindObjectOfType<SawBlade>();
-            TakeDamage(sawBlade.sawBladeDamage);
+    //    if (col.CompareTag(Const.DRONEBULLET_TAG))
+    //    {
+    //        DroneBullet droneBullet = col.GetComponent<DroneBullet>();
+    //        TakeDamage(droneBullet.damageBullet);
+    //        Destroy(col.gameObject, 0.2f);
 
-            if (_sawBladeHitEffect != null)
-            {
-                Quaternion hitRotation = Quaternion.LookRotation(-impactDirection);
-                GameObject effect = Instantiate(_sawBladeHitEffect, hitPosition, hitRotation);
-                Destroy(effect, 1f);
-            }
-        }
+    //        if (_droneBulletHitEffect != null)
+    //        {
+    //            Quaternion hitRotation = Quaternion.LookRotation(-impactDirection); //quay ngược lại hướng va chạm
+    //            GameObject effect = Instantiate(_droneBulletHitEffect, hitPosition, hitRotation); //effect sinh ra với hướng ngược với hướng của vật thể lao tới
+    //            Destroy(effect, 1f);
+    //        }
+    //    }
 
-        if (col.CompareTag(Const.SWORD_TAG))
-        {
-            SwordController swordController = col.GetComponent<SwordController>();
-            TakeDamage(swordController.attackDamage);
+    //    if (col.CompareTag(Const.SAWBLADE_TAG))
+    //    {
+    //        SawBlade sawBlade = FindObjectOfType<SawBlade>();
+    //        TakeDamage(sawBlade.sawBladeDamage);
 
-            if (_swordHitEffect != null)
-            {
-                Quaternion hitRotation = Quaternion.LookRotation(-impactDirection);
-                GameObject effect = Instantiate(_swordHitEffect, hitPosition, hitRotation);
-                Destroy(effect, 1f);
-            }
-        }
-    }
+    //        if (_sawBladeHitEffect != null)
+    //        {
+    //            Quaternion hitRotation = Quaternion.LookRotation(-impactDirection);
+    //            GameObject effect = Instantiate(_sawBladeHitEffect, hitPosition, hitRotation);
+    //            Destroy(effect, 1f);
+    //        }
+    //    }
+
+    //    if (col.CompareTag(Const.SWORD_TAG))
+    //    {
+    //        SwordController swordController = col.GetComponent<SwordController>();
+    //        TakeDamage(swordController.attackDamage);
+
+    //        if (_swordHitEffect != null)
+    //        {
+    //            Quaternion hitRotation = Quaternion.LookRotation(-impactDirection);
+    //            GameObject effect = Instantiate(_swordHitEffect, hitPosition, hitRotation);
+    //            Destroy(effect, 1f);
+    //        }
+    //    }
+    //}
 }

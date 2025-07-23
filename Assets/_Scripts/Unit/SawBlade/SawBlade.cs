@@ -4,7 +4,6 @@ public class SawBlade : MonoBehaviour
 {
     public Transform player;
     public float orbitSpeed = 50f;
-    public float sawBladeDamage; //cách gây dame được để trong OnTrigger ở EnemyHealth
 
     private void Start()
     {

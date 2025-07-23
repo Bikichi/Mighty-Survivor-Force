@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 2397745556359174099}
   - component: {fileID: 1067738364447048486}
   - component: {fileID: 488622650998878984}
+  - component: {fileID: -935058493264491001}
   m_Layer: 7
   m_Name: Blade
   m_TagString: SawBlade
@@ -366,6 +367,20 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!114 &-935058493264491001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3863484853909659977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d36bc3761544b1249b049a6d611e4c2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sawBladeDamage: 10
+  _hitEffect: {fileID: 3153472991145048103, guid: 3407e378c048bb5438424b28c7740b48, type: 3}
 --- !u!1 &6108362966620546108
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,4 +11,5 @@ public class Const : MonoBehaviour
     public const string WALL_TAG = "wall";
     public const string SAWBLADE_TAG = "SawBlade";
     public const string SWORD_TAG = "Sword";
+    public const string DRONEBULLET_TAG = "DroneBullet";
 }

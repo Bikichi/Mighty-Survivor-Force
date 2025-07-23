@@ -12,11 +12,6 @@ public class UnitFollowerBase : MonoBehaviour
 
     [Header("Rotation")]
     public float rotationSpeed = 2.5f;
-
-    [Header("Attack Settings")]
-    public float attackSpeed = 10f;
-    public float attackDamage;
-    public float minAttackSpeed = 2f;
     public float attackRange = 8f;
     protected float distanceToEnemy;
 
