@@ -18,6 +18,11 @@ public class UnitFollowerBase : MonoBehaviour
     [Header("Target Tracking")]
     public Transform targetEnemy;
 
+    protected virtual void Start()
+    {
+        GetTransformPlayer();
+    }
+
     protected virtual void Update()
     {
         UpdateTargetEnemy();
@@ -25,6 +30,11 @@ public class UnitFollowerBase : MonoBehaviour
         UpdateOffset();
         FollowPlayer();
         RotateUnit();
+    }
+
+    protected virtual void GetTransformPlayer()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     protected virtual void UpdateTargetEnemy()
