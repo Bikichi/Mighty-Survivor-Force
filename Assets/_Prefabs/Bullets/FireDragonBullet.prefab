@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -5246396565974358234}
   m_Layer: 0
   m_Name: FireDragonBullet
-  m_TagString: EnemyBullet
+  m_TagString: DragonBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4868,9 +4868,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc8f5be4cf0df8442a6423656b9d3c24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPlayer: {fileID: 0}
   _speedBullet: 10
   damageBullet: 20
+  _hitEffect: {fileID: 0}
+  targetPlayer: {fileID: 0}
+  moveDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &9064956068904258685
 GameObject:
   m_ObjectHideFlags: 0

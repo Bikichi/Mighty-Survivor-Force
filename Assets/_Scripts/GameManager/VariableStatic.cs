@@ -22,6 +22,7 @@ public class VariableStatic : MonoBehaviour
 
     public static bool isLearnSawBladeSkill = false;
     public static bool isLearnSwordBladeSkill = false;
+    public static bool isLearnMineSkill = false;
 
     private void Update()
     {

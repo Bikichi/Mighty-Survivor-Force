@@ -24,4 +24,16 @@ public class FireDragonBullet : BaseBullet
     {
         transform.Translate(moveDirection * _speedBullet * Time.deltaTime, Space.World);
     }
+
+
+    protected override void OnTriggerEnter(Collider col)
+    {
+        base.OnTriggerEnter(col);
+        if (col.CompareTag(Const.PLAYER_TAG))
+        {
+            PlayerHealth playerHealth = col.GetComponent<PlayerHealth>();
+            playerHealth.TakeDamage(damageBullet);
+            Destroy(gameObject); ; //hủy viên đạn
+        }
+    }
 }

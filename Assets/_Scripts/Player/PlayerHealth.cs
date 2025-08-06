@@ -9,14 +9,4 @@ public class PlayerHealth : LivingEntity
         Debug.Log("Player Die!!!");
         base.Die();
     }
-
-    private void OnTriggerEnter(Collider col)
-    {
-        if (col.CompareTag(Const.ENEMYBULLET_TAG)) //nếu đối tượng này va chạm với đối tượng có tag thì thực thi
-        {
-            FireDragonBullet fireDragonBullet = col.GetComponent<FireDragonBullet>();
-            TakeDamage(fireDragonBullet.damageBullet);
-            Destroy(col.gameObject); ; //hủy viên đạn
-        }
-    }
 }

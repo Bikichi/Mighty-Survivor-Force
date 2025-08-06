@@ -7,10 +7,6 @@ public class EnemyHealth : LivingEntity
 {
     [SerializeField] private GameObject _coinDrop;
     [SerializeField] private bool _hasCoin;
-    [SerializeField] private GameObject _playerBulletHitEffect;
-    [SerializeField] private GameObject _droneBulletHitEffect;
-    [SerializeField] private GameObject _sawBladeHitEffect;
-    [SerializeField] private GameObject _swordHitEffect;
     public float deathAnimationTime;
     public Animator _anim;
 
