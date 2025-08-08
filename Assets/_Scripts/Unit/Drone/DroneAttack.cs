@@ -8,4 +8,8 @@ public class DroneAttack : RangedShooterBase
     {
         base.Start();
     }
+    protected override void Update()
+    {
+        base.Update();
+    }
 }

@@ -50,6 +50,7 @@ public class EnemyAttack : MonoBehaviour
         {
             Quaternion flippedRotation = attackFlashPoint.rotation * Quaternion.Euler(180, 0, 0);
             GameObject flash = Instantiate(attackFlashPrefab, attackFlashPoint.position, flippedRotation);
+            flash.transform.SetParent(attackFlashPoint);
             Destroy(flash, flashDuration);
         }
     }

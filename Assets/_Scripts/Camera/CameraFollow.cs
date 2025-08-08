@@ -54,11 +54,12 @@ public class CameraFollow : MonoBehaviour
 
     public void ClampZPosCamera(ref Vector3 newPosition)
     {
-        // Giới hạn giá trị z của camera dựa trên điều kiện vị trí của nhận vật. Không thể làm tương tự như trục X bởi vì camera đang nhìn nhân vật theo góc chéo
+        //Giới hạn giá trị z của camera dựa trên điều kiện vị trí của nhận vật. Không thể làm tương tự như trục X bởi vì camera đang nhìn nhân vật theo góc chéo
         if (followTarget.position.z > 8 || followTarget.position.z < -15.5)
         {
-            // Nếu điều kiện thỏa mãn, giữ nguyên z, tức là camera không di chuyển theo trục Z
+            //Nếu điều kiện thỏa mãn, giữ nguyên z, tức là camera không di chuyển theo trục Z
             newPosition.z = transform.position.z;
+            currentVelocity.z = 0f;
         }
     }
 }
