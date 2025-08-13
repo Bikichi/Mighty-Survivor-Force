@@ -15,14 +15,12 @@ public abstract class RangedShooterBase : MonoBehaviour
     [Header("Optional Animator")]
     [SerializeField] protected Animator anim;
 
-    protected float lastShootTime;
+    [SerializeField] protected float lastShootTime;
 
     protected virtual void Start()
     {
         if (anim == null)
             anim = GetComponentInChildren<Animator>();
-
-        lastShootTime = -shootCooldown;
     }
 
     protected virtual void Update()
