@@ -11,7 +11,7 @@ public class UnitFollowerBase : MonoBehaviour
     protected Vector3 currentOffset;
 
     [Header("Rotation")]
-    public float rotationSpeed = 2.5f;
+    public float rotationSpeed = 5f;
     public float attackRange = 8f;
     protected float distanceToEnemy;
 

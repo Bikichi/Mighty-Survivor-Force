@@ -1,15 +1,7 @@
 ﻿using UnityEngine;
 
-public class DroneBullet : BaseBullet
+public class DroneBullet : PlayerBullet
 {
-    [SerializeField] private Transform _targetEnemy;
-
-    protected override void Start()
-    {
-        base.Start();
-        _targetEnemy = CheckDistance.Instance.FindTargetEnemy();
-    }
-
     protected override void MoveBullet()
     {
         //tìm mục tiêu mới nếu mục tiêu cũ chết thay vì huỷ luôn viên đạn

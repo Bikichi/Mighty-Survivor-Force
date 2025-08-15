@@ -2,7 +2,7 @@
 
 public class PlayerBullet : BaseBullet
 {
-    [SerializeField] private Transform _targetEnemy;
+    [SerializeField] protected Transform _targetEnemy;
 
     protected override void Start()
     {
@@ -25,7 +25,6 @@ public class PlayerBullet : BaseBullet
 
     protected override void OnTriggerEnter(Collider col)
     {
-        base.OnTriggerEnter(col);
         if (col.CompareTag(Const.ENEMY_TAG))
         {
             EnemyHealth enemyHealth = col.GetComponent<EnemyHealth>();

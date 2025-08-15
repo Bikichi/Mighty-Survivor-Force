@@ -13472,6 +13472,37 @@ Transform:
   - {fileID: 1624096674702563961}
   m_Father: {fileID: 550355473160647224}
   m_LocalEulerAnglesHint: {x: -6.0164488e-15, y: -6.6880315e-15, z: -6.051894}
+--- !u!1 &6226656703346883935
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4464035875083099563}
+  m_Layer: 8
+  m_Name: VfxPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4464035875083099563
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6226656703346883935}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5227369519336421102}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6471483323869026005
 GameObject:
   m_ObjectHideFlags: 0
@@ -13515,6 +13546,7 @@ GameObject:
   - component: {fileID: 5227369519336421102}
   - component: {fileID: 1925339801218277520}
   - component: {fileID: 1658747276766063313}
+  - component: {fileID: 6965384482204180272}
   - component: {fileID: 655191390987146707}
   - component: {fileID: 8717380183846545915}
   m_Layer: 8
@@ -13523,7 +13555,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5227369519336421102
 Transform:
   m_ObjectHideFlags: 0
@@ -13537,6 +13569,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 5079497230996345254}
   - {fileID: 7772600913452114770}
   - {fileID: 6019660339342852256}
   - {fileID: 8438120219112368994}
@@ -13545,8 +13578,8 @@ Transform:
   - {fileID: 2463717448549485527}
   - {fileID: 2587617312498257775}
   - {fileID: 1913955021841950199}
-  - {fileID: 5079497230996345254}
   - {fileID: 5965063908537343751}
+  - {fileID: 4464035875083099563}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1925339801218277520
@@ -13597,6 +13630,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!114 &6965384482204180272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6643027116863268232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70818f059ea8cbd418fc49f5dd0546e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHealth: {fileID: 8717380183846545915}
+  burnEndTime: 0
+  currentDamage: 0
+  vfxInstance: {fileID: 0}
+  vfxPoint: {fileID: 4464035875083099563}
 --- !u!114 &655191390987146707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13614,7 +13664,7 @@ MonoBehaviour:
   anim: {fileID: 1915859285371239603}
   enemyMoveSpeed: 11
   rb: {fileID: 1658747276766063313}
-  distanceToPlayer: 2.5
+  distanceToPlayer: 2
   isMoving: 0
 --- !u!114 &8717380183846545915
 MonoBehaviour:
@@ -13628,7 +13678,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca8d883a57f3414a803641df6ad81cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 20
+  startingHealth: 200
   currentHealth: 0
   onHealthChange:
     m_PersistentCalls:
@@ -13650,9 +13700,6 @@ MonoBehaviour:
         m_CallState: 2
   _coinDrop: {fileID: 1880245074145146, guid: 81848b6677705f2418649c87a28b45d4, type: 3}
   _hasCoin: 0
-  _bulletHitEffect: {fileID: 358637981425055526, guid: 8eb503696b886e04faff8fc0f480d473, type: 3}
-  _sawBladeHitEffect: {fileID: 2944396702758532163, guid: e190bf97c041e58448af6b043116cba0, type: 3}
-  _swordHitEffect: {fileID: 4924508274929071776, guid: 0edef91621bb6b34384ccc9dbb98729c, type: 3}
   deathAnimationTime: 1.2
   _anim: {fileID: 0}
 --- !u!1 &6757061416252486119
@@ -14015,7 +14062,7 @@ GameObject:
   - component: {fileID: 1915859285371239603}
   - component: {fileID: 2150634160278215284}
   m_Layer: 8
-  m_Name: TurtleShellUsingPrefab
+  m_Name: AnimAndAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14073,11 +14120,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPlayer: {fileID: 0}
   anim: {fileID: 1915859285371239603}
-  attackPoint: {fileID: 0}
-  attackDamage: 20
+  attackPoint: {fileID: 5227369519336421102}
+  attackDamage: 10
   attackTimer: 0
   attackCooldown: 1
-  attackRanged: 2.5
+  attackRanged: 2.15
   isAttacking: 0
   attackFlashPrefab: {fileID: 2060900179291159282, guid: ca6705a3f9070d14d819d179493bcfa0, type: 3}
   attackFlashPoint: {fileID: 5227369519336421102}

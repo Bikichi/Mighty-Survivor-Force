@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class FieldDealDamageBase : MonoBehaviour
 {
-    [SerializeField] protected float radius = 5f;
+    [SerializeField] protected float radius = 4f;
     [SerializeField] protected float fieldDamage = 100f;     
     [SerializeField] protected float damageInterval = 1f;
 

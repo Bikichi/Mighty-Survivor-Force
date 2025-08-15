@@ -37,12 +37,12 @@ public class MeleeAttack : EnemyAttack
         base.OnAttackAnimationEnd();
     }
 
-    //private void OnDrawGizmosSelected()
-    //{
-    //    if (attackPoint == null)
-    //    {
-    //        return;
-    //    }
-    //    Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-    //}
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+        {
+            return;
+        }
+        Gizmos.DrawWireSphere(attackPoint.position, attackRanged);
+    }
 }

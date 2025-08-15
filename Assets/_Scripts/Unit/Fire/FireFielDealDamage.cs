@@ -2,13 +2,13 @@
 
 public class FireFielDealDamage : FieldDealDamageBase
 {
-    [SerializeField] private float damageIncreasePerTick = 100f;
-    [SerializeField] private float currentDamage;
+    [SerializeField] private float damageIncreasePerTick = 100f; //sát thương cộng thêm mỗi tick nếu còn burn
+    [SerializeField] private float burnDuration = 3f;
+    [SerializeField] private GameObject burningVFXPrefab;
 
     protected override void OnEnable()
     {
-        currentDamage = fieldDamage;
-        base.OnEnable();
+        base.OnEnable(); //kích hoạt coroutine DealDamagePerTime() từ class cha
     }
 
     protected override void DealDamageAOE()
@@ -19,15 +19,12 @@ public class FireFielDealDamage : FieldDealDamageBase
         {
             if (col.CompareTag("Enemy"))
             {
-                EnemyHealth enemy = col.GetComponent<EnemyHealth>();
-                if (enemy != null)
+                BurningDamageHandler burn = col.GetComponent<BurningDamageHandler>();
+                if (burn != null)
                 {
-                    enemy.TakeDamage(currentDamage);
+                    burn.ApplyBurn(fieldDamage, damageIncreasePerTick, burnDuration, burningVFXPrefab);
                 }
             }
         }
-
-        // tăng damage sau mỗi lần tick
-        currentDamage += damageIncreasePerTick;
     }
 }

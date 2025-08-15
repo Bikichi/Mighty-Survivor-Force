@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5855755328469367166}
   - component: {fileID: 4479120717161001107}
   m_Layer: 8
-  m_Name: GolemMelee
+  m_Name: AnimAndAttack
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ MonoBehaviour:
   attackDamage: 50
   attackTimer: 0
   attackCooldown: 3
-  attackRanged: 4
+  attackRanged: 4.2
   isAttacking: 0
   attackFlashPrefab: {fileID: 3153472991145048103, guid: 3407e378c048bb5438424b28c7740b48, type: 3}
   attackFlashPoint: {fileID: 482590898620562340}
@@ -3051,6 +3051,37 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 50
+--- !u!1 &1595434110195525261
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5210966225178149398}
+  m_Layer: 8
+  m_Name: VfxPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5210966225178149398
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595434110195525261}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.21, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4231261234218737188}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1638791223961983329
 GameObject:
   m_ObjectHideFlags: 0
@@ -8184,6 +8215,7 @@ GameObject:
   - component: {fileID: 4231261234218737188}
   - component: {fileID: 634829971453612641}
   - component: {fileID: 2607453827391696879}
+  - component: {fileID: 8178011583576506745}
   - component: {fileID: 2280123793151490445}
   - component: {fileID: 435053808370863451}
   m_Layer: 8
@@ -8215,6 +8247,7 @@ Transform:
   - {fileID: 7012971735500456733}
   - {fileID: 8461218177777839788}
   - {fileID: 482590898620562340}
+  - {fileID: 5210966225178149398}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &634829971453612641
@@ -8265,6 +8298,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!114 &8178011583576506745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4459301653538735250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70818f059ea8cbd418fc49f5dd0546e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHealth: {fileID: 435053808370863451}
+  burnEndTime: 0
+  currentDamage: 0
+  vfxInstance: {fileID: 0}
+  vfxPoint: {fileID: 5210966225178149398}
 --- !u!114 &2280123793151490445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8296,7 +8346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca8d883a57f3414a803641df6ad81cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 100
+  startingHealth: 1000
   currentHealth: 0
   onHealthChange:
     m_PersistentCalls:
@@ -8318,9 +8368,6 @@ MonoBehaviour:
         m_CallState: 2
   _coinDrop: {fileID: 1880245074145146, guid: 81848b6677705f2418649c87a28b45d4, type: 3}
   _hasCoin: 1
-  _bulletHitEffect: {fileID: 358637981425055526, guid: 8eb503696b886e04faff8fc0f480d473, type: 3}
-  _sawBladeHitEffect: {fileID: 2944396702758532163, guid: e190bf97c041e58448af6b043116cba0, type: 3}
-  _swordHitEffect: {fileID: 4924508274929071776, guid: 0edef91621bb6b34384ccc9dbb98729c, type: 3}
   deathAnimationTime: 1
   _anim: {fileID: 0}
 --- !u!1 &4684050166033397021
