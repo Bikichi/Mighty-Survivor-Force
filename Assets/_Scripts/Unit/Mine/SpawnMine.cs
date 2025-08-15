@@ -1,40 +1,42 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnMine : MonoBehaviour
 {
-    [SerializeField] private GameObject minePrefab;  
+    [SerializeField] private GameObject minePrefab;
     [SerializeField] private float spawnTimeInterval = 2f;
+    [SerializeField] private int maxMines = 5;
 
     [SerializeField] private float timer;
-
-    [SerializeField] private Transform playerTransfom;
+    [SerializeField] private Transform playerTransform;
 
     void Start()
     {
         timer = 0f;
-        playerTransfom = GameObject.FindGameObjectWithTag("Player").transform;
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()
     {
-        //if (VariableStatic.isLearnMineSkill = false) return;
-        
         timer += Time.deltaTime;
 
         if (timer >= spawnTimeInterval)
         {
-            SpawnMineAtPlayer();
-            timer = 0f; 
+            GameObject[] mines = GameObject.FindGameObjectsWithTag("Mine");
+
+            if (mines.Length < maxMines)
+            {
+                SpawnMineAtPlayer();
+            }
+
+            timer = 0f;
         }
     }
 
     void SpawnMineAtPlayer()
     {
-        if (playerTransfom != null && minePrefab != null)
+        if (playerTransform != null && minePrefab != null)
         {
-            Vector3 spawnPos = playerTransfom.position;
+            Vector3 spawnPos = playerTransform.position;
             Instantiate(minePrefab, spawnPos, Quaternion.identity);
         }
     }

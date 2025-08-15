@@ -27480,8 +27480,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minePrefab: {fileID: 2922181847670014394, guid: 2d94e1a508888fa408c8f5e2451507d0, type: 3}
   spawnTimeInterval: 2
+  maxMines: 5
   timer: 0
-  playerTransfom: {fileID: 0}
+  playerTransform: {fileID: 0}
 --- !u!1 &2108657488
 GameObject:
   m_ObjectHideFlags: 0
@@ -27701,6 +27702,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkillIce...
       objectReference: {fileID: 0}
+    - target: {fileID: 7620992973366906723, guid: 16e1f68f60bfff04198a778e17db042a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -27856,6 +27861,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 97870909733832214, guid: 458f49b3b59053249a447451da10b65a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 208343337171870745, guid: 458f49b3b59053249a447451da10b65a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.00000000745039

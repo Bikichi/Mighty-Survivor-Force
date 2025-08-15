@@ -41,4 +41,10 @@ public class MineDealDamage : MonoBehaviour
             }
         }
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red; // Màu vòng tròn
+        Gizmos.DrawWireSphere(transform.position, explosionRadius);
+    }
 }
