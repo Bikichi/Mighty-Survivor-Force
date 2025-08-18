@@ -71,7 +71,7 @@ MonoBehaviour:
   targetPlayer: {fileID: 0}
   anim: {fileID: 5855755328469367166}
   attackPoint: {fileID: 4231261234218737188}
-  attackDamage: 50
+  attackDamage: 10
   attackTimer: 0
   attackCooldown: 3
   attackRanged: 4.2
@@ -8215,6 +8215,7 @@ GameObject:
   - component: {fileID: 4231261234218737188}
   - component: {fileID: 634829971453612641}
   - component: {fileID: 2607453827391696879}
+  - component: {fileID: 1575603992385603476}
   - component: {fileID: 8178011583576506745}
   - component: {fileID: 2280123793151490445}
   - component: {fileID: 435053808370863451}
@@ -8298,6 +8299,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!114 &1575603992385603476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4459301653538735250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47e226a621777284c9370d0b99fd9b70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyMovement: {fileID: 2280123793151490445}
+  slowTimer: 0
+  currentSlowPercent: 0
+  maxSlowPercent: 70
+  vfxInstance: {fileID: 0}
+  vfxPoint: {fileID: 5210966225178149398}
 --- !u!114 &8178011583576506745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8311,8 +8330,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealth: {fileID: 435053808370863451}
-  burnEndTime: 0
+  burnTimer: 0
   currentDamage: 0
+  maxDamage: 600
   vfxInstance: {fileID: 0}
   vfxPoint: {fileID: 5210966225178149398}
 --- !u!114 &2280123793151490445

@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1994352455391165935}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.18, z: -0.59}
+  m_LocalPosition: {x: 0, y: 0.18, z: -0.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -143,7 +143,7 @@ PrefabInstance:
       addedObject: {fileID: 7350749724050239723}
     - targetCorrespondingSourceObject: {fileID: 1554728611460066, guid: 730f4c159a6410b4a84179765699166d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5060229566378401124}
+      addedObject: {fileID: 8956579038530118809}
   m_SourcePrefab: {fileID: 100100000, guid: 730f4c159a6410b4a84179765699166d, type: 3}
 --- !u!4 &6928747899535637788 stripped
 Transform:
@@ -169,11 +169,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   followSpeed: 5
-  baseOffset: {x: 3, y: 6, z: 0}
+  baseOffset: {x: -3, y: 5.65, z: 3}
   rotationSpeed: 2.5
   attackRange: 20
   targetEnemy: {fileID: 0}
---- !u!114 &5060229566378401124
+--- !u!114 &8956579038530118809
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -188,7 +188,7 @@ MonoBehaviour:
   bulletPrefabs: {fileID: 3806039598199004532, guid: 8550a2b805bb50748b5842cee7bc5852, type: 3}
   shootPoint: {fileID: 582533187619580447}
   shootingRange: 20
-  shootCooldown: 3
+  shootCooldown: 2
   anim: {fileID: 7023987687278279132}
   lastShootTime: 0
 --- !u!95 &7023987687278279132 stripped

@@ -23,6 +23,6 @@ public class DroneBullet : PlayerBullet
         Vector3 direction = (enemyCenter - transform.position).normalized;
 
         transform.Translate(direction * _speedBullet * Time.deltaTime, Space.World);
-        //transform.forward = direction;
+        transform.forward = direction;
     }
 }

@@ -6,11 +6,6 @@ public class FireFielDealDamage : FieldDealDamageBase
     [SerializeField] private float burnDuration = 3f;
     [SerializeField] private GameObject burningVFXPrefab;
 
-    protected override void OnEnable()
-    {
-        base.OnEnable(); //kích hoạt coroutine DealDamagePerTime() từ class cha
-    }
-
     protected override void DealDamageAOE()
     {
         Collider[] affectedObjects = Physics.OverlapSphere(transform.position, radius);

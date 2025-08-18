@@ -4,7 +4,8 @@ public class BurningDamageHandler : MonoBehaviour
 {
     [SerializeField] private EnemyHealth enemyHealth;
     [SerializeField] private float burnTimer; //thời gian cháy còn lại 
-    [SerializeField] private float currentDamage;   
+    [SerializeField] private float currentDamage;
+    [SerializeField] private float maxDamage;
     [SerializeField] private GameObject vfxInstance;    
     [SerializeField] private Transform vfxPoint;       
 
@@ -34,7 +35,7 @@ public class BurningDamageHandler : MonoBehaviour
         //nếu vẫn đang cháy → tăng damage
         if (burnTimer > 0f)
         {
-            currentDamage += damageIncreasePerTick;
+            currentDamage = Mathf.Min(currentDamage + damageIncreasePerTick, maxDamage);
         }
         else
         {
@@ -60,7 +61,7 @@ public class BurningDamageHandler : MonoBehaviour
             }
 
             //scale theo chiều cao enemy
-            vfxInstance.transform.localScale = Vector3.one * height * 1.75f;
+            vfxInstance.transform.localScale = Vector3.one * height * 0.125f;
         }
     }
 }
