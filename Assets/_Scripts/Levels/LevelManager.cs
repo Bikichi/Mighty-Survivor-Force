@@ -7,11 +7,11 @@ public class LevelManager : MonoBehaviour
 
     public void LevelUp()
     {
-        //Debug.Log("Level UP!!!");
-        VariableStatic.panelUpgradeIsShow = true;
-        VariableStatic.chooseCard = true;
-        VariableStatic.isLearnSawBladeSkill = true;
-        VariableStatic.isLearnSwordBladeSkill = true;
+        ////Debug.Log("Level UP!!!");
+        //VariableStatic.panelUpgradeIsShow = true;
+        //VariableStatic.chooseCard = true;
+        //VariableStatic.isLearnSawBladeSkill = true;
+        //VariableStatic.isLearnSwordBladeSkill = true;
         //Debug.Log("isLearnSawBladeSkill: " + VariableStatic.isLearnSawBladeSkill);
     }
 }

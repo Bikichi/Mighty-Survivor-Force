@@ -25836,7 +25836,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &572892190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25853,15 +25853,15 @@ MonoBehaviour:
   - waveName: 1
     enemyGroups:
     - enemyName: Golem
-      enemyCount: 3
+      enemyCount: 2
       spawnCount: 0
       enemyPrefab: {fileID: 4459301653538735250, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
     - enemyName: Dragon
-      enemyCount: 3
+      enemyCount: 2
       spawnCount: 0
       enemyPrefab: {fileID: 3677971375640770530, guid: 77e39f372c1d8504ca2e9dc335e0738e, type: 3}
     - enemyName: Spike
-      enemyCount: 3
+      enemyCount: 2
       spawnCount: 0
       enemyPrefab: {fileID: 6643027116863268232, guid: 56a346e54c96bf741be188c7d1f23580, type: 3}
     waveQuota: 0
@@ -25871,15 +25871,15 @@ MonoBehaviour:
   - waveName: 2
     enemyGroups:
     - enemyName: Golem
-      enemyCount: 2
+      enemyCount: 3
       spawnCount: 0
       enemyPrefab: {fileID: 4459301653538735250, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
     - enemyName: Dragon
-      enemyCount: 2
+      enemyCount: 3
       spawnCount: 0
       enemyPrefab: {fileID: 3677971375640770530, guid: 77e39f372c1d8504ca2e9dc335e0738e, type: 3}
     - enemyName: Spike
-      enemyCount: 2
+      enemyCount: 3
       spawnCount: 0
       enemyPrefab: {fileID: 6643027116863268232, guid: 56a346e54c96bf741be188c7d1f23580, type: 3}
     waveQuota: 0
@@ -25889,15 +25889,15 @@ MonoBehaviour:
   - waveName: 3
     enemyGroups:
     - enemyName: Golem
-      enemyCount: 3
+      enemyCount: 4
       spawnCount: 0
       enemyPrefab: {fileID: 4459301653538735250, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
     - enemyName: Dragon
-      enemyCount: 3
+      enemyCount: 4
       spawnCount: 0
       enemyPrefab: {fileID: 3677971375640770530, guid: 77e39f372c1d8504ca2e9dc335e0738e, type: 3}
     - enemyName: Spike
-      enemyCount: 3
+      enemyCount: 4
       spawnCount: 0
       enemyPrefab: {fileID: 6643027116863268232, guid: 56a346e54c96bf741be188c7d1f23580, type: 3}
     waveQuota: 0
@@ -25907,15 +25907,15 @@ MonoBehaviour:
   - waveName: 4
     enemyGroups:
     - enemyName: Golem
-      enemyCount: 4
+      enemyCount: 5
       spawnCount: 0
       enemyPrefab: {fileID: 4459301653538735250, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
     - enemyName: Dragon
-      enemyCount: 4
+      enemyCount: 5
       spawnCount: 0
       enemyPrefab: {fileID: 3677971375640770530, guid: 77e39f372c1d8504ca2e9dc335e0738e, type: 3}
     - enemyName: Spike
-      enemyCount: 4
+      enemyCount: 5
       spawnCount: 0
       enemyPrefab: {fileID: 6643027116863268232, guid: 56a346e54c96bf741be188c7d1f23580, type: 3}
     waveQuota: 0
@@ -25925,7 +25925,7 @@ MonoBehaviour:
   - waveName: 5
     enemyGroups:
     - enemyName: Golem
-      enemyCount: 4
+      enemyCount: 15
       spawnCount: 0
       enemyPrefab: {fileID: 4459301653538735250, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
     - enemyName: Dragon
@@ -26958,7 +26958,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4459301653538735250, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -27828,7 +27828,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2059687251}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 536f3143c2d6a0f41b27e854a4e4474d, type: 3}
   m_Name: 
@@ -28055,7 +28055,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6488575072704013350, guid: d174eab8bebbb2847abcbcedda5d05c5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7588638506979612746, guid: d174eab8bebbb2847abcbcedda5d05c5, type: 3}
       propertyPath: m_IsActive
@@ -28216,7 +28216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8131685451170184054, guid: dd7dd5cefbdedf542b97c4e35a9fa44d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -28308,7 +28308,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7620992973366906723, guid: 16e1f68f60bfff04198a778e17db042a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8956579038530118809, guid: 16e1f68f60bfff04198a778e17db042a, type: 3}
       propertyPath: shootCooldown
@@ -28377,7 +28377,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8583670129394468304, guid: c3f5b7b01587b884c985813199913a5e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -28451,7 +28451,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5205546141555205957, guid: 738fed9476ec71f4da8b9f65a4c40c3b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -28468,7 +28468,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 97870909733832214, guid: 458f49b3b59053249a447451da10b65a, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 208343337171870745, guid: 458f49b3b59053249a447451da10b65a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -29489,7 +29489,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4128707290329179435, guid: 040cd06b4756ccc439ce241078069e06, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5222745935042330891, guid: 040cd06b4756ccc439ce241078069e06, type: 3}
       propertyPath: m_LocalPosition.x

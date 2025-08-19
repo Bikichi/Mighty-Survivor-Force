@@ -66,7 +66,7 @@ public class IceSlowHandler : MonoBehaviour
             }
 
             //scale theo chiều cao enemy
-            vfxInstance.transform.localScale = Vector3.one * height * 0.125f;
+            vfxInstance.transform.localScale = Vector3.one * height * 0.155f;
         }
     }
 

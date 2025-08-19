@@ -101,21 +101,20 @@ MonoBehaviour:
   player: {fileID: 0}
   followSpeed: 5
   baseOffset: {x: 1.7, y: 2, z: -1}
-  currentOffset: {x: 0, y: 0, z: 0}
   rotationSpeed: 5
-  rotationReturnSpeed: 10
-  attackSpeed: 50
-  attackDamage: 10
-  minAttackSpeed: 20
   attackRange: 20
-  distanceToEnemy: 0
+  targetEnemy: {fileID: 0}
+  rotationReturnSpeed: 10
   penetrationDistance: 10
   stopDistance: 0.5
+  attackSpeed: 50
+  attackDamage: 100
+  minAttackSpeed: 20
   attackCooldown: 4
   returnSpeed: 50
   isReturning: 0
   isAttacking: 0
-  targetEnemy: {fileID: 0}
+  _hitEffect: {fileID: 0}
 --- !u!136 &3960874794566107359
 CapsuleCollider:
   m_ObjectHideFlags: 0

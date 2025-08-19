@@ -3076,7 +3076,7 @@ Transform:
   m_GameObject: {fileID: 1595434110195525261}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.21, z: 0}
+  m_LocalPosition: {x: 0, y: 1.27, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8314,7 +8314,7 @@ MonoBehaviour:
   enemyMovement: {fileID: 2280123793151490445}
   slowTimer: 0
   currentSlowPercent: 0
-  maxSlowPercent: 70
+  maxSlowPercent: 60
   vfxInstance: {fileID: 0}
   vfxPoint: {fileID: 5210966225178149398}
 --- !u!114 &8178011583576506745
@@ -8332,7 +8332,7 @@ MonoBehaviour:
   enemyHealth: {fileID: 435053808370863451}
   burnTimer: 0
   currentDamage: 0
-  maxDamage: 600
+  maxDamage: 300
   vfxInstance: {fileID: 0}
   vfxPoint: {fileID: 5210966225178149398}
 --- !u!114 &2280123793151490445
@@ -8366,7 +8366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca8d883a57f3414a803641df6ad81cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 1000
+  startingHealth: 10000
   currentHealth: 0
   onHealthChange:
     m_PersistentCalls:

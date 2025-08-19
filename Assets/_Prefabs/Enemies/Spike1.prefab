@@ -13497,7 +13497,7 @@ Transform:
   m_GameObject: {fileID: 6226656703346883935}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13549,13 +13549,15 @@ GameObject:
   - component: {fileID: 6965384482204180272}
   - component: {fileID: 655191390987146707}
   - component: {fileID: 8717380183846545915}
+  - component: {fileID: 8683637224930570494}
+  - component: {fileID: -7570083724751971143}
   m_Layer: 8
   m_Name: Spike1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5227369519336421102
 Transform:
   m_ObjectHideFlags: 0
@@ -13643,8 +13645,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealth: {fileID: 8717380183846545915}
-  burnEndTime: 0
+  burnTimer: 0
   currentDamage: 0
+  maxDamage: 300
   vfxInstance: {fileID: 0}
   vfxPoint: {fileID: 4464035875083099563}
 --- !u!114 &655191390987146707
@@ -13678,7 +13681,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca8d883a57f3414a803641df6ad81cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 200
+  startingHealth: 2000
   currentHealth: 0
   onHealthChange:
     m_PersistentCalls:
@@ -13702,6 +13705,42 @@ MonoBehaviour:
   _hasCoin: 0
   deathAnimationTime: 1.2
   _anim: {fileID: 0}
+--- !u!114 &8683637224930570494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6643027116863268232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47e226a621777284c9370d0b99fd9b70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyMovement: {fileID: 0}
+  slowTimer: 0
+  currentSlowPercent: 0
+  maxSlowPercent: 60
+  vfxInstance: {fileID: 0}
+  vfxPoint: {fileID: 4464035875083099563}
+--- !u!114 &-7570083724751971143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6643027116863268232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70818f059ea8cbd418fc49f5dd0546e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHealth: {fileID: 0}
+  burnTimer: 0
+  currentDamage: 0
+  maxDamage: 60
+  vfxInstance: {fileID: 0}
+  vfxPoint: {fileID: 4464035875083099563}
 --- !u!1 &6757061416252486119
 GameObject:
   m_ObjectHideFlags: 0

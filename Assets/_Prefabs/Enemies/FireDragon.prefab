@@ -847,6 +847,37 @@ Transform:
   - {fileID: 6614642512548448156}
   m_Father: {fileID: 5568876272761336019}
   m_LocalEulerAnglesHint: {x: -6.115254, y: 177.95746, z: -127.69846}
+--- !u!1 &3220955811412925890
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8792325499767993320}
+  m_Layer: 8
+  m_Name: VfxPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8792325499767993320
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3220955811412925890}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.62, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8769915201724265228}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3537198949741247686
 GameObject:
   m_ObjectHideFlags: 0
@@ -891,6 +922,8 @@ GameObject:
   - component: {fileID: 5672183146542396557}
   - component: {fileID: 729928483607138738}
   - component: {fileID: 6608983698216811983}
+  - component: {fileID: 340286000162979055}
+  - component: {fileID: 5513026296752081341}
   m_Layer: 8
   m_Name: FireDragon
   m_TagString: Enemy
@@ -920,6 +953,7 @@ Transform:
   - {fileID: 1282636107915521657}
   - {fileID: 7094495168040470212}
   - {fileID: 5759168111187786916}
+  - {fileID: 8792325499767993320}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &5820502036569280094
@@ -1001,7 +1035,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca8d883a57f3414a803641df6ad81cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 30
+  startingHealth: 3000
   currentHealth: 0
   onHealthChange:
     m_PersistentCalls:
@@ -1023,11 +1057,44 @@ MonoBehaviour:
         m_CallState: 2
   _coinDrop: {fileID: 1880245074145146, guid: 81848b6677705f2418649c87a28b45d4, type: 3}
   _hasCoin: 0
-  _bulletHitEffect: {fileID: 358637981425055526, guid: 8eb503696b886e04faff8fc0f480d473, type: 3}
-  _sawBladeHitEffect: {fileID: 2944396702758532163, guid: e190bf97c041e58448af6b043116cba0, type: 3}
-  _swordHitEffect: {fileID: 4924508274929071776, guid: 0edef91621bb6b34384ccc9dbb98729c, type: 3}
   deathAnimationTime: 1.2
   _anim: {fileID: 0}
+--- !u!114 &340286000162979055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3677971375640770530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47e226a621777284c9370d0b99fd9b70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyMovement: {fileID: 0}
+  slowTimer: 0
+  currentSlowPercent: 0
+  maxSlowPercent: 60
+  vfxInstance: {fileID: 0}
+  vfxPoint: {fileID: 8792325499767993320}
+--- !u!114 &5513026296752081341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3677971375640770530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70818f059ea8cbd418fc49f5dd0546e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHealth: {fileID: 0}
+  burnTimer: 0
+  currentDamage: 0
+  maxDamage: 300
+  vfxInstance: {fileID: 0}
+  vfxPoint: {fileID: 8792325499767993320}
 --- !u!1 &3689314199111042851
 GameObject:
   m_ObjectHideFlags: 0
