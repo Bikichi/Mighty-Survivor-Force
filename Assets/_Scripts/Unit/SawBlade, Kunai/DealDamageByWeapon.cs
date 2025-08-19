@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DealDamageBySawBlade : MonoBehaviour
+public class DealDamageByWeapon : MonoBehaviour
 {
-    public float sawBladeDamage; //cách gây dame được để trong OnTrigger ở EnemyHealth
+    public float sawBladeDamage;
     public GameObject _hitEffect;
 
     private void OnTriggerEnter(Collider col)

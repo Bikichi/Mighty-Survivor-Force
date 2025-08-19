@@ -13,7 +13,7 @@ public class SwordController : UnitFollowerBase
     public float minAttackSpeed = 20f;
 
     [Header("Cooldown & Delay")]
-    public float attackCooldown = 1.5f;
+    public float attackCooldown;
     private float lastAttackTime = -Mathf.Infinity;
 
     [Header("Return Settings")]

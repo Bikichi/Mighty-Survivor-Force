@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7872643749304890186}
-  - component: {fileID: -8999252113006525747}
-  - component: {fileID: 5439459285391982973}
+  - component: {fileID: 3165981723708295182}
+  - component: {fileID: 4598970846208840870}
   m_Layer: 0
   m_Name: KunaiUnit
   m_TagString: Untagged
@@ -37,7 +37,7 @@ Transform:
   - {fileID: 7615425847361101451}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-8999252113006525747
+--- !u!114 &3165981723708295182
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -50,9 +50,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orbit: {fileID: 0}
-  delayBeforeFly: 0
+  delayBeforeFly: 5
   canFly: 0
---- !u!114 &5439459285391982973
+--- !u!114 &4598970846208840870
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -249,10 +249,6 @@ PrefabInstance:
     - target: {fileID: 6450119410323132843, guid: 69e0a217509fa5e4a820893bb5b81bc2, type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7036968792846803103, guid: 69e0a217509fa5e4a820893bb5b81bc2, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

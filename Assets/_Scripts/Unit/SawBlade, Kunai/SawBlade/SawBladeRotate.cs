@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BladeRotate : MonoBehaviour
+public class SawBladeRotate : MonoBehaviour
 {
     public float spinSpeed = 200f;
 

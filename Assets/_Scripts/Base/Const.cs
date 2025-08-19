@@ -9,6 +9,7 @@ public class Const : MonoBehaviour
     public const string ENEMY_TAG = "Enemy";
     public const string DRAGONBULLET_TAG = "DragonBullet";
     public const string WALL_TAG = "wall";
+    public const string BACKWALL_TAG = "BackWall";
     public const string SAWBLADE_TAG = "SawBlade";
     public const string SWORD_TAG = "Sword";
     public const string DRONEBULLET_TAG = "DroneBullet";
