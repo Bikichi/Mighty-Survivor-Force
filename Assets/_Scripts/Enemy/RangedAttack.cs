@@ -7,7 +7,7 @@ public class RangedAttack : EnemyAttack
 {
     public GameObject enemyBulletPrefabs;
     public Transform shootPoint;
-    public Quaternion bulletRotation;
+    public float yRotationOffset = 180f;
     public override void Start()
     {
         base.Start();
@@ -22,7 +22,12 @@ public class RangedAttack : EnemyAttack
             isAttacking = true;
             anim.SetTrigger(attackParaname);
 
-            Instantiate(enemyBulletPrefabs, shootPoint.position, bulletRotation);
+            Vector3 directionToPlayer = (targetPlayer.transform.position - shootPoint.position).normalized;
+
+            Quaternion finalRotation = Quaternion.LookRotation(directionToPlayer) * Quaternion.Euler(0, yRotationOffset, 0);
+
+            Instantiate(enemyBulletPrefabs, shootPoint.position, finalRotation);
+
             attackTimer = 0f;
         }
     }

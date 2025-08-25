@@ -17,7 +17,7 @@ public abstract class BaseBullet : MonoBehaviour
 
     protected virtual void OnTriggerEnter(Collider col)
     {
-        if (col.CompareTag(Const.WALL_TAG))
+        if (col.CompareTag(Const.BACKWALL_TAG))
         {
             Destroy(gameObject);
         }

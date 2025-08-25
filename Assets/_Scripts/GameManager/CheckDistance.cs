@@ -61,7 +61,7 @@ public class CheckDistance : Singleton<CheckDistance>
             return new EnemyMovement[0];
         }
 
-        //lọc enemy còn sống vào danh sách phụ lưu các enemy còn sống
+        //lọc enemy còn sống lưu vào danh sách phụ
         List<EnemyMovement> aliveEnemies = new List<EnemyMovement>();
         foreach (EnemyMovement enemy in allEnemies)
         {

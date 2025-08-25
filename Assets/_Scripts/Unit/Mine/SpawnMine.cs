@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using System;
 
 public class SpawnMine : MonoBehaviour
 {
@@ -8,6 +10,7 @@ public class SpawnMine : MonoBehaviour
 
     [SerializeField] private float timer;
     [SerializeField] private Transform playerTransform;
+    [SerializeField] private float destroyInterval;
 
     void Start()
     {
@@ -37,7 +40,8 @@ public class SpawnMine : MonoBehaviour
         if (playerTransform != null && minePrefab != null)
         {
             Vector3 spawnPos = playerTransform.position;
-            Instantiate(minePrefab, spawnPos, Quaternion.identity);
+            var newMine = Instantiate(minePrefab, spawnPos, Quaternion.identity);
+            Destroy(newMine, destroyInterval);
         }
     }
 }

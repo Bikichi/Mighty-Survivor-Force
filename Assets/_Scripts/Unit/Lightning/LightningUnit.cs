@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 public class LightningUnit : MonoBehaviour
 {
-    public float damagePerHit = 20f;            //damage mỗi lần đánh
-    public float attackInterval = 1f;           //thời gian giữa các lần đánh
-    public int targetCount = 3;                 //số lượng enemy tối đa bị đánh
+    public float damagePerHit;            //damage mỗi lần đánh
+    public float attackInterval;           //thời gian giữa các lần đánh
+    public int targetCount;                 //số lượng enemy tối đa bị đánh
     public GameObject lightningEffectPrefab;  
     public GameObject hitEffectPrefab;          
 
@@ -29,15 +29,23 @@ public class LightningUnit : MonoBehaviour
 
             health.TakeDamage(damagePerHit);
 
-            //sinh hiệu ứng ở trên đầu enemy
-            Vector3 lightningPos = enemy.transform.position + Vector3.up * 3.1f;
+
+            Collider col = enemy.GetComponent<Collider>();
+            float height = col.bounds.size.y;
+
+            Vector3 lightningPos = enemy.transform.position + Vector3.up * height;  //sinh hiệu ứng ở trên đầu enemy
             Quaternion lightningRotation = Quaternion.Euler(-90f, 0f, 0f);
             GameObject lightning = Instantiate(lightningEffectPrefab, lightningPos, lightningRotation);
-
+            lightning.transform.SetParent(enemy.transform);
+            
             Destroy(lightning, 0.5f);
 
+            
             //hiệu ứng hit tại enemy
-            GameObject hitEffect = Instantiate(hitEffectPrefab, enemy.transform.position, Quaternion.identity);
+            Vector3 hitEffectPos = enemy.transform.position + Vector3.up * height * 0.5f;
+            GameObject hitEffect = Instantiate(hitEffectPrefab, hitEffectPos, Quaternion.identity);
+            hitEffect.transform.SetParent(enemy.transform);
+            
             Destroy(hitEffect, 0.3f);
         }
     }
