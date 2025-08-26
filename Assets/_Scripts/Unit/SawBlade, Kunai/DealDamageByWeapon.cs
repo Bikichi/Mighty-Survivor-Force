@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DealDamageByWeapon : MonoBehaviour
 {
-    public float sawBladeDamage;
+    public float weaponDamage;
     public GameObject _hitEffect;
 
     private void OnTriggerEnter(Collider col)
@@ -14,7 +14,13 @@ public class DealDamageByWeapon : MonoBehaviour
             EnemyHealth enemyHealth = col.GetComponent<EnemyHealth>();
             if (enemyHealth != null)
             {
-                enemyHealth.TakeDamage(sawBladeDamage);
+                var result = CritManager.Instance.CalculateDamage(weaponDamage);
+                enemyHealth.TakeDamage(result.damage);
+
+                if (result.isCrit)
+                {
+                    Debug.Log($"CRIT HIT by {gameObject.name}! DamageCRIT: {result.damage}");
+                }
 
                 Vector3 hitPosition = col.ClosestPoint(transform.position);
                 Vector3 impactDirection = (col.transform.position - transform.position).normalized;

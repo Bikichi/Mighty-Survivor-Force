@@ -9,7 +9,12 @@ public class LightningUnit : MonoBehaviour
     public GameObject lightningEffectPrefab;  
     public GameObject hitEffectPrefab;          
 
-    private float nextAttackTime = 0f;
+    public float nextAttackTime;
+
+    private void Start()
+    {
+        nextAttackTime = attackInterval / 2;
+    }
 
     void Update()
     {

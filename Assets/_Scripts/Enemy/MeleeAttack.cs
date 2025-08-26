@@ -18,14 +18,13 @@ public class MeleeAttack : EnemyAttack
             foreach (Collider player in colInfo)
             {
                 PlayerHealth pl = player.GetComponent<PlayerHealth>();
-                if (pl == null)
+                if (pl != null)
                 {
-                    Debug.LogError(player.name + " không có component PlayerHealth!");
+                    pl.TakeDamage(attackDamage);
                 }
                 else
                 {
-                    pl.TakeDamage(attackDamage);
-                    //Debug.Log("Gây sát thương lên " + player.name);
+                    return;
                 }
             }
         }

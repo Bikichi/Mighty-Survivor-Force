@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,6 +21,7 @@ public abstract class RangedShooterBase : MonoBehaviour
     {
         if (anim == null)
             anim = GetComponentInChildren<Animator>();
+        lastShootTime = Time.time;
     }
 
     protected virtual void Update()

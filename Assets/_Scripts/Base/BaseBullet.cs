@@ -5,7 +5,6 @@ public abstract class BaseBullet : MonoBehaviour
     [SerializeField] protected float _speedBullet;
     [SerializeField] public float damageBullet;
     [SerializeField] protected GameObject _hitEffect;
-
     protected virtual void Start() { }
 
     protected virtual void Update()

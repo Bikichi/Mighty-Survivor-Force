@@ -918,7 +918,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8769915201724265228}
-  - component: {fileID: 5820502036569280094}
+  - component: {fileID: 3722446259419884357}
   - component: {fileID: 5672183146542396557}
   - component: {fileID: 729928483607138738}
   - component: {fileID: 6608983698216811983}
@@ -939,8 +939,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3677971375640770530}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.57, y: 0, z: 0.32}
+  m_LocalRotation: {x: -0, y: 0.6975867, z: -0, w: 0.7165004}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -955,9 +955,9 @@ Transform:
   - {fileID: 5759168111187786916}
   - {fileID: 8792325499767993320}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &5820502036569280094
-SphereCollider:
+  m_LocalEulerAnglesHint: {x: 0, y: 88.467, z: 0}
+--- !u!65 &3722446259419884357
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -975,8 +975,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.76691884
-  m_Center: {x: -0.0069302097, y: 0.83, z: 0.29999998}
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: 1, z: 0.3}
 --- !u!54 &5672183146542396557
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1823,7 +1823,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 402142231946936096}
-  - component: {fileID: 7335788892940090628}
   m_Layer: 8
   m_Name: sensor
   m_TagString: Untagged
@@ -1846,27 +1845,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8769915201724265228}
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
---- !u!135 &7335788892940090628
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6048406510364786997}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6228073332885430639
 GameObject:
   m_ObjectHideFlags: 0
@@ -2422,6 +2400,7 @@ MonoBehaviour:
   flashDuration: 1.5
   enemyBulletPrefabs: {fileID: 8793510976239746625, guid: 6ecc79d77b3685141af2c0408a2217e3, type: 3}
   shootPoint: {fileID: 5759168111187786916}
+  yRotationOffset: 180
 --- !u!1 &7579834190128083645
 GameObject:
   m_ObjectHideFlags: 0

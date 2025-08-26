@@ -30,7 +30,13 @@ public class PlayerBullet : BaseBullet
             EnemyHealth enemyHealth = col.GetComponent<EnemyHealth>();
             if (enemyHealth != null)
             {
-                enemyHealth.TakeDamage(damageBullet);
+                var result = CritManager.Instance.CalculateDamage(damageBullet);
+                enemyHealth.TakeDamage(result.damage);
+
+                if (result.isCrit)
+                {
+                    Debug.Log($"CRIT HIT by {gameObject.name}! DamageCRIT: {result.damage}");
+                }
 
                 Vector3 hitPosition = col.ClosestPoint(transform.position); //lấy vị trí va chạm gần nhất
                 Vector3 impactDirection = (col.transform.position - transform.position).normalized; //hướng vật thể va chạm tới Enemy

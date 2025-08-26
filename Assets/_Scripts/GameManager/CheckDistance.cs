@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class CheckDistance : Singleton<CheckDistance>
 {
+    public Transform playerTransform;
+    private void Awake()
+    {
+        if (playerTransform == null)
+        {
+            playerTransform = GameObject.FindWithTag("Player").transform;
+        }
+    }
     public float CalculateDistanceToEnemy(Transform playerTransform, Transform enemyTransform)
     {
         if (playerTransform == null || enemyTransform == null) return 0;
@@ -27,10 +35,9 @@ public class CheckDistance : Singleton<CheckDistance>
 
         foreach (EnemyMovement currentEnemy in allEnemies)
         {
-            float distanceToEnemy = (currentEnemy.transform.position - transform.position).magnitude;
             EnemyHealth enemyHealth = currentEnemy.GetComponent<EnemyHealth>(); //lấy Component EnemyHealth của GameObject mà Component EnemyMovement đang gắn vào
-
             if (enemyHealth == null || enemyHealth.IsDead) continue; //bỏ qua nếu không có EnemyHealth hoặc đã chết
+            float distanceToEnemy = (currentEnemy.transform.position - playerTransform.position).magnitude;
 
             if (distanceToEnemy < distanceToClosetEnemy)
             {
@@ -43,25 +50,21 @@ public class CheckDistance : Singleton<CheckDistance>
                 if (enemyHealth.currentHealth < targetEnemyHealth)
                 {
                     targetEnemy = currentEnemy;
-                    targetEnemyHealth = enemyHealth.currentHealth; // Cập nhật máu của mục tiêu mới
+                    targetEnemyHealth = enemyHealth.currentHealth; //cập nhật máu của mục tiêu mới
                 }
             }
         }
-
         return targetEnemy?.transform; //trả về transform nếu targetEnemy không null
     }
 
     public EnemyMovement[] GetClosestEnemiesByCount(int count)
     {
-        //khởi tạo mạng tất cả các enemy trong scene
+        if (playerTransform == null) return new EnemyMovement[0];
+
         EnemyMovement[] allEnemies = GameObject.FindObjectsOfType<EnemyMovement>();
+        if (allEnemies.Length == 0) return new EnemyMovement[0];
 
-        if (allEnemies.Length == 0)
-        {
-            return new EnemyMovement[0];
-        }
-
-        //lọc enemy còn sống lưu vào danh sách phụ
+        //lọc quái còn sống
         List<EnemyMovement> aliveEnemies = new List<EnemyMovement>();
         foreach (EnemyMovement enemy in allEnemies)
         {
@@ -72,37 +75,18 @@ public class CheckDistance : Singleton<CheckDistance>
             }
         }
 
-        if (aliveEnemies.Count == 0)
+        if (aliveEnemies.Count == 0) return new EnemyMovement[0];
+
+        //sắp xếp theo khoảng cách đến player
+        aliveEnemies.Sort((a, b) =>
         {
-            return new EnemyMovement[0];
-        }
+            float distA = (a.transform.position - playerTransform.position).sqrMagnitude;
+            float distB = (b.transform.position - playerTransform.position).sqrMagnitude;
+            return distA.CompareTo(distB); //phẩn tử có khoảng cách gần sẽ đẩy lên đầu list
+        });
 
-        //sắp xếp aliveEnemies theo khoảng cách từ đối tượng hiện tại 
-        //thuật toán sủi bọt
-        for (int i = 0; i < aliveEnemies.Count - 1; i++)
-        {
-            for (int j = i + 1; j < aliveEnemies.Count; j++)
-            {
-                float distI = (aliveEnemies[i].transform.position - transform.position).sqrMagnitude;
-                float distJ = (aliveEnemies[j].transform.position - transform.position).sqrMagnitude;
-
-                if (distJ < distI)
-                {
-                    EnemyMovement temp = aliveEnemies[i];
-                    aliveEnemies[i] = aliveEnemies[j];
-                    aliveEnemies[j] = temp;
-                }
-            }
-        }
-
-        //lấy số lượng enemy theo yêu cầu (hoặc ít hơn nếu không đủ)
+        //lấy số lượng yêu cầu
         int takeCount = Mathf.Min(count, aliveEnemies.Count); //trả về số nhỏ nhất giữa 2 số
-        //khởi tạo mang lưu lại số lương quái gần nhất theo yêu cầu
-        EnemyMovement[] closestEnemiesArray = new EnemyMovement[takeCount];
-        for (int i = 0; i < takeCount; i++)
-        {
-            closestEnemiesArray[i] = aliveEnemies[i];
-        }
-        return closestEnemiesArray;
+        return aliveEnemies.GetRange(0, takeCount).ToArray();
     }
 }
