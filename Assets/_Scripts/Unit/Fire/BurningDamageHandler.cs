@@ -42,7 +42,10 @@ public class BurningDamageHandler : MonoBehaviour
             currentDamage = baseDamage;
         }
 
+        Collider col = GetComponent<Collider>();
+
         enemyHealth.TakeDamage(currentDamage);
+        DamageUIManager.Instance.ShowDamageUI(currentDamage, col);
 
         //làm mới thời gian cháy
         burnTimer = duration;
@@ -54,7 +57,6 @@ public class BurningDamageHandler : MonoBehaviour
 
             //lấy chiều cao enemy
             float height = 1f;
-            Collider col = GetComponent<Collider>();
             if (col != null)
             {
                 height = col.bounds.size.y;

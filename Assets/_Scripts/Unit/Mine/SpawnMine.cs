@@ -14,7 +14,7 @@ public class SpawnMine : MonoBehaviour
 
     void Start()
     {
-        timer = 0f;
+        timer = spawnTimeInterval / 2;
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 

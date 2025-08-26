@@ -11,11 +11,6 @@ public class LightningUnit : MonoBehaviour
 
     public float nextAttackTime;
 
-    private void Start()
-    {
-        nextAttackTime = attackInterval / 2;
-    }
-
     void Update()
     {
         if (Time.time >= nextAttackTime)
@@ -32,10 +27,12 @@ public class LightningUnit : MonoBehaviour
         {
             EnemyHealth health = enemy.GetComponent<EnemyHealth>();
 
-            health.TakeDamage(damagePerHit);
-
+            var result = CritManager.Instance.CalculateCritDamage(damagePerHit);
+            health.TakeDamage(result.damage);
 
             Collider col = enemy.GetComponent<Collider>();
+            DamageUIManager.Instance.ShowDamageUI(result.damage, col, result.isCrit);
+
             float height = col.bounds.size.y;
 
             Vector3 lightningPos = enemy.transform.position + Vector3.up * height;  //sinh hiệu ứng ở trên đầu enemy

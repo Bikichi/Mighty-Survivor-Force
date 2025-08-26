@@ -37,6 +37,8 @@ public class MineDealDamage : MonoBehaviour
                 if (enemy != null)
                 {
                     enemy.TakeDamage(mineDamage);
+                    Collider col = enemy.GetComponent<Collider>();
+                    DamageUIManager.Instance.ShowDamageUI(mineDamage, col);
                 }
             }
         }

@@ -13,17 +13,22 @@ public class EnemyMovement : MonoBehaviour
     public bool isMoving;
 
 
+    private Vector3 lastPosition;
+
     public void Start()
     {
         rb = GetComponent<Rigidbody>();
         targetPlayer = GameObject.FindGameObjectWithTag("Player");
         enemyAttack = GetComponentInChildren<EnemyAttack>();
+
+        lastPosition = transform.position;
     }
 
     void Update()
     {
         transform.LookAt(targetPlayer.transform, Vector3.up);
         MoveEnemy();
+        UpdateAnimationState();
     }
 
     public void MoveEnemy()
@@ -35,20 +40,29 @@ public class EnemyMovement : MonoBehaviour
 
         if (distance <= distanceToPlayer || enemyAttack.isAttacking)
         {
-            anim.SetBool(runParaname, false);
             isMoving = false;
             rb.velocity = Vector3.zero;
             return;
         }
         else if (distance > distanceToPlayer && !enemyAttack.isAttacking)
         {
-            anim.SetBool(runParaname, true);
             isMoving = true;
-
-            if (isMoving)
-            {
-                rb.velocity = direction * enemyMoveSpeed;
-            }
+            rb.velocity = direction * enemyMoveSpeed;
         }
+    }
+
+    private void UpdateAnimationState()
+    {
+        bool positionChanged = (transform.position - lastPosition).sqrMagnitude > 0;
+
+        if (!enemyAttack.isAttacking && positionChanged)
+        {
+            anim.SetBool(runParaname, true);
+        }
+        else if ((enemyAttack.isAttacking || !positionChanged))
+        {
+            anim.SetBool(runParaname, false);
+        }
+        lastPosition = transform.position;
     }
 }

@@ -9,12 +9,11 @@ public class SwordController : UnitFollowerBase
     public float penetrationDistance = 1f;
     public float stopDistance = 0.5f;
     public float attackSpeed = 50f;
-    public float attackDamage;
     public float minAttackSpeed = 20f;
 
     [Header("Cooldown & Delay")]
     public float attackCooldown;
-    private float lastAttackTime = -Mathf.Infinity;
+    private float lastAttackTime;
 
     [Header("Return Settings")]
     public float returnSpeed = 15f;
@@ -23,7 +22,11 @@ public class SwordController : UnitFollowerBase
 
     private Vector3 targetPosition;
 
-    public GameObject _hitEffect;
+    protected override void Start()
+    {
+        base.Start();
+        lastAttackTime = -attackCooldown / 2;
+    }
     protected override void Update()
     {
         base.Update();
@@ -121,28 +124,6 @@ public class SwordController : UnitFollowerBase
             if (distance <= stopDistance)
             {
                 isReturning = false;
-            }
-        }
-    }
-
-    private void OnTriggerEnter(Collider col)
-    {
-        if (col.CompareTag(Const.ENEMY_TAG))
-        {
-            EnemyHealth enemyHealth = col.GetComponent<EnemyHealth>();
-            if (enemyHealth != null)
-            {
-                enemyHealth.TakeDamage(attackDamage);
-
-                Vector3 hitPosition = col.ClosestPoint(transform.position);
-                Vector3 impactDirection = (col.transform.position - transform.position).normalized;
-
-                if (_hitEffect != null)
-                {
-                    Quaternion hitRotation = Quaternion.LookRotation(-impactDirection);
-                    GameObject effect = Instantiate(_hitEffect, hitPosition, hitRotation);
-                    Destroy(effect, 1f);
-                }
             }
         }
     }

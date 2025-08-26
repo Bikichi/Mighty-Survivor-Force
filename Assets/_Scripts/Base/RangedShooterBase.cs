@@ -21,7 +21,7 @@ public abstract class RangedShooterBase : MonoBehaviour
     {
         if (anim == null)
             anim = GetComponentInChildren<Animator>();
-        lastShootTime = Time.time;
+        lastShootTime = Time.time; //bắt đầu chưa bắn luôn
     }
 
     protected virtual void Update()

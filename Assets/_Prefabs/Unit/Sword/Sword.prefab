@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7978513370085859224}
   - component: {fileID: 3960874794566107359}
   - component: {fileID: 1996318148577132364}
+  - component: {fileID: -7420769021300459164}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Sword
@@ -108,13 +109,11 @@ MonoBehaviour:
   penetrationDistance: 10
   stopDistance: 0.5
   attackSpeed: 50
-  attackDamage: 100
   minAttackSpeed: 20
   attackCooldown: 4
   returnSpeed: 50
   isReturning: 0
   isAttacking: 0
-  _hitEffect: {fileID: 0}
 --- !u!136 &3960874794566107359
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -251,3 +250,17 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!114 &-7420769021300459164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6013990982369288243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d36bc3761544b1249b049a6d611e4c2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponDamage: 100
+  _hitEffect: {fileID: 4924508274929071776, guid: 0edef91621bb6b34384ccc9dbb98729c, type: 3}
