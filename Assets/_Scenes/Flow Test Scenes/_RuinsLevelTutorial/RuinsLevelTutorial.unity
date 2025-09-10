@@ -26974,6 +26974,18 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2280123793151490445, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
+      propertyPath: enemyMoveSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2607453827391696879, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2607453827391696879, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4231261234218737188, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.23
@@ -27732,8 +27744,16 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2280123793151490445, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
+      propertyPath: enemyMoveSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2607453827391696879, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
       propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2607453827391696879, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
+      propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4231261234218737188, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}

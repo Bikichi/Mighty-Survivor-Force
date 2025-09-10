@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -41,19 +42,22 @@ public class EnemyMovement : MonoBehaviour
         if (distance <= distanceToPlayer || enemyAttack.isAttacking)
         {
             isMoving = false;
+            //anim.SetBool(runParaname, false);
             rb.velocity = Vector3.zero;
             return;
         }
         else if (distance > distanceToPlayer && !enemyAttack.isAttacking)
         {
+            //anim.SetBool(runParaname, true);
             isMoving = true;
             rb.velocity = direction * enemyMoveSpeed;
+            //transform.Translate(enemyMoveSpeed * direction * Time.deltaTime);
         }
     }
 
     private void UpdateAnimationState()
     {
-        bool positionChanged = (transform.position - lastPosition).sqrMagnitude > 0;
+        bool positionChanged = rb.velocity.sqrMagnitude > 0;
 
         if (!enemyAttack.isAttacking && positionChanged)
         {
