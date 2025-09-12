@@ -32,12 +32,13 @@ public class RespawnKunai : MonoBehaviour
             StartCoroutine(RespawnKunaiGroup());
         }
     }
-
+        
     private IEnumerator RespawnKunaiGroup()
     {
         yield return new WaitForSeconds(respawnDelay);
 
         Transform kunaiUnitParent = transform.parent;
+
         KunaiController controller = GetComponentInParent<KunaiController>();
         
         controller.ResetState();
@@ -46,8 +47,9 @@ public class RespawnKunai : MonoBehaviour
         GameObject newGroup = Instantiate(kunaiGroupPrefab, kunaiUnitParent);
         
         controller.ResetCoroutines();
-
+        
         //hủy group cũ (trống)
         Destroy(gameObject);
+
     }
 }
