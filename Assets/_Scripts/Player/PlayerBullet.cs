@@ -46,7 +46,7 @@ public class PlayerBullet : BaseBullet
                     Destroy(effect, 1f);
                 }
 
-                Destroy(gameObject, 0.2f);
+                Destroy(gameObject, 0.15f);
             }
         }
     }

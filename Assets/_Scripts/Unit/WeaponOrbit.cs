@@ -11,18 +11,13 @@ public class WeaponOrbit : MonoBehaviour
         player = GameObject.FindWithTag("Player").transform;
     }
 
-    private void Start()
-    {
-        SawBladeFollow();   
-    }
-
     void Update()
     {
-        SawBladeOrbit();
-        SawBladeFollow();
+        Orbit();
+        FollowPlayer();
     }
 
-    public void SawBladeOrbit()
+    public void Orbit()
     {
         if (player != null)
         {
@@ -30,7 +25,7 @@ public class WeaponOrbit : MonoBehaviour
         }
     }
 
-    public void SawBladeFollow() 
+    public void FollowPlayer() 
     {
         transform.position = player.position + followOffset;
     }

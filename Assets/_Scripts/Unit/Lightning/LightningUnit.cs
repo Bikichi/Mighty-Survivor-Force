@@ -27,11 +27,12 @@ public class LightningUnit : MonoBehaviour
         {
             EnemyHealth health = enemy.GetComponent<EnemyHealth>();
 
-            var result = CritManager.Instance.CalculateCritDamage(damagePerHit);
-            health.TakeDamage(result.damage);
+            //var result = CritManager.Instance.CalculateCritDamage(damagePerHit);
+            //health.TakeDamage(result.damage);
+            health.TakeDamage(damagePerHit);
 
             Collider col = enemy.GetComponent<Collider>();
-            DamageUIManager.Instance.ShowDamageUI(result.damage, col, result.isCrit);
+            DamageUIManager.Instance.ShowDamageUI(damagePerHit, col);
 
             float height = col.bounds.size.y;
 

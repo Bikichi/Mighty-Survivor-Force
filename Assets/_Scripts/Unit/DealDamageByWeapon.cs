@@ -17,10 +17,10 @@ public class DealDamageByWeapon : MonoBehaviour
                 var result = CritManager.Instance.CalculateCritDamage(weaponDamage);
                 enemyHealth.TakeDamage(result.damage);
 
-                if (result.isCrit)
-                {
-                    Debug.Log($"CRIT HIT by {gameObject.name}! DamageCRIT: {result.damage}");
-                }
+                //if (result.isCrit)
+                //{
+                //    Debug.Log($"CRIT HIT by {gameObject.name}! DamageCRIT: {result.damage}");
+                //}
 
                 Vector3 hitPosition = col.ClosestPoint(transform.position);
                 Vector3 impactDirection = (col.transform.position - transform.position).normalized;
