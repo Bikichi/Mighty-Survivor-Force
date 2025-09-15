@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -8,19 +8,25 @@ public class EnemyMovement : MonoBehaviour
     private const string runParaname = "Move";
     public Animator anim;
     public float enemyMoveSpeed;
+    public float checkInterval = 0.2f; //kiểm tra mỗi 0.2 giây
+    public float checkTimer = 0f;
     public Rigidbody rb;
 
-    public float distanceToPlayer;
+    public float stoppingDistance;
     public bool isMoving;
 
-
-    private Vector3 lastPosition;
+    //public NavMeshAgent agent;
+    //public NavMeshObstacle obstacle;
+    public Vector3 lastPosition;
 
     public void Start()
     {
         rb = GetComponent<Rigidbody>();
         targetPlayer = GameObject.FindGameObjectWithTag("Player");
         enemyAttack = GetComponentInChildren<EnemyAttack>();
+        //agent = GetComponent<NavMeshAgent>();
+        //obstacle = GetComponent<NavMeshObstacle>();
+        //obstacle.enabled = false;
 
         lastPosition = transform.position;
     }
@@ -29,7 +35,12 @@ public class EnemyMovement : MonoBehaviour
     {
         transform.LookAt(targetPlayer.transform, Vector3.up);
         MoveEnemy();
-        UpdateAnimationState();
+        checkTimer += Time.deltaTime;
+        if (checkTimer >= checkInterval)
+        {
+            UpdateAnimationState();
+            checkTimer = 0f; // Reset timer
+        }
     }
 
     public void MoveEnemy()
@@ -39,16 +50,25 @@ public class EnemyMovement : MonoBehaviour
 
         float distance = CheckDistance.Instance.CalculateDistanceToEnemy(targetPlayer.transform, transform);
 
-        if (distance <= distanceToPlayer || enemyAttack.isAttacking)
+        if (distance <= stoppingDistance || enemyAttack.isAttacking)
         {
             isMoving = false;
-            //anim.SetBool(runParaname, false);
+            //agent.enabled = false;
+            //obstacle.enabled = true;
+            anim.SetBool(runParaname, false);
             rb.velocity = Vector3.zero;
             return;
         }
-        else if (distance > distanceToPlayer && !enemyAttack.isAttacking)
+        else if (distance > stoppingDistance && !enemyAttack.isAttacking)
         {
-            //anim.SetBool(runParaname, true);
+            anim.SetBool(runParaname, true); 
+            //agent.enabled = true;
+            //obstacle.enabled = false;
+            //if (agent != null)
+            //{
+            //    agent.SetDestination(targetPlayer.transform.position);
+            //}
+
             isMoving = true;
             rb.velocity = direction * enemyMoveSpeed;
             //transform.Translate(enemyMoveSpeed * direction * Time.deltaTime);
@@ -57,7 +77,8 @@ public class EnemyMovement : MonoBehaviour
 
     private void UpdateAnimationState()
     {
-        bool positionChanged = rb.velocity.sqrMagnitude > 0;
+        float distanceMoved = Vector3.Distance(transform.position, lastPosition);
+        bool positionChanged = distanceMoved > 0.01f;
 
         if (!enemyAttack.isAttacking && positionChanged)
         {

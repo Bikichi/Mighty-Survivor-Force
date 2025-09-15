@@ -10,11 +10,15 @@ public class RespawnKunai : MonoBehaviour
     [SerializeField] private int destroyedKunai;
     [SerializeField] private int currentLevel;
 
+    [SerializeField] private KunaiController controller;
+
     private void Awake()
     {
         //currentLevel = ...; // sau này làm quản lý lv sẽ thêm logic check lv
         prefabPath = $"Prefabs/Unit/Kunai/KunaiLv{currentLevel}";
         kunaiGroupPrefab = Resources.Load<GameObject>(prefabPath);
+
+        controller = GetComponentInParent<KunaiController>();
     }
 
     private void Start()
@@ -29,6 +33,7 @@ public class RespawnKunai : MonoBehaviour
 
         if (destroyedKunai >= totalKunai)
         {
+            controller.ResetState();
             StartCoroutine(RespawnKunaiGroup());
         }
     }
@@ -39,10 +44,6 @@ public class RespawnKunai : MonoBehaviour
 
         Transform kunaiUnitParent = transform.parent;
 
-        KunaiController controller = GetComponentInParent<KunaiController>();
-        
-        controller.ResetState();
-
         //spawn group mới làm con của KunaiUnit
         GameObject newGroup = Instantiate(kunaiGroupPrefab, kunaiUnitParent);
         
@@ -50,6 +51,5 @@ public class RespawnKunai : MonoBehaviour
         
         //hủy group cũ (trống)
         Destroy(gameObject);
-
     }
 }
