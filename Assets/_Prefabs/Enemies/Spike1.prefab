@@ -5544,6 +5544,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   livingEntity: {fileID: 8717380183846545915}
   healthValue: {fileID: 2119509817934641206}
+  _HPText: {fileID: 0}
 --- !u!114 &4988194221855747382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13551,6 +13552,7 @@ GameObject:
   - component: {fileID: 8717380183846545915}
   - component: {fileID: 8683637224930570494}
   - component: {fileID: -7570083724751971143}
+  - component: {fileID: -8875358459009799584}
   m_Layer: 8
   m_Name: Spike1
   m_TagString: Enemy
@@ -13666,9 +13668,12 @@ MonoBehaviour:
   enemyAttack: {fileID: 2150634160278215284}
   anim: {fileID: 1915859285371239603}
   enemyMoveSpeed: 11
+  checkInterval: 0.05
+  checkTimer: 0
   rb: {fileID: 1658747276766063313}
-  distanceToPlayer: 2
+  stoppingDistance: 2
   isMoving: 0
+  lastPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &8717380183846545915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13741,6 +13746,22 @@ MonoBehaviour:
   maxDamage: 60
   vfxInstance: {fileID: 0}
   vfxPoint: {fileID: 4464035875083099563}
+--- !u!114 &-8875358459009799584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6643027116863268232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60cbeb0b7cb11554196382681cd603b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  enemyAttack: {fileID: 0}
+  normalMass: 3
+  attackMass: 10000
 --- !u!1 &6757061416252486119
 GameObject:
   m_ObjectHideFlags: 0

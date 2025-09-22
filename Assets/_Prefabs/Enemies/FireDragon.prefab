@@ -925,7 +925,6 @@ GameObject:
   - component: {fileID: 6608983698216811983}
   - component: {fileID: 340286000162979055}
   - component: {fileID: 5513026296752081341}
-  - component: {fileID: 7404028715928883009}
   m_Layer: 8
   m_Name: FireDragon
   m_TagString: Enemy
@@ -1022,10 +1021,11 @@ MonoBehaviour:
   enemyAttack: {fileID: 6188752723617246566}
   anim: {fileID: 1878592244905028432}
   enemyMoveSpeed: 8
+  checkInterval: 0.05
+  checkTimer: 0
   rb: {fileID: 5672183146542396557}
-  distanceToPlayer: 15
+  stoppingDistance: 20
   isMoving: 0
-  agent: {fileID: 0}
   lastPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &6608983698216811983
 MonoBehaviour:
@@ -1099,28 +1099,6 @@ MonoBehaviour:
   maxDamage: 300
   vfxInstance: {fileID: 0}
   vfxPoint: {fileID: 8792325499767993320}
---- !u!195 &7404028715928883009
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3677971375640770530}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!1 &3689314199111042851
 GameObject:
   m_ObjectHideFlags: 0

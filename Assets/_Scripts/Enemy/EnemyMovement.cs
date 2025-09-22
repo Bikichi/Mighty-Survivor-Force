@@ -8,15 +8,13 @@ public class EnemyMovement : MonoBehaviour
     private const string runParaname = "Move";
     public Animator anim;
     public float enemyMoveSpeed;
-    public float checkInterval = 0.2f; //kiểm tra mỗi 0.2 giây
+    public float checkInterval = 0.05f; //kiểm tra mỗi 0.2 giây
     public float checkTimer = 0f;
     public Rigidbody rb;
 
     public float stoppingDistance;
     public bool isMoving;
 
-    //public NavMeshAgent agent;
-    //public NavMeshObstacle obstacle;
     public Vector3 lastPosition;
 
     public void Start()
@@ -24,10 +22,6 @@ public class EnemyMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         targetPlayer = GameObject.FindGameObjectWithTag("Player");
         enemyAttack = GetComponentInChildren<EnemyAttack>();
-        //agent = GetComponent<NavMeshAgent>();
-        //obstacle = GetComponent<NavMeshObstacle>();
-        //obstacle.enabled = false;
-
         lastPosition = transform.position;
     }
 
@@ -53,21 +47,11 @@ public class EnemyMovement : MonoBehaviour
         if (distance <= stoppingDistance || enemyAttack.isAttacking)
         {
             isMoving = false;
-            //agent.enabled = false;
-            //obstacle.enabled = true;
-            anim.SetBool(runParaname, false);
             rb.velocity = Vector3.zero;
             return;
         }
         else if (distance > stoppingDistance && !enemyAttack.isAttacking)
         {
-            anim.SetBool(runParaname, true); 
-            //agent.enabled = true;
-            //obstacle.enabled = false;
-            //if (agent != null)
-            //{
-            //    agent.SetDestination(targetPlayer.transform.position);
-            //}
 
             isMoving = true;
             rb.velocity = direction * enemyMoveSpeed;
@@ -84,7 +68,7 @@ public class EnemyMovement : MonoBehaviour
         {
             anim.SetBool(runParaname, true);
         }
-        else if ((enemyAttack.isAttacking || !positionChanged))
+        else if (enemyAttack.isAttacking || !positionChanged)
         {
             anim.SetBool(runParaname, false);
         }
