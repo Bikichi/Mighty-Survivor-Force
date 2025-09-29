@@ -8,6 +8,7 @@ public class PlayerBullet : BaseBullet
     protected override void Start()
     {
         base.Start();
+        damageBullet = PlayerStats.Instance.baseDamage;
         _targetEnemy = CheckDistance.Instance.FindTargetEnemy();
     }
 

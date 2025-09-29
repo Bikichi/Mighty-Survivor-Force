@@ -26948,7 +26948,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerGameObject: {fileID: 8623264401816381700}
   skillManager: {fileID: 8623264401816381701}
-  testSkill: {fileID: 11400000, guid: 19392bd3a5a8f5e4bbc6e9cb352dc210, type: 2}
+  testHPSkill: {fileID: 11400000, guid: 0273f753af9f88544af8e7411a08ed67, type: 2}
+  testDamageSkill: {fileID: 11400000, guid: 19392bd3a5a8f5e4bbc6e9cb352dc210, type: 2}
+  testShootCooldownSkill: {fileID: 11400000, guid: f25fbbe7f607bb649b1929255b2f9a1d, type: 2}
+  testAttackRangedSkill: {fileID: 11400000, guid: f7be5a4755acdf44ab40726af01b932e, type: 2}
+  testMoveSpeedSkill: {fileID: 11400000, guid: 355a926a2ba3a464bb11fef0b8cdbfef, type: 2}
 --- !u!1 &1371878007
 GameObject:
   m_ObjectHideFlags: 0
@@ -26993,8 +26997,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 435053808370863451, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
+      propertyPath: maxHealth
+      value: 99999
+      objectReference: {fileID: 0}
+    - target: {fileID: 435053808370863451, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
       propertyPath: startingHealth
       value: 99999
+      objectReference: {fileID: 0}
+    - target: {fileID: 2280123793151490445, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4231261234218737188, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
       propertyPath: m_LocalPosition.x
@@ -27042,7 +27054,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4459301653538735250, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4479120717161001107, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
+      propertyPath: attackDamage
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -27323,6 +27339,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 42844a4fccbd54746b90cade4ff70f73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1615317885 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4966225023713056325, guid: 458f49b3b59053249a447451da10b65a, type: 3}
+  m_PrefabInstance: {fileID: 8623264401816381699}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1615317889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615317885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5bb51eb139209e459bdb1a4b3c148f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1623602673
@@ -27735,6 +27768,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 435053808370863451, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
+      propertyPath: maxHealth
+      value: 99999
+      objectReference: {fileID: 0}
+    - target: {fileID: 435053808370863451, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
       propertyPath: startingHealth
       value: 99999
       objectReference: {fileID: 0}
@@ -27828,7 +27865,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4479120717161001107, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
       propertyPath: attackDamage
-      value: 10
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4479120717161001107, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
       propertyPath: attackCooldown
@@ -28952,6 +28989,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 612150664457377394, guid: 458f49b3b59053249a447451da10b65a, type: 3}
+      propertyPath: maxHP
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 612150664457377394, guid: 458f49b3b59053249a447451da10b65a, type: 3}
+      propertyPath: baseDamage
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 612150664457377394, guid: 458f49b3b59053249a447451da10b65a, type: 3}
+      propertyPath: baseMoveSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 612150664457377394, guid: 458f49b3b59053249a447451da10b65a, type: 3}
+      propertyPath: baseAttackRange
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 612150664457377394, guid: 458f49b3b59053249a447451da10b65a, type: 3}
+      propertyPath: baseShootCooldown
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5695800872805606829, guid: 458f49b3b59053249a447451da10b65a, type: 3}
       propertyPath: joystick
       value: 
@@ -29004,10 +29061,17 @@ PrefabInstance:
       propertyPath: uiParent
       value: 
       objectReference: {fileID: 1978995588}
+    - target: {fileID: 8674062407455327818, guid: 458f49b3b59053249a447451da10b65a, type: 3}
+      propertyPath: dodgeChance
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4966225023713056325, guid: 458f49b3b59053249a447451da10b65a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1615317889}
   m_SourcePrefab: {fileID: 100100000, guid: 458f49b3b59053249a447451da10b65a, type: 3}
 --- !u!1 &8623264401816381700 stripped
 GameObject:

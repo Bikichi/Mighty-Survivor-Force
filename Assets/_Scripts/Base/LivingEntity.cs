@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 public class LivingEntity : MonoBehaviour
 {
-    [SerializeField] protected float startingHealth;
+    [SerializeField] public float maxHealth;
 	[SerializeField] public float currentHealth;
     [SerializeField] public bool IsActive { get; protected set; }
     [SerializeField] public bool IsDead { get; protected set; }
@@ -15,7 +15,7 @@ public class LivingEntity : MonoBehaviour
 
 	protected virtual void Awake()
 	{
-        currentHealth = startingHealth;
+        currentHealth = maxHealth;
 		IsActive = true;
 		IsDead = false;
 	}
@@ -23,7 +23,7 @@ public class LivingEntity : MonoBehaviour
 	public virtual void TakeDamage(float damage)
 	{
         currentHealth -= damage;
-        onHealthChange.Invoke(currentHealth, startingHealth);
+        onHealthChange.Invoke(currentHealth, maxHealth);
         if (currentHealth <= 0 && !IsDead)
 		{
 			Die();

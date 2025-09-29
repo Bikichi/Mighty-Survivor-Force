@@ -71,7 +71,7 @@ MonoBehaviour:
   targetPlayer: {fileID: 0}
   anim: {fileID: 5855755328469367166}
   attackPoint: {fileID: 4231261234218737188}
-  attackDamage: 10
+  attackDamage: 50
   attackTimer: 0
   attackCooldown: 3
   attackRanged: 4.2
@@ -8372,7 +8372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca8d883a57f3414a803641df6ad81cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 10000
+  maxHealth: 1000
   currentHealth: 0
   onHealthChange:
     m_PersistentCalls:

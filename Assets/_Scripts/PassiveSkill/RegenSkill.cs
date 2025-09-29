@@ -4,8 +4,8 @@ using System.Collections;
 public class RegenSkill : MonoBehaviour
 {
     [Header("Regen Settings")]
-    public float healAmount = 5f;   // hồi bao nhiêu máu
-    public float interval = 2f;     // khoảng thời gian giữa các lần hồi
+    public float healAmount = 10f;   // hồi bao nhiêu máu
+    public float interval = 3f;     // khoảng thời gian giữa các lần hồi
 
     private bool isRunning;
 
@@ -21,10 +21,13 @@ public class RegenSkill : MonoBehaviour
         {
             yield return new WaitForSeconds(interval);
 
-            var stats = PlayerStats.Instance;
-            stats.maxHP = Mathf.Min(stats.maxHP + healAmount, stats.baseHP);
+            var playerHealth = FindObjectOfType<PlayerHealth>();
 
-            Debug.Log($"[RegenSkill] +{healAmount} máu → HP hiện tại = {stats.maxHP}");
+            playerHealth.currentHealth = Mathf.Min(playerHealth.currentHealth + healAmount, playerHealth.maxHealth);
+
+            playerHealth.onHealthChange?.Invoke(playerHealth.currentHealth, playerHealth.maxHealth);
+
+            Debug.Log($"[RegenSkill] +{healAmount} máu → HP hiện tại = {playerHealth.currentHealth}");
         }
     }
 }

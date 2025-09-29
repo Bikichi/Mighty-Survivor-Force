@@ -1,26 +1,22 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using static PassiveSkillScriptableObject;
 
 public class PlayerStats : Singleton<PlayerStats>
 {
+    // Event riêng cho từng chỉ số, không có tham số
+    public event Action onMaxHealthChanged;
+    public event Action onDamageChanged;
+    public event Action onShootCooldownChanged;
+    public event Action onAttackRangeChanged;
+    public event Action onMoveSpeedChanged;
+
     [Header("Base Stats")]
-    public float baseHP = 100f;
+    public float maxHP = 100f;
     public float baseDamage = 10f;
-    public float baseShootCooldown = 1f;
-    public float baseAttackRange = 5f;
-    public float baseMoveSpeed = 5f;
-
-    [Header("Current Stats (with bonuses)")]
-    public float maxHP;
-    public float damage;
-    public float shootCooldown;
-    public float attackRange;
-    public float moveSpeed;
-
-    private void Awake()
-    {
-        ResetStats();
-    }
+    public float baseShootCooldown = 1.5f;
+    public float baseAttackRange = 20f;
+    public float baseMoveSpeed = 10f;
 
     public void ApplySkill(PassiveSkillScriptableObject skill)
     {
@@ -28,28 +24,24 @@ public class PlayerStats : Singleton<PlayerStats>
         {
             case StatType.HP:
                 maxHP += skill.value;
+                onMaxHealthChanged?.Invoke(); // gọi event khi maxHP thay đổi
                 break;
             case StatType.Damage:
-                damage += skill.value;
+                baseDamage += skill.value;
+                onDamageChanged?.Invoke();
                 break;
             case StatType.ShootCooldown:
-                shootCooldown = Mathf.Max(0.1f, shootCooldown - skill.value); // không cho cooldown âm
+                baseShootCooldown = Mathf.Max(0.15f, baseShootCooldown - skill.value);
+                onShootCooldownChanged?.Invoke();
                 break;
             case StatType.AttackRange:
-                attackRange += skill.value;
+                baseAttackRange += skill.value;
+                onAttackRangeChanged?.Invoke();
                 break;
             case StatType.MoveSpeed:
-                moveSpeed += skill.value;
+                baseMoveSpeed += skill.value;
+                onMoveSpeedChanged?.Invoke();
                 break;
         }
-    }
-
-    public void ResetStats()
-    {
-        maxHP = baseHP;
-        damage = baseDamage;
-        shootCooldown = baseShootCooldown;
-        attackRange = baseAttackRange;
-        moveSpeed = baseMoveSpeed;
     }
 }

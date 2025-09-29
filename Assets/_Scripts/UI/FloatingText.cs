@@ -20,7 +20,6 @@ public class FloatingText : MonoBehaviour
 
     void Update()
     {
-        FaceCamera();
         MoveUp();
         HandleFadeAndDestroy();
     }
@@ -29,15 +28,6 @@ public class FloatingText : MonoBehaviour
     {
         textMesh.text = message;
         textMesh.color = color;
-    }
-
-    public void FaceCamera()
-    {
-        if (Camera.main == null) return;
-
-        Vector3 direction = transform.position - Camera.main.transform.position;
-        direction.y = 0; //giữ đứng thẳng, không nghiêng theo camera
-        transform.rotation = Quaternion.LookRotation(direction);
     }
 
     public void MoveUp()

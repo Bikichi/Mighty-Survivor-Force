@@ -1,4 +1,4 @@
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +10,7 @@ public class HealthBar : MonoBehaviour
 
     private void Start()
     {
-        livingEntity.onHealthChange.AddListener(UpdateHP);
+        livingEntity.onHealthChange.AddListener(UpdateHP); //đăng ký sự kiện
     }
 
     private void UpdateHP(float healthpoint, float maxhealth)

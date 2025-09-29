@@ -1,11 +1,32 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting.Antlr3.Runtime.Misc;
+using UnityEngine;
 
 public class PlayerHealth : LivingEntity
 {
     [Header("Dodge Settings")]
     [SerializeField, Range(0f, 1f)] private float dodgeChance;
-    [SerializeField] private GameObject missTextPrefab; // Prefab UI MISS
-    [SerializeField] private Transform uiParent; // Canvas hoặc vị trí spawn UI
+    [SerializeField] private GameObject missTextPrefab;
+    [SerializeField] private Transform uiParent;
+
+    protected override void Awake()
+    {
+        UpdateMaxHealth(); //set lần đầu
+        base.Awake();
+        PlayerStats.Instance.onMaxHealthChanged += UpdateMaxHealth; //đăng ký sự kiện
+    }
+
+    private void UpdateMaxHealth()
+    {
+        //tính phần chênh lệch maxHP cũ và mới trước ghi gán
+        float diff = PlayerStats.Instance.maxHP - maxHealth;
+        
+        maxHealth = PlayerStats.Instance.maxHP; //gán
+
+        //tăng currentHealth tương ứng chênh lệch, không vượt maxHealth vừa gán
+        currentHealth = Mathf.Min(currentHealth + diff / 2, maxHealth);
+
+        onHealthChange?.Invoke(currentHealth, maxHealth); // update HealthBar
+    }
 
     public override void TakeDamage(float damage)
     {
@@ -14,7 +35,6 @@ public class PlayerHealth : LivingEntity
             ShowMissText();
             return;
         }
-
         base.TakeDamage(damage);
     }
 
@@ -24,12 +44,17 @@ public class PlayerHealth : LivingEntity
         Collider colPlayer = GetComponent<Collider>();
         missObj.transform.position = colPlayer.bounds.center + new Vector3(0, colPlayer.bounds.size.y * 0.6f, 0);
         missObj.GetComponent<FloatingText>().Setup("Dodge", Color.yellow);
-
     }
 
     protected override void Die()
     {
         base.Die();
         Debug.Log("Player Die!!!");
+    }
+
+    private void OnDestroy()
+    {
+        if (PlayerStats.Instance != null)
+            PlayerStats.Instance.onMaxHealthChanged -= UpdateMaxHealth; // hủy đăng ký tránh memory leak
     }
 }

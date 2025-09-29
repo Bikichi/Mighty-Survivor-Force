@@ -12,7 +12,6 @@ public class RotatePlayer : MonoBehaviour
 
     public float rotateTimer;
     public float rotateInterval;
-    [SerializeField] public float lookAtDistance;  // Khoảng cách tối thiểu để quay về phía kẻ địch
 
     void Update()
     {
@@ -62,7 +61,7 @@ public class RotatePlayer : MonoBehaviour
         rotateTimer += Time.deltaTime;
         bool isReadyToRotate = rotateTimer >= rotateInterval;
         var targetEnemy = CheckDistance.Instance.FindTargetEnemy();
-        bool canSeeEnemy = CheckDistance.Instance.CalculateDistanceToEnemy(transform, targetEnemy) <= lookAtDistance;
+        bool canSeeEnemy = CheckDistance.Instance.CalculateDistanceToEnemy(transform, targetEnemy) <= PlayerStats.Instance.baseAttackRange;
         if (targetEnemy != null && canSeeEnemy)
         {
             if (isReadyToRotate)

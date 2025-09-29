@@ -38,10 +38,5 @@ public class PlayerPassiveSkillManager : MonoBehaviour
         return entry != null ? entry.level : 0;
     }
 
-    public void ResetSkills()
-    {
-        learnedSkills.Clear();
-        PlayerStats.Instance.ResetStats();
-    }
 }
 

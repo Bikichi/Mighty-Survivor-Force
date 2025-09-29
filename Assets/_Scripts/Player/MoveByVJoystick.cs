@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Reflection;
 using UnityEngine;
 
 public class MoveByVJoystick : MonoBehaviour
@@ -18,6 +17,14 @@ public class MoveByVJoystick : MonoBehaviour
     private void Awake()
     {
         transform.position = new Vector3(0.02f, 1.58f, -2.5f);
+        movingSpeed = PlayerStats.Instance.baseMoveSpeed;
+        PlayerStats.Instance.onMoveSpeedChanged += UpdateMovingSpeed;
+    }
+
+    private void OnDestroy()
+    {
+        if (PlayerStats.Instance != null)
+            PlayerStats.Instance.onMoveSpeedChanged -= UpdateMovingSpeed;
     }
 
     private void OnValidate()
@@ -47,23 +54,17 @@ public class MoveByVJoystick : MonoBehaviour
             return;
         }
 
-        //hướng của Player (chỉ lấy XZ)
         Vector3 pointerDir = playerTransform.forward;
         pointerDir.y = 0f;
         pointerDir.Normalize();
 
-        //hướng di chuyển (chỉ lấy XZ)
         Vector3 moveDir = directionOfMovement;
         moveDir.y = 0f;
         moveDir.Normalize();
 
-        //góc giữa hướng di chuyển và hướng Player
         float angle = Vector3.Angle(moveDir, pointerDir);
 
-        //Debug.Log($"Angle between moveDir and pointerDir: {angle}");
-
         bool isRunForward = angle <= 45 || angle >= 135;
-
 
         if (isRunForward)
         {
@@ -75,5 +76,10 @@ public class MoveByVJoystick : MonoBehaviour
             anim.SetBool(runParaname, false);
             anim.SetBool(runRightParaname, true);
         }
+    }
+
+    private void UpdateMovingSpeed()
+    {
+        movingSpeed = PlayerStats.Instance.baseMoveSpeed;
     }
 }
