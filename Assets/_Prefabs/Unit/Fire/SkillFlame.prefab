@@ -57,7 +57,7 @@ Transform:
   m_GameObject: {fileID: 4329564812880977711}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.3, z: -0.6}
+  m_LocalPosition: {x: 0, y: 0.144, z: -1.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -83,17 +83,57 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkillFlame_lv1(fire)
       objectReference: {fileID: 0}
+    - target: {fileID: 4046766788403290, guid: 540f7c915dc8087408def6af8fd721c8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 37.829937
+      objectReference: {fileID: 0}
+    - target: {fileID: 4046766788403290, guid: 540f7c915dc8087408def6af8fd721c8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -27.50287
+      objectReference: {fileID: 0}
+    - target: {fileID: 4046766788403290, guid: 540f7c915dc8087408def6af8fd721c8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -36.61842
+      objectReference: {fileID: 0}
+    - target: {fileID: 4164876135152220, guid: 540f7c915dc8087408def6af8fd721c8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 54.69157
+      objectReference: {fileID: 0}
+    - target: {fileID: 4164876135152220, guid: 540f7c915dc8087408def6af8fd721c8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -21.436687
+      objectReference: {fileID: 0}
+    - target: {fileID: 4164876135152220, guid: 540f7c915dc8087408def6af8fd721c8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -4.362137
+      objectReference: {fileID: 0}
+    - target: {fileID: 4309447318954796, guid: 540f7c915dc8087408def6af8fd721c8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4469208013128913, guid: 540f7c915dc8087408def6af8fd721c8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 89.98021
+      objectReference: {fileID: 0}
+    - target: {fileID: 4469208013128913, guid: 540f7c915dc8087408def6af8fd721c8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4469208013128913, guid: 540f7c915dc8087408def6af8fd721c8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4742624191295309, guid: 540f7c915dc8087408def6af8fd721c8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.97993255
       objectReference: {fileID: 0}
     - target: {fileID: 4742624191295309, guid: 540f7c915dc8087408def6af8fd721c8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.5798645
       objectReference: {fileID: 0}
     - target: {fileID: 4742624191295309, guid: 540f7c915dc8087408def6af8fd721c8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.4999323
       objectReference: {fileID: 0}
     - target: {fileID: 4742624191295309, guid: 540f7c915dc8087408def6af8fd721c8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -101,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4742624191295309, guid: 540f7c915dc8087408def6af8fd721c8, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4742624191295309, guid: 540f7c915dc8087408def6af8fd721c8, type: 3}
       propertyPath: m_LocalRotation.y
@@ -109,7 +149,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4742624191295309, guid: 540f7c915dc8087408def6af8fd721c8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4742624191295309, guid: 540f7c915dc8087408def6af8fd721c8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -168,7 +208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   followSpeed: 5
-  baseOffset: {x: -3, y: 6.35, z: 0}
+  baseOffset: {x: 3, y: 6, z: 0}
   rotationSpeed: 2.5
   attackRange: 20
   targetEnemy: {fileID: 0}
@@ -187,7 +227,7 @@ MonoBehaviour:
   bulletPrefabs: {fileID: 2972392977303283589, guid: 3544aa3f63862c74981e0528c1c694a6, type: 3}
   shootPoint: {fileID: 3054726083895457741}
   shootingRange: 20
-  shootCooldown: 3
+  shootCooldown: 2
   anim: {fileID: 76570203560774026}
   lastShootTime: 0
 --- !u!4 &23711636969407370 stripped

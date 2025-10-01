@@ -22,8 +22,8 @@ public class LivingEntity : MonoBehaviour
 
 	public virtual void TakeDamage(float damage)
 	{
-        currentHealth -= damage;
-        onHealthChange.Invoke(currentHealth, maxHealth);
+        currentHealth = Mathf.Max(currentHealth - damage, 0);
+        onHealthChange?.Invoke(currentHealth, maxHealth);
         if (currentHealth <= 0 && !IsDead)
 		{
 			Die();

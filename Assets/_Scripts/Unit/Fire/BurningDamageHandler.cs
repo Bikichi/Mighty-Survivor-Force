@@ -6,12 +6,18 @@ public class BurningDamageHandler : MonoBehaviour
     [SerializeField] private float burnTimer; //thời gian cháy còn lại 
     [SerializeField] private float currentDamage;
     [SerializeField] private float maxDamage;
+    [SerializeField] private float maxDamagePercent;
     [SerializeField] private GameObject vfxInstance;    
     [SerializeField] private Transform vfxPoint;       
 
     private void Awake()
     {
         enemyHealth = GetComponent<EnemyHealth>();
+    }
+
+    private void Start()
+    {
+        maxDamage = maxDamagePercent / 100f * enemyHealth.maxHealth;
     }
 
     private void Update()
@@ -32,20 +38,19 @@ public class BurningDamageHandler : MonoBehaviour
 
     public void ApplyBurn(float baseDamage, float damageIncreasePerTick, float duration, GameObject vfxPrefab)
     {
-        //nếu vẫn đang cháy → tăng damage
-        if (burnTimer > 0f)
-        {
-            currentDamage = Mathf.Min(currentDamage + damageIncreasePerTick, maxDamage);
-        }
-        else
+        if (burnTimer <= 0)
         {
             currentDamage = baseDamage;
+        }
+        else //nếu vẫn đang cháy → tăng damage
+        {
+            currentDamage = Mathf.Min(currentDamage + damageIncreasePerTick, maxDamage);
         }
 
         Collider col = GetComponent<Collider>();
 
         enemyHealth.TakeDamage(currentDamage);
-        //DamageUIManager.Instance.ShowDamageUI(currentDamage, col);
+        DamageUIManager.Instance.ShowDamageUI(currentDamage, col);
 
         //làm mới thời gian cháy
         burnTimer = duration;

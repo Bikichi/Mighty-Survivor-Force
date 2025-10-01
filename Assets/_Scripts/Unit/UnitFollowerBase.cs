@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,7 +12,7 @@ public class UnitFollowerBase : MonoBehaviour
 
     [Header("Rotation")]
     public float rotationSpeed = 5f;
-    public float attackRange = 8f;
+    public float attackRange;
     protected float distanceToEnemy;
 
     [Header("Target Tracking")]
@@ -21,6 +21,10 @@ public class UnitFollowerBase : MonoBehaviour
     protected virtual void Start()
     {
         GetTransformPlayer();
+
+        UpdateAttackRange(); //gán ban đầu
+
+        PlayerStats.Instance.onAttackRangeChanged += UpdateAttackRange;
     }
 
     protected virtual void Update()
@@ -30,6 +34,12 @@ public class UnitFollowerBase : MonoBehaviour
         UpdateOffset();
         FollowPlayer();
         RotateUnit();
+    }
+
+    private void OnDestroy()
+    {
+        if (PlayerStats.Instance != null)
+            PlayerStats.Instance.onAttackRangeChanged += UpdateAttackRange;
     }
 
     protected virtual void GetTransformPlayer()
@@ -51,6 +61,10 @@ public class UnitFollowerBase : MonoBehaviour
     {
         Vector3 newOffset = Quaternion.Euler(0, player.rotation.eulerAngles.y, 0) * baseOffset;
         currentOffset = Vector3.Lerp(currentOffset, newOffset, Time.deltaTime * followSpeed);
+    }
+    private void UpdateAttackRange()
+    {
+        attackRange = PlayerStats.Instance.baseAttackRange;
     }
 
     protected virtual void FollowPlayer()

@@ -4,14 +4,16 @@ using UnityEngine;
 public class FieldDealDamageBase : MonoBehaviour
 {
     [SerializeField] protected float radius = 4f;
-    [SerializeField] protected float fieldDamage = 100f;     
-    [SerializeField] protected float damageInterval = 1f;
+    [SerializeField] protected float fieldDamage;     
+    [SerializeField] protected float damageInterval = 1.5f;
+    [SerializeField] protected float fieldDuration = 4.5f;
 
     protected Coroutine damageRoutine;
 
     protected virtual void OnEnable()
     {
         damageRoutine = StartCoroutine(DealDamagePerTime());
+        Destroy(gameObject, fieldDuration);
     }
 
     protected virtual void OnDisable()
@@ -22,9 +24,11 @@ public class FieldDealDamageBase : MonoBehaviour
 
     protected virtual IEnumerator DealDamagePerTime()
     {
-        while (true)
+        int numberOfTicks = Mathf.CeilToInt(fieldDuration / damageInterval);
+
+        for (int i = 0; i < numberOfTicks; i++)
         {
-            DealDamageAOE();
+            DealDamageAOE(); //tick ngay
             yield return new WaitForSeconds(damageInterval);
         }
     }

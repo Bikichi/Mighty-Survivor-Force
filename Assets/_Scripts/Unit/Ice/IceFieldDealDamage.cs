@@ -7,6 +7,13 @@ public class IceFieldDealDamage : FieldDealDamageBase
     [SerializeField] private float slowDuration;               //thời gian slow tồn tại
     [SerializeField] private GameObject iceVFXPrefab;               //VFX hiệu ứng băng
 
+    protected override void OnEnable()
+    {
+        //cập nhật damage trước khi chạy Coroutine và Destroy
+        fieldDamage = PlayerStats.Instance.baseDamage;
+        base.OnEnable();
+    }
+
     protected override void DealDamageAOE()
     {
         Collider[] affectedObjects = Physics.OverlapSphere(transform.position, radius);

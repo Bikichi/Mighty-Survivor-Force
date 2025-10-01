@@ -16,12 +16,14 @@ public class HealthBar : MonoBehaviour
     private void UpdateHP(float healthpoint, float maxhealth)
     {
         healthValue.fillAmount = healthpoint / maxhealth;
+        if (_HPText != null)
+            _HPText.text = Mathf.RoundToInt(healthpoint).ToString();
     }
     void Update()
     {
-        if (_HPText != null) 
+        if (_HPText != null)
         {
-            _HPText.text = livingEntity.currentHealth.ToString();
+            _HPText.text = Mathf.RoundToInt(livingEntity.currentHealth).ToString();
         }
     }
 }

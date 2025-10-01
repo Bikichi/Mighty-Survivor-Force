@@ -2,9 +2,23 @@
 
 public class DroneBullet : PlayerBullet
 {
+    [SerializeField] private float damageMultiplier = 0.5f;
+
+    protected override void Start()
+    {
+        base.Start();
+        damageBullet = PlayerStats.Instance.baseDamage * damageMultiplier;
+    }
+
+    //Không crit
+    protected override void ApplyDamage(EnemyHealth enemyHealth, Collider col)
+    {
+        enemyHealth.TakeDamage(damageBullet);
+        DamageUIManager.Instance.ShowDamageUI(damageBullet, col, false);
+    }
+
     protected override void MoveBullet()
     {
-        //tìm mục tiêu mới nếu mục tiêu cũ chết thay vì huỷ luôn viên đạn
         if (_targetEnemy == null || !_targetEnemy.gameObject.activeInHierarchy)
         {
             Transform newTarget = CheckDistance.Instance.FindTargetEnemy();

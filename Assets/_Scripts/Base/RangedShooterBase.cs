@@ -22,11 +22,24 @@ public abstract class RangedShooterBase : MonoBehaviour
         if (anim == null)
             anim = GetComponentInChildren<Animator>();
         lastShootTime = Time.time; //bắt đầu chưa bắn luôn
+
+        shootingRange = PlayerStats.Instance.baseAttackRange;
+        PlayerStats.Instance.onAttackRangeChanged += UpdateShootingRange;
     }
 
     protected virtual void Update()
     {
         ShootBullet();
+    }
+    protected virtual void UpdateShootingRange()
+    {
+        shootingRange = PlayerStats.Instance.baseAttackRange;
+    }
+
+    private void OnDestroy()
+    {
+        if (PlayerStats.Instance != null)
+            PlayerStats.Instance.onAttackRangeChanged -= UpdateShootingRange;
     }
 
     protected virtual void ShootBullet()

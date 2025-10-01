@@ -1,10 +1,8 @@
-﻿using Unity.VisualScripting.Antlr3.Runtime.Misc;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerHealth : LivingEntity
 {
     [Header("Dodge Settings")]
-    [SerializeField, Range(0f, 1f)] private float dodgeChance;
     [SerializeField] private GameObject missTextPrefab;
     [SerializeField] private Transform uiParent;
 
@@ -30,6 +28,8 @@ public class PlayerHealth : LivingEntity
 
     public override void TakeDamage(float damage)
     {
+        //cập nhật tỉ lệ né trực tiếp từ PlayerStats mỗi lần TakeDamage
+        float dodgeChance = PlayerStats.Instance.baseDodgeChance / 100f; //chia 100 để dùng với Random.value (0-1)
         if (Random.value < dodgeChance)
         {
             ShowMissText();
