@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4479120717161001107}
   m_Layer: 8
   m_Name: AnimAndAttack...
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2873,7 +2873,7 @@ GameObject:
   - component: {fileID: 1574290636315277307}
   m_Layer: 8
   m_Name: DamageArea
-  m_TagString: DA
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8335,7 +8335,8 @@ MonoBehaviour:
   enemyHealth: {fileID: 435053808370863451}
   burnTimer: 0
   currentDamage: 0
-  maxDamage: 300
+  maxDamage: 0
+  maxDamagePercent: 3
   vfxInstance: {fileID: 0}
   vfxPoint: {fileID: 5210966225178149398}
 --- !u!114 &2280123793151490445

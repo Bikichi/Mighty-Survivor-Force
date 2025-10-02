@@ -6,8 +6,8 @@ public class DroneBullet : PlayerBullet
 
     protected override void Start()
     {
-        base.Start();
         damageBullet = PlayerStats.Instance.baseDamage * damageMultiplier;
+        _targetEnemy = CheckDistance.Instance.FindLowestHealthEnemy();
     }
 
     //Không crit
@@ -21,7 +21,7 @@ public class DroneBullet : PlayerBullet
     {
         if (_targetEnemy == null || !_targetEnemy.gameObject.activeInHierarchy)
         {
-            Transform newTarget = CheckDistance.Instance.FindTargetEnemy();
+            Transform newTarget = CheckDistance.Instance.FindLowestHealthEnemy();
             if (newTarget != null)
             {
                 _targetEnemy = newTarget;
@@ -33,7 +33,7 @@ public class DroneBullet : PlayerBullet
             }
         }
 
-        Vector3 enemyCenter = _targetEnemy.position + new Vector3(0, _targetEnemy.GetComponent<Collider>().bounds.size.y / 2, 0);
+        Vector3 enemyCenter = _targetEnemy.position + new Vector3(0, _targetEnemy.GetComponent<Collider>().bounds.size.y, 0);
         Vector3 direction = (enemyCenter - transform.position).normalized;
 
         transform.Translate(direction * _speedBullet * Time.deltaTime, Space.World);

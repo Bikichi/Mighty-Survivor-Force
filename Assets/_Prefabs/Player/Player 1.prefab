@@ -32327,6 +32327,7 @@ GameObject:
   - component: {fileID: 8613889229553008670}
   - component: {fileID: 3955521193419605497}
   - component: {fileID: 5841928805370710919}
+  - component: {fileID: 612150664457377394}
   - component: {fileID: 9180099300682952820}
   - component: {fileID: 4091674556651506361}
   - component: {fileID: 7494489510988553380}
@@ -32334,7 +32335,6 @@ GameObject:
   - component: {fileID: 3504887057015135929}
   - component: {fileID: 97870909733832214}
   - component: {fileID: 8674062407455327818}
-  - component: {fileID: 612150664457377394}
   - component: {fileID: 5317902739806434831}
   m_Layer: 6
   m_Name: Player 1
@@ -32421,6 +32421,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &612150664457377394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6186176650844262797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034b0cf6e8aa9604fb010a875b57b7df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 0
+  baseDamage: 10
+  baseShootCooldown: 1
+  baseAttackRange: 5
+  baseMoveSpeed: 5
+  baseDodgeChance: 0
+  baseCritChance: 0
+  baseCritMultiplier: 1
 --- !u!54 &9180099300682952820
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -32603,7 +32623,6 @@ MonoBehaviour:
   movePointerTransform: {fileID: 113368761530974558}
   rotateTimer: 0
   rotateInterval: 0.15
-  lookAtDistance: 20
 --- !u!114 &97870909733832214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32634,7 +32653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 129242fb4f3efc7489024d1029bea648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 100
+  maxHealth: 0
   currentHealth: 0
   onHealthChange:
     m_PersistentCalls:
@@ -32642,31 +32661,8 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls: []
-  dodgeChance: 0.5
   missTextPrefab: {fileID: 64370307864958366, guid: b8f9e806141623d4fb1a5b2eba7edc23, type: 3}
   uiParent: {fileID: 0}
---- !u!114 &612150664457377394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6186176650844262797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 034b0cf6e8aa9604fb010a875b57b7df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseHP: 100
-  baseDamage: 10
-  baseShootCooldown: 1
-  baseAttackRange: 5
-  baseMoveSpeed: 5
-  maxHP: 0
-  damage: 0
-  shootCooldown: 0
-  attackRange: 0
-  moveSpeed: 0
 --- !u!114 &5317902739806434831
 MonoBehaviour:
   m_ObjectHideFlags: 0

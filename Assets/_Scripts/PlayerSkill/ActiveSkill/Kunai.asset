@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6dd98cd87973274eb2249a35f8a5c41, type: 3}
+  m_Name: Kunai
+  m_EditorClassIdentifier: 
+  skillName: KUNAI
+  description: Spins around the player and then dashes forward, dealing damage to
+    enemies hit.
+  icon: {fileID: 21300000, guid: a7a104ad97e8a4a469e69ce7384e2c50, type: 3}
+  prefab: {fileID: 6488575072704013350, guid: d174eab8bebbb2847abcbcedda5d05c5, type: 3}

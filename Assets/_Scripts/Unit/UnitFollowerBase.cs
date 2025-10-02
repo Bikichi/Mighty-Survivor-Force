@@ -12,7 +12,6 @@ public class UnitFollowerBase : MonoBehaviour
 
     [Header("Rotation")]
     public float rotationSpeed = 5f;
-    public float attackRange;
     protected float distanceToEnemy;
 
     [Header("Target Tracking")]
@@ -21,10 +20,6 @@ public class UnitFollowerBase : MonoBehaviour
     protected virtual void Start()
     {
         GetTransformPlayer();
-
-        UpdateAttackRange(); //gán ban đầu
-
-        PlayerStats.Instance.onAttackRangeChanged += UpdateAttackRange;
     }
 
     protected virtual void Update()
@@ -36,12 +31,6 @@ public class UnitFollowerBase : MonoBehaviour
         RotateUnit();
     }
 
-    private void OnDestroy()
-    {
-        if (PlayerStats.Instance != null)
-            PlayerStats.Instance.onAttackRangeChanged += UpdateAttackRange;
-    }
-
     protected virtual void GetTransformPlayer()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -49,7 +38,7 @@ public class UnitFollowerBase : MonoBehaviour
 
     protected virtual void UpdateTargetEnemy()
     {
-        targetEnemy = CheckDistance.Instance.FindTargetEnemy();
+        targetEnemy = CheckDistance.Instance.FindClosestEnemy();
     }
 
     protected virtual void UpdateDistanceToEnemy()
@@ -62,10 +51,6 @@ public class UnitFollowerBase : MonoBehaviour
         Vector3 newOffset = Quaternion.Euler(0, player.rotation.eulerAngles.y, 0) * baseOffset;
         currentOffset = Vector3.Lerp(currentOffset, newOffset, Time.deltaTime * followSpeed);
     }
-    private void UpdateAttackRange()
-    {
-        attackRange = PlayerStats.Instance.baseAttackRange;
-    }
 
     protected virtual void FollowPlayer()
     {
@@ -77,7 +62,7 @@ public class UnitFollowerBase : MonoBehaviour
 
     protected virtual void RotateUnit()
     {
-        if (targetEnemy != null && distanceToEnemy <= attackRange)
+        if (targetEnemy != null)
         {
             Vector3 directionToEnemy = targetEnemy.position - transform.position;
             directionToEnemy.y = 0;

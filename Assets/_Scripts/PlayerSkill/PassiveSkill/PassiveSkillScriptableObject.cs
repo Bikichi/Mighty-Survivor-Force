@@ -15,7 +15,8 @@ public class PassiveSkillScriptableObject : ScriptableObject
         AttackRange,
         MoveSpeed,
         Dodge,
-        Crit
+        Crit,
+        CritMultiplier
     }
 
     [Header("Stat Bonus per Level")]

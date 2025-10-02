@@ -9,7 +9,7 @@ public abstract class RangedShooterBase : MonoBehaviour
     [Header("Shooting Settings")]
     [SerializeField] protected GameObject bulletPrefabs;
     [SerializeField] protected Transform shootPoint;
-    [SerializeField] protected float shootingRange;
+    //[SerializeField] protected float shootingRange;
     [SerializeField] protected float shootCooldown;
 
     [Header("Optional Animator")]
@@ -22,36 +22,21 @@ public abstract class RangedShooterBase : MonoBehaviour
         if (anim == null)
             anim = GetComponentInChildren<Animator>();
         lastShootTime = Time.time; //bắt đầu chưa bắn luôn
-
-        shootingRange = PlayerStats.Instance.baseAttackRange;
-        PlayerStats.Instance.onAttackRangeChanged += UpdateShootingRange;
     }
 
     protected virtual void Update()
     {
         ShootBullet();
     }
-    protected virtual void UpdateShootingRange()
-    {
-        shootingRange = PlayerStats.Instance.baseAttackRange;
-    }
-
-    private void OnDestroy()
-    {
-        if (PlayerStats.Instance != null)
-            PlayerStats.Instance.onAttackRangeChanged -= UpdateShootingRange;
-    }
 
     protected virtual void ShootBullet()
     {
-        Transform targetEnemy = CheckDistance.Instance.FindTargetEnemy();
+        Transform targetEnemy = CheckDistance.Instance.FindClosestEnemy();
         if (targetEnemy == null || targetEnemy.GetComponent<EnemyHealth>().IsDead)
             return;
-
-        float distance = CheckDistance.Instance.CalculateDistanceToEnemy(transform, targetEnemy);
         bool isReadyToShoot = Time.time - lastShootTime > shootCooldown;
 
-        if (isReadyToShoot && distance <= shootingRange)
+        if (isReadyToShoot)
         {
             if (anim != null)
                 anim.SetTrigger(shootParaname);

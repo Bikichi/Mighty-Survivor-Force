@@ -11,6 +11,7 @@ public class PlayerStats : Singleton<PlayerStats>
     public event Action onMoveSpeedChanged;
     public event Action onDodgeChanceChanged;
     public event Action onCritChanceChanged;
+    public event Action onCritMultiplierChanged;
 
     [Header("Base Stats")]
     public float maxHP = 100f;
@@ -18,8 +19,11 @@ public class PlayerStats : Singleton<PlayerStats>
     public float baseShootCooldown = 1.5f;
     public float baseAttackRange = 20f;
     public float baseMoveSpeed = 10f;
-    public float baseDodgeChance = 0f; // 0 – 100%
-    public float baseCritChance = 0f;  // 0 – 100%
+
+    [Header("Combat Stats")]
+    [Range(0f, 100f)] public float baseDodgeChance = 0f;   // %
+    [Range(0f, 100f)] public float baseCritChance = 0f;    // %
+    public float baseCritMultiplier = 1f;                      // x lần sát thương
 
     public void ApplySkill(PassiveSkillScriptableObject skill)
     {
@@ -52,15 +56,20 @@ public class PlayerStats : Singleton<PlayerStats>
                 break;
 
             case StatType.Dodge:
-                baseDodgeChance += skill.bonusPercent; // cộng thêm tỉ lệ %
+                baseDodgeChance += skill.bonusPercent;
                 baseDodgeChance = Mathf.Clamp(baseDodgeChance, 0f, 100f);
                 onDodgeChanceChanged?.Invoke();
                 break;
 
             case StatType.Crit:
-                baseCritChance += skill.bonusPercent; // cộng thêm tỉ lệ %
+                baseCritChance += skill.bonusPercent;
                 baseCritChance = Mathf.Clamp(baseCritChance, 0f, 100f);
                 onCritChanceChanged?.Invoke();
+                break;
+
+            case StatType.CritMultiplier: // thêm kiểu mới
+                baseCritMultiplier += skill.bonusPercent / 100f; // ví dụ +50% => từ 2x lên 2.5x
+                onCritMultiplierChanged?.Invoke();
                 break;
         }
     }

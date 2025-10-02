@@ -6,17 +6,16 @@ public class DroneAttack : RangedShooterBase
 {
     [SerializeField] private float multiShootDelay = 0.2f;
     [SerializeField] private int bulletCount = 2;
-
+    [SerializeField] public Transform targetEnemy;
     protected override void ShootBullet()
     {
-        Transform targetEnemy = CheckDistance.Instance.FindTargetEnemy();
+        targetEnemy = CheckDistance.Instance.FindLowestHealthEnemy();
         if (targetEnemy == null || targetEnemy.GetComponent<EnemyHealth>().IsDead)
             return;
 
-        float distance = CheckDistance.Instance.CalculateDistanceToEnemy(transform, targetEnemy);
         bool isReadyToShoot = Time.time - lastShootTime > shootCooldown;
 
-        if (isReadyToShoot && distance <= shootingRange)
+        if (isReadyToShoot)
         {
             if (anim != null)
                 anim.SetTrigger(shootParaname);

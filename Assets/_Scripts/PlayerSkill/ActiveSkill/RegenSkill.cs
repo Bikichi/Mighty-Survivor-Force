@@ -3,8 +3,8 @@ using System.Collections;
 
 public class RegenSkill : MonoBehaviour
 {
-    public float healPercent = 10f;   //hồi bao nhiêu % máu tối đa mỗi tick
-    public float interval = 2f;      //khoảng thời gian giữa các lần hồi
+    public float healPercent = 10f;   // hồi bao nhiêu % máu tối đa mỗi tick
+    public float interval = 2f;       // khoảng thời gian giữa các lần hồi
 
     private bool isRunning;
 
@@ -24,7 +24,7 @@ public class RegenSkill : MonoBehaviour
 
             if (playerHealth.currentHealth < playerHealth.maxHealth)
             {
-                //tính lượng máu hồi theo %
+                // tính lượng máu hồi theo %
                 float healAmount = playerHealth.maxHealth * (healPercent / 100f);
 
                 playerHealth.currentHealth = Mathf.Min(

@@ -7,7 +7,7 @@ public class PlayerBullet : BaseBullet
     {
         base.Start();
         damageBullet = PlayerStats.Instance.baseDamage;
-        _targetEnemy = CheckDistance.Instance.FindTargetEnemy();
+        _targetEnemy = CheckDistance.Instance.FindClosestEnemy();
     }
 
     protected override void MoveBullet()
@@ -33,7 +33,7 @@ public class PlayerBullet : BaseBullet
             {
                 ApplyDamage(enemyHealth, col);
                 PlayHitEffect(col);
-                Destroy(gameObject, 0.15f);
+                Destroy(gameObject, 0.1f);
             }
         }
     }

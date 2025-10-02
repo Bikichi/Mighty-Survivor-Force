@@ -6,7 +6,7 @@ public class BurningDamageHandler : MonoBehaviour
     [SerializeField] private float burnTimer; //thời gian cháy còn lại 
     [SerializeField] private float currentDamage;
     [SerializeField] private float maxDamage;
-    [SerializeField] private float maxDamagePercent;
+    [SerializeField] private float maxDamagePercent = 3f;
     [SerializeField] private GameObject vfxInstance;    
     [SerializeField] private Transform vfxPoint;       
 

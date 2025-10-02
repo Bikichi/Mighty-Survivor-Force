@@ -12,4 +12,8 @@ public class DroneController : UnitFollowerBase
     {
         base.Update();
     }
+    protected override void UpdateTargetEnemy()
+    {
+        targetEnemy = CheckDistance.Instance.FindLowestHealthEnemy();
+    }
 }

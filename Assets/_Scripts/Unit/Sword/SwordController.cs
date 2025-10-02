@@ -29,11 +29,17 @@ public class SwordController : UnitFollowerBase
     }
     protected override void Update()
     {
-        base.Update();
+        base.Update(); //gọi UnitFollowerBase.Update(), trong đó có UpdateTargetEnemy();
+        //Vì UpdateTargetEnemy() là virtual, C# sẽ thực thi phiên bản override trong SwordController.
 
-        StartAttack();
+        GetAttackPosition();
         AttackEnemy();
         ReturnToPlayer();
+    }
+
+    protected override void UpdateTargetEnemy()
+    {
+        targetEnemy = CheckDistance.Instance.FindFarthestEnemy();
     }
 
     protected override void FollowPlayer()
@@ -48,7 +54,7 @@ public class SwordController : UnitFollowerBase
     {
         if (isReturning) return;
 
-        if (targetEnemy != null && distanceToEnemy <= attackRange)
+        if (targetEnemy != null)
         {
             Vector3 directionToEnemy = targetEnemy.position - transform.position;
             directionToEnemy.y = 0;
@@ -67,12 +73,12 @@ public class SwordController : UnitFollowerBase
         }
     }
 
-    private void StartAttack()
+    private void GetAttackPosition()
     {
         if (!isAttacking && !isReturning && targetEnemy != null)
         {
             bool readyToAttack = Time.time >= lastAttackTime + attackCooldown;
-            if (distanceToEnemy <= attackRange && readyToAttack)
+            if (readyToAttack)
             {
                 isAttacking = true;
                 isReturning = false;

@@ -1,68 +1,84 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TestLearningSkill : MonoBehaviour
 {
     [SerializeField] private GameObject playerGameObject;
-    [SerializeField] private PlayerPassiveSkillManager skillManager;
+    [SerializeField] private PlayerSkillManager skillManager;
 
     [Header("Test Passive Skills")]
-    [SerializeField] private PassiveSkillScriptableObject testHPSkill;
-    [SerializeField] private PassiveSkillScriptableObject testDamageSkill;
-    [SerializeField] private PassiveSkillScriptableObject testShootCooldownSkill;
-    [SerializeField] private PassiveSkillScriptableObject testAttackRangedSkill;
-    [SerializeField] private PassiveSkillScriptableObject testMoveSpeedSkill;
-    [SerializeField] private PassiveSkillScriptableObject testDodgeSkill;
-    [SerializeField] private PassiveSkillScriptableObject testCritSkill;
+    [SerializeField] private PassiveSkillScriptableObject testPassiveHPSkill;
+    [SerializeField] private PassiveSkillScriptableObject testPassiveDamageSkill;
+    [SerializeField] private PassiveSkillScriptableObject testPassiveShootCooldownSkill;
+    [SerializeField] private PassiveSkillScriptableObject testPassiveAttackRangedSkill;
+    [SerializeField] private PassiveSkillScriptableObject testPassiveMoveSpeedSkill;
+    [SerializeField] private PassiveSkillScriptableObject testPassiveDodgeSkill;
+    [SerializeField] private PassiveSkillScriptableObject testPassiveCritSkill;
+    [SerializeField] private PassiveSkillScriptableObject testPassiveCritMultiplierSkill;
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.H))
         {
-            skillManager.LearnPassiveSkill(testHPSkill);
-            Debug.Log($"MaxHP = {PlayerStats.Instance.maxHP}");
+            skillManager.LearnSkill(testPassiveHPSkill);
+            Debug.Log($"Máu tối đa = {PlayerStats.Instance.maxHP}");
         }
 
         if (Input.GetKeyDown(KeyCode.D))
         {
-            skillManager.LearnPassiveSkill(testDamageSkill);
-            Debug.Log($"Player Damage = {PlayerStats.Instance.baseDamage}");
+            skillManager.LearnSkill(testPassiveDamageSkill);
+            Debug.Log($"Sát thương cơ bản = {PlayerStats.Instance.baseDamage}");
         }
 
         if (Input.GetKeyDown(KeyCode.C))
         {
-            skillManager.LearnPassiveSkill(testShootCooldownSkill);
-            Debug.Log($"Shoot Cooldown = {PlayerStats.Instance.baseShootCooldown}");
+            skillManager.LearnSkill(testPassiveShootCooldownSkill);
+            Debug.Log($"Thời gian hồi bắn = {PlayerStats.Instance.baseShootCooldown}");
         }
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            skillManager.LearnPassiveSkill(testAttackRangedSkill);
-            Debug.Log($"Player Attack Range = {PlayerStats.Instance.baseAttackRange}");
+            skillManager.LearnSkill(testPassiveAttackRangedSkill);
+            Debug.Log($"Tầm đánh = {PlayerStats.Instance.baseAttackRange}");
         }
 
         if (Input.GetKeyDown(KeyCode.S))
         {
-            skillManager.LearnPassiveSkill(testMoveSpeedSkill);
-            Debug.Log($"Player Move Speed = {PlayerStats.Instance.baseMoveSpeed}");
+            skillManager.LearnSkill(testPassiveMoveSpeedSkill);
+            Debug.Log($"Tốc độ di chuyển = {PlayerStats.Instance.baseMoveSpeed}");
         }
 
-        // Th�m Dodge v� Crit
+        // Dodge
         if (Input.GetKeyDown(KeyCode.O))
         {
-            skillManager.LearnPassiveSkill(testDodgeSkill);
-            Debug.Log($"Player Dodge Chance = {PlayerStats.Instance.baseDodgeChance}%");
+            skillManager.LearnSkill(testPassiveDodgeSkill);
+            Debug.Log($"Tỉ lệ né tránh = {PlayerStats.Instance.baseDodgeChance}%");
         }
 
+        // Crit
         if (Input.GetKeyDown(KeyCode.P))
         {
-            skillManager.LearnPassiveSkill(testCritSkill);
-            Debug.Log($"Player Crit Chance = {PlayerStats.Instance.baseCritChance}%");
+            skillManager.LearnSkill(testPassiveCritSkill);
+            Debug.Log($"Tỉ lệ chí mạng = {PlayerStats.Instance.baseCritChance}%");
         }
 
+        // Crit Multiplier
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            skillManager.LearnSkill(testPassiveCritMultiplierSkill);
+            Debug.Log($"Sát thương chí mạng x {PlayerStats.Instance.baseCritMultiplier}");
+        }
+
+        // Test học Active Skill: Regen
         if (Input.GetKeyDown(KeyCode.Q))
         {
             playerGameObject.AddComponent<RegenSkill>();
-            Debug.Log("Learning Regen Skill!");
+            Debug.Log("Học kỹ năng hồi máu chủ động (Regen)!");
+        }
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            FindObjectOfType<SkillSelectionManager>().GetRandomSkillChoices();
+            FindObjectOfType<SkillSelectionUIController>().ShowSkillChoices();
         }
     }
 }

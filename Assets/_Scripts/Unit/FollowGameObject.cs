@@ -8,9 +8,9 @@ public class FollowGameObject : MonoBehaviour
 
     void Update()
     {
-        SawBladeFollow();
+        FollowEnemy();
     }
-    public void SawBladeFollow()
+    public void FollowEnemy()
     {
         transform.position = enemyTransform.position; //đi theo vị trí Enemy
     }
