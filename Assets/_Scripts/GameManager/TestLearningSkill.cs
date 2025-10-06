@@ -79,6 +79,7 @@ public class TestLearningSkill : MonoBehaviour
         {
             FindObjectOfType<SkillSelectionManager>().GetRandomSkillChoices();
             FindObjectOfType<SkillSelectionUIController>().ShowSkillChoices();
+            FindObjectOfType<UIManager>().ShowSkillPanel();
         }
     }
 }

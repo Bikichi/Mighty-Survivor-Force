@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6dd98cd87973274eb2249a35f8a5c41, type: 3}
   m_Name: FireDragon
   m_EditorClassIdentifier: 
-  skillName: 
-  description: 
-  icon: {fileID: 0}
-  prefab: {fileID: 0}
+  skillName: FIRE DRAGON
+  description: Summons a fire dragon, which shoots a palm strike that deals damage
+    and creates a burning zone that burns enemies
+  upgradeDescription: "\rFire dragons shoot faster and deal more damage"
+  icon: {fileID: 21300000, guid: acde80c88ee5d5e4b9406dd0fe948c1b, type: 3}
+  prefab: {fileID: 4128707290329179435, guid: 040cd06b4756ccc439ce241078069e06, type: 3}

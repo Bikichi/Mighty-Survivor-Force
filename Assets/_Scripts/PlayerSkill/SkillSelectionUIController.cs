@@ -4,32 +4,27 @@ using UnityEngine;
 public class SkillSelectionUIController : MonoBehaviour
 {
     [SerializeField] private SkillSelectionManager skillSelectionManager;
+    [SerializeField] private PlayerSkillManager playerSkillManager;
+    [SerializeField] private SkillChoiceUI[] choiceSlots; //kéo thả 3 ô từ Inspector vào đây
+    //mỗii slot là một prefab UI
+    //SkillSelectionUIController điền thông tin vào các slot đó bằng Setup()
 
-    /// <summary>
-    /// Gọi để hiển thị skill random cho người chơi chọn
-    /// </summary>
     public void ShowSkillChoices()
     {
         List<ScriptableObject> selectedSkills = skillSelectionManager.GetRandomSkillChoices();
 
-        if (selectedSkills.Count == 0)
+        for (int i = 0; i < choiceSlots.Length; i++)
         {
-            Debug.LogWarning("Không có skill nào để hiển thị!");
-            return;
-        }
-
-        foreach (var skill in selectedSkills)
-        {
-            // Nếu skill là Active
-            if (skill is ActiveSkillScriptableObject activeSkill)
+            if (i < selectedSkills.Count)
             {
-                Debug.Log($"(Active) {activeSkill.skillName} - {activeSkill.description}");
+                var skill = selectedSkills[i];
+                int currentLevel = playerSkillManager.GetSkillLevel(skill);
+                choiceSlots[i].gameObject.SetActive(true);
+                choiceSlots[i].Setup(skill, currentLevel, playerSkillManager);
             }
-
-            // Nếu skill là Passive
-            if (skill is PassiveSkillScriptableObject passiveSkill)
+            else
             {
-                Debug.Log($"(Passive) {passiveSkill.skillName} - {passiveSkill.description} - Tăng {passiveSkill.statType} {passiveSkill.bonusPercent}%");
+                choiceSlots[i].gameObject.SetActive(false);
             }
         }
     }

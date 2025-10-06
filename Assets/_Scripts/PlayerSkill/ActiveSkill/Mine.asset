@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6dd98cd87973274eb2249a35f8a5c41, type: 3}
   m_Name: Mine
   m_EditorClassIdentifier: 
-  skillName: 
-  description: 
-  icon: {fileID: 0}
-  prefab: {fileID: 0}
+  skillName: MINE
+  description: Players place mines on the path, when monsters step on them, the mines
+    will explode causing area damage
+  upgradeDescription: "\rIncreased damage, increased maximum number of mines that
+    can be placed"
+  icon: {fileID: 21300000, guid: 6a815b47a5b63574fa688c7ba700eb6c, type: 3}
+  prefab: {fileID: 1368960725811664289, guid: 7a49bce38cb1aac4eb15e87697aee481, type: 3}

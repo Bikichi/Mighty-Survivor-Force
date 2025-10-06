@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orbit: {fileID: 0}
-  delayBeforeFly: 0
+  delayBeforeFly: 3
   canFly: 0
 --- !u!114 &5439459285391982973
 MonoBehaviour:
@@ -66,6 +66,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   orbitSpeed: 300
+  followOffset: {x: 0, y: 0, z: 0}
 --- !u!1001 &339928149359311733
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -117,6 +118,10 @@ PrefabInstance:
     - target: {fileID: 7919553959221093183, guid: 82d5e703484db164e8387ed748cebc40, type: 3}
       propertyPath: m_Name
       value: KunaiLv2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919553959221093183, guid: 82d5e703484db164e8387ed748cebc40, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

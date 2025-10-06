@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &567305454542596120
 Transform:
   m_ObjectHideFlags: 0
@@ -54,6 +54,7 @@ MonoBehaviour:
   totalKunai: 0
   destroyedKunai: 0
   currentLevel: 4
+  controller: {fileID: 0}
 --- !u!1001 &2171313334352596327
 PrefabInstance:
   m_ObjectHideFlags: 0

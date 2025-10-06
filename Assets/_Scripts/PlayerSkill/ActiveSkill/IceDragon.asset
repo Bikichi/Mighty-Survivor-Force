@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6dd98cd87973274eb2249a35f8a5c41, type: 3}
   m_Name: IceDragon
   m_EditorClassIdentifier: 
-  skillName: 
-  description: 
-  icon: {fileID: 0}
-  prefab: {fileID: 0}
+  skillName: ICE DRAGON
+  description: Summons an ice dragon, fires a palm strike that deals damage and creates
+    an ice zone that slows the target
+  upgradeDescription: Ice dragons shoot faster, deal more damage, and the ice zone
+    slows more
+  icon: {fileID: 21300000, guid: cdb0e5712d9077f48a7dfd3cde9feaeb, type: 3}
+  prefab: {fileID: 7620992973366906723, guid: 16e1f68f60bfff04198a778e17db042a, type: 3}

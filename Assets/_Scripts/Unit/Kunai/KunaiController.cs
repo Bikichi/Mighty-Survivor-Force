@@ -23,6 +23,7 @@ public class KunaiController : MonoBehaviour
     {
         yield return new WaitForSeconds(delayBeforeFly);
 
+        Debug.Log("FLY!!!");
         if (orbit != null)
             orbit.enabled = false;
 
