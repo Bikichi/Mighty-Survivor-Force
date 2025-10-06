@@ -15,15 +15,23 @@ public class SkillModuleManager : MonoBehaviour
     [SerializeField] private PlayerSkillManager playerSkillManager;
     [SerializeField] public SkillModule[] skillModules; //danh sách các skill cần quản lý
 
+    public KunaiController kunaiController;
+
     public void UpdateModules(SkillModule skillModule, int skillLevel)
     {
-        // Bật parent
+        //bật parent
         skillModule.skillParent.SetActive(true);
 
-        // Bật module tương ứng, tắt các module khác
+        //bật module tương ứng, tắt các module khác
         for (int i = 0; i < skillModule.modulePrefabs.Length; i++)
         {
             skillModule.modulePrefabs[i].SetActive(i == skillLevel - 1);
+        }
+
+
+        if (skillModule.skillName.ToLower().Contains("kunai"))
+        {
+            kunaiController.ResetCoroutines();
         }
     }
 }

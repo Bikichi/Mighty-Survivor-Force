@@ -20,7 +20,7 @@ public class SkillSelectionUIController : MonoBehaviour
                 var skill = selectedSkills[i];
                 int currentLevel = playerSkillManager.GetSkillLevel(skill);
                 choiceSlots[i].gameObject.SetActive(true);
-                choiceSlots[i].Setup(skill, currentLevel, playerSkillManager);
+                choiceSlots[i].Setup(skill, currentLevel);
             }
             else
             {

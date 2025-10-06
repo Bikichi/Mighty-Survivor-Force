@@ -8,29 +8,24 @@ public class SkillChoiceUI : MonoBehaviour
     [SerializeField] private Text descriptionText;
     [SerializeField] private Text levelText;
 
-    private ScriptableObject currentSkill;
-    private PlayerSkillManager playerSkillManager;
+    [SerializeField] private ScriptableObject currentSkill;
+    [SerializeField] private PlayerSkillManager playerSkillManager;
 
     [Header("UI References")]
     [SerializeField] private GameObject skillPanel;
 
-    public void Setup(ScriptableObject skill, int currentLevel, PlayerSkillManager manager)
+    public void Setup(ScriptableObject skill, int currentLevel)
     {
         currentSkill = skill;
-        playerSkillManager = manager;
 
         // Active Skill
         if (skill is ActiveSkillScriptableObject activeSkill)
         {
             icon.sprite = activeSkill.icon;
             skillNameText.text = activeSkill.skillName;
-            if (currentLevel == 0)
+            if (currentLevel < activeSkill.levelDescriptions.Count)
             {
-                descriptionText.text = activeSkill.description;
-            }
-            else
-            {
-                descriptionText.text = activeSkill.upgradeDescription;
+                descriptionText.text = activeSkill.levelDescriptions[currentLevel];
             }
         }
         // Passive Skill

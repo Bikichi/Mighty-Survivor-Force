@@ -20302,7 +20302,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 804174966}
   m_Father: {fileID: 1710}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
@@ -26244,6 +26245,11 @@ Transform:
   - {fileID: 1623602674}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &581143458 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8870190335607717258, guid: 738fed9476ec71f4da8b9f65a4c40c3b, type: 3}
+  m_PrefabInstance: {fileID: 8527923945763372694}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &608740575
 GameObject:
   m_ObjectHideFlags: 0
@@ -26389,6 +26395,11 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!1 &650004410 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8867391466156670187, guid: 738fed9476ec71f4da8b9f65a4c40c3b, type: 3}
+  m_PrefabInstance: {fileID: 8527923945763372694}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &678097210
 GameObject:
   m_ObjectHideFlags: 0
@@ -26615,6 +26626,85 @@ Transform:
   - {fileID: 875}
   m_Father: {fileID: 1463678515}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &804174965
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 804174966}
+  - component: {fileID: 804174968}
+  - component: {fileID: 804174967}
+  m_Layer: 5
+  m_Name: Text (Legacy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &804174966
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804174965}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1716}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -45}
+  m_SizeDelta: {x: 750, y: 150}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &804174967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804174965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 3e3cf389cc3ac024591d3fe5e437726c, type: 3}
+    m_FontSize: 100
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 120
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: SELECT ABILITY
+--- !u!222 &804174968
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804174965}
+  m_CullTransparentMesh: 1
 --- !u!1 &825717920
 GameObject:
   m_ObjectHideFlags: 0
@@ -26990,6 +27080,8 @@ MonoBehaviour:
   skillNameText: {fileID: 1933550706}
   descriptionText: {fileID: 2079098884}
   levelText: {fileID: 1553954621}
+  currentSkill: {fileID: 0}
+  playerSkillManager: {fileID: 2093391604}
   skillPanel: {fileID: 657}
 --- !u!114 &1218371659
 MonoBehaviour:
@@ -27063,6 +27155,8 @@ MonoBehaviour:
   skillNameText: {fileID: 1193329423}
   descriptionText: {fileID: 1486081201}
   levelText: {fileID: 60993785}
+  currentSkill: {fileID: 0}
+  playerSkillManager: {fileID: 2093391604}
   skillPanel: {fileID: 657}
 --- !u!114 &1228071854
 MonoBehaviour:
@@ -27341,7 +27435,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 5dd49b3eacc540408c98eee0de38e0f1, type: 3}
-    m_FontSize: 30
+    m_FontSize: 32
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -27562,7 +27656,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4459301653538735250, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4479120717161001107, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
       propertyPath: attackDamage
@@ -27785,7 +27879,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 5dd49b3eacc540408c98eee0de38e0f1, type: 3}
-    m_FontSize: 30
+    m_FontSize: 32
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -28664,6 +28758,8 @@ MonoBehaviour:
   skillNameText: {fileID: 1247688863}
   descriptionText: {fileID: 1331224691}
   levelText: {fileID: 173144663}
+  currentSkill: {fileID: 0}
+  playerSkillManager: {fileID: 2093391604}
   skillPanel: {fileID: 657}
 --- !u!114 &1843374145
 MonoBehaviour:
@@ -28863,7 +28959,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4459301653538735250, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4479120717161001107, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
       propertyPath: m_Enabled
@@ -29035,6 +29131,11 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1969543905 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5205546141555205957, guid: 738fed9476ec71f4da8b9f65a4c40c3b, type: 3}
+  m_PrefabInstance: {fileID: 8527923945763372694}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1978995587
 GameObject:
   m_ObjectHideFlags: 0
@@ -29178,6 +29279,28 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6488575072704013350, guid: d174eab8bebbb2847abcbcedda5d05c5, type: 3}
   m_PrefabInstance: {fileID: 391625648382783796}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2029492241 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5439459285391982973, guid: d174eab8bebbb2847abcbcedda5d05c5, type: 3}
+  m_PrefabInstance: {fileID: 391625648382783796}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029492239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a882566d0b32edf40bca2ae342281d56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2029492242 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -8999252113006525747, guid: d174eab8bebbb2847abcbcedda5d05c5, type: 3}
+  m_PrefabInstance: {fileID: 391625648382783796}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029492239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba6e482b64651e547a5a934df9e7c286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2059687251
 GameObject:
   m_ObjectHideFlags: 0
@@ -29189,7 +29312,7 @@ GameObject:
   - component: {fileID: 2059687253}
   - component: {fileID: 2059687254}
   m_Layer: 0
-  m_Name: LevelUnitManager
+  m_Name: UnitManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29224,20 +29347,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSkillManager: {fileID: 2093391604}
   skillModules:
-  - skillName: KUNAI
+  - skillName: Kunai
     skillParent: {fileID: 2029492239}
-    modules:
+    modulePrefabs:
     - {fileID: 1659371638}
     - {fileID: 1833417985}
     - {fileID: 1537220750}
     - {fileID: 1850514910}
-  - skillName: SAW BLADE
+  - skillName: SawBlade
     skillParent: {fileID: 1015064342}
-    modules:
+    modulePrefabs:
     - {fileID: 614083716}
     - {fileID: 544969006}
     - {fileID: 852852917}
     - {fileID: 407661735}
+  - skillName: Sword
+    skillParent: {fileID: 1969543905}
+    modulePrefabs:
+    - {fileID: 650004410}
+    - {fileID: 581143458}
+  kunaiController: {fileID: 2029492242}
 --- !u!1 &2074183585
 GameObject:
   m_ObjectHideFlags: 0
@@ -29364,7 +29493,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 5dd49b3eacc540408c98eee0de38e0f1, type: 3}
-    m_FontSize: 30
+    m_FontSize: 32
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -29476,6 +29605,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   learnedSkills: []
+  skillModuleManager: {fileID: 2059687254}
 --- !u!1 &2108657488
 GameObject:
   m_ObjectHideFlags: 0
@@ -29560,6 +29690,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8999252113006525747, guid: d174eab8bebbb2847abcbcedda5d05c5, type: 3}
+      propertyPath: orbit
+      value: 
+      objectReference: {fileID: 2029492241}
+    - target: {fileID: -8999252113006525747, guid: d174eab8bebbb2847abcbcedda5d05c5, type: 3}
       propertyPath: delayBeforeFly
       value: 3
       objectReference: {fileID: 0}
@@ -29584,9 +29718,37 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5439459285391982973, guid: d174eab8bebbb2847abcbcedda5d05c5, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1995104285122942825}
+    - target: {fileID: 5439459285391982973, guid: d174eab8bebbb2847abcbcedda5d05c5, type: 3}
       propertyPath: followOffset.x
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 6483468313269224829, guid: d174eab8bebbb2847abcbcedda5d05c5, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 2029492242}
+    - target: {fileID: 6483468313269224829, guid: d174eab8bebbb2847abcbcedda5d05c5, type: 3}
+      propertyPath: kunaiParent
+      value: 
+      objectReference: {fileID: 1659371638}
+    - target: {fileID: 6483468313269224829, guid: d174eab8bebbb2847abcbcedda5d05c5, type: 3}
+      propertyPath: kunaiGroupPrefab
+      value: 
+      objectReference: {fileID: 1659371638}
+    - target: {fileID: 6483468313269224829, guid: d174eab8bebbb2847abcbcedda5d05c5, type: 3}
+      propertyPath: kunaiPrefabsByLevel.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483468313269224829, guid: d174eab8bebbb2847abcbcedda5d05c5, type: 3}
+      propertyPath: kunaiPrefabsByLevel.Array.data[0]
+      value: 
+      objectReference: {fileID: 6197040458264721027, guid: 3237ec063aa1dd140a5ca174f3a59dad, type: 3}
+    - target: {fileID: 6483468313269224829, guid: d174eab8bebbb2847abcbcedda5d05c5, type: 3}
+      propertyPath: kunaiPrefabsByLevel.Array.data[1]
+      value: 
+      objectReference: {fileID: 6197040458264721027, guid: 3237ec063aa1dd140a5ca174f3a59dad, type: 3}
     - target: {fileID: 6488575072704013350, guid: d174eab8bebbb2847abcbcedda5d05c5, type: 3}
       propertyPath: m_Name
       value: KunaiUnit
@@ -30175,6 +30337,10 @@ PrefabInstance:
     - target: {fileID: 8093795026891466544, guid: 738fed9476ec71f4da8b9f65a4c40c3b, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 8870190335607717258, guid: 738fed9476ec71f4da8b9f65a4c40c3b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

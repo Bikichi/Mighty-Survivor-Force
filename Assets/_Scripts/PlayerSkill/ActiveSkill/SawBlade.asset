@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: SawBlade
   m_EditorClassIdentifier: 
   skillName: SAW BLADE
-  description: Spins around the player continuously, dealing damage to slashed enemies
-  upgradeDescription: Increase damage, increase speed
+  levelDescriptions:
+  - Spins around the player continuously, dealing damage to slashed enemies
+  - Has 2 saw blade in total, increases damage, increases speed
+  - Has 3 saw blade in total, increases damage, increases speed
+  - Has 4 saw blade in total, increases damage, increases speed
   icon: {fileID: 21300000, guid: 3e4b6cf10fde10049b4af015f66c6b20, type: 3}
-  prefab: {fileID: 8583670129394468304, guid: c3f5b7b01587b884c985813199913a5e, type: 3}
+  effectPrefab: {fileID: 0}

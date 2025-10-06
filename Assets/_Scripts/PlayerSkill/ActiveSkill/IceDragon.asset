@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: IceDragon
   m_EditorClassIdentifier: 
   skillName: ICE DRAGON
-  description: Summons an ice dragon, fires a palm strike that deals damage and creates
-    an ice zone that slows the target
-  upgradeDescription: Ice dragons shoot faster, deal more damage, and the ice zone
-    slows more
+  levelDescriptions:
+  - Summons an ice dragon, fires a palm strike that deals damage and creates an ice
+    zone that slows the target
+  - Increased ice bullet damage
+  - Reduced cooldown
+  - Ice zone increases slowing ability
   icon: {fileID: 21300000, guid: cdb0e5712d9077f48a7dfd3cde9feaeb, type: 3}
-  prefab: {fileID: 7620992973366906723, guid: 16e1f68f60bfff04198a778e17db042a, type: 3}
+  effectPrefab: {fileID: 0}

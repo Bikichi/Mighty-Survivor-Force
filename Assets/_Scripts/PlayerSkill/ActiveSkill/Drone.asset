@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Drone
   m_EditorClassIdentifier: 
   skillName: DRONE
-  description: Fires multiple rockets at once, chasing the lowest health target within
-    range and dealing damage on hit
-  upgradeDescription: Add 1 rockets per shot, increase damage of each rockets and
-    reduce shoot cooldown and reduce shoot cooldown
+  levelDescriptions:
+  - Fires multiple rockets at once, chasing the lowest health target within range
+    and dealing damage on hit
+  - Adds 1 rocket per salvo, increases flight speed
+  - Increases 1 rocket per burst, reduces cooldown
+  - Adds 1 rocket per burst, increasing damage
   icon: {fileID: 21300000, guid: 096bae6f176ec0d43a59d637122f00d2, type: 3}
-  prefab: {fileID: 8131685451170184054, guid: dd7dd5cefbdedf542b97c4e35a9fa44d, type: 3}
+  effectPrefab: {fileID: 0}

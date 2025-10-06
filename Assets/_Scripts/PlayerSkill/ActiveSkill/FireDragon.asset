@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: FireDragon
   m_EditorClassIdentifier: 
   skillName: FIRE DRAGON
-  description: Summons a fire dragon, which shoots a palm strike that deals damage
-    and creates a burning zone that burns enemies
-  upgradeDescription: "\rFire dragons shoot faster and deal more damage"
+  levelDescriptions:
+  - Summons a fire dragon, which shoots a palm strike that deals damage and creates
+    a burning zone that burns enemies
+  - Increased fire bullet damage
+  - Reduced cooldown
+  - Increases damage dealt by fire zones
   icon: {fileID: 21300000, guid: acde80c88ee5d5e4b9406dd0fe948c1b, type: 3}
-  prefab: {fileID: 4128707290329179435, guid: 040cd06b4756ccc439ce241078069e06, type: 3}
+  effectPrefab: {fileID: 0}
