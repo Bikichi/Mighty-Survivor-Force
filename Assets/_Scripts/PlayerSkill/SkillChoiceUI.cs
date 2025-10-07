@@ -12,7 +12,7 @@ public class SkillChoiceUI : MonoBehaviour
     [SerializeField] private PlayerSkillManager playerSkillManager;
 
     [Header("UI References")]
-    [SerializeField] private GameObject skillPanel;
+    [SerializeField] private UIManager uiManager;
 
     public void Setup(ScriptableObject skill, int currentLevel)
     {
@@ -46,6 +46,8 @@ public class SkillChoiceUI : MonoBehaviour
 
         playerSkillManager.LearnSkill(currentSkill);
 
-        skillPanel.SetActive(false);
+        FindObjectOfType<LearnedSkillsUIController>().ShowLearnedSkills();
+
+        uiManager.HideSkillPanel();
     }
 }

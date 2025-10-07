@@ -6,12 +6,12 @@ public class WeaponOrbit : MonoBehaviour
     public float orbitSpeed = 50f;
     [SerializeField] private Vector3 followOffset = new Vector3(0f, 0f, 0f);
 
-    private void Awake()
+    public virtual void Awake()
     {
         player = GameObject.FindWithTag("Player").transform;
     }
 
-    void Update()
+    public virtual void Update()
     {
         Orbit();
         FollowPlayer();
@@ -25,7 +25,7 @@ public class WeaponOrbit : MonoBehaviour
         }
     }
 
-    public void FollowPlayer() 
+    public void FollowPlayer()
     {
         transform.position = player.position + followOffset;
     }

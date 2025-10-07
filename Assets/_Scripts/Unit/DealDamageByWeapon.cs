@@ -4,8 +4,32 @@ using UnityEngine;
 
 public class DealDamageByWeapon : MonoBehaviour
 {
-    public float weaponDamage;
     public GameObject _hitEffect;
+
+    [SerializeField] private float damageMultiplier = 1f;
+    [SerializeField] private float weaponDamage;
+
+
+    private void Start()
+    {
+        CalculateWeaponDamage();
+    }
+
+    private void OnEnable()
+    {
+        PlayerStats.Instance.onDamageChanged += CalculateWeaponDamage;
+    }
+
+    private void OnDisable()
+    {
+        if (PlayerStats.Instance != null)
+            PlayerStats.Instance.onDamageChanged -= CalculateWeaponDamage;
+    }
+
+    private void CalculateWeaponDamage()
+    {
+        weaponDamage = PlayerStats.Instance.baseDamage * damageMultiplier;
+    }
 
     private void OnTriggerEnter(Collider col)
     {

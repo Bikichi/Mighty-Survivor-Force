@@ -103,7 +103,6 @@ MonoBehaviour:
   followSpeed: 5
   baseOffset: {x: 1.7, y: 2, z: -1}
   rotationSpeed: 5
-  attackRange: 20
   targetEnemy: {fileID: 0}
   rotationReturnSpeed: 10
   penetrationDistance: 10
@@ -262,5 +261,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d36bc3761544b1249b049a6d611e4c2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDamage: 100
   _hitEffect: {fileID: 4924508274929071776, guid: 0edef91621bb6b34384ccc9dbb98729c, type: 3}
+  damageMultiplier: 1
+  weaponDamage: 0

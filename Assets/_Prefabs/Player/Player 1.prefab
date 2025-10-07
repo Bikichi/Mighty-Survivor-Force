@@ -29313,6 +29313,7 @@ GameObject:
   - component: {fileID: 8566266333151895242}
   - component: {fileID: 1621644532631740727}
   - component: {fileID: 3605864590289325176}
+  - component: {fileID: 8004867346031454233}
   m_Layer: 6
   m_Name: AttackRange
   m_TagString: Untagged
@@ -29399,6 +29400,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8004867346031454233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4966225023713056325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5bb51eb139209e459bdb1a4b3c148f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spinSpeed: 10
 --- !u!1 &4994476109598794776
 GameObject:
   m_ObjectHideFlags: 0
@@ -32637,7 +32651,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefabs: {fileID: 4236135470487450587, guid: a9f0253b1fadf644ebfbb010eff151c6, type: 3}
   shootPoint: {fileID: 7597617385069599832}
-  shootingRange: 20
   shootCooldown: 1.5
   anim: {fileID: 2957530214666580576}
   lastShootTime: 0
@@ -32676,6 +32689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   learnedSkills: []
+  skillModuleManager: {fileID: 0}
 --- !u!1 &6204548771435921291
 GameObject:
   m_ObjectHideFlags: 0

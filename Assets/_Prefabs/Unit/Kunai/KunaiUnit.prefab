@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7872643749304890186
 Transform:
   m_ObjectHideFlags: 0
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba6e482b64651e547a5a934df9e7c286, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbit: {fileID: 0}
+  orbit: {fileID: 5439459285391982973}
   delayBeforeFly: 3
   canFly: 0
 --- !u!114 &5439459285391982973
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   orbitSpeed: 300
-  followOffset: {x: 0, y: 0, z: 0}
+  followOffset: {x: 0.1, y: 0, z: 0}
 --- !u!1001 &339928149359311733
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -77,7 +77,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7879646382451975868, guid: 82d5e703484db164e8387ed748cebc40, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.125
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7879646382451975868, guid: 82d5e703484db164e8387ed748cebc40, type: 3}
       propertyPath: m_LocalPosition.y
@@ -121,7 +121,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7919553959221093183, guid: 82d5e703484db164e8387ed748cebc40, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -141,9 +141,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7872643749304890186}
     m_Modifications:
+    - target: {fileID: -2073533859628525493, guid: 4aaa5a0b1a9edc14fb8d81b37a9474bf, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: -8999252113006525747}
+    - target: {fileID: -2073533859628525493, guid: 4aaa5a0b1a9edc14fb8d81b37a9474bf, type: 3}
+      propertyPath: kunaiGroupPrefab
+      value: 
+      objectReference: {fileID: 126816733237000876}
     - target: {fileID: 2082054853978015569, guid: 4aaa5a0b1a9edc14fb8d81b37a9474bf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.125
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2082054853978015569, guid: 4aaa5a0b1a9edc14fb8d81b37a9474bf, type: 3}
       propertyPath: m_LocalPosition.y
@@ -194,6 +202,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4aaa5a0b1a9edc14fb8d81b37a9474bf, type: 3}
+--- !u!1 &126816733237000876 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4252014603944044442, guid: 4aaa5a0b1a9edc14fb8d81b37a9474bf, type: 3}
+  m_PrefabInstance: {fileID: 4233590240607018294}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2748403308821338727 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2082054853978015569, guid: 4aaa5a0b1a9edc14fb8d81b37a9474bf, type: 3}
@@ -209,7 +222,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 567305454542596120, guid: 69e0a217509fa5e4a820893bb5b81bc2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.125
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 567305454542596120, guid: 69e0a217509fa5e4a820893bb5b81bc2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -253,7 +266,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6450119410323132843, guid: 69e0a217509fa5e4a820893bb5b81bc2, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7036968792846803103, guid: 69e0a217509fa5e4a820893bb5b81bc2, type: 3}
       propertyPath: m_LocalScale.x
@@ -279,7 +292,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1003929706309883287, guid: 66d0aa3ea59c1814486aa127fe53467b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.125
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1003929706309883287, guid: 66d0aa3ea59c1814486aa127fe53467b, type: 3}
       propertyPath: m_LocalPosition.y

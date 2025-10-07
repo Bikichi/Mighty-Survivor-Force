@@ -24173,7 +24173,7 @@ GameObject:
   - component: {fileID: 7440267683990433441}
   - component: {fileID: 8579558316467273930}
   m_Layer: 0
-  m_Name: IceUnitBalls
+  m_Name: IceUnitBalls_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29018,11 +29018,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speedBullet: 10
-  damageBullet: 100
+  damageBullet: 0
   _hitEffect: {fileID: 5112403345868107898, guid: a45e2711bf07da84e8851a932fb61a3f, type: 3}
   _targetEnemy: {fileID: 0}
   iceFieldPrefab: {fileID: 9110354499124891501, guid: 3d0233466639f464684c4c3cb5bebc3d, type: 3}
-  iceFieldDuration: 3
+  damageMultiplier: 1.5
+  rotationSpeed: 6
 --- !u!136 &8579558316467273930
 CapsuleCollider:
   m_ObjectHideFlags: 0

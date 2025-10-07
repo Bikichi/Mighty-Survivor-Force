@@ -6,7 +6,9 @@ public class FireBalls : PlayerBullet
 {
     [Header("Fire Field Settings")]
     [SerializeField] private GameObject fireFieldPrefab;
-    [SerializeField] private float damageMultiplier = 1.5f;
+    [SerializeField] private float damageMultiplier;
+
+    [SerializeField] private float rotationSpeed = 6f;
 
     protected override void Start()
     {
@@ -28,9 +30,13 @@ public class FireBalls : PlayerBullet
             return;
         }
 
-        Vector3 targetPosition = _targetEnemy.position
-                               + new Vector3(0, _targetEnemy.GetComponent<Collider>().bounds.size.y, 0);
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, _speedBullet * Time.deltaTime);
+        Vector3 enemyCenter = _targetEnemy.position + new Vector3(0, _targetEnemy.GetComponent<Collider>().bounds.size.y, 0);
+        Vector3 direction = (enemyCenter - transform.position).normalized;
+
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+        transform.Translate(Vector3.forward * _speedBullet * Time.deltaTime);
     }
     protected override void ApplyDamage(EnemyHealth enemyHealth, Collider col)
     {

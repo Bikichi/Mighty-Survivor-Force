@@ -25,7 +25,7 @@ public class SwordController : UnitFollowerBase
     protected override void Start()
     {
         base.Start();
-        lastAttackTime = -attackCooldown / 2;
+        lastAttackTime = Time.time - (attackCooldown / 2f);
     }
     protected override void Update()
     {

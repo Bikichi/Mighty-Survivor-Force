@@ -2,7 +2,8 @@
 
 public class DroneBullet : PlayerBullet
 {
-    [SerializeField] private float damageMultiplier = 0.5f;
+    [SerializeField] private float damageMultiplier;
+    [SerializeField] private float rotationSpeed;
 
     protected override void Start()
     {
@@ -36,10 +37,9 @@ public class DroneBullet : PlayerBullet
         Vector3 enemyCenter = _targetEnemy.position + new Vector3(0, _targetEnemy.GetComponent<Collider>().bounds.size.y, 0);
         Vector3 direction = (enemyCenter - transform.position).normalized;
 
-        transform.Translate(direction * _speedBullet * Time.deltaTime, Space.World);
-        if (direction != Vector3.zero)
-        {
-            transform.forward = direction;
-        }
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+        transform.Translate(Vector3.forward * _speedBullet * Time.deltaTime);
     }
 }

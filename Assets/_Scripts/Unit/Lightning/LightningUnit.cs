@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public class LightningUnit : MonoBehaviour
 {
+    public float damageMultiplier;         //hệ số nhân damage dựa trên PlayerStats
     public float damagePerHit;            //damage mỗi lần đánh
     public float attackInterval;           //thời gian giữa các lần đánh
     public int targetCount;                 //số lượng enemy tối đa bị đánh
@@ -11,45 +12,70 @@ public class LightningUnit : MonoBehaviour
 
     public float nextAttackTime;
 
+
+    private void OnEnable()
+    {
+        CalculateDamage(); //gán lần đầu khi bật
+        PlayerStats.Instance.onDamageChanged += CalculateDamage;
+        nextAttackTime = Time.time + attackInterval / 2f;
+    }
+
+    private void OnDisable()
+    {
+        if (PlayerStats.Instance != null)
+            PlayerStats.Instance.onDamageChanged -= CalculateDamage;
+    }
+
     void Update()
     {
         if (Time.time >= nextAttackTime)
         {
-            AttackEnemies();
-            nextAttackTime = Time.time + attackInterval;
+            EnemyMovement[] closestEnemiesArray = CheckDistance.Instance.GetClosestEnemiesByCount(targetCount);
+
+            if (closestEnemiesArray != null && closestEnemiesArray.Length > 0)
+            {
+                AttackEnemies(closestEnemiesArray);
+                nextAttackTime = Time.time + attackInterval;
+            }
         }
     }
 
-    void AttackEnemies()
+    private void CalculateDamage()
     {
-        EnemyMovement[] closestEnemiesArray = CheckDistance.Instance.GetClosestEnemiesByCount(targetCount);
-        foreach (EnemyMovement enemy in closestEnemiesArray)
-        {
-            EnemyHealth health = enemy.GetComponent<EnemyHealth>();
+        damagePerHit = PlayerStats.Instance.baseDamage * damageMultiplier;
+    }
 
-            //var result = CritManager.Instance.CalculateCritDamage(damagePerHit);
-            //health.TakeDamage(result.damage);
+    void AttackEnemies(EnemyMovement[] enemies)
+    {
+        if (enemies == null || enemies.Length == 0) return;
+
+        foreach (EnemyMovement enemy in enemies)
+        {
+            if (enemy == null) continue;
+
+            EnemyHealth health = enemy.GetComponent<EnemyHealth>();
+            if (health == null) continue;
+
             health.TakeDamage(damagePerHit);
 
             Collider col = enemy.GetComponent<Collider>();
-            DamageUIManager.Instance.ShowDamageUI(damagePerHit, col);
+            if (col != null)
+            {
+                DamageUIManager.Instance.ShowDamageUI(damagePerHit, col);
 
-            float height = col.bounds.size.y;
+                float height = col.bounds.size.y;
 
-            Vector3 lightningPos = enemy.transform.position + Vector3.up * height;  //sinh hiệu ứng ở trên đầu enemy
-            Quaternion lightningRotation = Quaternion.Euler(-90f, 0f, 0f);
-            GameObject lightning = Instantiate(lightningEffectPrefab, lightningPos, lightningRotation);
-            lightning.transform.SetParent(enemy.transform);
-            
-            Destroy(lightning, 0.5f);
+                // Hiệu ứng tia sét
+                Vector3 lightningPos = enemy.transform.position + Vector3.up * height;
+                Quaternion lightningRotation = Quaternion.Euler(-90f, 0f, 0f);
+                GameObject lightning = Instantiate(lightningEffectPrefab, lightningPos, lightningRotation, enemy.transform);
+                Destroy(lightning, 0.5f);
 
-            
-            //hiệu ứng hit tại enemy
-            Vector3 hitEffectPos = enemy.transform.position + Vector3.up * height * 0.5f;
-            GameObject hitEffect = Instantiate(hitEffectPrefab, hitEffectPos, Quaternion.identity);
-            hitEffect.transform.SetParent(enemy.transform);
-            
-            Destroy(hitEffect, 0.3f);
+                // Hiệu ứng hit
+                Vector3 hitEffectPos = enemy.transform.position + Vector3.up * height * 0.5f;
+                GameObject hitEffect = Instantiate(hitEffectPrefab, hitEffectPos, Quaternion.identity, enemy.transform);
+                Destroy(hitEffect, 0.3f);
+            }
         }
     }
 

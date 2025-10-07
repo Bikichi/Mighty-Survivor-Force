@@ -101,7 +101,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4667086105805809
 Transform:
   m_ObjectHideFlags: 0
@@ -182,7 +182,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -284,6 +284,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4474682511978824}
   - component: {fileID: 54106278098686898}
+  - component: {fileID: 225578751503970694}
+  - component: {fileID: 8387710101942277377}
   m_Layer: 7
   m_Name: DroneT1
   m_TagString: Untagged
@@ -308,6 +310,7 @@ Transform:
   - {fileID: 4889797555730395}
   - {fileID: 4722956472506779}
   - {fileID: 4667086105805809}
+  - {fileID: 6154248894380527346}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
 --- !u!54 &54106278098686898
@@ -337,3 +340,71 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &225578751503970694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914479662186194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a971c7565c26c8b4abb67c89d0e07830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefabs: {fileID: 7562257160766836568, guid: c826e71f4a335f645ba00ca525cf32d1, type: 3}
+  shootPoint: {fileID: 6154248894380527346}
+  shootCooldown: 2
+  anim: {fileID: 0}
+  lastShootTime: 0
+  multiShootDelay: 0.2
+  bulletCount: 3
+  targetEnemy: {fileID: 0}
+--- !u!114 &8387710101942277377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914479662186194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf6c2d88e6bb1c2418d6668827e2cfe9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  followSpeed: 5
+  baseOffset: {x: 3.2, y: 3.4, z: 0}
+  rotationSpeed: 2.5
+  targetEnemy: {fileID: 0}
+--- !u!1 &6468850809157007926
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6154248894380527346}
+  m_Layer: 7
+  m_Name: ShooterPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6154248894380527346
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6468850809157007926}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.76, z: 1.38}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4474682511978824}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -3,13 +3,14 @@
 public class FireFielDealDamage : FieldDealDamageBase
 {
     [SerializeField] private float damageIncreasePerTick;
+    [SerializeField] private float damageMultiplier;
     [SerializeField] private float burnDuration = 4.5f; //thời gian burn mỗi lần enemy dính lửa
     [SerializeField] private GameObject burningVFXPrefab;
 
     protected override void OnEnable()
     {
         //cập nhật damage trước khi chạy Coroutine và Destroy
-        fieldDamage = PlayerStats.Instance.baseDamage;
+        fieldDamage = damageMultiplier * PlayerStats.Instance.baseDamage;
         damageIncreasePerTick = 0.5f * fieldDamage;
         base.OnEnable();
     }

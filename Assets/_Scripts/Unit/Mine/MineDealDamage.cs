@@ -5,21 +5,39 @@ using UnityEngine;
 public class MineDealDamage : MonoBehaviour
 {
     [SerializeField] private float mineDamage;
+    [SerializeField] private float damageMultiplier;
     [SerializeField] private float explosionRadius;
     [SerializeField] private GameObject explosionEffect;
+
+
+    private void OnEnable()
+    {
+        CalculateDamage();
+        PlayerStats.Instance.onDamageChanged += CalculateDamage;
+    }
+
+    private void OnDisable()
+    {
+        PlayerStats.Instance.onDamageChanged -= CalculateDamage;
+    }
+
+    private void CalculateDamage()
+    {
+        mineDamage = PlayerStats.Instance.baseDamage * damageMultiplier;
+    }
 
     private void OnTriggerEnter(Collider col)
     {
         if (col.CompareTag(Const.ENEMY_TAG))
-        {       
+        {
             if (explosionEffect != null)
             {
                 GameObject explosion = Instantiate(explosionEffect, transform.position, Quaternion.identity);
                 Destroy(explosion, 1f);
             }
-            
+
             Destroy(gameObject);
-            
+
             BlowObjects();
         }
     }

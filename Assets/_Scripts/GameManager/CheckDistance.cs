@@ -67,32 +67,20 @@ public class CheckDistance : Singleton<CheckDistance>
     {
         if (playerTransform == null) return new EnemyMovement[0];
 
-        EnemyMovement[] allEnemies = GameObject.FindObjectsOfType<EnemyMovement>();
-        if (allEnemies.Length == 0) return new EnemyMovement[0];
+        var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        if (enemies.Length == 0) return new EnemyMovement[0];
 
-        //lọc quái còn sống
-        List<EnemyMovement> aliveEnemies = new List<EnemyMovement>();
-        foreach (EnemyMovement enemy in allEnemies)
-        {
-            EnemyHealth health = enemy.GetComponent<EnemyHealth>();
-            if (health != null && !health.IsDead)
-            {
-                aliveEnemies.Add(enemy);
-            }
-        }
+        // Lọc quái còn sống và trong tầm đánh
+        var closestEnemies = enemies
+            .Select(e => e.GetComponent<EnemyMovement>())
+            .Where(e => e != null
+                     && !e.GetComponent<EnemyHealth>().IsDead
+                     && Vector3.Distance(playerTransform.position, e.transform.position) <= PlayerStats.Instance.baseAttackRange)
+            .OrderBy(e => Vector3.Distance(playerTransform.position, e.transform.position))
+            .Take(count)
+            .ToArray();
 
-        if (aliveEnemies.Count == 0) return new EnemyMovement[0];
-
-        //sắp xếp theo khoảng cách đến player
-        aliveEnemies.Sort((a, b) =>
-        {
-            float distA = (a.transform.position - playerTransform.position).sqrMagnitude;
-            float distB = (b.transform.position - playerTransform.position).sqrMagnitude;
-            return distA.CompareTo(distB); //phẩn tử có khoảng cách gần sẽ đẩy lên đầu list
-        });
-
-        //lấy số lượng yêu cầu
-        int takeCount = Mathf.Min(count, aliveEnemies.Count); //trả về số nhỏ nhất giữa 2 số
-        return aliveEnemies.GetRange(0, takeCount).ToArray();
+        return closestEnemies;
     }
+
 }

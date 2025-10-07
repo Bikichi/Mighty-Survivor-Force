@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4873614846392885
 Transform:
   m_ObjectHideFlags: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1017465437641504}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -2.65, z: 0}
   m_LocalScale: {x: 1.02, y: 0.049999997, z: 1.02}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -101,7 +101,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -180,6 +180,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4076069953489036}
+  - component: {fileID: 6384407624986428076}
+  - component: {fileID: 4631356248064291449}
   m_Layer: 7
   m_Name: SkillIce_lv1(ice)
   m_TagString: Untagged
@@ -203,9 +205,44 @@ Transform:
   - {fileID: 4451585081907095}
   - {fileID: 4721003006242402}
   - {fileID: 4249603749967058}
+  - {fileID: 722153619101026912}
   - {fileID: 4873614846392885}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &6384407624986428076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554728611460066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 591306d507168534e9dc8a9ef4c50fe9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  followSpeed: 5
+  baseOffset: {x: -3, y: 5.65, z: 0}
+  rotationSpeed: 2.5
+  targetEnemy: {fileID: 0}
+--- !u!114 &4631356248064291449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554728611460066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fdc16c52073f3545acbf61f03e8a7b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefabs: {fileID: 3806039598199004532, guid: 8550a2b805bb50748b5842cee7bc5852, type: 3}
+  shootPoint: {fileID: 722153619101026912}
+  shootCooldown: 2
+  anim: {fileID: 95586313563409484}
+  lastShootTime: 0
 --- !u!1 &1629421655401762
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,3 +629,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4014639886202366}
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: 0}
+--- !u!1 &3270056898218491278
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 722153619101026912}
+  m_Layer: 7
+  m_Name: ShootPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &722153619101026912
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3270056898218491278}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: -0.91}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4076069953489036}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
