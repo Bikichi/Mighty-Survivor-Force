@@ -38,13 +38,7 @@ public class DealDamageByWeapon : MonoBehaviour
             EnemyHealth enemyHealth = col.GetComponent<EnemyHealth>();
             if (enemyHealth != null)
             {
-                var result = CritManager.Instance.CalculateCritDamage(weaponDamage);
-                enemyHealth.TakeDamage(result.damage);
-
-                //if (result.isCrit)
-                //{
-                //    Debug.Log($"CRIT HIT by {gameObject.name}! DamageCRIT: {result.damage}");
-                //}
+                DamageUIManager.Instance.ShowDamageUI(weaponDamage, col);
 
                 Vector3 hitPosition = col.ClosestPoint(transform.position);
                 Vector3 impactDirection = (col.transform.position - transform.position).normalized;

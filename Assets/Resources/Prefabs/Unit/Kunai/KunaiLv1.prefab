@@ -46,12 +46,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kunaiGroupPrefab: {fileID: 4252014603944044442}
-  prefabPath: 
   respawnDelay: 2
   totalKunai: 0
   destroyedKunai: 0
   currentLevel: 1
   controller: {fileID: 0}
+  skillModuleManager: {fileID: 0}
+  skillModuleIndex: 0
+  trailRenderers: []
 --- !u!1001 &2336316822199651325
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60,6 +62,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2082054853978015569}
     m_Modifications:
+    - target: {fileID: -8322344339185210385, guid: 3237ec063aa1dd140a5ca174f3a59dad, type: 3}
+      propertyPath: flySpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: -2455474278858675788, guid: 3237ec063aa1dd140a5ca174f3a59dad, type: 3}
+      propertyPath: damageMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5910575260390850900, guid: 3237ec063aa1dd140a5ca174f3a59dad, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.05

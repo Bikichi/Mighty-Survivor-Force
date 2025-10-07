@@ -5,7 +5,6 @@ public class KunaiController : MonoBehaviour
 {
     [SerializeField] private WeaponOrbit orbit;
     [SerializeField] private float delayBeforeFly;
-
     public bool canFly = false;
 
     private void Awake()
@@ -22,25 +21,19 @@ public class KunaiController : MonoBehaviour
     private IEnumerator HandleKunaiState()
     {
         yield return new WaitForSeconds(delayBeforeFly);
-
-        if (orbit != null)
-            orbit.enabled = false;
-
+        orbit.canOrbit = false;
         canFly = true;
     }
+
     public void ResetState()
     {
-        // reset trạng thái
+        orbit.canOrbit = true;
         canFly = false;
-        if (orbit != null)
-            orbit.enabled = true;
     }
 
     public void ResetCoroutines()
     {
-        // chạy lại coroutine
         StopAllCoroutines();
         StartCoroutine(HandleKunaiState());
     }
-
 }

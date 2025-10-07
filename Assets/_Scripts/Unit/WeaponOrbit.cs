@@ -3,30 +3,62 @@
 public class WeaponOrbit : MonoBehaviour
 {
     public Transform player;
-    public float orbitSpeed = 50f;
-    [SerializeField] private Vector3 followOffset = new Vector3(0f, 0f, 0f);
 
-    public virtual void Awake()
+    [Header("Cài đặt cơ bản")]
+    [SerializeField] private string relatedSkillName; // ví dụ: "Kunai" hoặc "Sawblade"
+    [SerializeField] private float baseOrbitSpeed = 300f;
+    [SerializeField] private float speedIncreasePercent = 10f;
+    [SerializeField] private Vector3 followOffset = Vector3.zero;
+
+    [Header("Runtime")]
+    [SerializeField] private PlayerSkillManager skillManager;
+
+    public bool canOrbit = true; //biến kiểm soát quay
+    [SerializeField] private float orbitSpeed;
+
+    private void Awake()
     {
-        player = GameObject.FindWithTag("Player").transform;
+        player = GameObject.FindWithTag("Player")?.transform;
+        orbitSpeed = baseOrbitSpeed;
     }
 
-    public virtual void Update()
+    private void Start()
     {
-        Orbit();
+        if (skillManager != null)
+            skillManager.OnSkillLevelUp += UpdateOrbitSpeed;
+    }
+
+    private void OnDisable()
+    {
+        if (skillManager != null)
+            skillManager.OnSkillLevelUp -= UpdateOrbitSpeed;
+    }
+
+    private void UpdateOrbitSpeed(ScriptableObject skill, int skillLevel)
+    {
+        if (skill.name != relatedSkillName) return;
+
+        float multiplier = 1 + (speedIncreasePercent / 100f);
+        orbitSpeed = baseOrbitSpeed * Mathf.Pow(multiplier, skillLevel - 1);
+    }
+
+    private void Update()
+    {
         FollowPlayer();
+
+        if (canOrbit)
+            Orbit();
     }
 
-    public void Orbit()
+    private void Orbit()
     {
         if (player != null)
-        {
             transform.RotateAround(player.position, Vector3.up, orbitSpeed * Time.deltaTime);
-        }
     }
 
-    public void FollowPlayer()
+    private void FollowPlayer()
     {
-        transform.position = player.position + followOffset;
+        if (player != null)
+            transform.position = player.position + followOffset;
     }
 }

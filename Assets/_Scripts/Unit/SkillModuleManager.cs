@@ -31,6 +31,7 @@ public class SkillModuleManager : MonoBehaviour
 
         if (skillModule.skillName.ToLower().Contains("kunai"))
         {
+            kunaiController.ResetState();
             kunaiController.ResetCoroutines();
         }
     }

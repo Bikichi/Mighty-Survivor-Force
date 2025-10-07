@@ -13,12 +13,10 @@ MonoBehaviour:
   m_Name: Kunai
   m_EditorClassIdentifier: 
   skillName: KUNAI
-  description: Spins around the player and then dashes forward, dealing damage to
-    enemies hit
   levelDescriptions:
   - Spins around the player and then dashes forward, dealing damage to enemies hit
-  - Has 2 kunais in total, increases damage, increases speed
-  - Has 3 kunais in total, increases damage, increases speed
-  - Has 4 kunais in total, increases damage, increases speed
+  - Has 2 kunais in total, increases 10% damage and speed
+  - Has 3 kunais in total, increases 10% damage and speed
+  - Has 4 kunais in total, increases 10% damage and speed
   icon: {fileID: 21300000, guid: e502434eb6fcb0444bb1551260d1f403, type: 3}
   effectPrefab: {fileID: 0}

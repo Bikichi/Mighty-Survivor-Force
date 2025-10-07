@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class KunaiFlyForward : MonoBehaviour
 {
@@ -25,10 +26,8 @@ public class KunaiFlyForward : MonoBehaviour
     {
         if (other.CompareTag(Const.BACKWALL_TAG))
         {
-            if (respawnKunai != null)
-            {
-                respawnKunai.NotifyKunaiDestroyed();
-            }
+            respawnKunai.NotifyKunaiDestroyed();
+            Debug.Log("2 - Cần thêm ObjectPooling ở đây để tránh lỗi null tham chiếu trail khi destroy kunai!");
             Destroy(gameObject);
         }
     }

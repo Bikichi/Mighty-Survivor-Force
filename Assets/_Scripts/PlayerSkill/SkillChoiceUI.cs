@@ -42,8 +42,6 @@ public class SkillChoiceUI : MonoBehaviour
 
     public void OnClick()
     {
-        Debug.Log("Chọn skill: " + currentSkill.name);
-
         playerSkillManager.LearnSkill(currentSkill);
 
         FindObjectOfType<LearnedSkillsUIController>().ShowLearnedSkills();
