@@ -14524,6 +14524,7 @@ MonoBehaviour:
   _targetEnemy: {fileID: 0}
   fireFieldPrefab: {fileID: 6237104461744010999, guid: 48234c839893020488d7f96eb1468ed5, type: 3}
   damageMultiplier: 2
+  rotationSpeed: 6
 --- !u!136 &7630983380313923206
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -14543,8 +14544,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 5.9211698
-  m_Height: 11.8423395
+  m_Radius: 2
+  m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6588955020545202978

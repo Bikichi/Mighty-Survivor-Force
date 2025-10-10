@@ -61,7 +61,7 @@ public class RotatePlayer : MonoBehaviour
         rotateTimer += Time.deltaTime;
         bool isReadyToRotate = rotateTimer >= rotateInterval;
         var targetEnemy = CheckDistance.Instance.FindClosestEnemy();
-        bool canSeeEnemy = CheckDistance.Instance.CalculateDistanceToEnemy(transform, targetEnemy) <= PlayerStats.Instance.baseAttackRange;
+        bool canSeeEnemy = CheckDistance.Instance.CalculateDistanceToPlayer(transform, targetEnemy) <= PlayerStats.Instance.baseAttackRange;
         if (targetEnemy != null && canSeeEnemy)
         {
             if (isReadyToRotate)

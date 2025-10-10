@@ -40,7 +40,7 @@ public class IceBalls : PlayerBullet
     protected override void ApplyDamage(EnemyHealth enemyHealth, Collider col)
     {
         enemyHealth.TakeDamage(damageBullet);
-        //DamageUIManager.Instance.ShowDamageUI(damageBullet, col, false);
+        DamageUIManager.Instance.ShowDamageUI(damageBullet, col, false);
     }
 
     protected override void OnTriggerEnter(Collider col)

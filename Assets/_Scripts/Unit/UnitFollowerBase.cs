@@ -43,7 +43,7 @@ public class UnitFollowerBase : MonoBehaviour
 
     protected virtual void UpdateDistanceToEnemy()
     {
-        distanceToEnemy = CheckDistance.Instance.CalculateDistanceToEnemy(transform, targetEnemy);
+        distanceToEnemy = CheckDistance.Instance.CalculateDistanceToPlayer(transform, targetEnemy);
     }
 
     protected virtual void UpdateOffset()

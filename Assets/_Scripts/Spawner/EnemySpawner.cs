@@ -33,6 +33,8 @@ public class EnemySpawner : MonoBehaviour
     public float waveInterval; //Khoảng thời gian giũa các wave
     public float totalEnemiesKilled;
 
+    public float spawnDistance;
+
     public int enemiesAlive;
     public int maxEnemiesAllowed;
     public bool maxEnemiesReached = false;
@@ -110,7 +112,7 @@ public class EnemySpawner : MonoBehaviour
         {
             if (enemyGroup.spawnCount < enemyGroup.enemyCount)
             {
-                var spawnPos = SpawnPointManager.Instance.GetRandomSpawnPosition(unusedSpawnPoints);
+                var spawnPos = SpawnPointManager.Instance.GetSpawnPositionFarFromPlayer(unusedSpawnPoints, spawnDistance, spawnPositions);
                 Instantiate(enemyGroup.enemyPrefab, spawnPos, Quaternion.identity);
                 enemiesAlive++;
                 enemyGroup.spawnCount++;

@@ -65,13 +65,13 @@ public class LightningUnit : MonoBehaviour
 
                 float height = col.bounds.size.y;
 
-                // Hiệu ứng tia sét
+                //hiệu ứng tia sét
                 Vector3 lightningPos = enemy.transform.position + Vector3.up * height;
                 Quaternion lightningRotation = Quaternion.Euler(-90f, 0f, 0f);
                 GameObject lightning = Instantiate(lightningEffectPrefab, lightningPos, lightningRotation, enemy.transform);
                 Destroy(lightning, 0.5f);
 
-                // Hiệu ứng hit
+                //hiệu ứng hit
                 Vector3 hitEffectPos = enemy.transform.position + Vector3.up * height * 0.5f;
                 GameObject hitEffect = Instantiate(hitEffectPrefab, hitEffectPos, Quaternion.identity, enemy.transform);
                 Destroy(hitEffect, 0.3f);

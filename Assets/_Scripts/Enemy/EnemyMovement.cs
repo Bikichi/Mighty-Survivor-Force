@@ -42,7 +42,7 @@ public class EnemyMovement : MonoBehaviour
         Vector3 direction = (targetPlayer.transform.position - transform.position).normalized;
         direction.y = 0; //giữ nguyên chiều dọc để chỉ di chuyển theo chiều ngang
 
-        float distance = CheckDistance.Instance.CalculateDistanceToEnemy(targetPlayer.transform, transform);
+        float distance = CheckDistance.Instance.CalculateDistanceToPlayer(targetPlayer.transform, transform);
 
         if (distance <= stoppingDistance || enemyAttack.isAttacking)
         {

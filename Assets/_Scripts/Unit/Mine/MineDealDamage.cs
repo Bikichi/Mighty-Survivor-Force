@@ -26,12 +26,17 @@ public class MineDealDamage : MonoBehaviour
         mineDamage = PlayerStats.Instance.baseDamage * damageMultiplier;
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        
+    }
     private void OnTriggerEnter(Collider col)
     {
         if (col.CompareTag(Const.ENEMY_TAG))
         {
             if (explosionEffect != null)
             {
+                DamageUIManager.Instance.ShowDamageUI(mineDamage, col);
                 GameObject explosion = Instantiate(explosionEffect, transform.position, Quaternion.identity);
                 Destroy(explosion, 1f);
             }

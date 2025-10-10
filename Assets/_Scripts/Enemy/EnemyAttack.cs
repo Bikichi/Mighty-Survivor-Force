@@ -36,7 +36,7 @@ public class EnemyAttack : MonoBehaviour
     {
         attackTimer += Time.deltaTime;
         bool isReadyToAttack = attackTimer >= attackCooldown;
-        if (isReadyToAttack && CheckDistance.Instance.CalculateDistanceToEnemy(targetPlayer.transform, transform) <= attackRanged)
+        if (isReadyToAttack && CheckDistance.Instance.CalculateDistanceToPlayer(targetPlayer.transform, transform) <= attackRanged)
         {
             isAttacking = true;
             anim.SetTrigger(attackParaname);

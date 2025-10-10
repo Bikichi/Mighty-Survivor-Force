@@ -11,6 +11,7 @@ public class SpawnMine : MonoBehaviour
     [SerializeField] private float timer;
     [SerializeField] private Transform playerTransform;
     [SerializeField] private float destroyInterval;
+    [SerializeField] private float checkRadius;
 
     void Start()
     {
@@ -30,18 +31,33 @@ public class SpawnMine : MonoBehaviour
             {
                 SpawnMineAtPlayer();
             }
-
-            timer = 0f;
         }
     }
 
     void SpawnMineAtPlayer()
     {
-        if (playerTransform != null && minePrefab != null)
+        Collider[] nearbyObjects = Physics.OverlapSphere(playerTransform.position, checkRadius);
+
+        foreach (var obj in nearbyObjects)
         {
-            Vector3 spawnPos = playerTransform.position;
-            var newMine = Instantiate(minePrefab, spawnPos, Quaternion.identity);
-            Destroy(newMine, destroyInterval);
+            if (obj.CompareTag("Mine"))
+            {
+                return;
+            }
+        }
+        Vector3 spawnPos = playerTransform.position;
+        var newMine = Instantiate(minePrefab, spawnPos, Quaternion.identity);
+        Destroy(newMine, destroyInterval);
+
+        timer = 0f;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (playerTransform != null)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(playerTransform.position, checkRadius);
         }
     }
 }

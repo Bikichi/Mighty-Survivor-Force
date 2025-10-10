@@ -16,7 +16,7 @@ public class RangedAttack : EnemyAttack
     {
         attackTimer += Time.deltaTime;
         bool isReadyToAttack = attackTimer >= attackCooldown;
-        bool canAttackPlayer = CheckDistance.Instance.CalculateDistanceToEnemy(targetPlayer.transform, transform) <= attackRanged;
+        bool canAttackPlayer = CheckDistance.Instance.CalculateDistanceToPlayer(targetPlayer.transform, transform) <= attackRanged;
         if (isReadyToAttack && canAttackPlayer)
         {
             isAttacking = true;

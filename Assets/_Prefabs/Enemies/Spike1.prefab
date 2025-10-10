@@ -13650,6 +13650,7 @@ MonoBehaviour:
   burnTimer: 0
   currentDamage: 0
   maxDamage: 300
+  maxDamagePercent: 3
   vfxInstance: {fileID: 0}
   vfxPoint: {fileID: 4464035875083099563}
 --- !u!114 &655191390987146707
@@ -13667,7 +13668,7 @@ MonoBehaviour:
   targetPlayer: {fileID: 2125946824219224542, guid: c20f1201e3ed1d9419c2ca26383e1586, type: 3}
   enemyAttack: {fileID: 2150634160278215284}
   anim: {fileID: 1915859285371239603}
-  enemyMoveSpeed: 11
+  enemyMoveSpeed: 0
   checkInterval: 0.05
   checkTimer: 0
   rb: {fileID: 1658747276766063313}
@@ -13744,6 +13745,7 @@ MonoBehaviour:
   burnTimer: 0
   currentDamage: 0
   maxDamage: 60
+  maxDamagePercent: 3
   vfxInstance: {fileID: 0}
   vfxPoint: {fileID: 4464035875083099563}
 --- !u!114 &-8875358459009799584

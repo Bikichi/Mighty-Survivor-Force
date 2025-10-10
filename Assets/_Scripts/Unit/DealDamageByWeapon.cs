@@ -33,12 +33,14 @@ public class DealDamageByWeapon : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        if (col.CompareTag(Const.ENEMY_TAG))
+        if (col.CompareTag(Const.ENEMY_TAG) || col.CompareTag(Const.BOSS_TAG))
         {
             EnemyHealth enemyHealth = col.GetComponent<EnemyHealth>();
             if (enemyHealth != null)
             {
                 DamageUIManager.Instance.ShowDamageUI(weaponDamage, col);
+
+                enemyHealth.TakeDamage(weaponDamage);
 
                 Vector3 hitPosition = col.ClosestPoint(transform.position);
                 Vector3 impactDirection = (col.transform.position - transform.position).normalized;
