@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RegenSkill : MonoBehaviour
+public class RegenHPSkill : MonoBehaviour
 {
     public float healPercent = 10f;   // hồi bao nhiêu % máu tối đa mỗi tick
     public float interval = 2f;       // khoảng thời gian giữa các lần hồi

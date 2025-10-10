@@ -25,7 +25,7 @@ public class EnemyMovement : MonoBehaviour
         lastPosition = transform.position;
     }
 
-    void Update()
+    private void FixedUpdate()
     {
         transform.LookAt(targetPlayer.transform, Vector3.up);
         MoveEnemy();

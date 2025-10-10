@@ -27,7 +27,6 @@ public class EnemySpawner : MonoBehaviour
     public List<Wave> waves; //Danh sách của tất cả các wave trong ván đấu
     public int currentWaveCount; //chỉ mục của wave hiện tại
     public UnityEvent onWaveCompleted;
-    public Transform[] spawnPositions;
 
     [Header("Spawner Attributes")]
     public float spawnTimer; //Mốc thời gian spawn
@@ -38,11 +37,15 @@ public class EnemySpawner : MonoBehaviour
     public int maxEnemiesAllowed;
     public bool maxEnemiesReached = false;
 
-    private bool _isWaveTransitioning = false; 
+    private bool _isWaveTransitioning = false;
+
+    public Transform[] spawnPositions; //list gốc
+    public List<Transform> unusedSpawnPoints = new List<Transform>(); //list tạm dùng để lưu
 
     public void Start()
     {
         CalculateWaveQuota();
+        SpawnPointManager.Instance.ResetSpawnPoints(unusedSpawnPoints, spawnPositions);
     }
     public void Update()
     {
@@ -90,15 +93,6 @@ public class EnemySpawner : MonoBehaviour
         //Debug.Log(currentWaveQuota);
     }
 
-    public Vector3 GetRandomSpawnPosition()
-    {
-        int randomIndex = Random.Range(0, spawnPositions.Length);
-        Vector3 spawnPoint = new Vector3(spawnPositions[randomIndex].position.x,
-                                         transform.position.y,
-                                         spawnPositions[randomIndex].position.z);
-        return spawnPoint;
-    }
-
     void SpawnEnemies()
     {
         if (waves[currentWaveCount].spawnCount >= waves[currentWaveCount].waveQuota)
@@ -116,7 +110,8 @@ public class EnemySpawner : MonoBehaviour
         {
             if (enemyGroup.spawnCount < enemyGroup.enemyCount)
             {
-                Instantiate(enemyGroup.enemyPrefab, GetRandomSpawnPosition(), Quaternion.identity);
+                var spawnPos = SpawnPointManager.Instance.GetRandomSpawnPosition(unusedSpawnPoints);
+                Instantiate(enemyGroup.enemyPrefab, spawnPos, Quaternion.identity);
                 enemiesAlive++;
                 enemyGroup.spawnCount++;
                 waves[currentWaveCount].spawnCount++;
@@ -127,6 +122,8 @@ public class EnemySpawner : MonoBehaviour
                 }
             }
         }
+        //Reset danh sách spawn points sau mỗi lượt spawn quái
+        SpawnPointManager.Instance.ResetSpawnPoints(unusedSpawnPoints,spawnPositions);
         spawnTimer = 0f;
     }
 
