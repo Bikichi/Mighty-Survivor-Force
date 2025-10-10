@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SpawnPointManager : Singleton<SpawnPointManager>
@@ -20,25 +21,14 @@ public class SpawnPointManager : Singleton<SpawnPointManager>
 
     public Vector3 GetSpawnPositionFarFromPlayer(List<Transform> unusedSpawnPoints, float minDistance, Transform[] allSpawnPoints)
     {
-        if (unusedSpawnPoints.Count == 0)
-        {
-            SpawnPointManager.Instance.ResetSpawnPoints(unusedSpawnPoints, allSpawnPoints);
-        }
-        //lọc ra những spawn point đủ xa
-        List<Transform> validPoints = new List<Transform>();
+        var farPoints = unusedSpawnPoints
+            .Where(p => Vector3.Distance(playerTransform.position, p.position) >= minDistance)
+            .ToList();
 
-        foreach (var point in unusedSpawnPoints)
-        {
-            float distance = Vector3.Distance(playerTransform.position, point.position);
-            if (distance >= minDistance)
-            {
-                validPoints.Add(point);
-            }
-        }
 
-        //lấy ngẫu nhiên 1 điểm trong các điểm hợp lệ
-        int randomIndex = Random.Range(0, validPoints.Count);
-        Transform chosen = validPoints[randomIndex];
+            //lấy ngẫu nhiên 1 điểm trong các điểm hợp lệ
+        int randomIndex = Random.Range(0, farPoints.Count);
+        Transform chosen = farPoints[randomIndex];
         unusedSpawnPoints.Remove(chosen);
 
         return chosen.position;

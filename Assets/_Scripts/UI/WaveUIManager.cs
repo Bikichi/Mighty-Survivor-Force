@@ -30,25 +30,30 @@ public class WaveUIManager : MonoBehaviour
 
     private void UpdateLevelData()
     {
-        if (enemySpawner != null && enemySpawner.waves.Count > enemySpawner.currentWaveCount)
+        if (enemySpawner == null) return;
+
+        var waves = enemySpawner.waves;
+        int currentWaveIndex = enemySpawner.currentWaveIndex;
+
+        if (currentWaveIndex >= 0 && currentWaveIndex < waves.Count)
         {
-            _currentLevel = enemySpawner.currentWaveCount + 1;
-            _pointExperience = enemySpawner.waves[enemySpawner.currentWaveCount].enemiesWaveKilled;
-            _maxLevelUpExperience = enemySpawner.waves[enemySpawner.currentWaveCount].waveQuota;
+            WaveData currentWave = waves[currentWaveIndex];
+
+            _currentLevel = currentWaveIndex + 1;
+            _pointExperience = currentWave.enemiesKilled;
+            _maxLevelUpExperience = currentWave.TotalQuota();  //tổng số quái cần tiêu diệt để hoàn thành wave
         }
     }
 
+
+
     private void UpdateUI()
     {
-        if (_levelBar != null)
-        {
-            _levelBar.maxValue = _maxLevelUpExperience;
-            _levelBar.value = _pointExperience;
-        }
 
-        if (_levelText != null)
-        {
-            _levelText.text = _currentLevel.ToString();
-        }
+        _levelBar.maxValue = _maxLevelUpExperience;
+        _levelBar.value = _pointExperience;
+
+        _levelText.text = _currentLevel.ToString();
+
     }
 }

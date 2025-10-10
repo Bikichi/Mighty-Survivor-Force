@@ -25834,6 +25834,97 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7620992973366906723, guid: 16e1f68f60bfff04198a778e17db042a, type: 3}
   m_PrefabInstance: {fileID: 2825000290836885443}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &126297260
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 126297262}
+  - component: {fileID: 126297263}
+  m_Layer: 0
+  m_Name: EnemySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &126297262
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126297260}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 826473857}
+  - {fileID: 144444990}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &126297263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126297260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 591839be155a14e4398758d78a28fb78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveInterval: 3
+  spawnDistance: 15
+  enemiesAlive: 0
+  currentWaveIndex: 0
+  totalEnemiesKilled: 0
+  onWaveCompleted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2093391605}
+        m_TargetAssemblyTypeName: TestLearningSkill, Assembly-CSharp
+        m_MethodName: Show
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  waves: []
+  spawnPositions:
+  - {fileID: 1289845295}
+  - {fileID: 928860452}
+  - {fileID: 1367212331}
+  - {fileID: 1670815894}
+  - {fileID: 1806947944}
+  - {fileID: 818711868}
+  - {fileID: 1050677306}
+  - {fileID: 347018986}
+  - {fileID: 1008953011}
+  - {fileID: 1186371812}
+  - {fileID: 235568165}
+  - {fileID: 851839232}
+  - {fileID: 1705240991}
+  - {fileID: 230209928}
+  - {fileID: 1057631105}
+  - {fileID: 472124034}
+  - {fileID: 1159191048}
+  - {fileID: 316214937}
+  - {fileID: 55217931}
+  - {fileID: 1303519235}
+  - {fileID: 678097211}
+  - {fileID: 1623602674}
+  unusedSpawnPoints: []
 --- !u!114 &131382813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25938,6 +26029,99 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &144444989
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 144444990}
+  - component: {fileID: 144444991}
+  m_Layer: 0
+  m_Name: Wave_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &144444990
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144444989}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 126297262}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &144444991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144444989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aa9f61bc3c08c14eb8b6af4a5c4ebd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveName: 2
+  turnInterval: 3
+  maxEnemiesAllowed: 5
+  turns:
+  - turnName: 1
+    enemyTypes:
+    - enemyName: 
+      enemyPrefab: {fileID: 6643027116863268232, guid: 56a346e54c96bf741be188c7d1f23580, type: 3}
+      enemyCount: 1
+      spawnedCount: 0
+    - enemyName: 
+      enemyPrefab: {fileID: 3677971375640770530, guid: 77e39f372c1d8504ca2e9dc335e0738e, type: 3}
+      enemyCount: 1
+      spawnedCount: 0
+    - enemyName: 
+      enemyPrefab: {fileID: 4459301653538735250, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
+      enemyCount: 1
+      spawnedCount: 0
+  - turnName: 2
+    enemyTypes:
+    - enemyName: 
+      enemyPrefab: {fileID: 4459301653538735250, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
+      enemyCount: 2
+      spawnedCount: 0
+    - enemyName: 
+      enemyPrefab: {fileID: 3677971375640770530, guid: 77e39f372c1d8504ca2e9dc335e0738e, type: 3}
+      enemyCount: 1
+      spawnedCount: 0
+    - enemyName: 
+      enemyPrefab: {fileID: 6643027116863268232, guid: 56a346e54c96bf741be188c7d1f23580, type: 3}
+      enemyCount: 2
+      spawnedCount: 0
+  - turnName: 3
+    enemyTypes:
+    - enemyName: 
+      enemyPrefab: {fileID: 4459301653538735250, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
+      enemyCount: 2
+      spawnedCount: 0
+    - enemyName: 
+      enemyPrefab: {fileID: 3677971375640770530, guid: 77e39f372c1d8504ca2e9dc335e0738e, type: 3}
+      enemyCount: 3
+      spawnedCount: 0
+    - enemyName: 
+      enemyPrefab: {fileID: 6643027116863268232, guid: 56a346e54c96bf741be188c7d1f23580, type: 3}
+      enemyCount: 3
+      spawnedCount: 0
+  currentTurnIndex: 0
+  totalSpawned: 0
+  enemiesKilled: 0
 --- !u!1 &161509687 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 18389538120987140, guid: 040cd06b4756ccc439ce241078069e06, type: 3}
@@ -26653,8 +26837,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82e236f670cb7fe40bf686e3bb9b0d17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpawner: {fileID: 572892190}
-  uiManager: {fileID: 454084588}
 --- !u!1 &472124033
 GameObject:
   m_ObjectHideFlags: 0
@@ -26934,232 +27116,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 572892191}
-  - component: {fileID: 572892190}
   m_Layer: 0
-  m_Name: EnemySpawner
+  m_Name: AllSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &572892190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 572892189}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36bfeb9ac9e4564468180c0b671a362a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves:
-  - waveName: 1
-    enemyGroups:
-    - enemyName: Golem
-      enemyCount: 2
-      spawnCount: 0
-      enemyPrefab: {fileID: 4459301653538735250, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
-    - enemyName: Dragon
-      enemyCount: 2
-      spawnCount: 0
-      enemyPrefab: {fileID: 3677971375640770530, guid: 77e39f372c1d8504ca2e9dc335e0738e, type: 3}
-    - enemyName: Spike
-      enemyCount: 2
-      spawnCount: 0
-      enemyPrefab: {fileID: 6643027116863268232, guid: 56a346e54c96bf741be188c7d1f23580, type: 3}
-    - enemyName: Spike
-      enemyCount: 2
-      spawnCount: 0
-      enemyPrefab: {fileID: 6643027116863268232, guid: 56a346e54c96bf741be188c7d1f23580, type: 3}
-    - enemyName: Spike
-      enemyCount: 2
-      spawnCount: 0
-      enemyPrefab: {fileID: 6643027116863268232, guid: 56a346e54c96bf741be188c7d1f23580, type: 3}
-    - enemyName: Spike
-      enemyCount: 2
-      spawnCount: 0
-      enemyPrefab: {fileID: 6643027116863268232, guid: 56a346e54c96bf741be188c7d1f23580, type: 3}
-    - enemyName: Spike
-      enemyCount: 2
-      spawnCount: 0
-      enemyPrefab: {fileID: 6643027116863268232, guid: 56a346e54c96bf741be188c7d1f23580, type: 3}
-    - enemyName: Spike
-      enemyCount: 2
-      spawnCount: 0
-      enemyPrefab: {fileID: 6643027116863268232, guid: 56a346e54c96bf741be188c7d1f23580, type: 3}
-    - enemyName: Spike
-      enemyCount: 2
-      spawnCount: 0
-      enemyPrefab: {fileID: 6643027116863268232, guid: 56a346e54c96bf741be188c7d1f23580, type: 3}
-    - enemyName: Spike
-      enemyCount: 2
-      spawnCount: 0
-      enemyPrefab: {fileID: 6643027116863268232, guid: 56a346e54c96bf741be188c7d1f23580, type: 3}
-    - enemyName: Spike
-      enemyCount: 2
-      spawnCount: 0
-      enemyPrefab: {fileID: 6643027116863268232, guid: 56a346e54c96bf741be188c7d1f23580, type: 3}
-    - enemyName: Spike
-      enemyCount: 2
-      spawnCount: 0
-      enemyPrefab: {fileID: 6643027116863268232, guid: 56a346e54c96bf741be188c7d1f23580, type: 3}
-    - enemyName: Spike
-      enemyCount: 2
-      spawnCount: 0
-      enemyPrefab: {fileID: 6643027116863268232, guid: 56a346e54c96bf741be188c7d1f23580, type: 3}
-    - enemyName: Spike
-      enemyCount: 2
-      spawnCount: 0
-      enemyPrefab: {fileID: 6643027116863268232, guid: 56a346e54c96bf741be188c7d1f23580, type: 3}
-    - enemyName: Spike
-      enemyCount: 2
-      spawnCount: 0
-      enemyPrefab: {fileID: 6643027116863268232, guid: 56a346e54c96bf741be188c7d1f23580, type: 3}
-    - enemyName: Spike
-      enemyCount: 2
-      spawnCount: 0
-      enemyPrefab: {fileID: 6643027116863268232, guid: 56a346e54c96bf741be188c7d1f23580, type: 3}
-    - enemyName: Spike
-      enemyCount: 2
-      spawnCount: 0
-      enemyPrefab: {fileID: 6643027116863268232, guid: 56a346e54c96bf741be188c7d1f23580, type: 3}
-    - enemyName: Spike
-      enemyCount: 2
-      spawnCount: 0
-      enemyPrefab: {fileID: 6643027116863268232, guid: 56a346e54c96bf741be188c7d1f23580, type: 3}
-    - enemyName: Spike
-      enemyCount: 2
-      spawnCount: 0
-      enemyPrefab: {fileID: 6643027116863268232, guid: 56a346e54c96bf741be188c7d1f23580, type: 3}
-    - enemyName: Spike
-      enemyCount: 2
-      spawnCount: 0
-      enemyPrefab: {fileID: 6643027116863268232, guid: 56a346e54c96bf741be188c7d1f23580, type: 3}
-    waveQuota: 0
-    spawnInterval: 0.1
-    spawnCount: 0
-    enemiesWaveKilled: 0
-  - waveName: 2
-    enemyGroups:
-    - enemyName: Golem
-      enemyCount: 3
-      spawnCount: 0
-      enemyPrefab: {fileID: 4459301653538735250, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
-    - enemyName: Dragon
-      enemyCount: 3
-      spawnCount: 0
-      enemyPrefab: {fileID: 3677971375640770530, guid: 77e39f372c1d8504ca2e9dc335e0738e, type: 3}
-    - enemyName: Spike
-      enemyCount: 3
-      spawnCount: 0
-      enemyPrefab: {fileID: 6643027116863268232, guid: 56a346e54c96bf741be188c7d1f23580, type: 3}
-    waveQuota: 0
-    spawnInterval: 3
-    spawnCount: 0
-    enemiesWaveKilled: 0
-  - waveName: 3
-    enemyGroups:
-    - enemyName: Golem
-      enemyCount: 4
-      spawnCount: 0
-      enemyPrefab: {fileID: 4459301653538735250, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
-    - enemyName: Dragon
-      enemyCount: 4
-      spawnCount: 0
-      enemyPrefab: {fileID: 3677971375640770530, guid: 77e39f372c1d8504ca2e9dc335e0738e, type: 3}
-    - enemyName: Spike
-      enemyCount: 4
-      spawnCount: 0
-      enemyPrefab: {fileID: 6643027116863268232, guid: 56a346e54c96bf741be188c7d1f23580, type: 3}
-    waveQuota: 0
-    spawnInterval: 3
-    spawnCount: 0
-    enemiesWaveKilled: 0
-  - waveName: 4
-    enemyGroups:
-    - enemyName: Golem
-      enemyCount: 5
-      spawnCount: 0
-      enemyPrefab: {fileID: 4459301653538735250, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
-    - enemyName: Dragon
-      enemyCount: 5
-      spawnCount: 0
-      enemyPrefab: {fileID: 3677971375640770530, guid: 77e39f372c1d8504ca2e9dc335e0738e, type: 3}
-    - enemyName: Spike
-      enemyCount: 5
-      spawnCount: 0
-      enemyPrefab: {fileID: 6643027116863268232, guid: 56a346e54c96bf741be188c7d1f23580, type: 3}
-    waveQuota: 0
-    spawnInterval: 3
-    spawnCount: 0
-    enemiesWaveKilled: 0
-  - waveName: 5
-    enemyGroups:
-    - enemyName: Golem
-      enemyCount: 15
-      spawnCount: 0
-      enemyPrefab: {fileID: 4459301653538735250, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
-    - enemyName: Dragon
-      enemyCount: 4
-      spawnCount: 0
-      enemyPrefab: {fileID: 3677971375640770530, guid: 77e39f372c1d8504ca2e9dc335e0738e, type: 3}
-    - enemyName: Spike
-      enemyCount: 4
-      spawnCount: 0
-      enemyPrefab: {fileID: 6643027116863268232, guid: 56a346e54c96bf741be188c7d1f23580, type: 3}
-    waveQuota: 0
-    spawnInterval: 3
-    spawnCount: 0
-    enemiesWaveKilled: 0
-  currentWaveCount: 0
-  onWaveCompleted:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2093391605}
-        m_TargetAssemblyTypeName: TestLearningSkill, Assembly-CSharp
-        m_MethodName: Show
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  spawnTimer: 0
-  waveInterval: 3
-  totalEnemiesKilled: 0
-  spawnDistance: 15
-  enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 0
-  spawnPositions:
-  - {fileID: 1289845295}
-  - {fileID: 928860452}
-  - {fileID: 1367212331}
-  - {fileID: 1670815894}
-  - {fileID: 1806947944}
-  - {fileID: 818711868}
-  - {fileID: 1050677306}
-  - {fileID: 347018986}
-  - {fileID: 1008953011}
-  - {fileID: 1186371812}
-  - {fileID: 235568165}
-  - {fileID: 851839232}
-  - {fileID: 1705240991}
-  - {fileID: 230209928}
-  - {fileID: 1057631105}
-  - {fileID: 472124034}
-  - {fileID: 1159191048}
-  - {fileID: 316214937}
-  - {fileID: 55217931}
-  - {fileID: 1303519235}
-  - {fileID: 678097211}
-  - {fileID: 1623602674}
-  unusedSpawnPoints: []
 --- !u!4 &572892191
 Transform:
   m_ObjectHideFlags: 0
@@ -28146,6 +28109,85 @@ RectTransform:
   m_AnchoredPosition: {x: -0.18250002, y: 3.7525}
   m_SizeDelta: {x: 4, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &826473856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 826473857}
+  - component: {fileID: 826473858}
+  m_Layer: 0
+  m_Name: Wave_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &826473857
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826473856}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 126297262}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &826473858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826473856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aa9f61bc3c08c14eb8b6af4a5c4ebd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveName: 1
+  turnInterval: 3
+  maxEnemiesAllowed: 3
+  turns:
+  - turnName: 1
+    enemyTypes:
+    - enemyName: 
+      enemyPrefab: {fileID: 6643027116863268232, guid: 56a346e54c96bf741be188c7d1f23580, type: 3}
+      enemyCount: 1
+      spawnedCount: 0
+    - enemyName: 
+      enemyPrefab: {fileID: 3677971375640770530, guid: 77e39f372c1d8504ca2e9dc335e0738e, type: 3}
+      enemyCount: 1
+      spawnedCount: 0
+    - enemyName: 
+      enemyPrefab: {fileID: 4459301653538735250, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
+      enemyCount: 1
+      spawnedCount: 0
+  - turnName: 2
+    enemyTypes:
+    - enemyName: 
+      enemyPrefab: {fileID: 4459301653538735250, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
+      enemyCount: 1
+      spawnedCount: 0
+    - enemyName: 
+      enemyPrefab: {fileID: 3677971375640770530, guid: 77e39f372c1d8504ca2e9dc335e0738e, type: 3}
+      enemyCount: 1
+      spawnedCount: 0
+    - enemyName: 
+      enemyPrefab: {fileID: 6643027116863268232, guid: 56a346e54c96bf741be188c7d1f23580, type: 3}
+      enemyCount: 1
+      spawnedCount: 0
+  currentTurnIndex: 0
+  totalSpawned: 0
+  enemiesKilled: 0
 --- !u!1 &851683711 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2594774993889524803, guid: 040cd06b4756ccc439ce241078069e06, type: 3}
@@ -33447,7 +33489,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 97870909733832214, guid: 458f49b3b59053249a447451da10b65a, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 305480011045117915, guid: 458f49b3b59053249a447451da10b65a, type: 3}
       propertyPath: m_Sprite
@@ -33738,6 +33780,7 @@ SceneRoots:
   - {fileID: 1915899620}
   - {fileID: 8400467069554650571}
   - {fileID: 5370102215903992506}
+  - {fileID: 126297262}
   - {fileID: 572892191}
   - {fileID: 1374663609}
   - {fileID: 1865722785}

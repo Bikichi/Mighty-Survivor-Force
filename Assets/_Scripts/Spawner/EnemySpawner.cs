@@ -5,67 +5,52 @@ using UnityEngine.Events;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [System.Serializable]
-    public class Wave
-    {
-        public string waveName;
-        public List<EnemyGroup> enemyGroups; 
-        public int waveQuota; //Tổng số các quái vật được sinh ra ở wave này
-        public float spawnInterval; //Khoảng thời gian giữa các lần sinh quái trong wave
-        public float spawnCount; //số quái trong wave đã được spawn 
-        public int enemiesWaveKilled; //số quái đã chết
-    }
+    [Header("Spawner Settings")]
+    public float waveInterval = 5f;
+    public float spawnDistance = 10f;
 
-    [System.Serializable]
-    public class EnemyGroup //Class quản lý các thông tin của enemy
-    {
-        public string enemyName;
-        public int enemyCount; //tổng số quái sẽ spwan
-        public int spawnCount; //số quái trong nhóm đã được spawn
-        public GameObject enemyPrefab;
-    }
-    public List<Wave> waves; //Danh sách của tất cả các wave trong ván đấu
-    public int currentWaveCount; //chỉ mục của wave hiện tại
-    public UnityEvent onWaveCompleted;
-
-    [Header("Spawner Attributes")]
-    public float spawnTimer; //Mốc thời gian spawn
-    public float waveInterval; //Khoảng thời gian giũa các wave
+    [Header("Runtime Data")]
+    public int enemiesAlive;
+    public int currentWaveIndex;
     public float totalEnemiesKilled;
 
-    public float spawnDistance;
+    public UnityEvent onWaveCompleted;
 
-    public int enemiesAlive;
-    public int maxEnemiesAllowed;
-    public bool maxEnemiesReached = false;
+    private bool _isWaveTransitioning;
+    private float spawnTimer;
 
-    private bool _isWaveTransitioning = false;
+    public List<WaveData> waves = new List<WaveData>();
 
-    public Transform[] spawnPositions; //list gốc
-    public List<Transform> unusedSpawnPoints = new List<Transform>(); //list tạm dùng để lưu
+    public Transform[] spawnPositions;
+    public List<Transform> unusedSpawnPoints = new List<Transform>();
 
-    public void Start()
+    void Awake()
     {
-        CalculateWaveQuota();
+        waves.AddRange(GetComponentsInChildren<WaveData>(true));
+    }
+
+    void Start()
+    {
         SpawnPointManager.Instance.ResetSpawnPoints(unusedSpawnPoints, spawnPositions);
     }
-    public void Update()
-    {
-        if (!_isWaveTransitioning && currentWaveCount < waves.Count)
-        {
-            Wave currentWave = waves[currentWaveCount];
 
-            if (currentWave.spawnCount >= currentWave.waveQuota && enemiesAlive == 0)
-            {
-                StartCoroutine(BeginNextWave());
-            }
+    void Update()
+    {
+        if (_isWaveTransitioning) return;
+        if (currentWaveIndex >= waves.Count) return;
+
+        WaveData currentWave = waves[currentWaveIndex];
+
+        if (currentWave.IsCompleted() && enemiesAlive == 0)
+        {
+            StartCoroutine(BeginNextWave());
         }
 
         spawnTimer += Time.deltaTime;
 
-        if (spawnTimer >= waves[currentWaveCount].spawnInterval && enemiesAlive < maxEnemiesAllowed)
+        if (spawnTimer >= currentWave.turnInterval && enemiesAlive < currentWave.maxEnemiesAllowed)
         {
-            SpawnEnemies();
+            SpawnEnemies(currentWave);
         }
     }
 
@@ -73,79 +58,63 @@ public class EnemySpawner : MonoBehaviour
     {
         _isWaveTransitioning = true;
         yield return new WaitForSeconds(waveInterval);
-        if (currentWaveCount < waves.Count - 1)
+
+        currentWaveIndex++;
+        if (currentWaveIndex < waves.Count)
         {
             spawnTimer = 0f;
             onWaveCompleted?.Invoke();
-            currentWaveCount++;
-            CalculateWaveQuota();
         }
+
         _isWaveTransitioning = false;
     }
 
-    public void CalculateWaveQuota()
+    private void SpawnEnemies(WaveData wave)
     {
-        int currentWaveQuota = 0; //đặt lại số lượng quái đẫ spawn về 0 khi wave mới bắt đầu
-        foreach (var enemyGroup in waves[currentWaveCount].enemyGroups) //tính tổng số kẻ địch (waveQuota) của wave hiện tại bằng cách cộng dồn enemyCount của từng enemyGroup. 
-        {
-            currentWaveQuota += enemyGroup.enemyCount;
-        }
+        if (wave.IsCompleted()) return;
 
-        waves[currentWaveCount].waveQuota = currentWaveQuota;
-        //Debug.Log(currentWaveQuota);
-    }
+        TurnData turn = wave.GetCurrentTurn();
+        if (turn == null) return;
+        if (enemiesAlive >= wave.maxEnemiesAllowed) return;
 
-    void SpawnEnemies()
-    {
-        if (waves[currentWaveCount].spawnCount >= waves[currentWaveCount].waveQuota)
+        foreach (var type in turn.enemyTypes)
         {
-            return;
-        }
-
-        if (enemiesAlive >= maxEnemiesAllowed)
-        {
-            maxEnemiesReached = true;
-            return;
-        }
-
-        foreach (var enemyGroup in waves[currentWaveCount].enemyGroups)
-        {
-            if (enemyGroup.spawnCount < enemyGroup.enemyCount)
+            if (type.spawnedCount < type.enemyCount)
             {
                 var spawnPos = SpawnPointManager.Instance.GetSpawnPositionFarFromPlayer(unusedSpawnPoints, spawnDistance, spawnPositions);
-                Instantiate(enemyGroup.enemyPrefab, spawnPos, Quaternion.identity);
+                Instantiate(type.enemyPrefab, spawnPos, Quaternion.identity);
                 enemiesAlive++;
-                enemyGroup.spawnCount++;
-                waves[currentWaveCount].spawnCount++;
-                if (enemiesAlive >= maxEnemiesAllowed)
-                {
-                    maxEnemiesReached = true;
+                type.spawnedCount++;
+                wave.totalSpawned++;
+
+                if (enemiesAlive >= wave.maxEnemiesAllowed)
                     break;
-                }
             }
         }
-        //Reset danh sách spawn points sau mỗi lượt spawn quái
-        SpawnPointManager.Instance.ResetSpawnPoints(unusedSpawnPoints,spawnPositions);
+
         spawnTimer = 0f;
+
+        if (turn.IsCompleted())
+        {
+            wave.NextTurn();
+            SpawnPointManager.Instance.ResetSpawnPoints(unusedSpawnPoints, spawnPositions);
+        }
     }
+
 
     public void OnEnemyKilled()
     {
         enemiesAlive--;
-        totalEnemiesKilled++;
-        if (enemiesAlive < maxEnemiesAllowed)
+        totalEnemiesKilled++;;
+
+        WaveData currentWave = waves[currentWaveIndex];
+        currentWave.enemiesKilled++;
+
+        // Spawn tiếp nếu chưa đạt giới hạn của wave
+        if (enemiesAlive < currentWave.maxEnemiesAllowed && spawnTimer >= currentWave.turnInterval)
         {
-            maxEnemiesReached = false; //cho phép spawn thêm nếu chưa đạt giới hạn
-            //spawn ngay khi quái vật chết, và đã đủ cooldown
-            if (spawnTimer >= waves[currentWaveCount].spawnInterval)
-            {
-                SpawnEnemies();
-            }
-        }
-        if (waves.Count > currentWaveCount)
-        {
-            waves[currentWaveCount].enemiesWaveKilled++;
+            SpawnEnemies(currentWave);
         }
     }
+    public List<WaveData> GetAllWaves() => waves;
 }
-    
