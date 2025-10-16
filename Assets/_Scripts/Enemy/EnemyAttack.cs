@@ -18,6 +18,8 @@ public class EnemyAttack : MonoBehaviour
     public Transform attackFlashPoint;
     public float flashDuration = 1.5f;
 
+    public Vector3 flashRotationOffset = new Vector3(0, 0, 0);
+
 
     public virtual void Start()
     {
@@ -48,7 +50,7 @@ public class EnemyAttack : MonoBehaviour
     {
         if (attackFlashPrefab != null && attackFlashPoint != null)
         {
-            Quaternion flippedRotation = attackFlashPoint.rotation * Quaternion.Euler(180, -20, 0);
+            Quaternion flippedRotation = attackFlashPoint.rotation * Quaternion.Euler(flashRotationOffset);
             GameObject flash = Instantiate(attackFlashPrefab, attackFlashPoint.position, flippedRotation);
             flash.transform.SetParent(attackFlashPoint);
             Destroy(flash, flashDuration);

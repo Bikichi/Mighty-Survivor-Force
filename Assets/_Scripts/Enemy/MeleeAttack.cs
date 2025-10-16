@@ -12,21 +12,12 @@ public class MeleeAttack : EnemyAttack
     }
     public void DealDamageMelee()
     {
-        Collider[] colInfo = Physics.OverlapSphere(attackPoint.position, attackRanged, attackMask, QueryTriggerInteraction.Collide);    
-        if (colInfo != null)
+        Collider[] colInfo = Physics.OverlapSphere(attackPoint.position, attackRanged, attackMask, QueryTriggerInteraction.Collide);
+
+        if (colInfo.Length > 0) //có player trong tầm đánh thì gây dame
         {
-            foreach (Collider player in colInfo)
-            {
-                PlayerHealth pl = player.GetComponent<PlayerHealth>();
-                if (pl != null)
-                {
-                    pl.TakeDamage(attackDamage);
-                }
-                else
-                {
-                    return;
-                }
-            }
+            PlayerHealth ph = colInfo[0].GetComponent<PlayerHealth>();
+            ph.TakeDamage(attackDamage);
         }
     }
 

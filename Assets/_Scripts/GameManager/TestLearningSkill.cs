@@ -5,10 +5,10 @@ public class TestLearningSkill : MonoBehaviour
     [SerializeField] private GameObject playerGameObject;
     [SerializeField] private PlayerSkillManager skillManager;
 
-    private void Start()
-    {
-        Invoke("Show", 1.5f);
-    }
+    //private void Start()
+    //{
+    //    Invoke("Show", 1.5f);
+    //}
 
     void Update()
     {

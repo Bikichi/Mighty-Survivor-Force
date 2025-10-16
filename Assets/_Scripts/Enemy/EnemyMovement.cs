@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -37,7 +36,7 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    public void MoveEnemy()
+    protected virtual void MoveEnemy()
     {
         Vector3 direction = (targetPlayer.transform.position - transform.position).normalized;
         direction.y = 0; //giữ nguyên chiều dọc để chỉ di chuyển theo chiều ngang
