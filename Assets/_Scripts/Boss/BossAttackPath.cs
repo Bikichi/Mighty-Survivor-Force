@@ -7,7 +7,12 @@ public class BossAttackPath : MonoBehaviour
     public Transform attackPath;   
 
     [Header("Settings")]
-    public float scaleMultiplier; 
+    public float scaleMultiplier;
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
 
     private void Update()
     {

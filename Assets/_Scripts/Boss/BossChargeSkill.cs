@@ -25,6 +25,7 @@ public class BossChargeSkill : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void OnEnable()
