@@ -16,7 +16,7 @@ public class BossChargeSkill : MonoBehaviour
     private Rigidbody rb;
     public bool isWindUp = false;
     public bool isCharging = false;
-    private float windUpTimer = 0f;
+    public float windUpTimer = 0f;
     private Vector3 targetPosition;
 
     public const string chargeParaname = "Charge";
@@ -27,10 +27,16 @@ public class BossChargeSkill : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
         InvokeRepeating("StartCharge", startTime, cooldown);
-        //StartCharge();
+    }
+
+    private void OnDisable()
+    {
+        CancelInvoke("StartCharge");
+
+        StopCharge();
     }
 
     private void Update()
@@ -53,7 +59,7 @@ public class BossChargeSkill : MonoBehaviour
         isWindUp = true;
         windUpTimer = 0f;
         rb.velocity = Vector3.zero;
-        Debug.Log("Boss bắt đầu gồng...");
+        //Debug.Log("Boss bắt đầu gồng...");
     }
 
     private void UpdateWindUp()
@@ -80,7 +86,7 @@ public class BossChargeSkill : MonoBehaviour
         rb.velocity = Vector3.zero;
         isCharging = false;
         isWindUp = false;
-        Debug.Log("Boss kết thúc lao!");
+        //Debug.Log("Boss kết thúc lao!");
     }
 
     private void BeginCharge()
@@ -93,7 +99,7 @@ public class BossChargeSkill : MonoBehaviour
         rb.velocity = direction * chargeSpeed;
 
         isCharging = true;
-        Debug.Log("Boss lao tới Player!");
+        //Debug.Log("Boss lao tới Player!");
     }
 
     private void UpdateCharge()

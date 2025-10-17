@@ -10,7 +10,9 @@ public class EnemyHealth : LivingEntity
     public float deathAnimationTime;
     public Animator _anim;
 
-    private void Start()
+    [SerializeField] protected List<MonoBehaviour> componentsToDisable;
+
+    protected virtual void Start()
     {
         _anim = GetComponentInChildren<Animator>();
     }
@@ -38,22 +40,18 @@ public class EnemyHealth : LivingEntity
         Destroy(gameObject);
     }
 
-    public void DisableEnemyActions()
-    {
-        EnemyMovement movementScript = GetComponent<EnemyMovement>();
-        if (movementScript != null) movementScript.enabled = false;
-
-        MeleeAttack meleeAttack = GetComponentInChildren<MeleeAttack>();
-        if (meleeAttack != null) meleeAttack.enabled = false;
-
-        RangedAttack rangedAttack = GetComponentInChildren<RangedAttack>();
-        if (rangedAttack != null) rangedAttack.enabled = false;
+    protected virtual void DisableEnemyActions()
+    {   
+        foreach (var comp in componentsToDisable)
+        {
+            comp.enabled = false;
+        }
 
         Collider col = GetComponent<Collider>();
         if (col != null) col.enabled = false;
 
         Rigidbody rb = GetComponent<Rigidbody>();
-        if (rb != null) rb.isKinematic = true;
+        if (rb != null) rb.velocity = Vector3.zero;
     }
 
 }

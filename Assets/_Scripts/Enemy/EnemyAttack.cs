@@ -26,10 +26,10 @@ public class EnemyAttack : MonoBehaviour
         anim = GetComponent<Animator>();
         targetPlayer = GameObject.FindGameObjectWithTag("Player");
         attackPoint = transform;
-        attackTimer = attackCooldown;
+        attackTimer = attackCooldown / 2;
     }
 
-    private void Update()
+    public virtual void Update()
     {
         Attack();
     }

@@ -6,6 +6,7 @@ public class LivingEntity : MonoBehaviour
 {
     [SerializeField] public float maxHealth;
 	[SerializeField] public float currentHealth;
+    [SerializeField] public float defense = 0f;
     [SerializeField] public bool IsActive { get; protected set; }
     [SerializeField] public bool IsDead { get; protected set; }
 
@@ -22,7 +23,9 @@ public class LivingEntity : MonoBehaviour
 
 	public virtual void TakeDamage(float damage)
 	{
-        currentHealth = Mathf.Max(currentHealth - damage, 0);
+        float finalDamage = Mathf.Max(damage - defense, 1);
+
+        currentHealth = Mathf.Max(currentHealth - finalDamage, 0);
         onHealthChange?.Invoke(currentHealth, maxHealth);
         if (currentHealth <= 0 && !IsDead)
 		{

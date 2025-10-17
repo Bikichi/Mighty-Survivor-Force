@@ -10,7 +10,12 @@ public class MeleeAttack : EnemyAttack
     {
         base.Start();
     }
-    public void DealDamageMelee()
+
+    public override void Update()
+    {
+        base.Update();
+    }
+    public virtual void DealDamageMelee()
     {
         Collider[] colInfo = Physics.OverlapSphere(attackPoint.position, attackRanged, attackMask, QueryTriggerInteraction.Collide);
 
