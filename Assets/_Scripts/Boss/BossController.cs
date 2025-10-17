@@ -52,6 +52,7 @@ public class BossController : MonoBehaviour
         }
 
         bossAnimator.SetBool("isPrePhase2", true);
+        phase2AuraPrefab.SetActive(true);
 
         float originalDefense = enemyHealth.defense;
         enemyHealth.defense *= 9999f;
@@ -71,9 +72,6 @@ public class BossController : MonoBehaviour
         {
             script.enabled = true;
         }
-
-
-        phase2AuraPrefab.SetActive(true);
 
         Debug.Log("Boss entered Phase 2!");
     }

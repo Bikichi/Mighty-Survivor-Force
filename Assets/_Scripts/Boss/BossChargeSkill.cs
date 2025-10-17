@@ -19,6 +19,7 @@ public class BossChargeSkill : MonoBehaviour
     public float windUpTimer = 0f;
     private Vector3 targetPosition;
 
+    public const string preChargeParaname = "PreCharge";
     public const string chargeParaname = "Charge";
     public Animator anim;
 
@@ -57,6 +58,7 @@ public class BossChargeSkill : MonoBehaviour
     private void BeginWindUp()
     {
         attackPath.SetActive(true);
+        anim.SetBool(preChargeParaname, true);
         isWindUp = true;
         windUpTimer = 0f;
         rb.velocity = Vector3.zero;
@@ -92,8 +94,9 @@ public class BossChargeSkill : MonoBehaviour
 
     private void BeginCharge()
     {
-        anim.SetTrigger(chargeParaname);
         attackPath.SetActive(false);
+        anim.SetBool(preChargeParaname, false);
+        anim.SetTrigger(chargeParaname);
         targetPosition = player.position;
 
         Vector3 direction = (targetPosition - transform.position).normalized;
