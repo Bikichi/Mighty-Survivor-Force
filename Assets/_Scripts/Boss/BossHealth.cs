@@ -9,9 +9,7 @@ public class BossHealth : EnemyHealth
     protected override void Start()
     {
         base.Start();
-
-        AddBossComponent<BossBigStrike>();
-        AddBossComponent<BossChargeSkill>();
+        BossComponentUtils.AddBossComponent<BossBigStrike>(gameObject, componentsToDisable);
     }
 
     //generic thêm component vào danh sách nếu tồn tại và chưa có

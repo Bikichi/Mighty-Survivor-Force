@@ -14,22 +14,17 @@ public class BossBigStrike : MeleeAttack
 
     public override void Attack()
     {
+        if (bossCharge.isWindUp || bossCharge.isCharging)
+        {
+            return;
+        }
         attackTimer += Time.deltaTime;
 
         bool isReadyToAttack = attackTimer >= attackCooldown;
         bool inRange = CheckDistance.Instance.CalculateDistanceToPlayer(targetPlayer.transform, transform) <= attackRanged;
 
-        if (chargeSkill.isWindUp || chargeSkill.isCharging)
-        {
-            //Debug.Log("Boss đang gồng hoặc đang lao - không thể dùng Cú đánh lớn.");
-            return;
-        }
-
-
         if (isReadyToAttack && inRange)
         {
-            if (isAttacking) return; // tránh spam trigger nếu đang đánh
-
             isAttacking = true;
 
             anim.SetTrigger(bigStrikeAnimName);
@@ -45,7 +40,7 @@ public class BossBigStrike : MeleeAttack
     //nên class con phải ghi đè lại logic DealDamageMelee về trống và dùng logic dealdamage riêng
     public override void DealDamageMelee()
     {
-        return;
+        return; //bỏ trống tránh gọi 2 lần
     }
 
     public void BigStrike_DealDamage()

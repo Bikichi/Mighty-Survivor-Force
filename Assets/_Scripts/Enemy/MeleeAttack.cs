@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeAttack : EnemyAttack
+public class MeleeAttack : EnemyAttack, ISkillStatus
 {
     public LayerMask attackMask;
+    public BossChargeSkill bossCharge;
 
     public override void Start()
     {
@@ -14,6 +15,15 @@ public class MeleeAttack : EnemyAttack
     public override void Update()
     {
         base.Update();
+    }
+
+    public override void Attack()
+    {
+        if (bossCharge.isWindUp || bossCharge.isCharging)
+        {
+            return;
+        }
+        base.Attack(); 
     }
     public virtual void DealDamageMelee()
     {
@@ -39,5 +49,10 @@ public class MeleeAttack : EnemyAttack
             return;
         }
         Gizmos.DrawWireSphere(attackPoint.position, attackRanged);
+    }
+
+    public virtual bool IsActive()
+    {
+        return isAttacking;
     }
 }

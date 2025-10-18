@@ -19,7 +19,7 @@ public class BossController : MonoBehaviour
 
     private void Start()
     {
-        GetSpecialSkillComponents();
+        BossComponentUtils.AddBossComponent<BossBigStrike>(gameObject, scriptsToDisableDuringPrePhase2);
     }
     private void Update()
     {
@@ -76,15 +76,6 @@ public class BossController : MonoBehaviour
         Debug.Log("Boss entered Phase 2!");
     }
 
-    public void GetSpecialSkillComponents()
-    {
-        BossBigStrike bossStrike = GetComponentInChildren<BossBigStrike>();
-        if (bossStrike != null && !scriptsToDisableDuringPrePhase2.Contains(bossStrike))
-        {
-            scriptsToDisableDuringPrePhase2.Add(bossStrike);
-        }
-    }
-
     private void IncreaseBossStats()
     {
         //hệ số
@@ -94,7 +85,7 @@ public class BossController : MonoBehaviour
         const float damageMultiplier = 1.5f;
 
         BossHealth bossHealth = GetComponent<BossHealth>();
-        MeleeBossMovement movement = GetComponent<MeleeBossMovement>();
+        BossMovement movement = GetComponent<BossMovement>();
         BossChargeSkill chargeSkill = GetComponent<BossChargeSkill>();
         MeleeAttack meleeAttack = GetComponentInChildren<MeleeAttack>();
         BossBigStrike bigStrike = GetComponentInChildren<BossBigStrike>();

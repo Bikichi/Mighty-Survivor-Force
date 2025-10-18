@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class BossChargeSkill : MonoBehaviour
+public class BossChargeSkill : MonoBehaviour, ISkillStatus
 {
     [Header("References")]
     public Transform player;
@@ -12,6 +12,7 @@ public class BossChargeSkill : MonoBehaviour
     public float chargeSpeed = 10f;   // Tốc độ lao
     public float startTime;
     public float cooldown;
+    public float stopDistance = 1f;
 
     private Rigidbody rb;
     public bool isWindUp = false;
@@ -41,7 +42,8 @@ public class BossChargeSkill : MonoBehaviour
         StopCharge();
     }
 
-    private void Update()
+
+    private void FixedUpdate()
     {
         if (isWindUp)
         {
@@ -103,18 +105,29 @@ public class BossChargeSkill : MonoBehaviour
         rb.velocity = direction * chargeSpeed;
 
         isCharging = true;
-        //Debug.Log("Boss lao tới Player!");
+        Debug.Log("Boss lao tới Player!");
     }
 
     private void UpdateCharge()
     {
-        Vector3 toTarget = targetPosition - transform.position;
-        Vector3 direction = rb.velocity.normalized;
+        float distance = Vector3.Distance(transform.position, targetPosition);
 
-        // Nếu dot <= 0, nghĩa là Boss đã vượt target
-        if (Vector3.Dot(toTarget, direction) <= 0f)
+        if (distance <= stopDistance)
         {
             StopCharge();
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (isCharging && collision.gameObject.CompareTag(Const.WALL_TAG))
+        {
+            StopCharge();
+        }
+    }
+
+    public bool IsActive()
+    {
+        return isWindUp || isCharging;
     }
 }

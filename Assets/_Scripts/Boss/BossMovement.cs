@@ -1,0 +1,54 @@
+﻿using System.Collections.Generic;
+using UnityEngine;
+
+public class BossMovement : EnemyMovement
+{
+    [Header("Boss Skills")]
+    public List<MonoBehaviour> bossSkills = new List<MonoBehaviour>();
+
+    public List<ISkillStatus> skillStatusList = new List<ISkillStatus>();
+
+    private void Awake()
+    {
+        BossComponentUtils.AddBossComponent<BossBigStrike>(gameObject, bossSkills);
+        //chỉ lấy những script nào có implement ISkillStatus
+        foreach (var skill in bossSkills)
+        {
+            if (skill is ISkillStatus skillStatus)
+            {
+                skillStatusList.Add(skillStatus);
+            }
+        }
+    }
+
+    protected override void MoveEnemy()
+    {
+
+        Vector3 direction = (targetPlayer.transform.position - transform.position).normalized;
+        direction.y = 0;
+
+        float distance = CheckDistance.Instance.CalculateDistanceToPlayer(targetPlayer.transform, transform);
+
+        if (distance <= stoppingDistance || IsAnySkillActive())
+        {
+            isMoving = false;
+            //rb.velocity = Vector3.zero;
+        }
+        else
+        {
+            isMoving = true;
+            //rb.velocity = direction * enemyMoveSpeed;
+            transform.Translate(direction * enemyMoveSpeed * Time.deltaTime, Space.World);
+        }
+    }
+
+    private bool IsAnySkillActive()
+    {
+        foreach (var skill in skillStatusList)
+        {
+            if (skill != null && skill.IsActive())
+                return true;
+        }
+        return false;
+    }
+}
