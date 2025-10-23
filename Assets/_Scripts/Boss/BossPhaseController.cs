@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossController : MonoBehaviour
+public class BossPhaseController : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private EnemyHealth enemyHealth; // tham chiếu trực tiếp

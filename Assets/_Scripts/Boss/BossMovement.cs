@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿ using System.Collections.Generic;
 using UnityEngine;
 
 public class BossMovement : EnemyMovement
@@ -50,7 +50,7 @@ public class BossMovement : EnemyMovement
     {
         foreach (var skill in skillStatusList)
         {
-            if (skill != null && skill.IsActive())
+            if (skill.IsActive())
                 return true;
         }
         return false;

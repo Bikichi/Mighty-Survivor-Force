@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class FireDragonBullet : BaseBullet
+public class EnemySimpleBullet : BaseBullet
 {
     [SerializeField] private GameObject targetPlayer;
     [SerializeField] private Vector3 moveDirection;

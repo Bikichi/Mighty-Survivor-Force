@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿    using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class BossChargeSkill : MonoBehaviour, ISkillStatus
@@ -6,6 +6,7 @@ public class BossChargeSkill : MonoBehaviour, ISkillStatus
     [Header("References")]
     public Transform player;
     public GameObject attackPath;
+    public GameObject explosionPrefab;
 
     [Header("Settings")]
     public float windUpTime = 3f;     // Thời gian gồng
@@ -17,6 +18,7 @@ public class BossChargeSkill : MonoBehaviour, ISkillStatus
     private Rigidbody rb;
     public bool isWindUp = false;
     public bool isCharging = false;
+    private bool canSpawnExplosion = true;
     public float windUpTimer = 0f;
     private Vector3 targetPosition;
 
@@ -32,13 +34,14 @@ public class BossChargeSkill : MonoBehaviour, ISkillStatus
 
     private void OnEnable()
     {
+        canSpawnExplosion = true;
         InvokeRepeating("StartCharge", startTime, cooldown);
     }
 
     private void OnDisable()
     {
         CancelInvoke("StartCharge");
-
+        canSpawnExplosion = false;
         StopCharge();
     }
 
@@ -96,7 +99,7 @@ public class BossChargeSkill : MonoBehaviour, ISkillStatus
         {
             bbs.attackTimer = bbs.attackCooldown;
         }
-        //Debug.Log("Boss kết thúc lao!");
+        SpawnExplosion();
     }
 
     private void BeginCharge()
@@ -120,6 +123,16 @@ public class BossChargeSkill : MonoBehaviour, ISkillStatus
         if (distance <= stopDistance)
         {
             StopCharge();
+        }
+    }
+
+    private void SpawnExplosion()
+    {
+        if (!canSpawnExplosion) return;
+        if (explosionPrefab != null)
+        {
+            GameObject newObj = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            Destroy(newObj, 1.5f);
         }
     }
 
