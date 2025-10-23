@@ -11,10 +11,12 @@ public class RangedAttack : EnemyAttack
     public override void Start()
     {
         base.Start();
+
     }
     public override void Attack()
     {
         attackTimer += Time.deltaTime;
+
         bool isReadyToAttack = attackTimer >= attackCooldown;
         bool canAttackPlayer = CheckDistance.Instance.CalculateDistanceToPlayer(targetPlayer.transform, transform) <= attackRanged;
         if (isReadyToAttack && canAttackPlayer)

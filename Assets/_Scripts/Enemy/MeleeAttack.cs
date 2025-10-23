@@ -19,7 +19,7 @@ public class MeleeAttack : EnemyAttack, ISkillStatus
 
     public override void Attack()
     {
-        if (bossCharge.isWindUp || bossCharge.isCharging)
+        if (bossCharge != null && (bossCharge.isWindUp || bossCharge.isCharging))
         {
             return;
         }

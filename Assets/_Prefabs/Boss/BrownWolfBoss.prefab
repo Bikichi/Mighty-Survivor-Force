@@ -480,6 +480,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyHealth: {fileID: 5023236831188161176}
   phase2AuraPrefab: {fileID: 3743634699967542250}
+  attackPath: {fileID: 2243604302388190774}
   bossAnimator: {fileID: 2101495475482763621}
   prePhase2Duration: 5
   scriptsToDisableDuringPrePhase2:
@@ -500,7 +501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d964ad1eb7f5014484053c3468f015f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100000
+  maxHealth: 200
   currentHealth: 0
   defense: 10
   onHealthChange:
@@ -547,12 +548,12 @@ MonoBehaviour:
   enemyAttack: {fileID: 0}
   anim: {fileID: 2101495475482763621}
   enemyMoveSpeed: 6
+  lerpSpeed: 0
   checkInterval: 0.05
   checkTimer: 0
   rb: {fileID: 0}
   stoppingDistance: 7.5
   isMoving: 0
-  lastPosition: {x: 0, y: 0, z: 0}
   bossSkills:
   - {fileID: 7354643063672597249}
   - {fileID: 7353892793482267958}
@@ -570,6 +571,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   attackPath: {fileID: 2243604302388190774}
+  explosionPrefab: {fileID: 0}
   windUpTime: 3
   chargeSpeed: 50
   startTime: 5
@@ -802,7 +804,7 @@ MonoBehaviour:
   targetPlayer: {fileID: 0}
   anim: {fileID: 0}
   attackPoint: {fileID: 978926320619652883}
-  attackDamage: 10
+  attackDamage: 100
   attackTimer: 0
   attackCooldown: 3
   attackRanged: 7.5
@@ -830,9 +832,9 @@ MonoBehaviour:
   targetPlayer: {fileID: 0}
   anim: {fileID: 0}
   attackPoint: {fileID: 978926320619652883}
-  attackDamage: 20
+  attackDamage: 75
   attackTimer: 0
-  attackCooldown: 3
+  attackCooldown: 10
   attackRanged: 11
   isAttacking: 0
   attackFlashPrefab: {fileID: 1266224188750567096, guid: e7315c5b717fe4b46a8d64d439c60508, type: 3}

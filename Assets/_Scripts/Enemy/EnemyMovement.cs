@@ -7,6 +7,7 @@ public class EnemyMovement : MonoBehaviour
     private const string runParaname = "Move";
     public Animator anim;
     public float enemyMoveSpeed;
+    public float lerpSpeed;
     public float checkInterval = 0.05f; //kiểm tra mỗi 0.2 giây
     public float checkTimer = 0f;
     public Rigidbody rb;
@@ -14,7 +15,7 @@ public class EnemyMovement : MonoBehaviour
     public float stoppingDistance;
     public bool isMoving;
 
-    public Vector3 lastPosition;
+    private Vector3 lastPosition;
 
     public void Start()
     {
@@ -26,7 +27,8 @@ public class EnemyMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.LookAt(targetPlayer.transform, Vector3.up);
+        //transform.LookAt(targetPlayer.transform, Vector3.up);
+        RotateTowardsPlayer();
         MoveEnemy();
         checkTimer += Time.deltaTime;
         if (checkTimer >= checkInterval)
@@ -72,5 +74,12 @@ public class EnemyMovement : MonoBehaviour
             anim.SetBool(runParaname, false);
         }
         lastPosition = transform.position;
+    }
+
+    private void RotateTowardsPlayer()
+    {
+        Vector3 direction = (targetPlayer.transform.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, lerpSpeed * Time.deltaTime);
     }
 }

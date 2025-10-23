@@ -42,11 +42,11 @@ public class BossMultiShoot : MonoBehaviour, ISkillStatus
 
     private void Update()
     {
+        fireTimer += Time.deltaTime;
         if (IsAnySkillActive())
         {
             return;
         }
-        fireTimer += Time.deltaTime;
         if (fireTimer >= fireCooldown)
         {
             FireMulti();
