@@ -7,6 +7,7 @@ public class BossController : MonoBehaviour
     [Header("References")]
     [SerializeField] private EnemyHealth enemyHealth; // tham chiếu trực tiếp
     [SerializeField] private GameObject phase2AuraPrefab;
+    [SerializeField] private GameObject attackPath;
     [SerializeField] private Animator bossAnimator;
 
     [Header("Phase 2 Settings")]
@@ -53,6 +54,7 @@ public class BossController : MonoBehaviour
 
         bossAnimator.SetBool("isPrePhase2", true);
         phase2AuraPrefab.SetActive(true);
+        attackPath.SetActive(false);
 
         float originalDefense = enemyHealth.defense;
         enemyHealth.defense *= 9999f;
@@ -73,7 +75,7 @@ public class BossController : MonoBehaviour
             script.enabled = true;
         }
 
-        Debug.Log("Boss entered Phase 2!");
+        //Debug.Log("Boss entered Phase 2!");
     }
 
     private void IncreaseBossStats()

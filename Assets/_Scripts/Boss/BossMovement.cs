@@ -23,13 +23,17 @@ public class BossMovement : EnemyMovement
 
     protected override void MoveEnemy()
     {
+        if (IsAnySkillActive())
+        {
+            return;
+        }
 
         Vector3 direction = (targetPlayer.transform.position - transform.position).normalized;
         direction.y = 0;
 
         float distance = CheckDistance.Instance.CalculateDistanceToPlayer(targetPlayer.transform, transform);
 
-        if (distance <= stoppingDistance || IsAnySkillActive())
+        if (distance <= stoppingDistance)
         {
             isMoving = false;
             //rb.velocity = Vector3.zero;

@@ -91,6 +91,11 @@ public class BossChargeSkill : MonoBehaviour, ISkillStatus
         rb.velocity = Vector3.zero;
         isCharging = false;
         isWindUp = false;
+        var bbs = GetComponentInChildren<BossBigStrike>();  
+        if (bbs != null)
+        {
+            bbs.attackTimer = bbs.attackCooldown;
+        }
         //Debug.Log("Boss kết thúc lao!");
     }
 
@@ -105,7 +110,7 @@ public class BossChargeSkill : MonoBehaviour, ISkillStatus
         rb.velocity = direction * chargeSpeed;
 
         isCharging = true;
-        Debug.Log("Boss lao tới Player!");
+        //Debug.Log("Boss lao tới Player!");
     }
 
     private void UpdateCharge()
