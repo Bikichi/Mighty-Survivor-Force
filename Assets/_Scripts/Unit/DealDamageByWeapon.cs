@@ -33,7 +33,7 @@ public class DealDamageByWeapon : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        if (col.CompareTag(Const.ENEMY_TAG) || col.CompareTag(Const.BOSS_TAG))
+        if (col.CompareTag(Const.ENEMY_TAG) /*|| col.CompareTag(Const.BOSS_TAG)*/)
         {
             EnemyHealth enemyHealth = col.GetComponent<EnemyHealth>();
             if (enemyHealth != null)

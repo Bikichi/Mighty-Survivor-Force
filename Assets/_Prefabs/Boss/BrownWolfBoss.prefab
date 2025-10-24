@@ -387,13 +387,14 @@ GameObject:
   - component: {fileID: 7362635759140413201}
   - component: {fileID: 1632985159301262544}
   - component: {fileID: 8857601785228235150}
+  - component: {fileID: 3153791582861132557}
   m_Layer: 8
   m_Name: BrownWolfBoss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &978926320619652883
 Transform:
   m_ObjectHideFlags: 0
@@ -522,8 +523,6 @@ MonoBehaviour:
           m_StringArgument: isDead
           m_BoolArgument: 0
         m_CallState: 2
-  _coinDrop: {fileID: 0}
-  _hasCoin: 0
   deathAnimationTime: 1.85
   _anim: {fileID: 2101495475482763621}
   componentsToDisable:
@@ -548,7 +547,7 @@ MonoBehaviour:
   enemyAttack: {fileID: 0}
   anim: {fileID: 2101495475482763621}
   enemyMoveSpeed: 6
-  lerpSpeed: 0
+  lerpSpeed: 8
   checkInterval: 0.05
   checkTimer: 0
   rb: {fileID: 0}
@@ -633,6 +632,26 @@ MonoBehaviour:
   maxSlowPercent: 35
   vfxInstance: {fileID: 0}
   vfxPoint: {fileID: 474297590586184472}
+--- !u!114 &3153791582861132557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2505188075781382236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a05544267b816742b7d9cf7c8906337, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinPrefab: {fileID: 1880245074145146, guid: 81848b6677705f2418649c87a28b45d4, type: 3}
+  coinDropChance: 0.5
+  healthPrefab: {fileID: 4581376860598887516, guid: b8638e2d0f157a147a3afc1423c92c30, type: 3}
+  healthDropChance: 0.2
+  minCoins: 5
+  maxCoins: 10
+  areaCenter: {x: 0.02, y: 1.58, z: -2.5}
+  areaSize: {x: 12, y: 0, z: 12}
 --- !u!1 &2528391080746586270
 GameObject:
   m_ObjectHideFlags: 0

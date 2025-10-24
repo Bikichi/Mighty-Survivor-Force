@@ -9,7 +9,7 @@ public class SpecialAttack_Buff : SpecialAttackBehavior
     [SerializeField] private float speedMultiplier = 1.5f;
     [SerializeField] private float damageMultiplier = 1.5f;
     [SerializeField] private ParticleSystem buffEffect;
-    [SerializeField] private string prepareAnimationTrigger = "Prepare";
+    [SerializeField] private string prepareAnimationBool = "Prepare";
 
     private bool isBuffing;
     private EnemyMovement movement;
@@ -33,9 +33,11 @@ public class SpecialAttack_Buff : SpecialAttackBehavior
     {
         isBuffing = true;
 
-        anim.SetTrigger(prepareAnimationTrigger);
+        anim.SetBool(prepareAnimationBool, true);
 
         yield return new WaitForSeconds(prepareDelay);
+
+        anim.SetBool(prepareAnimationBool, false);
 
         if (buffEffect != null)
             buffEffect.Play();

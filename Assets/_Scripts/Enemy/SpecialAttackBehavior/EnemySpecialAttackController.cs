@@ -6,8 +6,8 @@ public class EnemySpecialAttackController : MonoBehaviour
     [SerializeField] private Transform player;
 
     [Header("Activation Settings")]
-    [SerializeField] private float triggerRange = 5f;
-    [SerializeField] private float cooldownTime = 5f;
+    [SerializeField] private float triggerRange;
+    [SerializeField] private float cooldownTime;
 
     [Header("Assigned Special Attack")]
     [SerializeField] private SpecialAttackBehavior specialAttack;
@@ -15,11 +15,12 @@ public class EnemySpecialAttackController : MonoBehaviour
     private float lastAttackTime;
     private bool isCoolingDown => Time.time < lastAttackTime + cooldownTime;
 
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
     private void Update()
     {
-        if (player == null || specialAttack == null)
-            return;
-
         float distance = Vector3.Distance(transform.position, player.position);
 
         if (distance <= triggerRange && !isCoolingDown)

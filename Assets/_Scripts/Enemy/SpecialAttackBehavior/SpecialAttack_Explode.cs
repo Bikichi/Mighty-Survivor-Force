@@ -8,7 +8,8 @@ public class SpecialAttack_Explode : SpecialAttackBehavior
     [SerializeField] private float explosionRadius = 3f;
     [SerializeField] private float explosionDamage = 30f;
     [SerializeField] private GameObject explosionEffect;
-    [SerializeField] private string prepareAnimationTrigger = "Prepare";
+    [SerializeField] private GameObject explosionArea;
+    [SerializeField] private string prepareAnimationBool = "Prepare";
 
     private bool hasExploded;
     private Animator anim;
@@ -28,9 +29,14 @@ public class SpecialAttack_Explode : SpecialAttackBehavior
     {
         hasExploded = true;
 
-        anim.SetTrigger(prepareAnimationTrigger);
+        anim.SetBool(prepareAnimationBool, true);
+        explosionArea.SetActive(true);
+        GetComponent<EnemyMovement>().enemyMoveSpeed = 0f;
+        GetComponent<EnemyMovement>().lerpSpeed = 0f;
 
         yield return new WaitForSeconds(prepareDelay);
+
+        anim.SetBool(prepareAnimationBool, false);
 
         if (explosionEffect != null)
             Instantiate(explosionEffect, transform.position, Quaternion.identity);
@@ -38,11 +44,20 @@ public class SpecialAttack_Explode : SpecialAttackBehavior
         Collider[] hits = Physics.OverlapSphere(transform.position, explosionRadius);
         foreach (var hit in hits)
         {
-            LivingEntity entity = hit.GetComponent<LivingEntity>();
-            if (entity != null)
-                entity.TakeDamage(explosionDamage);
+            if (hit.CompareTag("Player"))
+            {
+                PlayerHealth playerHealth = hit.GetComponent<PlayerHealth>();
+                if (playerHealth != null)
+                    playerHealth.TakeDamage(explosionDamage);
+            }
         }
-
+        explosionArea.SetActive(false);
         Destroy(gameObject);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
 }

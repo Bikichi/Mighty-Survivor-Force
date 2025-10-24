@@ -16,11 +16,8 @@ public class EnemyLootDrop : MonoBehaviour
     [SerializeField] private int minCoins = 5;
     [SerializeField] private int maxCoins = 10;
     [SerializeField] private Vector3 areaCenter = new Vector3(0.02f, 1.58f, -2.5f);
-    [SerializeField] private Vector3 areaSize = new Vector3(12f, 0f, 12f);
+    [SerializeField] private Vector3 areaSize = new Vector3(10f, 0f, 10f);
 
-    /// <summary>
-    /// Rơi loot cho quái thường
-    /// </summary>
     public void DropNormalLoot(Vector3 position, Quaternion rotation)
     {
         // 🪙 Coin drop
@@ -36,9 +33,6 @@ public class EnemyLootDrop : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Rơi loot cho boss (nhiều coin, vị trí ngẫu nhiên)
-    /// </summary>
     public void DropBossLoot(Vector3 position, Quaternion rotation)
     {
         int coinCount = Random.Range(minCoins, maxCoins + 1);

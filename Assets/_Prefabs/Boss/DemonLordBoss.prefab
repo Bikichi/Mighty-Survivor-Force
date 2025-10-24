@@ -2564,13 +2564,16 @@ GameObject:
   - component: {fileID: 7914920682783904966}
   - component: {fileID: 2640274177501680838}
   - component: {fileID: 9047045292650379409}
+  - component: {fileID: 4173074289043777410}
+  - component: {fileID: 5291666042336396825}
+  - component: {fileID: 6309332657933419739}
   m_Layer: 8
   m_Name: DemonLordBoss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4487135373187091629
 Transform:
   m_ObjectHideFlags: 0
@@ -2662,8 +2665,6 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls: []
-  _coinDrop: {fileID: 0}
-  _hasCoin: 0
   deathAnimationTime: 0
   _anim: {fileID: 0}
   componentsToDisable: []
@@ -2735,7 +2736,7 @@ MonoBehaviour:
   - {fileID: 7440290394671188070}
   - {fileID: 5841130995081272193}
   bulletPrefab: {fileID: 2825169026703870844, guid: db90f7097caf4e74bb5504d7f7d72fba, type: 3}
-  fireCooldown: 2
+  fireCooldown: 3
   fireTimer: 0
   isShooting: 0
   bossAnimator: {fileID: 211888154905498082}
@@ -2744,6 +2745,63 @@ MonoBehaviour:
   bossSkills:
   - {fileID: 1879404320822655176}
   - {fileID: 2640274177501680838}
+--- !u!114 &4173074289043777410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6734382366527976799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47e226a621777284c9370d0b99fd9b70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyMovement: {fileID: 7914920682783904966}
+  slowTimer: 0
+  currentSlowPercent: 0
+  maxSlowPercent: 0
+  vfxInstance: {fileID: 0}
+  vfxPoint: {fileID: 4487135373187091629}
+--- !u!114 &5291666042336396825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6734382366527976799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70818f059ea8cbd418fc49f5dd0546e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHealth: {fileID: 3982095180446531429}
+  burnTimer: 0
+  currentDamage: 0
+  maxDamage: 0
+  maxDamagePercent: 3
+  vfxInstance: {fileID: 0}
+  vfxPoint: {fileID: 4487135373187091629}
+--- !u!114 &6309332657933419739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6734382366527976799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a05544267b816742b7d9cf7c8906337, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinPrefab: {fileID: 1880245074145146, guid: 81848b6677705f2418649c87a28b45d4, type: 3}
+  coinDropChance: 0.5
+  healthPrefab: {fileID: 4581376860598887516, guid: b8638e2d0f157a147a3afc1423c92c30, type: 3}
+  healthDropChance: 0.2
+  minCoins: 5
+  maxCoins: 10
+  areaCenter: {x: 0.02, y: 1.58, z: -2.5}
+  areaSize: {x: 10, y: 0, z: 10}
 --- !u!1 &6741329774302311461
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ public class BossHealth : EnemyHealth
     {
         yield return new WaitForSeconds(deathAnimationTime);
 
-        // 🪙 Boss rơi nhiều coin
+        //boss rơi nhiều coin
         if (lootDrop != null)
         {
             lootDrop.DropBossLoot(transform.position, transform.rotation);

@@ -7,7 +7,7 @@ public class SpecialAttack_Dash : SpecialAttackBehavior
     [SerializeField] private float prepareDelay = 1f;
     [SerializeField] private float dashSpeed = 20f;
     [SerializeField] private float dashDuration = 0.3f;
-    [SerializeField] private string prepareAnimationTrigger = "Prepare";
+    [SerializeField] private string prepareAnimationBool = "Prepare";
 
     private bool isAttacking;
     private Transform self;
@@ -31,9 +31,11 @@ public class SpecialAttack_Dash : SpecialAttackBehavior
     {
         isAttacking = true;
 
-        anim.SetTrigger(prepareAnimationTrigger);
+        anim.SetBool(prepareAnimationBool, true);
 
         yield return new WaitForSeconds(prepareDelay);
+
+        anim.SetBool(prepareAnimationBool, false);
 
         Vector3 direction = (target.position - self.position).normalized;
 

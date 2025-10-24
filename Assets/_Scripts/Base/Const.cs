@@ -16,4 +16,6 @@ public class Const : MonoBehaviour
     public const string SWORD_TAG = "Sword";
     public const string DRONEBULLET_TAG = "DroneBullet";
     public const string MINE_TAG = "Mine";
+    public const string COIN_TAG = "Coin";
+    public const string HP_ITEMS_TAG = "HPItems";
 }

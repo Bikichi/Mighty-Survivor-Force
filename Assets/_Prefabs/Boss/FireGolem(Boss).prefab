@@ -2814,13 +2814,16 @@ GameObject:
   - component: {fileID: 128007862077218644}
   - component: {fileID: 24117054093325762}
   - component: {fileID: 2128145287976958539}
+  - component: {fileID: 5574687001872839587}
+  - component: {fileID: 4655995013556194062}
+  - component: {fileID: 8996427547058871331}
   m_Layer: 9
   m_Name: FireGolem(Boss)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5647166191379980049
 Transform:
   m_ObjectHideFlags: 0
@@ -2928,7 +2931,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d964ad1eb7f5014484053c3468f015f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 200
+  maxHealth: 500
   currentHealth: 0
   defense: 10
   onHealthChange:
@@ -2949,8 +2952,6 @@ MonoBehaviour:
           m_StringArgument: isDead
           m_BoolArgument: 0
         m_CallState: 2
-  _coinDrop: {fileID: 0}
-  _hasCoin: 0
   deathAnimationTime: 1.75
   _anim: {fileID: 4397607668736091140}
   componentsToDisable:
@@ -3004,12 +3005,12 @@ MonoBehaviour:
   - {fileID: 3981204453050943128}
   - {fileID: 4988739201917991718}
   bulletPrefab: {fileID: 281293975063934578, guid: 6519e6826c256314ba9fecc3305f8fbf, type: 3}
-  fireCooldown: 1
+  fireCooldown: 4
   fireTimer: 0
   isShooting: 0
   bossAnimator: {fileID: 0}
   shootTriggerName: Shoot
-  shootAnimDuration: 1
+  shootAnimDuration: 1.15
   bossSkills:
   - {fileID: 24117054093325762}
   - {fileID: 1135445586202009919}
@@ -3030,8 +3031,8 @@ MonoBehaviour:
   explosionPrefab: {fileID: 4008132951210241031, guid: 4bc949f881d13fd4cb566e8a029ecb7b, type: 3}
   windUpTime: 3
   chargeSpeed: 50
-  startTime: 2
-  cooldown: 3
+  startTime: 5
+  cooldown: 20
   stopDistance: 3.5
   isWindUp: 0
   isCharging: 0
@@ -3052,6 +3053,63 @@ MonoBehaviour:
   player: {fileID: 0}
   attackPath: {fileID: 6453499971542838033}
   scaleMultiplier: 0.65
+--- !u!114 &5574687001872839587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769055631801480425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47e226a621777284c9370d0b99fd9b70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyMovement: {fileID: 515400605368485774}
+  slowTimer: 0
+  currentSlowPercent: 0
+  maxSlowPercent: 0
+  vfxInstance: {fileID: 0}
+  vfxPoint: {fileID: 5647166191379980049}
+--- !u!114 &4655995013556194062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769055631801480425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70818f059ea8cbd418fc49f5dd0546e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHealth: {fileID: -6774482393363119703}
+  burnTimer: 0
+  currentDamage: 0
+  maxDamage: 0
+  maxDamagePercent: 3
+  vfxInstance: {fileID: 0}
+  vfxPoint: {fileID: 5647166191379980049}
+--- !u!114 &8996427547058871331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769055631801480425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a05544267b816742b7d9cf7c8906337, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinPrefab: {fileID: 1880245074145146, guid: 81848b6677705f2418649c87a28b45d4, type: 3}
+  coinDropChance: 0.5
+  healthPrefab: {fileID: 4581376860598887516, guid: b8638e2d0f157a147a3afc1423c92c30, type: 3}
+  healthDropChance: 0.2
+  minCoins: 5
+  maxCoins: 10
+  areaCenter: {x: 0.02, y: 1.58, z: -2.5}
+  areaSize: {x: 10, y: 0, z: 10}
 --- !u!1 &1820654865786825713
 GameObject:
   m_ObjectHideFlags: 0
