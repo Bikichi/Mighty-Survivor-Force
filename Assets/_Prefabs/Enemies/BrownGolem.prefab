@@ -83,6 +83,7 @@ MonoBehaviour:
   attackMask:
     serializedVersion: 2
     m_Bits: 64
+  bossCharge: {fileID: 0}
 --- !u!1 &64473046120004796
 GameObject:
   m_ObjectHideFlags: 0
@@ -8223,6 +8224,7 @@ GameObject:
   - component: {fileID: 2280123793151490445}
   - component: {fileID: 435053808370863451}
   - component: {fileID: 3224868215230310358}
+  - component: {fileID: -543520251623825491}
   m_Layer: 8
   m_Name: BrownGolem
   m_TagString: Enemy
@@ -8356,12 +8358,12 @@ MonoBehaviour:
   enemyAttack: {fileID: 0}
   anim: {fileID: 5855755328469367166}
   enemyMoveSpeed: 5
+  lerpSpeed: 0
   checkInterval: 0.05
   checkTimer: 0
   rb: {fileID: 2607453827391696879}
   stoppingDistance: 4
   isMoving: 1
-  lastPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &435053808370863451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8376,6 +8378,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1000
   currentHealth: 0
+  defense: 0
   onHealthChange:
     m_PersistentCalls:
       m_Calls: []
@@ -8394,10 +8397,9 @@ MonoBehaviour:
           m_StringArgument: isDead
           m_BoolArgument: 0
         m_CallState: 2
-  _coinDrop: {fileID: 1880245074145146, guid: 81848b6677705f2418649c87a28b45d4, type: 3}
-  _hasCoin: 1
   deathAnimationTime: 1
   _anim: {fileID: 0}
+  componentsToDisable: []
 --- !u!114 &3224868215230310358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8414,6 +8416,20 @@ MonoBehaviour:
   enemyAttack: {fileID: 0}
   normalMass: 10
   attackMass: 10000
+--- !u!114 &-543520251623825491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4459301653538735250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a05544267b816742b7d9cf7c8906337, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinPrefab: {fileID: 1880245074145146, guid: 81848b6677705f2418649c87a28b45d4, type: 3}
+  dropChance: 0.5
 --- !u!1 &4684050166033397021
 GameObject:
   m_ObjectHideFlags: 0

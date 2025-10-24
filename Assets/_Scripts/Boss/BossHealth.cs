@@ -12,14 +12,17 @@ public class BossHealth : EnemyHealth
         BossComponentUtils.AddBossComponent<BossBigStrike>(gameObject, componentsToDisable);
     }
 
-    //generic thêm component vào danh sách nếu tồn tại và chưa có
-    private void AddBossComponent<T>() where T : MonoBehaviour
+    protected override IEnumerator HandleDeath()
     {
-        T comp = GetComponentInChildren<T>();
-        if (comp != null && !componentsToDisable.Contains(comp))
+        yield return new WaitForSeconds(deathAnimationTime);
+
+        // 🪙 Boss rơi nhiều coin
+        if (lootDrop != null)
         {
-            componentsToDisable.Add(comp);
+            lootDrop.DropBossLoot(transform.position, transform.rotation);
         }
+
+        Destroy(gameObject);
     }
 
     protected override void DisableEnemyActions()

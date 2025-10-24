@@ -1,20 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class EnemyHealth : LivingEntity
 {
-    [SerializeField] private GameObject _coinDrop;
-    [SerializeField] private bool _hasCoin;
     public float deathAnimationTime;
     public Animator _anim;
 
     [SerializeField] protected List<MonoBehaviour> componentsToDisable;
 
+    protected EnemyLootDrop lootDrop;
+
     protected virtual void Start()
     {
         _anim = GetComponentInChildren<Animator>();
+        lootDrop = GetComponent<EnemyLootDrop>();
     }
 
     protected override void Die()
@@ -22,6 +22,7 @@ public class EnemyHealth : LivingEntity
         base.Die();
         DisableEnemyActions();
         StartCoroutine(HandleDeath());
+
         EnemySpawner enemySpawner = FindAnyObjectByType<EnemySpawner>();
         if (enemySpawner != null)
         {
@@ -29,19 +30,21 @@ public class EnemyHealth : LivingEntity
         }
     }
 
-    private IEnumerator HandleDeath()
+    protected virtual IEnumerator HandleDeath()
     {
         yield return new WaitForSeconds(deathAnimationTime);
 
-        if (_hasCoin)
+        // 🪙 Rơi coin thường
+        if (lootDrop != null)
         {
-            Instantiate(_coinDrop, transform.position, transform.rotation);
+            lootDrop.DropNormalLoot(transform.position, transform.rotation);
         }
+
         Destroy(gameObject);
     }
 
     protected virtual void DisableEnemyActions()
-    {   
+    {
         foreach (var comp in componentsToDisable)
         {
             comp.enabled = false;
@@ -53,5 +56,4 @@ public class EnemyHealth : LivingEntity
         Rigidbody rb = GetComponent<Rigidbody>();
         if (rb != null) rb.velocity = Vector3.zero;
     }
-
 }
