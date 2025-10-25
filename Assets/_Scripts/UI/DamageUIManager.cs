@@ -6,15 +6,10 @@ public class DamageUIManager : Singleton<DamageUIManager>
     [SerializeField] private Transform uiParnet;
     public void ShowDamageUI(float damage, Collider enemyCollider, bool isCrit = false)
     {
-        float defenseValue = 0f;
+        if (enemyCollider == null) return;
 
-        //lấy EnemyHealth từ collider truy cập vào defense
-        var enemyHealth = enemyCollider.GetComponent<EnemyHealth>();
-        defenseValue = enemyHealth.defense;
-
-        float finalDamage = Mathf.Max(damage - defenseValue, 1);
-
-        Vector3 spawnPosition = enemyCollider.bounds.center + new Vector3(0, enemyCollider.bounds.size.y * 0.6f, 0);
+        Vector3 spawnPosition = enemyCollider.bounds.center +
+                                new Vector3(0, enemyCollider.bounds.size.y * 0.6f, 0);
 
         GameObject go = Instantiate(floatingTextPrefab, uiParnet);
         go.transform.position = spawnPosition;
@@ -24,7 +19,8 @@ public class DamageUIManager : Singleton<DamageUIManager>
         {
             Color textColor = isCrit ? Color.red : Color.white;
 
-            floatingText.Setup(Mathf.RoundToInt(finalDamage).ToString(), textColor);
+            floatingText.Setup(Mathf.RoundToInt(damage).ToString(), textColor);
         }
     }
+
 }

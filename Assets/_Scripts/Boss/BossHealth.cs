@@ -12,6 +12,37 @@ public class BossHealth : EnemyHealth
         BossComponentUtils.AddBossComponent<BossBigStrike>(gameObject, componentsToDisable);
     }
 
+    public override void TakeDamage(float damage, bool isCrit = false)
+    {
+        var phaseController = GetComponent<BossPhaseController>();
+
+        if (phaseController != null && phaseController.isPrePhase2Active)
+        {
+            DamageUIManager.Instance.ShowDamageUI(0, GetComponent<Collider>(), isCrit);
+            return;
+        }
+
+        float finalDamage = Mathf.Max(damage - defense, 0);
+        float newHealth = currentHealth - finalDamage;
+
+        if (phaseController != null && !phaseController.isPhase2)
+        {
+            float minHealth = maxHealth * 0.5f;
+            if (newHealth < minHealth)
+                newHealth = minHealth;
+        }
+
+        currentHealth = Mathf.Max(newHealth, 0f);
+        onHealthChange?.Invoke(currentHealth, maxHealth);
+
+        //Show damage UI
+        DamageUIManager.Instance.ShowDamageUI(finalDamage, GetComponent<Collider>(), isCrit);
+        if (currentHealth <= 0 && !IsDead)
+        {
+            Die();
+        }
+    }
+
     protected override IEnumerator HandleDeath()
     {
         yield return new WaitForSeconds(deathAnimationTime);
@@ -28,7 +59,11 @@ public class BossHealth : EnemyHealth
     protected override void DisableEnemyActions()
     {
         base.DisableEnemyActions();
-        attackPath.SetActive(false);
+
+        if (attackPath != null)
+        {
+            attackPath.SetActive(false);
+        }
         statsBars.SetActive(false);
     }
 }

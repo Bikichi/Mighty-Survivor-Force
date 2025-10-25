@@ -26,7 +26,7 @@ public class PlayerHealth : LivingEntity
         onHealthChange?.Invoke(currentHealth, maxHealth); // update HealthBar
     }
 
-    public override void TakeDamage(float damage)
+    public override void TakeDamage(float damage, bool isCrit = false)
     {
         //cập nhật tỉ lệ né trực tiếp từ PlayerStats mỗi lần TakeDamage
         float dodgeChance = PlayerStats.Instance.baseDodgeChance / 100f; //chia 100 để dùng với Random.value (0-1)

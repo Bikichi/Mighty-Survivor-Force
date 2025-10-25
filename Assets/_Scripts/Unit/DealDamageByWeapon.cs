@@ -38,8 +38,6 @@ public class DealDamageByWeapon : MonoBehaviour
             EnemyHealth enemyHealth = col.GetComponent<EnemyHealth>();
             if (enemyHealth != null)
             {
-                DamageUIManager.Instance.ShowDamageUI(weaponDamage, col);
-
                 enemyHealth.TakeDamage(weaponDamage);
 
                 Vector3 hitPosition = col.ClosestPoint(transform.position);

@@ -36,7 +36,6 @@ public class MineDealDamage : MonoBehaviour
         {
             if (explosionEffect != null)
             {
-                DamageUIManager.Instance.ShowDamageUI(mineDamage, col);
                 GameObject explosion = Instantiate(explosionEffect, transform.position, Quaternion.identity);
                 Destroy(explosion, 1f);
             }

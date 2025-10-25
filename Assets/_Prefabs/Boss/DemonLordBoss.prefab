@@ -2573,7 +2573,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4487135373187091629
 Transform:
   m_ObjectHideFlags: 0
@@ -2664,12 +2664,30 @@ MonoBehaviour:
       m_Calls: []
   onDeath:
     m_PersistentCalls:
-      m_Calls: []
-  deathAnimationTime: 0
-  _anim: {fileID: 0}
-  componentsToDisable: []
-  attackPath: {fileID: 0}
-  statsBars: {fileID: 0}
+      m_Calls:
+      - m_Target: {fileID: 211888154905498082}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: isDead
+          m_BoolArgument: 0
+        m_CallState: 2
+  deathAnimationTime: 1
+  _anim: {fileID: 211888154905498082}
+  componentsToDisable:
+  - {fileID: 7914920682783904966}
+  - {fileID: 2640274177501680838}
+  - {fileID: 9047045292650379409}
+  - {fileID: 4173074289043777410}
+  - {fileID: 5291666042336396825}
+  - {fileID: 1879404320822655176}
+  attackPath: {fileID: 8473224594287615400}
+  statsBars: {fileID: 4569048728175704912}
 --- !u!114 &7914920682783904966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2685,13 +2703,11 @@ MonoBehaviour:
   targetPlayer: {fileID: 0}
   enemyAttack: {fileID: 1879404320822655176}
   anim: {fileID: 211888154905498082}
+  rb: {fileID: 1283818448853791200}
   enemyMoveSpeed: 6
   lerpSpeed: 8
-  checkInterval: 0.05
-  checkTimer: 0
-  rb: {fileID: 1283818448853791200}
   stoppingDistance: 6
-  isMoving: 0
+  checkInterval: 0.05
   bossSkills:
   - {fileID: 2640274177501680838}
 --- !u!114 &2640274177501680838
@@ -2801,7 +2817,7 @@ MonoBehaviour:
   minCoins: 5
   maxCoins: 10
   areaCenter: {x: 0.02, y: 1.58, z: -2.5}
-  areaSize: {x: 10, y: 0, z: 10}
+  areaSize: {x: 20, y: 0, z: 20}
 --- !u!1 &6741329774302311461
 GameObject:
   m_ObjectHideFlags: 0

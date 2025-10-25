@@ -21,7 +21,7 @@ public class LivingEntity : MonoBehaviour
 		IsDead = false;
 	}
 
-	public virtual void TakeDamage(float damage)
+	public virtual void TakeDamage(float damage, bool isCrit = false)
 	{
         float finalDamage = Mathf.Max(damage - defense, 1);
 

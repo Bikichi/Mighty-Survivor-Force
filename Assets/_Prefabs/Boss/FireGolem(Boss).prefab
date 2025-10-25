@@ -2823,7 +2823,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5647166191379980049
 Transform:
   m_ObjectHideFlags: 0
@@ -2907,7 +2907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 771abcad8941e5c4f97a37c5a2e4c316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: {fileID: -6774482393363119703}
+  bossHealth: {fileID: -6774482393363119703}
   phase2AuraPrefab: {fileID: 1823365547491585827}
   attackPath: {fileID: 4259906377315905297}
   bossAnimator: {fileID: 4397607668736091140}
@@ -2955,9 +2955,13 @@ MonoBehaviour:
   deathAnimationTime: 1.75
   _anim: {fileID: 4397607668736091140}
   componentsToDisable:
-  - {fileID: 8329926673506606963}
-  - {fileID: 24117054093325762}
   - {fileID: 515400605368485774}
+  - {fileID: 1135445586202009919}
+  - {fileID: 24117054093325762}
+  - {fileID: 128007862077218644}
+  - {fileID: 8329926673506606963}
+  - {fileID: 5574687001872839587}
+  - {fileID: 4655995013556194062}
   attackPath: {fileID: 4259906377315905297}
   statsBars: {fileID: 8290391141244405017}
 --- !u!114 &515400605368485774
@@ -2975,13 +2979,11 @@ MonoBehaviour:
   targetPlayer: {fileID: 0}
   enemyAttack: {fileID: 0}
   anim: {fileID: 4397607668736091140}
+  rb: {fileID: 0}
   enemyMoveSpeed: 6
   lerpSpeed: 8
-  checkInterval: 0.05
-  checkTimer: 0
-  rb: {fileID: 0}
   stoppingDistance: 6.5
-  isMoving: 0
+  checkInterval: 0.05
   bossSkills:
   - {fileID: 24117054093325762}
   - {fileID: 1135445586202009919}
@@ -3109,7 +3111,7 @@ MonoBehaviour:
   minCoins: 5
   maxCoins: 10
   areaCenter: {x: 0.02, y: 1.58, z: -2.5}
-  areaSize: {x: 10, y: 0, z: 10}
+  areaSize: {x: 20, y: 0, z: 20}
 --- !u!1 &1820654865786825713
 GameObject:
   m_ObjectHideFlags: 0

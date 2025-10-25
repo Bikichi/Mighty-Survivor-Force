@@ -12,10 +12,9 @@ public class DroneBullet : PlayerBullet
     }
 
     //Không crit
-    protected override void ApplyDamage(EnemyHealth enemyHealth, Collider col)
+    protected override void ApplyDamage(EnemyHealth enemyHealth)
     {
         enemyHealth.TakeDamage(damageBullet);
-        DamageUIManager.Instance.ShowDamageUI(damageBullet, col, false);
     }
 
     protected override void MoveBullet()

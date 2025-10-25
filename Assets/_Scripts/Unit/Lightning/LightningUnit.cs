@@ -61,8 +61,6 @@ public class LightningUnit : MonoBehaviour
             Collider col = enemy.GetComponent<Collider>();
             if (col != null)
             {
-                DamageUIManager.Instance.ShowDamageUI(damagePerHit, col);
-
                 float height = col.bounds.size.y;
 
                 //hiệu ứng tia sét

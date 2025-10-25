@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossPhaseController : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private EnemyHealth enemyHealth; // tham chiếu trực tiếp
+    [SerializeField] private BossHealth bossHealth; // tham chiếu trực tiếp
     [SerializeField] private GameObject phase2AuraPrefab;
     [SerializeField] private GameObject attackPath;
     [SerializeField] private Animator bossAnimator;
@@ -14,8 +14,8 @@ public class BossPhaseController : MonoBehaviour
     [SerializeField] private float prePhase2Duration;
     [SerializeField] private List<MonoBehaviour> scriptsToDisableDuringPrePhase2;
 
-    [SerializeField] private bool isPhase2 = false;
-    [SerializeField] private bool isPrePhase2Active = false;
+    [SerializeField] public bool isPhase2 = false;
+    [SerializeField] public bool isPrePhase2Active = false;
 
 
     private void Start()
@@ -36,7 +36,7 @@ public class BossPhaseController : MonoBehaviour
         if (!isPhase2 && !isPrePhase2Active)
         {
             // Kiểm tra HP ≤ 50%
-            if (enemyHealth.currentHealth <= enemyHealth.maxHealth * 0.5f)
+            if (bossHealth.currentHealth <= bossHealth.maxHealth * 0.5f)
             {
                 StartCoroutine(PrePhase2());
             }
@@ -56,12 +56,7 @@ public class BossPhaseController : MonoBehaviour
         phase2AuraPrefab.SetActive(true);
         attackPath.SetActive(false);
 
-        float originalDefense = enemyHealth.defense;
-        enemyHealth.defense *= 9999f;
-
         yield return new WaitForSeconds(prePhase2Duration);
-        
-        enemyHealth.defense = originalDefense;
 
         IncreaseBossStats();
 
@@ -81,7 +76,7 @@ public class BossPhaseController : MonoBehaviour
     private void IncreaseBossStats()
     {
         //hệ số
-        const float defenseMultiplier = 9999f;
+        const float defenseMultiplier = 1f;
         const float speedMultiplier = 1.5f;
         const float cooldownMultiplier = 1.25f;
         const float damageMultiplier = 1.5f;

@@ -37,10 +37,9 @@ public class IceBalls : PlayerBullet
 
         transform.Translate(Vector3.forward * _speedBullet * Time.deltaTime);
     }
-    protected override void ApplyDamage(EnemyHealth enemyHealth, Collider col)
+    protected override void ApplyDamage(EnemyHealth enemyHealth)
     {
         enemyHealth.TakeDamage(damageBullet);
-        DamageUIManager.Instance.ShowDamageUI(damageBullet, col, false);
     }
 
     protected override void OnTriggerEnter(Collider col)

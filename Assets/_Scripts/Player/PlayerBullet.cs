@@ -31,19 +31,18 @@ public class PlayerBullet : BaseBullet
             EnemyHealth enemyHealth = col.GetComponent<EnemyHealth>();
             if (enemyHealth != null)
             {
-                ApplyDamage(enemyHealth, col);
+                ApplyDamage(enemyHealth);
                 PlayHitEffect(col);
                 Destroy(gameObject, 0.1f);
             }
         }
     }
 
-    protected virtual void ApplyDamage(EnemyHealth enemyHealth, Collider col)
+    protected virtual void ApplyDamage(EnemyHealth enemyHealth)
     {
         var result = CritManager.Instance.CalculateCritDamage(damageBullet);
-        enemyHealth.TakeDamage(result.damage);
+        enemyHealth.TakeDamage(result.damage, result.isCrit);
 
-        DamageUIManager.Instance.ShowDamageUI(result.damage, col, result.isCrit);
     }
 
     protected virtual void PlayHitEffect(Collider col)

@@ -50,7 +50,6 @@ public class BurningDamageHandler : MonoBehaviour
         Collider col = GetComponent<Collider>();
 
         enemyHealth.TakeDamage(currentDamage);
-        DamageUIManager.Instance.ShowDamageUI(currentDamage, col);
 
         //làm mới thời gian cháy
         burnTimer = duration;

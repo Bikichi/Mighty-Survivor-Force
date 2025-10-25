@@ -17,6 +17,19 @@ public class EnemyHealth : LivingEntity
         lootDrop = GetComponent<EnemyLootDrop>();
     }
 
+    public override void TakeDamage(float damage, bool isCrit = false)
+    {
+        float finalDamage = Mathf.Max(damage - defense, 1);
+
+        currentHealth = Mathf.Max(currentHealth - finalDamage, 0);
+        onHealthChange?.Invoke(currentHealth, maxHealth);
+        DamageUIManager.Instance.ShowDamageUI(finalDamage, GetComponent<Collider>(), isCrit);
+        if (currentHealth <= 0 && !IsDead)
+        {
+            Die();
+        }
+    }
+
     protected override void Die()
     {
         base.Die();
@@ -34,7 +47,7 @@ public class EnemyHealth : LivingEntity
     {
         yield return new WaitForSeconds(deathAnimationTime);
 
-        // 🪙 Rơi coin thường
+        //Rơi coin thường
         if (lootDrop != null)
         {
             lootDrop.DropNormalLoot(transform.position, transform.rotation);
