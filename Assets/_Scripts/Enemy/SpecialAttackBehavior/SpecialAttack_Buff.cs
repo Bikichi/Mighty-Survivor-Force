@@ -14,18 +14,20 @@ public class SpecialAttack_Buff : SpecialAttackBehavior
     [Header("Material Settings")]
     [SerializeField] private Material buffMaterial;  //Material khi buff
     private Material originalMaterial;               //lưu lại material gốc
-    private SkinnedMeshRenderer meshRenderer;        //renderer chính của quái
+    private SkinnedMeshRenderer skinnedMeshRenderer;        //renderer chính của quái
 
     private bool isBuffing;
-    private EnemyMovement movement;
-    private EnemyAttack attack;
-    private Animator anim;
+    [SerializeField] private EnemyMovement movement;
+    [SerializeField] private EnemyAttack attack;
+    [SerializeField] private Animator anim;
 
     private void Awake()
     {
         movement = GetComponent<EnemyMovement>();
-        attack = GetComponent<EnemyAttack>();
+        attack = GetComponentInChildren<EnemyAttack>();
         anim = GetComponentInChildren<Animator>();
+        skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
+        originalMaterial = skinnedMeshRenderer.material;
     }
 
     public override void ExecuteSpecialAttack(Transform target)
@@ -40,10 +42,16 @@ public class SpecialAttack_Buff : SpecialAttackBehavior
 
         anim.SetBool(prepareAnimationBool, true);
 
+        float originalSpeed = movement.enemyMoveSpeed;
+        movement.enemyMoveSpeed = 0f;
+
         yield return new WaitForSeconds(prepareDelay);
+
+        skinnedMeshRenderer.material = buffMaterial;
 
         anim.SetBool(prepareAnimationBool, false);
 
+        movement.enemyMoveSpeed = originalSpeed;
         movement.enemyMoveSpeed *= speedMultiplier;
 
         attack.attackDamage *= damageMultiplier;
@@ -51,6 +59,8 @@ public class SpecialAttack_Buff : SpecialAttackBehavior
         attack.attackCooldown *= cooldownMultiplier;
 
         yield return new WaitForSeconds(buffDuration);
+
+        skinnedMeshRenderer.material = originalMaterial;
 
         movement.enemyMoveSpeed /= speedMultiplier;
 

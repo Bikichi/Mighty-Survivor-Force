@@ -13671,7 +13671,7 @@ MonoBehaviour:
   anim: {fileID: 1915859285371239603}
   rb: {fileID: 1658747276766063313}
   enemyMoveSpeed: 10
-  lerpSpeed: 0
+  lerpSpeed: 10
   stoppingDistance: 2
   checkInterval: 0.05
 --- !u!114 &8717380183846545915
@@ -13686,7 +13686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca8d883a57f3414a803641df6ad81cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 300
+  maxHealth: 3000
   currentHealth: 0
   defense: 0
   onHealthChange:
@@ -13761,6 +13761,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   enemyAttack: {fileID: 0}
+  specialDash: {fileID: 0}
+  specialExplode: {fileID: 0}
   normalMass: 3
   attackMass: 10000
 --- !u!114 &9013572846683312770

@@ -5688,7 +5688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca8d883a57f3414a803641df6ad81cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 300
+  maxHealth: 3000
   currentHealth: 0
   defense: 9999
   onHealthChange:
@@ -5717,7 +5717,7 @@ MonoBehaviour:
   anim: {fileID: 6414705695726070387}
   rb: {fileID: 7139731615163005636}
   enemyMoveSpeed: 8
-  lerpSpeed: 8
+  lerpSpeed: 10
   stoppingDistance: 2
   checkInterval: 0.05
 --- !u!114 &1108835056736545368

@@ -20,6 +20,10 @@ public class EnemyLootDrop : MonoBehaviour
 
     public void DropNormalLoot(Vector3 position, Quaternion rotation)
     {
+        float dropForwardOffset = 3f; // khoảng cách rơi ra trước mặt
+        //rotation * Vector3.forward lấy hướng mặt trước của enemy
+        Vector3 dropPosition = position + rotation * Vector3.forward * dropForwardOffset;
+
         //Coin drop
         if (coinPrefab != null && Random.value <= coinDropChance)
         {
@@ -29,7 +33,7 @@ public class EnemyLootDrop : MonoBehaviour
         //Health drop
         if (healthPrefab != null && Random.value <= healthDropChance)
         {
-            Instantiate(healthPrefab, position, rotation);
+            Instantiate(healthPrefab, dropPosition, rotation);
         }
     }
 

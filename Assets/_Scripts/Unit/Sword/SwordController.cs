@@ -97,6 +97,7 @@ public class SwordController : UnitFollowerBase
     {
         if (isAttacking && !isReturning)
         {
+            RotateUnit();
             float distance = Vector3.Distance(transform.position, targetPosition);
             float currentSpeed = Mathf.Lerp(minAttackSpeed, attackSpeed, distance / penetrationDistance);
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, currentSpeed * Time.deltaTime);

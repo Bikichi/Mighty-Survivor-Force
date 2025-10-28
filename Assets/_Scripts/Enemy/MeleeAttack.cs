@@ -32,7 +32,9 @@ public class MeleeAttack : EnemyAttack, ISkillStatus
         if (colInfo.Length > 0) //có player trong tầm đánh thì gây dame
         {
             PlayerHealth ph = colInfo[0].GetComponent<PlayerHealth>();
-            ph.TakeDamage(attackDamage);
+
+            if (ph != null)
+                ph.TakeDamage(attackDamage);
         }
     }
 

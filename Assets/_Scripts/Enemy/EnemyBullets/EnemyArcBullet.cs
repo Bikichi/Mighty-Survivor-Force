@@ -23,10 +23,7 @@ public class EnemyArcBullet : BaseBullet
         targetPlayer = GameObject.FindGameObjectWithTag("Player");
         startPos = transform.position;
 
-        // Lấy vị trí trung tâm player (không check null để dễ debug)
-        Collider playerCol = targetPlayer.GetComponent<Collider>();
-        Vector3 playerCenter = targetPlayer.transform.position + new Vector3(0, playerCol.bounds.size.y / 2, 0);
-        targetPos = playerCenter;
+        targetPos = targetPlayer.transform.position;
     }
 
     protected override void MoveBullet()

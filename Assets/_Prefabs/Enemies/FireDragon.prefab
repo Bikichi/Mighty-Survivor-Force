@@ -941,7 +941,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3677971375640770530}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.6975867, z: -0, w: 0.7165004}
+  m_LocalRotation: {x: 0, y: 0.69758415, z: 0, w: 0.71650285}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1023,7 +1023,7 @@ MonoBehaviour:
   anim: {fileID: 1878592244905028432}
   rb: {fileID: 5672183146542396557}
   enemyMoveSpeed: 8
-  lerpSpeed: 0
+  lerpSpeed: 10
   stoppingDistance: 20
   checkInterval: 0.05
 --- !u!114 &6608983698216811983
@@ -1927,7 +1927,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6448324545034132958}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

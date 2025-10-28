@@ -14,6 +14,7 @@ public class HP_ItemsDrop : MonoBehaviour
                 playerHealth.currentHealth += healAmount;
 
                 playerHealth.currentHealth = Mathf.Min(playerHealth.currentHealth, playerHealth.maxHealth);
+                playerHealth.onHealthChange?.Invoke(playerHealth.currentHealth, playerHealth.maxHealth);
 
                 Destroy(gameObject);
             }

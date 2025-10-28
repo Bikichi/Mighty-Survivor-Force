@@ -47,7 +47,8 @@ public class IceSlowHandler : MonoBehaviour
 
         //trừ đi tỉ lệ bị slow để ra tỉ lệ tốc độ hiện tại so với ban đầu
         float slowMultiplier = 1f - currentSlowPercent / 100f;
-        enemyMovement.enemyMoveSpeed = originalSpeed * slowMultiplier;
+        if (enemyMovement != null)
+            enemyMovement.enemyMoveSpeed = originalSpeed * slowMultiplier;
 
         //đặt lại thời gian slow
         slowTimer = duration;
@@ -73,7 +74,8 @@ public class IceSlowHandler : MonoBehaviour
     private void ResetSlow()
     {
         currentSlowPercent = 0f;
-        enemyMovement.enemyMoveSpeed = originalSpeed;
+        if (enemyMovement != null)
+            enemyMovement.enemyMoveSpeed = originalSpeed;
 
         if (vfxInstance != null)
         {

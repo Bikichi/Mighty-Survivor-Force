@@ -2907,7 +2907,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea107619e373ddf4ebee6c1fdac729c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 0}
   enemyDamage: 10
 --- !u!33 &6494572305761485866
 MeshFilter:
@@ -8317,7 +8316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca8d883a57f3414a803641df6ad81cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50000
+  maxHealth: 10000
   currentHealth: 0
   defense: 0
   onHealthChange:
@@ -8340,7 +8339,11 @@ MonoBehaviour:
         m_CallState: 2
   deathAnimationTime: 1
   _anim: {fileID: 0}
-  componentsToDisable: []
+  componentsToDisable:
+  - {fileID: 2280123793151490445}
+  - {fileID: 8178011583576506745}
+  - {fileID: 1575603992385603476}
+  - {fileID: 4479120717161001107}
 --- !u!114 &2280123793151490445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8358,7 +8361,7 @@ MonoBehaviour:
   anim: {fileID: 5855755328469367166}
   rb: {fileID: 2607453827391696879}
   enemyMoveSpeed: 5
-  lerpSpeed: 8
+  lerpSpeed: 10
   stoppingDistance: 4
   checkInterval: 0.075
 --- !u!114 &3224868215230310358
@@ -8375,6 +8378,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   enemyAttack: {fileID: 0}
+  specialDash: {fileID: 0}
+  specialExplode: {fileID: 0}
   normalMass: 10
   attackMass: 10000
 --- !u!114 &8178011583576506745

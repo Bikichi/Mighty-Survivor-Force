@@ -422,8 +422,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3375199026223485178}
-  - component: {fileID: 3924082411257160165}
   - component: {fileID: 3247186871267936857}
+  - component: {fileID: 3924082411257160165}
   - component: {fileID: 3479020183286517447}
   - component: {fileID: 3200666939121337754}
   - component: {fileID: 94987589701145454}
@@ -458,6 +458,33 @@ Transform:
   - {fileID: 3102163387889682696}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!54 &3247186871267936857
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3233129934485332625}
+  serializedVersion: 4
+  m_Mass: 7.5
+  m_Drag: 1
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 116
+  m_CollisionDetection: 0
 --- !u!65 &3924082411257160165
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -479,33 +506,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 2.51, z: 1.5}
   m_Center: {x: 0, y: 1.15, z: 0.22}
---- !u!54 &3247186871267936857
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3233129934485332625}
-  serializedVersion: 4
-  m_Mass: 3
-  m_Drag: 1
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 116
-  m_CollisionDetection: 0
 --- !u!114 &3479020183286517447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -518,7 +518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca8d883a57f3414a803641df6ad81cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 9000
   currentHealth: 0
   defense: 0
   onHealthChange:
@@ -563,7 +563,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   rb: {fileID: 0}
   enemyMoveSpeed: 5
-  lerpSpeed: 8
+  lerpSpeed: 10
   stoppingDistance: 2.5
   checkInterval: 0.05
 --- !u!114 &94987589701145454
