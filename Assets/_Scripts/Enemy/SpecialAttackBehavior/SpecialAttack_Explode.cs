@@ -12,6 +12,7 @@ public class SpecialAttack_Explode : SpecialAttackBehavior
     [SerializeField] private string prepareAnimationBool = "Prepare";
 
     private bool hasExploded;
+    public bool HasExploded => hasExploded;
     private Animator anim;
 
     private void Awake()

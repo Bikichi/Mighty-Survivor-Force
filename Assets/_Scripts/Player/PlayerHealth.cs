@@ -38,6 +38,11 @@ public class PlayerHealth : LivingEntity
         base.TakeDamage(damage);
     }
 
+    public void TakeDamageFromBeam(float damage)
+    {
+        base.TakeDamage(damage);
+    }
+
     private void ShowMissText()
     {
         GameObject missObj = Instantiate(missTextPrefab, uiParent);

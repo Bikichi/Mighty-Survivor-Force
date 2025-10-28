@@ -4,19 +4,29 @@ public class AttackMassController : MonoBehaviour
 {
     public Rigidbody rb;
     public EnemyAttack enemyAttack;
+    public SpecialAttack_Dash specialDash;
+    public SpecialAttack_Explode specialExplode;
 
     [Header("Mass Settings")]
-    public float normalMass;       //khối lượng bình thường
-    public float attackMass = 10000f;    //khối lượng khi tấn công
+    public float normalMass;
+    public float attackMass = 10000f;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         enemyAttack = GetComponentInChildren<EnemyAttack>();
+        specialDash = GetComponent<SpecialAttack_Dash>();
+        specialExplode = GetComponent<SpecialAttack_Explode>();
+        normalMass = rb.mass;
     }
 
     void Update()
     {
-        rb.mass = enemyAttack.isAttacking ? attackMass : normalMass;
+        bool isAnyAttack =
+            (enemyAttack != null && enemyAttack.isAttacking) ||
+            (specialDash != null && specialDash.IsAttacking) ||
+            (specialExplode != null && specialExplode.HasExploded);
+
+        rb.mass = isAnyAttack ? attackMass : normalMass;
     }
 }

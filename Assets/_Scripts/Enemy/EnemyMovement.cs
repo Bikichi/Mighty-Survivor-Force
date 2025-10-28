@@ -9,7 +9,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] public Rigidbody rb;
 
     [Header("Movement Settings")]
-    public float enemyMoveSpeed = 3f;
+    public float enemyMoveSpeed = 3f; // tốc độ gốc
     public float lerpSpeed = 8f;
     public float stoppingDistance = 2f;
 
@@ -23,10 +23,9 @@ public class EnemyMovement : MonoBehaviour
 
     private void Start()
     {
-        // Lấy các component cần thiết nếu chưa gán trong Inspector
-        rb ??= GetComponent<Rigidbody>();
-        anim ??= GetComponentInChildren<Animator>();
-        enemyAttack ??= GetComponentInChildren<EnemyAttack>();
+        rb = GetComponent<Rigidbody>();
+        anim = GetComponentInChildren<Animator>();
+        enemyAttack = GetComponentInChildren<EnemyAttack>();
 
         targetPlayer = GameObject.FindGameObjectWithTag("Player");
 
@@ -37,7 +36,7 @@ public class EnemyMovement : MonoBehaviour
     private void FixedUpdate()
     {
         if (targetPlayer == null)
-            return; // Nếu không có player thì không làm gì cả
+            return; //nếu không có player thì không làm gì cả
 
         RotateTowardsPlayer();
         MoveEnemy();
@@ -62,12 +61,11 @@ public class EnemyMovement : MonoBehaviour
         if (distance <= stoppingDistance || isAttacking)
         {
             isMoving = false;
-            rb.velocity = Vector3.zero;
         }
         else
         {
             isMoving = true;
-            rb.velocity = direction * enemyMoveSpeed;
+            transform.Translate(direction * enemyMoveSpeed * Time.deltaTime, Space.World);
         }
     }
 

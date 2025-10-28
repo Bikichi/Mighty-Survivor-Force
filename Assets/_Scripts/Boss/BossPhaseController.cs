@@ -54,7 +54,12 @@ public class BossPhaseController : MonoBehaviour
 
         bossAnimator.SetBool("isPrePhase2", true);
         phase2AuraPrefab.SetActive(true);
-        attackPath.SetActive(false);
+
+        if (attackPath != null)
+        {
+            attackPath.SetActive(false);
+        }
+
 
         yield return new WaitForSeconds(prePhase2Duration);
 

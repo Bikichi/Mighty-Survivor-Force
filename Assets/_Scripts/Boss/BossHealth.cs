@@ -22,7 +22,7 @@ public class BossHealth : EnemyHealth
             return;
         }
 
-        float finalDamage = Mathf.Max(damage - defense, 0);
+        float finalDamage = Mathf.Max(damage - defense, 1);
         float newHealth = currentHealth - finalDamage;
 
         if (phaseController != null && !phaseController.isPhase2)

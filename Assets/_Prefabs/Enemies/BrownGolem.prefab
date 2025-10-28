@@ -8219,11 +8219,11 @@ GameObject:
   - component: {fileID: 4231261234218737188}
   - component: {fileID: 634829971453612641}
   - component: {fileID: 2607453827391696879}
-  - component: {fileID: 1575603992385603476}
-  - component: {fileID: 8178011583576506745}
-  - component: {fileID: 2280123793151490445}
   - component: {fileID: 435053808370863451}
+  - component: {fileID: 2280123793151490445}
   - component: {fileID: 3224868215230310358}
+  - component: {fileID: 8178011583576506745}
+  - component: {fileID: 1575603992385603476}
   - component: {fileID: -543520251623825491}
   m_Layer: 8
   m_Name: BrownGolem
@@ -8303,67 +8303,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 116
   m_CollisionDetection: 0
---- !u!114 &1575603992385603476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4459301653538735250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47e226a621777284c9370d0b99fd9b70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyMovement: {fileID: 2280123793151490445}
-  slowTimer: 0
-  currentSlowPercent: 0
-  maxSlowPercent: 35
-  vfxInstance: {fileID: 0}
-  vfxPoint: {fileID: 5210966225178149398}
---- !u!114 &8178011583576506745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4459301653538735250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70818f059ea8cbd418fc49f5dd0546e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyHealth: {fileID: 435053808370863451}
-  burnTimer: 0
-  currentDamage: 0
-  maxDamage: 0
-  maxDamagePercent: 3
-  vfxInstance: {fileID: 0}
-  vfxPoint: {fileID: 5210966225178149398}
---- !u!114 &2280123793151490445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4459301653538735250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30f5bb4666d0eea4f88dd5a4252c30bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetPlayer: {fileID: 2125946824219224542, guid: c20f1201e3ed1d9419c2ca26383e1586, type: 3}
-  enemyAttack: {fileID: 0}
-  anim: {fileID: 5855755328469367166}
-  enemyMoveSpeed: 5
-  lerpSpeed: 8
-  checkInterval: 0.075
-  checkTimer: 0
-  rb: {fileID: 2607453827391696879}
-  stoppingDistance: 4
-  isMoving: 1
 --- !u!114 &435053808370863451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8400,6 +8341,26 @@ MonoBehaviour:
   deathAnimationTime: 1
   _anim: {fileID: 0}
   componentsToDisable: []
+--- !u!114 &2280123793151490445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4459301653538735250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f5bb4666d0eea4f88dd5a4252c30bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetPlayer: {fileID: 2125946824219224542, guid: c20f1201e3ed1d9419c2ca26383e1586, type: 3}
+  enemyAttack: {fileID: 0}
+  anim: {fileID: 5855755328469367166}
+  rb: {fileID: 2607453827391696879}
+  enemyMoveSpeed: 5
+  lerpSpeed: 8
+  stoppingDistance: 4
+  checkInterval: 0.075
 --- !u!114 &3224868215230310358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8416,6 +8377,43 @@ MonoBehaviour:
   enemyAttack: {fileID: 0}
   normalMass: 10
   attackMass: 10000
+--- !u!114 &8178011583576506745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4459301653538735250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70818f059ea8cbd418fc49f5dd0546e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHealth: {fileID: 435053808370863451}
+  burnTimer: 0
+  currentDamage: 0
+  maxDamage: 0
+  maxDamagePercent: 3
+  vfxInstance: {fileID: 0}
+  vfxPoint: {fileID: 5210966225178149398}
+--- !u!114 &1575603992385603476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4459301653538735250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47e226a621777284c9370d0b99fd9b70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyMovement: {fileID: 2280123793151490445}
+  slowTimer: 0
+  currentSlowPercent: 0
+  maxSlowPercent: 35
+  vfxInstance: {fileID: 0}
+  vfxPoint: {fileID: 5210966225178149398}
 --- !u!114 &-543520251623825491
 MonoBehaviour:
   m_ObjectHideFlags: 0

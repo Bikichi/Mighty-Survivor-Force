@@ -41,7 +41,7 @@ public class DamageBeam : MonoBehaviour
     {
         if (playerInZone != null)
         {
-            playerInZone.TakeDamage(damagePerSecond * Time.deltaTime);
+            playerInZone.TakeDamageFromBeam(damagePerSecond * Time.deltaTime);
         }
     }
 }

@@ -13633,7 +13633,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!114 &6965384482204180272
 MonoBehaviour:
@@ -13669,13 +13669,11 @@ MonoBehaviour:
   targetPlayer: {fileID: 2125946824219224542, guid: c20f1201e3ed1d9419c2ca26383e1586, type: 3}
   enemyAttack: {fileID: 2150634160278215284}
   anim: {fileID: 1915859285371239603}
+  rb: {fileID: 1658747276766063313}
   enemyMoveSpeed: 10
   lerpSpeed: 0
-  checkInterval: 0.05
-  checkTimer: 0
-  rb: {fileID: 1658747276766063313}
   stoppingDistance: 2
-  isMoving: 0
+  checkInterval: 0.05
 --- !u!114 &8717380183846545915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13778,7 +13776,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinPrefab: {fileID: 1880245074145146, guid: 81848b6677705f2418649c87a28b45d4, type: 3}
-  dropChance: 0.5
+  coinDropChance: 0.5
+  healthPrefab: {fileID: 0}
+  healthDropChance: 0.2
+  minCoins: 5
+  maxCoins: 10
+  areaCenter: {x: 0.02, y: 1.58, z: -2.5}
+  areaSize: {x: 10, y: 0, z: 10}
 --- !u!1 &6757061416252486119
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class SpecialAttack_Buff : SpecialAttackBehavior
@@ -8,8 +8,13 @@ public class SpecialAttack_Buff : SpecialAttackBehavior
     [SerializeField] private float buffDuration = 5f;
     [SerializeField] private float speedMultiplier = 1.5f;
     [SerializeField] private float damageMultiplier = 1.5f;
-    [SerializeField] private ParticleSystem buffEffect;
+    [SerializeField] private float cooldownMultiplier = 0.5f;
     [SerializeField] private string prepareAnimationBool = "Prepare";
+
+    [Header("Material Settings")]
+    [SerializeField] private Material buffMaterial;  //Material khi buff
+    private Material originalMaterial;               //lưu lại material gốc
+    private SkinnedMeshRenderer meshRenderer;        //renderer chính của quái
 
     private bool isBuffing;
     private EnemyMovement movement;
@@ -39,22 +44,19 @@ public class SpecialAttack_Buff : SpecialAttackBehavior
 
         anim.SetBool(prepareAnimationBool, false);
 
-        if (buffEffect != null)
-            buffEffect.Play();
+        movement.enemyMoveSpeed *= speedMultiplier;
 
-        if (movement != null)
-            movement.enemyMoveSpeed *= speedMultiplier;
+        attack.attackDamage *= damageMultiplier;
 
-        if (attack != null)
-            attack.attackDamage *= damageMultiplier;
+        attack.attackCooldown *= cooldownMultiplier;
 
         yield return new WaitForSeconds(buffDuration);
 
-        if (movement != null)
-            movement.enemyMoveSpeed /= speedMultiplier;
+        movement.enemyMoveSpeed /= speedMultiplier;
 
-        if (attack != null)
-            attack.attackDamage /= damageMultiplier;
+        attack.attackDamage /= damageMultiplier;
+
+        attack.attackCooldown /= cooldownMultiplier;
 
         isBuffing = false;
     }
