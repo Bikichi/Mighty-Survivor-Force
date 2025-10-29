@@ -54,6 +54,9 @@ public class SpecialAttack_Explode : SpecialAttackBehavior
         }
         explosionArea.SetActive(false);
         Destroy(gameObject);
+
+        EnemySpawner enemySpawner = FindAnyObjectByType<EnemySpawner>();
+        enemySpawner.OnEnemyKilled();
     }
 
     private void OnDrawGizmosSelected()

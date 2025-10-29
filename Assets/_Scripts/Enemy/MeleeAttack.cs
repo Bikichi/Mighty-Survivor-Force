@@ -5,7 +5,32 @@ using UnityEngine;
 public class MeleeAttack : EnemyAttack, ISkillStatus
 {
     public LayerMask attackMask;
-    public BossChargeSkill bossCharge;
+
+    public List<MonoBehaviour> bossSkills = new List<MonoBehaviour>();
+    public List<ISkillStatus> skillStatusList = new List<ISkillStatus>();
+
+    protected void Awake()
+    {
+        BossComponentUtils.AddBossComponentInParent<BossChargeSkill>(gameObject, bossSkills);
+        //chỉ lấy những script nào có implement ISkillStatus
+        foreach (var skill in bossSkills)
+        {
+            if (skill is ISkillStatus skillStatus)
+            {
+                skillStatusList.Add(skillStatus);
+            }
+        }
+    }
+
+    protected bool IsAnySkillActive()
+    {
+        foreach (var skill in skillStatusList)
+        {
+            if (skill.IsActive())
+                return true;
+        }
+        return false;
+    }
 
     public override void Start()
     {
@@ -19,7 +44,7 @@ public class MeleeAttack : EnemyAttack, ISkillStatus
 
     public override void Attack()
     {
-        if (bossCharge != null && (bossCharge.isWindUp || bossCharge.isCharging))
+        if (IsAnySkillActive())
         {
             return;
         }

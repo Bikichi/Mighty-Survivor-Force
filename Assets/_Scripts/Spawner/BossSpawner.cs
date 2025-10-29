@@ -1,35 +1,30 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class BossSpawner : MonoBehaviour
 {
     [Header("Boss Settings")]
-    [SerializeField] private GameObject bossPrefab;
     [SerializeField] private Transform bossSpawnPoint;
     [SerializeField] private EnemySpawner enemySpawner;
+    [SerializeField] private float delayBeforeSpawn = 4f; // thời gian trễ trước khi boss xuất hiện
 
-    private GameObject currentBoss;
-    private bool hasSpawned;
+    [SerializeField] private GameObject currentBoss;
+    [SerializeField] private bool hasSpawned;
 
-    void Start()
+    public void SpawnBoss(GameObject bossPrefab)
     {
-        if (bossPrefab == null || bossSpawnPoint == null)
-        {
-            Debug.LogWarning("⚠️ BossSpawner: Chưa gán prefab hoặc spawn point!");
-        }
-        Invoke("SpawnBoss", 3f);
+        if (hasSpawned) return;
+
+        StartCoroutine(SpawnBossWithDelay(bossPrefab));
     }
 
-    public void SpawnBoss()
+    private IEnumerator SpawnBossWithDelay(GameObject bossPrefab)
     {
-        if (hasSpawned)
-            return;
+        yield return new WaitForSeconds(delayBeforeSpawn);
 
         currentBoss = Instantiate(bossPrefab, bossSpawnPoint.position, bossSpawnPoint.rotation);
 
-        enemySpawner.enemiesAlive++;
-
         BossHealth bossHealth = currentBoss.GetComponent<BossHealth>();
-        //khi boss chết thì báo lại EnemySpawner
         bossHealth.onDeath.AddListener(OnBossKilled);
 
         hasSpawned = true;
@@ -37,8 +32,6 @@ public class BossSpawner : MonoBehaviour
 
     private void OnBossKilled()
     {
-        enemySpawner.OnEnemyKilled(); // cập nhật totalEnemiesKilled + enemiesAlive--
-
         hasSpawned = false;
         currentBoss = null;
     }

@@ -6,8 +6,12 @@ public class WaveData : MonoBehaviour
     [Header("Wave Info")]
     public string waveName;
     public float turnInterval = 2f;
-    public int maxEnemiesAllowed; // max quái sống trong wave này
+    public int maxEnemiesAllowed; //số quái vật tồn tại ở 1 thơi điểm tối đa cho phép
     public List<TurnData> turns = new List<TurnData>();
+
+    [Header("Boss Info")]
+    public bool hasBoss;
+    public GameObject bossPrefab;
 
     public int currentTurnIndex = 0;
     public int totalSpawned = 0;
@@ -38,6 +42,10 @@ public class WaveData : MonoBehaviour
         {
             total += turn.TotalEnemies();
         }
+
+        if (hasBoss && bossPrefab != null)
+            total += 1;
+
         return total;
     }
 }

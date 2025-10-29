@@ -14,6 +14,8 @@ public class EnemySpawner : MonoBehaviour
     public int currentWaveIndex;
     public float totalEnemiesKilled;
 
+    [SerializeField] private BossSpawner bossSpawner;
+    
     public UnityEvent onWaveCompleted;
 
     private bool _isWaveTransitioning;
@@ -32,6 +34,7 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         SpawnPointManager.Instance.ResetSpawnPoints(unusedSpawnPoints, spawnPositions);
+        CheckBossSpawn(waves[currentWaveIndex]);
     }
 
     void Update()
@@ -64,9 +67,22 @@ public class EnemySpawner : MonoBehaviour
         {
             spawnTimer = 0f;
             onWaveCompleted?.Invoke();
+            CheckBossSpawn(waves[currentWaveIndex]);
         }
 
         _isWaveTransitioning = false;
+    }
+
+    private void CheckBossSpawn(WaveData wave)
+    {
+        if (wave == null || bossSpawner == null) return;
+
+        if (wave.hasBoss && wave.bossPrefab != null)
+        {
+            bossSpawner.SpawnBoss(wave.bossPrefab);
+            enemiesAlive++;
+            wave.totalSpawned++;
+        }
     }
 
     private void SpawnEnemies(WaveData wave)

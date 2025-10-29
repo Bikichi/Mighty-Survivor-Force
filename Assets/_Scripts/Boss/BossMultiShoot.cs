@@ -24,7 +24,7 @@ public class BossMultiShoot : MonoBehaviour, ISkillStatus
 
     private void Awake()
     {
-        BossComponentUtils.AddBossComponent<BossBigStrike>(gameObject, bossSkills);
+        BossComponentUtils.AddBossComponentInChildren<BossBigStrike>(gameObject, bossSkills);
         //chỉ lấy những script nào có implement ISkillStatus
         foreach (var skill in bossSkills)
         {

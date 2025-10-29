@@ -78,7 +78,7 @@ public class BossFireBreath : MonoBehaviour, ISkillStatus
             script.enabled = false;
     }
 
-    private void StopFire()
+    public void StopFire()
     {
         isFiring = false;
         fireEffect.SetActive(false);

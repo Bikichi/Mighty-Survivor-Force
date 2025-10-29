@@ -10,7 +10,7 @@ public class BossMovement : EnemyMovement
 
     private void Awake()
     {
-        BossComponentUtils.AddBossComponent<BossBigStrike>(gameObject, bossSkills);
+        BossComponentUtils.AddBossComponentInChildren<BossBigStrike>(gameObject, bossSkills);
         //chỉ lấy những script nào có implement ISkillStatus
         foreach (var skill in bossSkills)
         {
@@ -19,6 +19,16 @@ public class BossMovement : EnemyMovement
                 skillStatusList.Add(skillStatus);
             }
         }
+    }
+
+    private bool IsAnySkillActive()
+    {
+        foreach (var skill in skillStatusList)
+        {
+            if (skill.IsActive())
+                return true;
+        }
+        return false;
     }
 
     protected override void MoveEnemy()
@@ -46,13 +56,5 @@ public class BossMovement : EnemyMovement
         }
     }
 
-    private bool IsAnySkillActive()
-    {
-        foreach (var skill in skillStatusList)
-        {
-            if (skill.IsActive())
-                return true;
-        }
-        return false;
-    }
+
 }

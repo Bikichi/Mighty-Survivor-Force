@@ -394,7 +394,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &978926320619652883
 Transform:
   m_ObjectHideFlags: 0
@@ -448,7 +448,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2505188075781382236}
   serializedVersion: 4
-  m_Mass: 10000
+  m_Mass: 1000
   m_Drag: 0.1
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -479,7 +479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 771abcad8941e5c4f97a37c5a2e4c316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: {fileID: 5023236831188161176}
+  bossHealth: {fileID: 5023236831188161176}
   phase2AuraPrefab: {fileID: 3743634699967542250}
   attackPath: {fileID: 2243604302388190774}
   bossAnimator: {fileID: 2101495475482763621}
@@ -487,7 +487,6 @@ MonoBehaviour:
   scriptsToDisableDuringPrePhase2:
   - {fileID: 7354643063672597249}
   - {fileID: 3370930480678113787}
-  - {fileID: 7353892793482267958}
   isPhase2: 0
   isPrePhase2Active: 0
 --- !u!114 &5023236831188161176
@@ -502,7 +501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d964ad1eb7f5014484053c3468f015f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 200
+  maxHealth: 5000
   currentHealth: 0
   defense: 10
   onHealthChange:
@@ -529,6 +528,10 @@ MonoBehaviour:
   - {fileID: 7354643063672597249}
   - {fileID: 3370930480678113787}
   - {fileID: 7353892793482267958}
+  - {fileID: 4751527175490161889}
+  - {fileID: 7362635759140413201}
+  - {fileID: 1632985159301262544}
+  - {fileID: 8857601785228235150}
   attackPath: {fileID: 2243604302388190774}
   statsBars: {fileID: 7457406979399081245}
 --- !u!114 &3370930480678113787
@@ -546,13 +549,11 @@ MonoBehaviour:
   targetPlayer: {fileID: 0}
   enemyAttack: {fileID: 0}
   anim: {fileID: 2101495475482763621}
+  rb: {fileID: 0}
   enemyMoveSpeed: 6
   lerpSpeed: 8
-  checkInterval: 0.05
-  checkTimer: 0
-  rb: {fileID: 0}
   stoppingDistance: 7.5
-  isMoving: 0
+  checkInterval: 0.05
   bossSkills:
   - {fileID: 7354643063672597249}
   - {fileID: 7353892793482267958}
@@ -835,7 +836,8 @@ MonoBehaviour:
   attackMask:
     serializedVersion: 2
     m_Bits: 64
-  bossCharge: {fileID: 7354643063672597249}
+  bossSkills:
+  - {fileID: 4751527175490161889}
 --- !u!114 &4192836750701582950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -863,8 +865,8 @@ MonoBehaviour:
   attackMask:
     serializedVersion: 2
     m_Bits: 64
-  bossCharge: {fileID: 7354643063672597249}
-  chargeSkill: {fileID: 7354643063672597249}
+  bossSkills:
+  - {fileID: 4751527175490161889}
 --- !u!1 &2981891152370936458
 GameObject:
   m_ObjectHideFlags: 0

@@ -1362,14 +1362,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4569048728175704912}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -1.9200001}
   m_LocalScale: {x: 6.25, y: 6.25, z: 6.25}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 329331041138669729}
   m_Father: {fileID: 4487135373187091629}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: -0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 11.3625}
@@ -1590,6 +1590,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   bossCharge: {fileID: 0}
+  bossSkills: []
 --- !u!1 &5063767331948843307
 GameObject:
   m_ObjectHideFlags: 0
@@ -2561,8 +2562,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 3.5
-  m_Center: {x: 0, y: 3.46, z: 0}
+  m_Radius: 3
+  m_Center: {x: 0, y: 2.85, z: 0.76}
 --- !u!54 &1283818448853791200
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2571,8 +2572,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6734382366527976799}
   serializedVersion: 4
-  m_Mass: 10000
-  m_Drag: 0
+  m_Mass: 1000
+  m_Drag: 1
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -2611,7 +2612,6 @@ MonoBehaviour:
   - {fileID: 7914920682783904966}
   - {fileID: 2640274177501680838}
   - {fileID: 9047045292650379409}
-  - {fileID: 1879404320822655176}
   isPhase2: 0
   isPrePhase2Active: 0
 --- !u!114 &3982095180446531429
@@ -2626,7 +2626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d964ad1eb7f5014484053c3468f015f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10000
+  maxHealth: 5000
   currentHealth: 0
   defense: 0
   onHealthChange:

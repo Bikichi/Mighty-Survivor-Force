@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossPhaseController : MonoBehaviour
+public class BossPhaseController : MonoBehaviour, ISkillStatus
 {
     [Header("References")]
     [SerializeField] private BossHealth bossHealth; // tham chiếu trực tiếp
@@ -20,7 +20,9 @@ public class BossPhaseController : MonoBehaviour
 
     private void Start()
     {
-        BossComponentUtils.AddBossComponent<BossBigStrike>(gameObject, scriptsToDisableDuringPrePhase2);
+        BossComponentUtils.AddBossComponentInChildren<BossBigStrike>(gameObject, scriptsToDisableDuringPrePhase2);
+        bossHealth = GetComponent<BossHealth>();
+
     }
     private void Update()
     {
@@ -47,11 +49,14 @@ public class BossPhaseController : MonoBehaviour
     {
         isPrePhase2Active = true;
 
+        BossFireBreath fireBreath = GetComponent<BossFireBreath>();
+        if (fireBreath != null)
+            fireBreath.StopFire();
+
         foreach (var script in scriptsToDisableDuringPrePhase2)
         {
             script.enabled = false;
         }
-
         bossAnimator.SetBool("isPrePhase2", true);
         phase2AuraPrefab.SetActive(true);
 
@@ -117,5 +122,8 @@ public class BossPhaseController : MonoBehaviour
             bigStrike.attackCooldown /= cooldownMultiplier;
         }
     }
-
+    public virtual bool IsActive()
+    {
+        return isPrePhase2Active;
+    }
 }

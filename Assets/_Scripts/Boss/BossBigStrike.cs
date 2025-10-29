@@ -1,9 +1,9 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class BossBigStrike : MeleeAttack
 {
     [Header("Boss Skill References")]
-    public BossChargeSkill chargeSkill;
 
     private string bigStrikeAnimName = "BigStrike";
 
@@ -14,7 +14,7 @@ public class BossBigStrike : MeleeAttack
 
     public override void Attack()
     {
-        if (bossCharge.isWindUp || bossCharge.isCharging)
+        if (IsAnySkillActive())
         {
             return;
         }

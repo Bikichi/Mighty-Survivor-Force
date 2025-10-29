@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d717afa867c697d49871ad28835637da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  livingEntity: {fileID: 7805184277192154341}
+  livingEntity: {fileID: -8669358533713477943}
   healthValue: {fileID: 3758856151422730807}
   _HPText: {fileID: 856269081527558891}
 --- !u!114 &617721308934002319
@@ -237,8 +237,7 @@ GameObject:
   - component: {fileID: 4246938355253283081}
   - component: {fileID: 6726863301776806946}
   - component: {fileID: 7525522656535857213}
-  - component: {fileID: 7805184277192154341}
-  - component: {fileID: 2232077036906633407}
+  - component: {fileID: -8669358533713477943}
   - component: {fileID: 5817752869822469679}
   - component: {fileID: 2134303306842490656}
   - component: {fileID: 1817363147677927745}
@@ -318,7 +317,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.7043686, y: 1.65, z: 3.4346085}
   m_Center: {x: 0.027706146, y: 0.81, z: 0.38694382}
---- !u!114 &7805184277192154341
+--- !u!114 &-8669358533713477943
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -327,10 +326,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1977410531628863824}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d97ea094b89fe5e4c84174bf4de854d6, type: 3}
+  m_Script: {fileID: 11500000, guid: 3804c3deaf2d0d04680e5c1055c24efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1500
+  maxHealth: 150
   currentHealth: 0
   defense: 0
   onHealthChange:
@@ -356,20 +355,6 @@ MonoBehaviour:
   componentsToDisable:
   - {fileID: 5817752869822469679}
   - {fileID: 1017790558869642585}
---- !u!114 &2232077036906633407
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1977410531628863824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c53e930662041aa44a43a820f488300c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  childEnemyPrefab: {fileID: 0}
-  spawnOffset: 2
 --- !u!114 &5817752869822469679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -420,7 +405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70818f059ea8cbd418fc49f5dd0546e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: {fileID: 7805184277192154341}
+  enemyHealth: {fileID: 0}
   burnTimer: 0
   currentDamage: 0
   maxDamage: 0

@@ -9,7 +9,7 @@ public class BossHealth : EnemyHealth
     protected override void Start()
     {
         base.Start();
-        BossComponentUtils.AddBossComponent<BossBigStrike>(gameObject, componentsToDisable);
+        BossComponentUtils.AddBossComponentInChildren<BossBigStrike>(gameObject, componentsToDisable);
     }
 
     public override void TakeDamage(float damage, bool isCrit = false)
@@ -58,12 +58,16 @@ public class BossHealth : EnemyHealth
 
     protected override void DisableEnemyActions()
     {
-        base.DisableEnemyActions();
+        BossFireBreath fireBreath = GetComponent<BossFireBreath>();
+        if (fireBreath != null)
+            fireBreath.StopFire();
 
         if (attackPath != null)
         {
             attackPath.SetActive(false);
         }
         statsBars.SetActive(false);
+
+        base.DisableEnemyActions();
     }
 }

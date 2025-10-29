@@ -8,8 +8,6 @@ public class IceBalls : PlayerBullet
     [SerializeField] private GameObject iceFieldPrefab;
     [SerializeField] private float damageMultiplier;
 
-    [SerializeField] private float rotationSpeed = 6f;
-
     protected override void Start()
     {
         base.Start();
@@ -33,7 +31,7 @@ public class IceBalls : PlayerBullet
         Vector3 direction = (enemyCenter - transform.position).normalized;
 
         Quaternion targetRotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        transform.rotation = targetRotation;
 
         transform.Translate(Vector3.forward * _speedBullet * Time.deltaTime);
     }
