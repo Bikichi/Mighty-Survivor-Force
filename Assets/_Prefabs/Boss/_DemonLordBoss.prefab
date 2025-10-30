@@ -2799,12 +2799,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireEffect: {fileID: 8473224594287615400}
-  lerpSpeed: 2
+  fireLerpSpeed: 2
   targetPlayer: {fileID: 0}
   fireDuration: 5
   fireCooldown: 15
   anim: {fileID: 211888154905498082}
   fireBoolName: isFiring
+  enemyMovement: {fileID: 0}
+  originalLerpSpeed: 0
 --- !u!114 &9047045292650379409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2890,7 +2892,7 @@ MonoBehaviour:
   minCoins: 5
   maxCoins: 10
   areaCenter: {x: 0.02, y: 1.58, z: -2.5}
-  areaSize: {x: 20, y: 0, z: 20}
+  areaSize: {x: 20, y: 0, z: 35}
 --- !u!114 &-4576882257471864862
 MonoBehaviour:
   m_ObjectHideFlags: 0

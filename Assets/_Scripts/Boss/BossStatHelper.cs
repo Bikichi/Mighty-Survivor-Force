@@ -44,7 +44,7 @@ public static class BossStatHelper
 
         if (bossFireBreath != null)
         {
-            bossFireBreath.lerpSpeed *= multiplier;
+            bossFireBreath.fireLerpSpeed *= multiplier;
             bossFireBreath.fireDuration *= multiplier;
             bossFireBreath.fireCooldown /= multiplier;
         }

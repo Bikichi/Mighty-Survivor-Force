@@ -37,7 +37,9 @@ public class EnemyHealth : LivingEntity
         StartCoroutine(HandleDeath());
 
         EnemySpawner enemySpawner = FindAnyObjectByType<EnemySpawner>();
-        enemySpawner.OnEnemyKilled();
+
+        if (enemySpawner != null)
+            enemySpawner.OnEnemyKilled();
     }
 
     protected virtual IEnumerator HandleDeath()

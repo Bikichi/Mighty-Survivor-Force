@@ -16,7 +16,7 @@ public class EnemyLootDrop : MonoBehaviour
     [SerializeField] private int minCoins = 5;
     [SerializeField] private int maxCoins = 10;
     [SerializeField] private Vector3 areaCenter = new Vector3(0.02f, 1.58f, -2.5f);
-    [SerializeField] private Vector3 areaSize = new Vector3(20f, 0f, 20f);
+    [SerializeField] private Vector3 areaSize = new Vector3(20f, 0f, 35f);
 
     public void DropNormalLoot(Vector3 position, Quaternion rotation)
     {

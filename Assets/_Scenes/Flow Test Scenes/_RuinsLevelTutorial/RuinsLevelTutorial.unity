@@ -25825,7 +25825,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &126297262
 Transform:
   m_ObjectHideFlags: 0
@@ -26022,7 +26022,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!1 &144444989
 GameObject:
@@ -26610,7 +26610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6113d48b34a8f6842991388e5de823e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpawner: {fileID: 0}
+  enemySpawner: {fileID: 126297263}
   _scoreText: {fileID: 2222}
 --- !u!4 &347018986 stripped
 Transform:
@@ -27272,65 +27272,8 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
---- !u!1001 &735127665
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4487135373187091629, guid: 31c14608c24ad504a87abee4f97a0456, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4487135373187091629, guid: 31c14608c24ad504a87abee4f97a0456, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.58
-      objectReference: {fileID: 0}
-    - target: {fileID: 4487135373187091629, guid: 31c14608c24ad504a87abee4f97a0456, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 6.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4487135373187091629, guid: 31c14608c24ad504a87abee4f97a0456, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4487135373187091629, guid: 31c14608c24ad504a87abee4f97a0456, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4487135373187091629, guid: 31c14608c24ad504a87abee4f97a0456, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4487135373187091629, guid: 31c14608c24ad504a87abee4f97a0456, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4487135373187091629, guid: 31c14608c24ad504a87abee4f97a0456, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4487135373187091629, guid: 31c14608c24ad504a87abee4f97a0456, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 4487135373187091629, guid: 31c14608c24ad504a87abee4f97a0456, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6734382366527976799, guid: 31c14608c24ad504a87abee4f97a0456, type: 3}
-      propertyPath: m_Name
-      value: _DemonLordBoss
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 31c14608c24ad504a87abee4f97a0456, type: 3}
 --- !u!1 &748219334 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8131685451170184054, guid: dd7dd5cefbdedf542b97c4e35a9fa44d, type: 3}
@@ -27663,7 +27606,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!1 &803425515
 GameObject:
@@ -27830,35 +27773,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveName: 1
   turnInterval: 3
-  maxEnemiesAllowed: 10
+  maxEnemiesAllowed: 1
   turns:
   - enemyTypes:
-    - enemyPrefab: {fileID: 5441410157401210778, guid: 0c550028f9b31034c93c0651e6451c2c, type: 3}
-      enemyCount: 1
-      spawnedCount: 0
-    - enemyPrefab: {fileID: 4459301653538735250, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
-      enemyCount: 1
-      spawnedCount: 0
-    - enemyPrefab: {fileID: 3677971375640770530, guid: 77e39f372c1d8504ca2e9dc335e0738e, type: 3}
-      enemyCount: 1
-      spawnedCount: 0
-    - enemyPrefab: {fileID: 6417650926075035654, guid: ae7fdef844916d54d9c06da51c4245b3, type: 3}
-      enemyCount: 1
-      spawnedCount: 0
-    - enemyPrefab: {fileID: 6643027116863268232, guid: 56a346e54c96bf741be188c7d1f23580, type: 3}
-      enemyCount: 1
-      spawnedCount: 0
-    - enemyPrefab: {fileID: 1977410531628863824, guid: 36d4c88d889930d44b46cf0cbab7924a, type: 3}
-      enemyCount: 1
-      spawnedCount: 0
     - enemyPrefab: {fileID: 3233129934485332625, guid: fb82f6d8875a8614a85c20ab79166bd5, type: 3}
-      enemyCount: 1
-      spawnedCount: 0
-    - enemyPrefab: {fileID: 1977410531628863824, guid: a5b3e31600ca4974c80eb38ea0e634c9, type: 3}
-      enemyCount: 1
-      spawnedCount: 0
-    - enemyPrefab: {fileID: 8562601819953557069, guid: 1038d15543ddc7040a5277ece06fc398, type: 3}
-      enemyCount: 1
+      enemyCount: 10
       spawnedCount: 0
   hasBoss: 0
   bossPrefab: {fileID: 2505188075781382236, guid: 8c3e22f359858ee48859b3684703ffe6, type: 3}
@@ -28599,7 +28518,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!4 &1186371812 stripped
 Transform:
@@ -31123,6 +31042,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 940925877424094684, guid: b28b415e5d8de8e43890daf9b098dc2b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 17.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 940925877424094684, guid: b28b415e5d8de8e43890daf9b098dc2b, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0
       objectReference: {fileID: 0}
@@ -32766,4 +32689,3 @@ SceneRoots:
   - {fileID: 5370102215903992506}
   - {fileID: 126297262}
   - {fileID: 1055886371540370983}
-  - {fileID: 735127665}

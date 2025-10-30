@@ -32,7 +32,7 @@ public abstract class RangedShooterBase : MonoBehaviour
     protected virtual void ShootBullet()
     {
         Transform targetEnemy = CheckDistance.Instance.FindClosestEnemy();
-        if (targetEnemy == null || targetEnemy.GetComponent<EnemyHealth>().IsDead)
+        if (targetEnemy == null)
             return;
         bool isReadyToShoot = Time.time - lastShootTime > shootCooldown;
 

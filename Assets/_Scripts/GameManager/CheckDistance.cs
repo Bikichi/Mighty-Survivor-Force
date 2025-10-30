@@ -26,9 +26,12 @@ public class CheckDistance : Singleton<CheckDistance>
         if (enemies.Length == 0) return null;
 
         GameObject closest = enemies
-            .Where(e => Vector3.Distance(playerTransform.position, e.transform.position) <= PlayerStats.Instance.baseAttackRange) //lọc
-            .OrderBy(e => Vector3.Distance(playerTransform.position, e.transform.position)) //sắp xếp tăng dần
-            .FirstOrDefault();
+            .Select(e => e.GetComponent<EnemyHealth>()) //chuyển từ GameObject sang EnemyHealth để kiểm tra máu/trạng thái sống
+            .Where(h => h != null
+                        && !h.IsDead //lọc enemy còn sống
+                        && Vector3.Distance(playerTransform.position, h.transform.position) <= PlayerStats.Instance.baseAttackRange) //lọc
+            .OrderBy(h => Vector3.Distance(playerTransform.position, h.transform.position)) //sắp xếp tăng dần
+            .FirstOrDefault()?.gameObject; //dùng ?. để tránh null reference
 
         return closest?.transform;
     }
@@ -39,9 +42,12 @@ public class CheckDistance : Singleton<CheckDistance>
         if (enemies.Length == 0) return null;
 
         GameObject farthest = enemies
-            .Where(e => Vector3.Distance(playerTransform.position, e.transform.position) <= PlayerStats.Instance.baseAttackRange)
-            .OrderByDescending(e => Vector3.Distance(playerTransform.position, e.transform.position)) //sắp xếp giảm dần
-            .FirstOrDefault(); // trả về null nếu không có enemy nào trong tầm
+            .Select(e => e.GetComponent<EnemyHealth>()) 
+            .Where(h => h != null
+                        && !h.IsDead 
+                        && Vector3.Distance(playerTransform.position, h.transform.position) <= PlayerStats.Instance.baseAttackRange)
+            .OrderByDescending(h => Vector3.Distance(playerTransform.position, h.transform.position)) //sắp xếp giảm dần
+            .FirstOrDefault()?.gameObject; // trả về null nếu không có enemy nào trong tầm
         //toán tử lambda, dùng để phân tách tham số (bên trái) và biểu thức/giá trị trả về (bên phải)
         //biểu thức/giá trị trả về (bên phải) là điều kiện/giá trị mà bạn muốn lấy làm khóa để sắp xếp.
         return farthest?.transform;
@@ -57,9 +63,8 @@ public class CheckDistance : Singleton<CheckDistance>
             .Where(h => h != null && Vector3.Distance(playerTransform.position, h.transform.position) <= PlayerStats.Instance.baseAttackRange) //lọc tập hợp, giữ lại chỉ những EnemyHealth không null và trong tầm đánh
             .OrderBy(h => h.currentHealth) //sắp xếp tăng dần
             .FirstOrDefault()?.gameObject; //dùng FirstOrDefault thay vì dùng First vì ở đây có khả năng trả về null vì đã chuyển đổi các phần tử ở Select
-        //First dùng ở 2 hàm tìm gàn và xa vì đã có điều kiện  if (enemies.Length == 0) return null; nên chắc chắn không null
 
-        return lowestHealthEnemy != null ? lowestHealthEnemy.transform : null;
+        return lowestHealthEnemy?.transform;
         //nếu ở đây trả về null trong Unity không gây lỗi. Unity cho phép một Transform (hoặc GameObject) là null. Chỉ cần đảm bảo rằng trước khi dùng biến này, kiểm tra nó khác null để tránh lỗi NullReferenceException.
     }
 

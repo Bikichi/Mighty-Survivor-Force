@@ -1,7 +1,25 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class HP_ItemsDrop : MonoBehaviour
 {
+    public float moveSpeed = 100f; // tốc độ bay về player
+
+    private Transform player;
+    private bool isMovingToPlayer = false;
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag(Const.PLAYER_TAG).transform;
+    }
+
+    private void Update()
+    {
+        if (isMovingToPlayer)
+        {
+            Vector3 direction = (player.position - transform.position).normalized;
+            transform.position += direction * moveSpeed * Time.deltaTime;
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(Const.PLAYER_TAG))
@@ -18,6 +36,19 @@ public class HP_ItemsDrop : MonoBehaviour
 
                 Destroy(gameObject);
             }
+        }
+        else if (other.CompareTag(Const.WALL_TAG))
+        {
+            isMovingToPlayer = true;
+        }
+    }
+
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag(Const.WALL_TAG))
+        {
+            isMovingToPlayer = false;
         }
     }
 }

@@ -60,6 +60,8 @@ public class SpecialAttack_Dash : SpecialAttackBehavior
         float timer = 0f;
         while (timer < dashDuration)
         {
+            if (GetComponent<EnemyHealth>().IsDead)
+                yield break;
             rb.velocity = direction * dashSpeed;
             timer += Time.deltaTime;
             yield return null;
