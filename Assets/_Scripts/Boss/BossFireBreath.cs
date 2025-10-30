@@ -6,8 +6,8 @@ public class BossFireBreath : MonoBehaviour, ISkillStatus
     public GameObject fireEffect;        
     public float lerpSpeed;        
 
-    [Header("Scripts to enable during FireBreath")]
-    public MonoBehaviour[] scriptsToEnable; 
+    //[Header("Scripts to enable during FireBreath")]
+    //public MonoBehaviour[] scriptsToEnable; 
 
     [Header("Target")]
     [SerializeField] public GameObject targetPlayer;
@@ -73,9 +73,9 @@ public class BossFireBreath : MonoBehaviour, ISkillStatus
         fireEffect.SetActive(true);
         anim.SetBool(fireBoolName, true);
 
-        //disable các script khác
-        foreach (var script in scriptsToEnable)
-            script.enabled = false;
+        ////disable các script khác
+        //foreach (var script in scriptsToEnable)
+        //    script.enabled = false;
     }
 
     public void StopFire()
@@ -84,9 +84,9 @@ public class BossFireBreath : MonoBehaviour, ISkillStatus
         fireEffect.SetActive(false);
         anim.SetBool(fireBoolName, false);
 
-        //enable các script khác
-        foreach (var script in scriptsToEnable)
-            script.enabled = true;
+        ////enable các script khác
+        //foreach (var script in scriptsToEnable)
+        //    script.enabled = true;
     }
 
     private void RotateTowardsPlayer()

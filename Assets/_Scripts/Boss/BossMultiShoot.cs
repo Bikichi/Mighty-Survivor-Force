@@ -8,7 +8,7 @@ public class BossMultiShoot : MonoBehaviour, ISkillStatus
     public GameObject bulletPrefab;
 
     [Header("Shoot Settings")]
-    [SerializeField] private float fireCooldown;
+    [SerializeField] public float fireCooldown;
     [SerializeField] private float fireTimer = 0f;
     [SerializeField] private bool isShooting;
     

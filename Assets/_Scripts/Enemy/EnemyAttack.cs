@@ -31,12 +31,12 @@ public class EnemyAttack : MonoBehaviour
 
     public virtual void Update()
     {
+        attackTimer += Time.deltaTime;
         Attack();
     }
 
     public virtual void Attack()
     {
-        attackTimer += Time.deltaTime;
         bool isReadyToAttack = attackTimer >= attackCooldown;
         if (isReadyToAttack && CheckDistance.Instance.CalculateDistanceToPlayer(targetPlayer.transform, transform) <= attackRanged)
         {

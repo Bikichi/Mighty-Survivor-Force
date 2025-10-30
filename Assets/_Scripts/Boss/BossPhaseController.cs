@@ -68,7 +68,7 @@ public class BossPhaseController : MonoBehaviour, ISkillStatus
 
         yield return new WaitForSeconds(prePhase2Duration);
 
-        IncreaseBossStats();
+        BossStatHelper.IncreaseBossStats(gameObject);
 
         bossAnimator.SetBool("isPrePhase2", false);
 
@@ -81,46 +81,6 @@ public class BossPhaseController : MonoBehaviour, ISkillStatus
         }
 
         //Debug.Log("Boss entered Phase 2!");
-    }
-
-    private void IncreaseBossStats()
-    {
-        //hệ số
-        const float defenseMultiplier = 1f;
-        const float speedMultiplier = 1.5f;
-        const float cooldownMultiplier = 1.25f;
-        const float damageMultiplier = 1.5f;
-
-        BossHealth bossHealth = GetComponent<BossHealth>();
-        BossMovement movement = GetComponent<BossMovement>();
-        BossChargeSkill chargeSkill = GetComponent<BossChargeSkill>();
-        MeleeAttack meleeAttack = GetComponentInChildren<MeleeAttack>();
-        BossBigStrike bigStrike = GetComponentInChildren<BossBigStrike>();
-
-        if (bossHealth != null)
-            bossHealth.defense *= defenseMultiplier;
-
-        if (movement != null)
-            movement.enemyMoveSpeed *= speedMultiplier;
-
-        if (chargeSkill != null)
-        {
-            chargeSkill.chargeSpeed *= cooldownMultiplier;
-            chargeSkill.cooldown /= cooldownMultiplier;
-            chargeSkill.windUpTime /= cooldownMultiplier;
-        }
-
-        if (meleeAttack != null)
-        {
-            meleeAttack.attackDamage *= damageMultiplier;
-            meleeAttack.attackCooldown /= cooldownMultiplier;
-        }
-
-        if (bigStrike != null)
-        {
-            bigStrike.attackDamage *= damageMultiplier;
-            bigStrike.attackCooldown /= cooldownMultiplier;
-        }
     }
     public virtual bool IsActive()
     {

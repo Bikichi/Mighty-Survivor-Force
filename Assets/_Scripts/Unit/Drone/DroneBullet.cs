@@ -33,7 +33,7 @@ public class DroneBullet : PlayerBullet
             }
         }
 
-        Vector3 enemyCenter = _targetEnemy.position + new Vector3(0, _targetEnemy.GetComponent<Collider>().bounds.size.y, 0);
+        Vector3 enemyCenter = _targetEnemy.position + new Vector3(0, _targetEnemy.GetComponent<Collider>().bounds.size.y * 0.9f, 0);
         Vector3 direction = (enemyCenter - transform.position).normalized;
 
         Quaternion targetRotation = Quaternion.LookRotation(direction);

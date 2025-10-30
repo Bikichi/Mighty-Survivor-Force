@@ -4,7 +4,6 @@ using UnityEngine;
 [System.Serializable]
 public class EnemyTypeData
 {
-    public string enemyName;
     public GameObject enemyPrefab;
     public int enemyCount;
     public int spawnedCount;
@@ -13,7 +12,6 @@ public class EnemyTypeData
 [System.Serializable]
 public class TurnData
 {
-    public string turnName;
     public List<EnemyTypeData> enemyTypes = new List<EnemyTypeData>();
 
     public bool IsCompleted()

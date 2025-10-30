@@ -126,7 +126,7 @@ public class EnemySpawner : MonoBehaviour
         WaveData currentWave = waves[currentWaveIndex];
         currentWave.enemiesKilled++;
 
-        // Spawn tiếp nếu chưa đạt giới hạn của wave
+        //spawn tiếp nếu chưa đạt giới hạn của wave
         if (enemiesAlive < currentWave.maxEnemiesAllowed && spawnTimer >= currentWave.turnInterval)
         {
             SpawnEnemies(currentWave);

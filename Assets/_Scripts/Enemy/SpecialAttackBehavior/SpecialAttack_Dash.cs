@@ -64,6 +64,7 @@ public class SpecialAttack_Dash : SpecialAttackBehavior
             timer += Time.deltaTime;
             yield return null;
         }
+        rb.velocity = Vector3.zero;
 
         damageArea.SetActive(false);
 

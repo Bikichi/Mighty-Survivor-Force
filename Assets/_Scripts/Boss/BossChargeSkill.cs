@@ -1,4 +1,5 @@
-﻿    using UnityEngine;
+﻿using System.Diagnostics;
+using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class BossChargeSkill : MonoBehaviour, ISkillStatus
@@ -29,6 +30,7 @@ public class BossChargeSkill : MonoBehaviour, ISkillStatus
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        rb.drag = 0f;
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -91,6 +93,7 @@ public class BossChargeSkill : MonoBehaviour, ISkillStatus
 
     public void StopCharge()
     {
+        anim.SetBool(chargeParaname, false);
         rb.velocity = Vector3.zero;
         isCharging = false;
         isWindUp = false;
@@ -106,7 +109,7 @@ public class BossChargeSkill : MonoBehaviour, ISkillStatus
     {
         attackPath.SetActive(false);
         anim.SetBool(preChargeParaname, false);
-        anim.SetTrigger(chargeParaname);
+        anim.SetBool(chargeParaname, true);
         targetPosition = player.position;
 
         Vector3 direction = (targetPosition - transform.position).normalized;

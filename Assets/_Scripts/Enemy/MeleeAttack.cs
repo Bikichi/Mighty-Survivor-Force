@@ -12,6 +12,8 @@ public class MeleeAttack : EnemyAttack, ISkillStatus
     protected void Awake()
     {
         BossComponentUtils.AddBossComponentInParent<BossChargeSkill>(gameObject, bossSkills);
+        BossComponentUtils.AddBossComponentInParent<BossFireBreath>(gameObject, bossSkills);
+        BossComponentUtils.AddBossComponentInParent<BossMultiShoot>(gameObject, bossSkills);
         //chỉ lấy những script nào có implement ISkillStatus
         foreach (var skill in bossSkills)
         {

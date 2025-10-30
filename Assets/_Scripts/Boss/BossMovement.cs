@@ -55,6 +55,12 @@ public class BossMovement : EnemyMovement
             transform.Translate(direction * enemyMoveSpeed * Time.deltaTime, Space.World);
         }
     }
-
-
+    protected override void RotateTowardsPlayer()
+    {
+        if (IsAnySkillActive())
+        {
+            return;
+        }
+        base.RotateTowardsPlayer();
+    }
 }

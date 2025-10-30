@@ -33,7 +33,7 @@ public class EnemyMovement : MonoBehaviour
         lastPosition = transform.position;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (targetPlayer == null)
             return; //nếu không có player thì không làm gì cả
@@ -87,7 +87,7 @@ public class EnemyMovement : MonoBehaviour
         lastPosition = transform.position;
     }
 
-    private void RotateTowardsPlayer()
+    protected virtual void RotateTowardsPlayer()
     {
         Vector3 direction = (targetPlayer.transform.position - transform.position).normalized;
         direction.y = 0;

@@ -12,7 +12,7 @@ public class ChildEnemyHealth : EnemyHealth
         StartCoroutine(HandleDeath());
 
         EnemySpawner enemySpawner = FindAnyObjectByType<EnemySpawner>();
-        enemySpawner.enemiesAlive--;
+        enemySpawner.OnEnemyKilled();
 
     }
 }
