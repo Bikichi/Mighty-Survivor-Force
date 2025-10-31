@@ -25825,7 +25825,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &126297262
 Transform:
   m_ObjectHideFlags: 0
@@ -25839,9 +25839,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 883553574}
   - {fileID: 826473857}
   - {fileID: 144444990}
-  - {fileID: 883553574}
   - {fileID: 1284457244}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -27773,11 +27773,60 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveName: 1
   turnInterval: 3
-  maxEnemiesAllowed: 1
+  maxEnemiesAllowed: 3
   turns:
   - enemyTypes:
+    - enemyPrefab: {fileID: 4459301653538735250, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
+      enemyCount: 2
+      spawnedCount: 0
+    - enemyPrefab: {fileID: 6643027116863268232, guid: 56a346e54c96bf741be188c7d1f23580, type: 3}
+      enemyCount: 2
+      spawnedCount: 0
+  - enemyTypes:
+    - enemyPrefab: {fileID: 6643027116863268232, guid: 56a346e54c96bf741be188c7d1f23580, type: 3}
+      enemyCount: 2
+      spawnedCount: 0
+    - enemyPrefab: {fileID: 3677971375640770530, guid: 77e39f372c1d8504ca2e9dc335e0738e, type: 3}
+      enemyCount: 1
+      spawnedCount: 0
+  - enemyTypes:
+    - enemyPrefab: {fileID: 6643027116863268232, guid: 56a346e54c96bf741be188c7d1f23580, type: 3}
+      enemyCount: 2
+      spawnedCount: 0
+    - enemyPrefab: {fileID: 4459301653538735250, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
+      enemyCount: 1
+      spawnedCount: 0
+    - enemyPrefab: {fileID: 3677971375640770530, guid: 77e39f372c1d8504ca2e9dc335e0738e, type: 3}
+      enemyCount: 2
+      spawnedCount: 0
+  - enemyTypes:
+    - enemyPrefab: {fileID: 6643027116863268232, guid: 56a346e54c96bf741be188c7d1f23580, type: 3}
+      enemyCount: 2
+      spawnedCount: 0
+    - enemyPrefab: {fileID: 4459301653538735250, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
+      enemyCount: 1
+      spawnedCount: 0
+    - enemyPrefab: {fileID: 3677971375640770530, guid: 77e39f372c1d8504ca2e9dc335e0738e, type: 3}
+      enemyCount: 2
+      spawnedCount: 0
     - enemyPrefab: {fileID: 3233129934485332625, guid: fb82f6d8875a8614a85c20ab79166bd5, type: 3}
-      enemyCount: 10
+      enemyCount: 2
+      spawnedCount: 0
+  - enemyTypes:
+    - enemyPrefab: {fileID: 6643027116863268232, guid: 56a346e54c96bf741be188c7d1f23580, type: 3}
+      enemyCount: 3
+      spawnedCount: 0
+    - enemyPrefab: {fileID: 4459301653538735250, guid: c8f6a42cbf053b84ebb7dba02373d628, type: 3}
+      enemyCount: 2
+      spawnedCount: 0
+    - enemyPrefab: {fileID: 3677971375640770530, guid: 77e39f372c1d8504ca2e9dc335e0738e, type: 3}
+      enemyCount: 3
+      spawnedCount: 0
+    - enemyPrefab: {fileID: 3233129934485332625, guid: fb82f6d8875a8614a85c20ab79166bd5, type: 3}
+      enemyCount: 2
+      spawnedCount: 0
+    - enemyPrefab: {fileID: 8562601819953557069, guid: 1038d15543ddc7040a5277ece06fc398, type: 3}
+      enemyCount: 1
       spawnedCount: 0
   hasBoss: 0
   bossPrefab: {fileID: 2505188075781382236, guid: 8c3e22f359858ee48859b3684703ffe6, type: 3}

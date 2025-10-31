@@ -29,9 +29,11 @@ public class IceBalls : PlayerBullet
 
         Vector3 enemyCenter = _targetEnemy.position + new Vector3(0, _targetEnemy.GetComponent<Collider>().bounds.size.y, 0);
         Vector3 direction = (enemyCenter - transform.position).normalized;
-
-        Quaternion targetRotation = Quaternion.LookRotation(direction);
-        transform.rotation = targetRotation;
+        
+        if (direction != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(direction);
+        }
 
         transform.Translate(Vector3.forward * _speedBullet * Time.deltaTime);
     }

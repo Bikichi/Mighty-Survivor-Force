@@ -52,7 +52,6 @@ public class BossPhaseController : MonoBehaviour, ISkillStatus
         BossFireBreath fireBreath = GetComponent<BossFireBreath>();
         if (fireBreath != null)
             fireBreath.StopFire();
-
         foreach (var script in scriptsToDisableDuringPrePhase2)
         {
             script.enabled = false;
