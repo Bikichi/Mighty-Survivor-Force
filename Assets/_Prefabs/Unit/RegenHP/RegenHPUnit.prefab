@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3174871228665613502
 Transform:
   m_ObjectHideFlags: 0
@@ -43,6 +43,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3174871228665613502}
     m_Modifications:
+    - target: {fileID: 59235966782802988, guid: 4f647f6586d6d1a43b8c4f2d06dc4055, type: 3}
+      propertyPath: interval
+      value: 4.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 59235966782802988, guid: 4f647f6586d6d1a43b8c4f2d06dc4055, type: 3}
+      propertyPath: healPercent
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1884928270289638410, guid: 4f647f6586d6d1a43b8c4f2d06dc4055, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -149,6 +157,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6292589994272945983, guid: c3703dc9ee191e54690b7bb92c1d269e, type: 3}
+      propertyPath: interval
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6292589994272945983, guid: c3703dc9ee191e54690b7bb92c1d269e, type: 3}
+      propertyPath: healPercent
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -206,6 +222,14 @@ PrefabInstance:
     - target: {fileID: 5354973164633951017, guid: 58210d0132f938c49a1e1cd6ac3066f0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8564435555912056774, guid: 58210d0132f938c49a1e1cd6ac3066f0, type: 3}
+      propertyPath: interval
+      value: 3.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8564435555912056774, guid: 58210d0132f938c49a1e1cd6ac3066f0, type: 3}
+      propertyPath: healPercent
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8938536676420342000, guid: 58210d0132f938c49a1e1cd6ac3066f0, type: 3}
       propertyPath: m_Name
@@ -268,6 +292,14 @@ PrefabInstance:
     - target: {fileID: 1659479994350720387, guid: b9a336b96e763ab44a57f6bd14d3f856, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6970256248467570260, guid: b9a336b96e763ab44a57f6bd14d3f856, type: 3}
+      propertyPath: interval
+      value: 2.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 6970256248467570260, guid: b9a336b96e763ab44a57f6bd14d3f856, type: 3}
+      propertyPath: healPercent
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7458906044320455837, guid: b9a336b96e763ab44a57f6bd14d3f856, type: 3}
       propertyPath: m_Name

@@ -8,8 +8,7 @@ public class CoinManager : Singleton<CoinManager>
 {
     public int totalCoinValue = 0;
 
-
-    public void Start()
+    private void Awake()
     {
         LoadCoinValue();
     }

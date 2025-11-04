@@ -390,7 +390,7 @@ GameObject:
   - component: {fileID: 3153791582861132557}
   - component: {fileID: 8649457495558240700}
   m_Layer: 9
-  m_Name: _BrownWolfBoss
+  m_Name: _GrownWolfBoss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -503,7 +503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d964ad1eb7f5014484053c3468f015f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5000
+  maxHealth: 1000
   currentHealth: 0
   defense: 10
   onHealthChange:

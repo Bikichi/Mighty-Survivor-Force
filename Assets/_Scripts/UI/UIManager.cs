@@ -1,8 +1,9 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
     public GameObject skillPanel;
+    [SerializeField] private GameObject waveAlertUI; 
 
     public void ShowSkillPanel()
     {
@@ -14,5 +15,10 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         skillPanel.SetActive(false);
+    }
+
+    public void ShowWaveAlert()
+    {
+        waveAlertUI.SetActive(true);
     }
 }

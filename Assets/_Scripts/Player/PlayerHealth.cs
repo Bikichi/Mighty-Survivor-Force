@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
-
+using UnityEngine.Events;
 public class PlayerHealth : LivingEntity
 {
+    public UnityEvent onTakeDamage;
     [Header("Dodge Settings")]
     [SerializeField] private GameObject missTextPrefab;
     [SerializeField] private Transform uiParent;
@@ -21,7 +22,7 @@ public class PlayerHealth : LivingEntity
         maxHealth = PlayerStats.Instance.maxHP; //gán
 
         //tăng currentHealth tương ứng chênh lệch, không vượt maxHealth vừa gán
-        currentHealth = Mathf.Min(currentHealth + diff / 2, maxHealth);
+        currentHealth = Mathf.Min(currentHealth + diff / 2, maxHealth); 
 
         onHealthChange?.Invoke(currentHealth, maxHealth); // update HealthBar
     }
@@ -36,11 +37,13 @@ public class PlayerHealth : LivingEntity
             return;
         }
         base.TakeDamage(damage);
+        onTakeDamage?.Invoke();
     }
 
     public void TakeDamageFromBeam(float damage)
     {
         base.TakeDamage(damage);
+        onTakeDamage?.Invoke();
     }
 
     private void ShowMissText()

@@ -13,6 +13,7 @@ public class EnemySpawner : MonoBehaviour
     public int enemiesAlive;
     public int currentWaveIndex;
     public float totalEnemiesKilled;
+    [SerializeField] private GameObject waveAlertUI;
 
     [SerializeField] private BossSpawner bossSpawner;
     
@@ -44,18 +45,19 @@ public class EnemySpawner : MonoBehaviour
 
         WaveData currentWave = waves[currentWaveIndex];
 
-        if (currentWave.IsCompleted() && enemiesAlive == 0)
+        if (currentWave.IsCompleted() && enemiesAlive == 0 && !CheckAlertUIManager.Instance.IsAnyWaveAlertActive())
         {
             StartCoroutine(BeginNextWave());
         }
 
         spawnTimer += Time.deltaTime;
 
-        if (spawnTimer >= currentWave.turnInterval && enemiesAlive < currentWave.maxEnemiesAllowed)
+        if (spawnTimer >= currentWave.turnInterval && enemiesAlive < currentWave.maxEnemiesAllowed && !CheckAlertUIManager.Instance.IsAnyWaveAlertActive())
         {
             SpawnEnemies(currentWave);
         }
     }
+
 
     IEnumerator BeginNextWave()
     {
@@ -66,7 +68,13 @@ public class EnemySpawner : MonoBehaviour
         if (currentWaveIndex < waves.Count)
         {
             spawnTimer = 0f;
+            yield return new WaitForSeconds(2.0f);
+            FindObjectOfType<ShowLearningSkillUI>().Show();
+            yield return new WaitForSeconds(0.25f);
             onWaveCompleted?.Invoke();
+            //trong lúc ui alert đang chạy thì hàm CheckBossSpawn() đã được gọi
+            //nhưng trong CheckBossSpawn() lại gọi 1 coroutine khác có delay nên
+            //cũng phải đợi delay xong mới spawn boss, khoảng delay này lớn hơn khoảng thời gian hiển thị alert
             CheckBossSpawn(waves[currentWaveIndex]);
         }
 

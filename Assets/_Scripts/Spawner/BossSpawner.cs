@@ -6,7 +6,7 @@ public class BossSpawner : MonoBehaviour
     [Header("Boss Settings")]
     [SerializeField] private Transform bossSpawnPoint;
     [SerializeField] private EnemySpawner enemySpawner;
-    [SerializeField] private float delayBeforeSpawn = 4f; // thời gian trễ trước khi boss xuất hiện
+    [SerializeField] private float delayBeforeSpawn = 4f; // thời gian trễ trước khi boss xuất hiện để hiển thị ui
 
     [SerializeField] private GameObject currentBoss;
     [SerializeField] private bool hasSpawned;
@@ -20,7 +20,7 @@ public class BossSpawner : MonoBehaviour
 
     private IEnumerator SpawnBossWithDelay(GameObject bossPrefab)
     {
-        yield return new WaitForSeconds(delayBeforeSpawn);
+        yield return new WaitForSeconds(delayBeforeSpawn); 
 
         currentBoss = Instantiate(bossPrefab, bossSpawnPoint.position, bossSpawnPoint.rotation);
 

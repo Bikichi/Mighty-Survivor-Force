@@ -12,6 +12,8 @@ public class WaveData : MonoBehaviour
     [Header("Boss Info")]
     public bool hasBoss;
     public GameObject bossPrefab;
+    public GameObject bossAlertUI;
+
 
     public int currentTurnIndex = 0;
     public int totalSpawned = 0;

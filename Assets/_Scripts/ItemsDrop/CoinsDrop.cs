@@ -10,6 +10,11 @@ public class CoinsDrop : MonoBehaviour
         {
             CoinManager.Instance.totalCoinValue += 1;
 
+            CoinManager.Instance.SaveCoinValue();
+
+            CoinUIManager coinUI = FindObjectOfType<CoinUIManager>();
+            coinUI.UpdateCoinUI();
+
             Destroy(gameObject);
         }
     }

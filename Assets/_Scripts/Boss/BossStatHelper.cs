@@ -53,7 +53,5 @@ public static class BossStatHelper
         {
             bossMultiShoot.fireCooldown /= multiplier;
         }
-
-        Debug.Log($"[BossStatHelper] Applied {multiplier}x stat multiplier to boss: {boss.name}");
     }
 }

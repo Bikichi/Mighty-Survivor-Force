@@ -3,38 +3,41 @@ using System.Collections;
 
 public class RegenHPSkill : MonoBehaviour
 {
-    public float healPercent = 10f;   // hồi bao nhiêu % máu tối đa mỗi tick
-    public float interval = 2f;       // khoảng thời gian giữa các lần hồi
+    public float healPercent;   // hồi bao nhiêu % máu tối đa mỗi tick
+    public float interval;       // khoảng thời gian giữa các lần hồi
 
-    private bool isRunning;
+    private Coroutine regenCoroutine;
 
     private void OnEnable()
     {
-        if (!isRunning) StartCoroutine(RegenLoop());
+        if (regenCoroutine == null)
+            regenCoroutine = StartCoroutine(RegenLoop());
+    }
+
+    private void OnDisable()
+    {
+        if (regenCoroutine != null)
+        {
+            StopCoroutine(regenCoroutine);
+            regenCoroutine = null;
+        }
     }
 
     private IEnumerator RegenLoop()
     {
-        isRunning = true;
         var playerHealth = FindObjectOfType<PlayerHealth>();
+        if (playerHealth == null) yield break;
 
         while (true)
         {
             yield return new WaitForSeconds(interval);
 
-            if (playerHealth.currentHealth < playerHealth.maxHealth)
+            if (playerHealth.currentHealth > 0f && playerHealth.currentHealth < playerHealth.maxHealth)
             {
-                // tính lượng máu hồi theo %
                 float healAmount = playerHealth.maxHealth * (healPercent / 100f);
-
-                playerHealth.currentHealth = Mathf.Min(
-                    playerHealth.currentHealth + healAmount,
-                    playerHealth.maxHealth
-                );
+                playerHealth.currentHealth = Mathf.Min(playerHealth.currentHealth + healAmount, playerHealth.maxHealth);
 
                 playerHealth.onHealthChange?.Invoke(playerHealth.currentHealth, playerHealth.maxHealth);
-
-                Debug.Log($"[RegenSkill] +{healAmount} máu ({healPercent}% maxHP) → HP hiện tại = {playerHealth.currentHealth}");
             }
         }
     }
