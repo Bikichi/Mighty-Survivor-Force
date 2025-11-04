@@ -2,9 +2,11 @@
 
 public class ShowLearningSkillUI : MonoBehaviour
 {
+    [SerializeField] private bool isPlayAtStart;
     private void Awake()
     {
-        Invoke("Show", 1.5f);
+        if (isPlayAtStart)
+            Invoke("Show", 1.5f);
     }
 
     void Update()
@@ -24,5 +26,11 @@ public class ShowLearningSkillUI : MonoBehaviour
         FindObjectOfType<LearnedSkillsUIController>().ShowLearnedSkills();
         FindObjectOfType<SkillSelectionUIController>().ShowSkillChoices();
         FindObjectOfType<UIManager>().ShowSkillPanel();
+    }
+
+    public void ReRoll()
+    {
+        FindObjectOfType<SkillSelectionManager>().GetRandomSkillChoices();
+        FindObjectOfType<SkillSelectionUIController>().ShowSkillChoices();
     }
 }

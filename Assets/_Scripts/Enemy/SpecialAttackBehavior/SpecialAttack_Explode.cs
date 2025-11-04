@@ -32,8 +32,7 @@ public class SpecialAttack_Explode : SpecialAttackBehavior
 
         anim.SetBool(prepareAnimationBool, true);
         explosionArea.SetActive(true);
-        GetComponent<EnemyMovement>().enemyMoveSpeed = 0f;
-        GetComponent<EnemyMovement>().lerpSpeed = 0f;
+        GetComponent<EnemyMovement>().enabled = false;
 
         yield return new WaitForSeconds(prepareDelay);
 

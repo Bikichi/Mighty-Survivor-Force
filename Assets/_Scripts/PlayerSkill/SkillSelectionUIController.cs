@@ -6,7 +6,7 @@ public class SkillSelectionUIController : MonoBehaviour
     [SerializeField] private SkillSelectionManager skillSelectionManager;
     [SerializeField] private PlayerSkillManager playerSkillManager;
     [SerializeField] private SkillChoiceUI[] choiceSlots; //kéo thả 3 ô từ Inspector vào đây
-    //mỗii slot là một prefab UI
+    //mỗi slot là một prefab UI
     //SkillSelectionUIController điền thông tin vào các slot đó bằng Setup()
 
     public void ShowSkillChoices()

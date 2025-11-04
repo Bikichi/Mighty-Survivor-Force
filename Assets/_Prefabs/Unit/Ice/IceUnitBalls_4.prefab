@@ -4858,13 +4858,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fe9ed63488847942a6f513805bdd2df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speedBullet: 10
+  _speedBullet: 20
   damageBullet: 0
   _hitEffect: {fileID: 5112403345868107898, guid: a45e2711bf07da84e8851a932fb61a3f, type: 3}
   _targetEnemy: {fileID: 0}
   iceFieldPrefab: {fileID: 2878520122346405298, guid: bf6bd4697cece4e4085ff47692b9e411, type: 3}
   damageMultiplier: 2
-  rotationSpeed: 6
 --- !u!136 &6503668001416400975
 CapsuleCollider:
   m_ObjectHideFlags: 0
