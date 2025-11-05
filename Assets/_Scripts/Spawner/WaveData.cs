@@ -9,15 +9,16 @@ public class WaveData : MonoBehaviour
     public int maxEnemiesAllowed; //số quái vật tồn tại ở 1 thơi điểm tối đa cho phép
     public List<TurnData> turns = new List<TurnData>();
 
+    public int currentTurnIndex = 0;
+    public int totalSpawned = 0;
+    public int enemiesKilled = 0;
+
+    public int extraQuota = 0; //quái phụ sinh thêm khi quái chính chết (ví dụ SplitEnemy)
+
     [Header("Boss Info")]
     public bool hasBoss;
     public GameObject bossPrefab;
     public GameObject bossAlertUI;
-
-
-    public int currentTurnIndex = 0;
-    public int totalSpawned = 0;
-    public int enemiesKilled = 0;
 
     public TurnData GetCurrentTurn()
     {
@@ -48,6 +49,13 @@ public class WaveData : MonoBehaviour
         if (hasBoss && bossPrefab != null)
             total += 1;
 
+        total += extraQuota;
+
         return total;
+    }
+
+    public void AddExtraQuota(int amount)
+    {
+        extraQuota += amount;
     }
 }
