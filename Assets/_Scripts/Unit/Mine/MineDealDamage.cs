@@ -26,10 +26,6 @@ public class MineDealDamage : MonoBehaviour
         mineDamage = PlayerStats.Instance.baseDamage * damageMultiplier;
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        
-    }
     private void OnTriggerEnter(Collider col)
     {
         if (col.CompareTag(Const.ENEMY_TAG))

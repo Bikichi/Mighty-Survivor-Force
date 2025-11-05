@@ -65,19 +65,24 @@ public class EnemySpawner : MonoBehaviour
         yield return new WaitForSeconds(waveInterval);
 
         currentWaveIndex++;
-        if (currentWaveIndex < waves.Count)
+
+        //nếu đã hoàn thành toàn bộ waves
+        if (currentWaveIndex >= waves.Count)
         {
+            GameFlowManager.Instance.OnAllWavesCompleted();
+            Debug.Log("All waves completed!");
+            yield break;
+        }
+        else
+        {
+            //nếu vẫn còn wave tiếp theo
             spawnTimer = 0f;
             yield return new WaitForSeconds(2.0f);
             FindObjectOfType<ShowLearningSkillUI>().Show();
             yield return new WaitForSeconds(0.25f);
             onWaveCompleted?.Invoke();
-            //trong lúc ui alert đang chạy thì hàm CheckBossSpawn() đã được gọi
-            //nhưng trong CheckBossSpawn() lại gọi 1 coroutine khác có delay nên
-            //cũng phải đợi delay xong mới spawn boss, khoảng delay này lớn hơn khoảng thời gian hiển thị alert
             CheckBossSpawn(waves[currentWaveIndex]);
         }
-
         _isWaveTransitioning = false;
     }
 

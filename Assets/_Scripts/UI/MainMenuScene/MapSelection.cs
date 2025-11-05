@@ -12,7 +12,7 @@ public class MapData
     public bool isUnlocked = false;
 }
 
-public class MapSelection : MonoBehaviour
+public class MapSelection : Singleton<MapSelection>
 {
     public Image previewImage;
     public TMP_Text mapNameText;

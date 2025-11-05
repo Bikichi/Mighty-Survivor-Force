@@ -19,7 +19,10 @@ public class ExplosionDamage : MonoBehaviour
         foreach (Collider col in hits)
         {
             PlayerHealth ph = col.GetComponent<PlayerHealth>();
-            ph.TakeDamage(damage);
+            if (ph != null)
+            {
+                ph.TakeDamage(damage);
+            }
         }
     }
 

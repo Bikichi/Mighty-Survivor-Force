@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CoinUIManager : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class CoinUIManager : MonoBehaviour
     {
         UpdateCoinUI();
     }
-
+        
     public void UpdateCoinUI()
     {
         coinText.text = $"{CoinManager.Instance.totalCoinValue}";

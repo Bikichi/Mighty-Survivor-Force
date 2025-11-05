@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class WaveUIManager : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class WaveUIManager : MonoBehaviour
 
     [SerializeField] private EnemySpawner enemySpawner;
     [SerializeField] private Slider _levelBar;
-    [SerializeField] private Text _levelText;
+    [SerializeField] private TMP_Text _levelTextMP;
 
     private void Start()
     {
@@ -53,7 +54,7 @@ public class WaveUIManager : MonoBehaviour
         _levelBar.maxValue = _maxLevelUpExperience;
         _levelBar.value = _pointExperience;
 
-        _levelText.text = _currentLevel.ToString();
+        _levelTextMP.text = _currentLevel.ToString();
 
     }
 }
