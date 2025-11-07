@@ -7,7 +7,7 @@ public class PlayerShooting : RangedShooterBase
     protected override void Start()
     {
         base.Start();
-        playerStats = ActivePlayerManager.CurrentPlayerInstance.GetComponent<PlayerStats>();
+        playerStats = ActivePlayerManager.Instance.CurrentPlayerInstance.GetComponent<PlayerStats>();
 
         UpdateShootCoolDown();
 

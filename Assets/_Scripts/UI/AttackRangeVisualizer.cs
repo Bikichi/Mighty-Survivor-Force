@@ -6,19 +6,8 @@ public class AttackRangeVisualizer : MonoBehaviour
 
     private void Start()
     {
-        if (ActivePlayerManager.CurrentPlayerInstance == null)
-        {
-            Debug.LogError("AttackRangeVisualizer: No player instance found!");
-            return;
-        }
-
-        playerStats = ActivePlayerManager.CurrentPlayerInstance.GetComponent<PlayerStats>();
-        if (playerStats == null)
-        {
-            Debug.LogError("AttackRangeVisualizer: PlayerStats not found on player instance!");
-            return;
-        }
-
+        playerStats = ActivePlayerManager.Instance.CurrentPlayerInstance.GetComponent<PlayerStats>();
+        
         UpdateScale();
 
         playerStats.onAttackRangeChanged += UpdateScale;

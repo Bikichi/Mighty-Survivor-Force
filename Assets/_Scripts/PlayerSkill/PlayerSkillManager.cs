@@ -20,7 +20,7 @@ public class PlayerSkillManager : MonoBehaviour
     private void Awake()
     {
         // Lấy PlayerStats từ CurrentPlayerInstance
-        playerStats = ActivePlayerManager.CurrentPlayerInstance.GetComponent<PlayerStats>();
+        playerStats = ActivePlayerManager.Instance.CurrentPlayerInstance.GetComponent<PlayerStats>();
     }
 
     public void LearnSkill(ScriptableObject skill)

@@ -7,6 +7,9 @@ public class MainPanelController : MonoBehaviour
     [SerializeField] private GameObject upgradesPanel;
     [SerializeField] private GameObject playPanel;
 
+    [Header("References")]
+    [SerializeField] private CharacterSelectionManager characterSelectionManager;
+
     public void TogglePanel(GameObject panel)
     {
         GameObject[] panels = { heroPanel, upgradesPanel, playPanel };
@@ -27,7 +30,21 @@ public class MainPanelController : MonoBehaviour
     }
 
     //hàm gọi trực tiếp từ button
-    public void ToggleHeroPanel() => TogglePanel(heroPanel);
+    public void ToggleHeroPanel()
+    {
+        TogglePanel(heroPanel);
+
+        //load dữ liệu nhân vật ngay khi mở panel hero
+        if (heroPanel.activeSelf)
+        {
+            characterSelectionManager.LoadUnlockStates();                     // load trạng thái unlock
+            int savedIndex = characterSelectionManager.LoadSelectedCharacter(); // load nhân vật đã chọn
+            characterSelectionManager.SelectCharacter(savedIndex);            // cập nhật UI
+            characterSelectionManager.GetComponent<CharacterButtonImageManager>().SetActiveButton(savedIndex); //động bộ nút tương ứng với nhân vật đã chọn
+            //tham chiếu tới Component CharacterButtonImageManager ở GameObject mà MainPanelController đang tham chiếu CharacterSelectionManager
+            //vì CharacterButtonImageManager và CharacterSelectionManager cùng gắn trên 1 game object
+        }
+    }
     public void ToggleUpgradesPanel() => TogglePanel(upgradesPanel);
     public void TogglePlayPanel() => TogglePanel(playPanel);
 }

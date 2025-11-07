@@ -32298,8 +32298,8 @@ GameObject:
   - component: {fileID: 4091674556651506361}
   - component: {fileID: 9180099300682952820}
   - component: {fileID: 7494489510988553380}
-  - component: {fileID: 8674062407455327818}
   - component: {fileID: 612150664457377394}
+  - component: {fileID: 8674062407455327818}
   - component: {fileID: 5695800872805606829}
   - component: {fileID: 3504887057015135929}
   - component: {fileID: 97870909733832214}
@@ -32531,38 +32531,12 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 2.0000002
-  m_Radius: 0.4999999
+  m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &8674062407455327818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6186176650844262797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 129242fb4f3efc7489024d1029bea648, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 3
-  currentHealth: 3
-  defense: 0
-  onHealthChange:
-    m_PersistentCalls:
-      m_Calls: []
-  onDeath:
-    m_PersistentCalls:
-      m_Calls: []
-  onTakeDamage:
-    m_PersistentCalls:
-      m_Calls: []
-  missTextPrefab: {fileID: 64370307864958366, guid: b8f9e806141623d4fb1a5b2eba7edc23, type: 3}
-  playerStats: {fileID: 0}
 --- !u!114 &612150664457377394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32581,8 +32555,34 @@ MonoBehaviour:
   baseAttackRange: 15
   baseMoveSpeed: 10
   baseDodgeChance: 0
-  baseCritChance: 50
+  baseCritChance: 0
   baseCritMultiplier: 1.5
+--- !u!114 &8674062407455327818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6186176650844262797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 129242fb4f3efc7489024d1029bea648, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  defense: 0
+  onHealthChange:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  onTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  missTextPrefab: {fileID: 64370307864958366, guid: b8f9e806141623d4fb1a5b2eba7edc23, type: 3}
+  playerStats: {fileID: 0}
 --- !u!114 &5695800872805606829
 MonoBehaviour:
   m_ObjectHideFlags: 0

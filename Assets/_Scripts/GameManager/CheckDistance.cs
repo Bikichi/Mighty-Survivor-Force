@@ -16,7 +16,7 @@ public class CheckDistance : Singleton<CheckDistance>
         }
 
         // Lấy PlayerStats từ CurrentPlayerInstance
-        playerStats = ActivePlayerManager.CurrentPlayerInstance.GetComponent<PlayerStats>();
+        playerStats = ActivePlayerManager.Instance.CurrentPlayerInstance.GetComponent<PlayerStats>();
     }
 
     public float CalculateDistanceToPlayer(Transform playerTransform, Transform enemyTransform)

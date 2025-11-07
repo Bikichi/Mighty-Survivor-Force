@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2470066779631214045}
   - component: {fileID: -7749279808745309921}
   m_Layer: 0
-  m_Name: PlayerBullet
+  m_Name: GunnerPlayerBullet
   m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,6 +71,8 @@ MonoBehaviour:
   damageBullet: 0
   _hitEffect: {fileID: 870049484446207817, guid: 10e1141397813b540b4f794ec4ef4bb8, type: 3}
   _targetEnemy: {fileID: 0}
+  playerStats: {fileID: 0}
+  delayTime: 0.1
 --- !u!1 &4818455355453151939
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,7 +218,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 00ee5cdbbed48274e8b449975f661d8f, type: 2}
+  - {fileID: 2100000, guid: 68e92f097fb169c4d8e1f0cc5069088a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

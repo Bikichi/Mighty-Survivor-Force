@@ -18,7 +18,7 @@ public class RotatePlayer : MonoBehaviour
     void Start()
     {
         // Lấy PlayerStats từ CurrentPlayerInstance
-        playerStats = ActivePlayerManager.CurrentPlayerInstance.GetComponent<PlayerStats>();
+        playerStats = ActivePlayerManager.Instance.CurrentPlayerInstance.GetComponent<PlayerStats>();
     }
 
     void Update()

@@ -17,7 +17,7 @@ public class LightningUnit : MonoBehaviour
     private void OnEnable()
     {
         // Lấy PlayerStats từ CurrentPlayerInstance
-        playerStats = ActivePlayerManager.CurrentPlayerInstance.GetComponent<PlayerStats>();
+        playerStats = ActivePlayerManager.Instance.CurrentPlayerInstance.GetComponent<PlayerStats>();
 
         CalculateDamage(); // gán lần đầu khi bật
 

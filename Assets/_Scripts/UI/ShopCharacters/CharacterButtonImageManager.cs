@@ -30,11 +30,11 @@ public class CharacterButtonImageManager : MonoBehaviour
     {
         for (int i = 0; i < buttons.Length; i++)
         {
-            int index = i;
+            int index = i; //tránh lỗi Closure
             buttons[i].button.onClick.AddListener(() => OnButtonClicked(index));
         }
 
-        OnButtonClicked(0); // chọn nút đầu tiên
+        //OnButtonClicked(0); // chọn nút đầu tiên làm mặc định
     }
 
     private void OnButtonClicked(int index)
@@ -45,9 +45,6 @@ public class CharacterButtonImageManager : MonoBehaviour
 
     public void SetActiveButton(int index)
     {
-        if (index == currentIndex)
-            return;
-
         currentIndex = index;
 
         for (int i = 0; i < buttons.Length; i++)
@@ -56,7 +53,7 @@ public class CharacterButtonImageManager : MonoBehaviour
 
             b.backgroundImage.sprite = (i == index) ? b.activeSprite : b.normalSprite;
 
-            bool isLocked = selectionManager.characters[i].isUnlocked;
+            bool isLocked = !selectionManager.characters[i].isUnlocked;
 
             if (b.extraBgObject != null)
             {

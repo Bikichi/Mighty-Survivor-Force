@@ -14,7 +14,7 @@ public class DealDamageByWeapon : MonoBehaviour
     private void Start()
     {
         // Lấy PlayerStats từ CurrentPlayerInstance
-        playerStats = ActivePlayerManager.CurrentPlayerInstance.GetComponent<PlayerStats>();
+        playerStats = ActivePlayerManager.Instance.CurrentPlayerInstance.GetComponent<PlayerStats>();
         CalculateWeaponDamage();
     }
 

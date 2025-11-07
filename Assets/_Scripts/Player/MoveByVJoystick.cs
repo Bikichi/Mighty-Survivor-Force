@@ -18,7 +18,7 @@ public class MoveByVJoystick : MonoBehaviour
 
     private void Start()
     {
-        playerStats = ActivePlayerManager.CurrentPlayerInstance.GetComponent<PlayerStats>();
+        playerStats = ActivePlayerManager.Instance.CurrentPlayerInstance.GetComponent<PlayerStats>();
 
         movingSpeed = playerStats.baseMoveSpeed;
         playerStats.onMoveSpeedChanged += UpdateMovingSpeed;
@@ -26,6 +26,7 @@ public class MoveByVJoystick : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         playerTransform = GetComponent<Transform>();
 
+        anim = GetComponentInChildren<Animator>();
         joystick = FindObjectOfType<Joystick>();
     }
 

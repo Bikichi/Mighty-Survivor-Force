@@ -14,7 +14,7 @@ public class MineDealDamage : MonoBehaviour
     private void OnEnable()
     {
         // Lấy PlayerStats từ CurrentPlayerInstance
-        playerStats = ActivePlayerManager.CurrentPlayerInstance.GetComponent<PlayerStats>();
+        playerStats = ActivePlayerManager.Instance.CurrentPlayerInstance.GetComponent<PlayerStats>();
 
         CalculateDamage();
 

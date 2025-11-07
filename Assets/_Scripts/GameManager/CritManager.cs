@@ -9,7 +9,7 @@ public class CritManager : Singleton<CritManager>
 
     public (float damage, bool isCrit) CalculateCritDamage(float baseDamage)
     {
-        PlayerStats playerStats = ActivePlayerManager.CurrentPlayerInstance.GetComponent<PlayerStats>();
+        PlayerStats playerStats = ActivePlayerManager.Instance.CurrentPlayerInstance.GetComponent<PlayerStats>();
         critChance = playerStats.baseCritChance;
         critMultiplier = playerStats.baseCritMultiplier;
         // Chia 100 để dùng với Random.value (0–1)

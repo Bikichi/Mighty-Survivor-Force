@@ -14,7 +14,7 @@ public class FireBalls : PlayerBullet
         base.Start();
 
         // Lấy PlayerStats từ CurrentPlayerInstance
-        playerStats = ActivePlayerManager.CurrentPlayerInstance.GetComponent<PlayerStats>();
+        playerStats = ActivePlayerManager.Instance.CurrentPlayerInstance.GetComponent<PlayerStats>();
         damageBullet = playerStats.baseDamage * damageMultiplier;
     }
 

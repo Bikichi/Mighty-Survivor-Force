@@ -1,34 +1,68 @@
 ﻿using UnityEngine;
 
-public class ActivePlayerManager : MonoBehaviour
+public class ActivePlayerManager : Singleton<ActivePlayerManager>
 {
-    public static ActivePlayerManager Instance;
+    public GameObject CurrentPlayerPrefab;
+    public GameObject CurrentPlayerInstance;
+    [Header("Prefabs Setup")]
+    public GameObject[] allPrefabs; // gán prefab trong Inspector
 
-    public static GameObject CurrentPlayerPrefab;   // chỉ lưu prefab
-    public static GameObject CurrentPlayerInstance; // instance thực tế đang chạy
+    private const string PrefabIndexKey = "CurrentPlayerPrefabIndex";
 
-    private void Awake()
+    private void Update()
     {
-        if (Instance == null)
+        // Nhấn R → reset tất cả 
+        if (Input.GetKeyDown(KeyCode.R))
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
+            ResetCurrentPlayerPrefab();
         }
     }
 
-    //set prefab được chọn từ menu
-    public static void SetCurrent(GameObject prefab)
+
+    private void Start()
+    {
+        LoadCurrentPlayerPrefab();
+    }
+    // gọi từ UI menu
+    public void SetCurrent(GameObject prefab)
     {
         CurrentPlayerPrefab = prefab;
+
+        //lưu index prefab vào PlayerPrefs
+        int index = System.Array.IndexOf(allPrefabs, prefab);
+        if (index >= 0)
+        {
+            PlayerPrefs.SetInt(PrefabIndexKey, index);
+            PlayerPrefs.Save();
+        }
     }
 
-    //gán instance sau khi spawn
-    public static void SetInstance(GameObject instance)
+    /// <summary>
+    /// Gọi khi spawn trong gameplay
+    /// </summary>
+    public void SetInstance(GameObject instance)
     {
         CurrentPlayerInstance = instance;
+    }
+
+    /// <summary>
+    /// Load prefab đã lưu từ PlayerPrefs
+    /// </summary>
+    public void LoadCurrentPlayerPrefab()
+    {
+        int index = PlayerPrefs.GetInt(PrefabIndexKey, 0); // mặc định prefab đầu tiên
+        if (allPrefabs != null && allPrefabs.Length > index)
+        {
+            CurrentPlayerPrefab = allPrefabs[index];
+        }
+    }
+
+    public void ResetCurrentPlayerPrefab()
+    {
+        PlayerPrefs.DeleteKey(PrefabIndexKey);
+        PlayerPrefs.Save();
+        CurrentPlayerPrefab = allPrefabs.Length > 0 ? allPrefabs[0] : null;
+
+        Debug.Log("Reset Current PlayerPrefab");
     }
 }

@@ -9,7 +9,7 @@ public class DroneBullet : PlayerBullet
     {
         //lấy PlayerStats từ CurrentPlayerInstance
 
-        playerStats = ActivePlayerManager.CurrentPlayerInstance.GetComponent<PlayerStats>();
+        playerStats = ActivePlayerManager.Instance.CurrentPlayerInstance.GetComponent<PlayerStats>();
         damageBullet = playerStats.baseDamage * damageMultiplier;
         _targetEnemy = CheckDistance.Instance.FindLowestHealthEnemy();
     }

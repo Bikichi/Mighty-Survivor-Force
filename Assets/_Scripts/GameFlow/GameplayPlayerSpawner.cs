@@ -7,7 +7,7 @@ public class GameplayPlayerSpawner : MonoBehaviour
 
     private void Awake()
     {
-        if (ActivePlayerManager.CurrentPlayerPrefab == null)
+        if (ActivePlayerManager.Instance.CurrentPlayerPrefab == null)
         {
             Debug.LogError("No character selected!");
             return;
@@ -15,11 +15,11 @@ public class GameplayPlayerSpawner : MonoBehaviour
 
         // Spawn player và lưu instance vào ActivePlayerManager
         GameObject playerInstance = Instantiate(
-            ActivePlayerManager.CurrentPlayerPrefab,
+            ActivePlayerManager.Instance.CurrentPlayerPrefab,
             spawnPosition,
             spawnRotation
         );
 
-        ActivePlayerManager.SetInstance(playerInstance);
+        ActivePlayerManager.Instance.SetInstance(playerInstance);
     }
 }

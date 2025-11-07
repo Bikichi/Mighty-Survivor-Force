@@ -12925,6 +12925,7 @@ MonoBehaviour:
   heroPanel: {fileID: 560}
   upgradesPanel: {fileID: 646}
   playPanel: {fileID: 584}
+  characterSelectionManager: {fileID: 4856}
 --- !u!114 &3887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15943,23 +15944,26 @@ MonoBehaviour:
   - characterName: CHESTER
     characterModel: {fileID: 6186176650180920050}
     characterPrefab: {fileID: 6186176650844262797, guid: 458f49b3b59053249a447451da10b65a, type: 3}
-    isUnlocked: 0
+    isUnlocked: 1
     unlockCost: 0
   - characterName: REYNA
     characterModel: {fileID: 1981309472062174206}
     characterPrefab: {fileID: 1981309472699212516, guid: 985b2b450b4243548b31c3faf048840b, type: 3}
-    isUnlocked: 1
-    unlockCost: 50000
+    isUnlocked: 0
+    unlockCost: 1
   - characterName: COMING SOON
     characterModel: {fileID: 1452555644404866}
     characterPrefab: {fileID: 1452553761990968, guid: f6a956915692ee04db89cd1da943e2a8, type: 3}
-    isUnlocked: 1
-    unlockCost: 99999
+    isUnlocked: 0
+    unlockCost: 999
   txtName: {fileID: 2111005941}
   txtAttack: {fileID: 485512575}
   txtAttackRate: {fileID: 3567}
   txtHealth: {fileID: 1784572735}
   txtSpeed: {fileID: 1847598008}
+  btnUnlock: {fileID: 1398566252}
+  txtUnlockCost: {fileID: 1797943770}
+  unlockButton: {fileID: 1398566255}
 --- !u!114 &4857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20737,7 +20741,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 17
+  m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -21898,6 +21902,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e86a1785047d82419ddf1bb0eea63f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentPlayerPrefab: {fileID: 0}
+  CurrentPlayerInstance: {fileID: 0}
+  allPrefabs:
+  - {fileID: 6186176650844262797, guid: 458f49b3b59053249a447451da10b65a, type: 3}
+  - {fileID: 1981309472699212516, guid: 985b2b450b4243548b31c3faf048840b, type: 3}
+  - {fileID: 1452553761990968, guid: f6a956915692ee04db89cd1da943e2a8, type: 3}
 --- !u!4 &1320569028
 Transform:
   m_ObjectHideFlags: 0
@@ -22167,6 +22177,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1398566253}
   - component: {fileID: 1398566254}
+  - component: {fileID: 1398566255}
   m_Layer: 5
   m_Name: Unlock-Button
   m_TagString: Untagged
@@ -22207,6 +22218,62 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1398566255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398566252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 0}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4856}
+        m_TargetAssemblyTypeName: CharacterSelectionManager, Assembly-CSharp
+        m_MethodName: UnlockCurrentCharacter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1440775882
 GameObject:
   m_ObjectHideFlags: 0
@@ -23660,7 +23727,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5246189148500840165, guid: 7a1e0bb1b4ce39a4aa3ffef5ca75a630, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 5246189148500840165, guid: 7a1e0bb1b4ce39a4aa3ffef5ca75a630, type: 3}
       propertyPath: m_LocalRotation.w
@@ -23723,7 +23790,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3178744731079521678, guid: 89dba661bcf2d6a4c955bcf660e9c389, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 3178744731079521678, guid: 89dba661bcf2d6a4c955bcf660e9c389, type: 3}
       propertyPath: m_LocalRotation.w
@@ -23804,7 +23871,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1634704792131788557, guid: f83490803ee09264586f0a76922ec1bf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 1634704792131788557, guid: f83490803ee09264586f0a76922ec1bf, type: 3}
       propertyPath: m_LocalRotation.w

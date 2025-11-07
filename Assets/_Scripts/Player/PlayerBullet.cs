@@ -3,12 +3,13 @@ public class PlayerBullet : BaseBullet
 {
     [SerializeField] protected Transform _targetEnemy;
     [SerializeField] protected PlayerStats playerStats;
+    [SerializeField] protected float delayDestroyTime = 0.1f;
 
     protected override void Start()
     {
         base.Start();
 
-        playerStats = ActivePlayerManager.CurrentPlayerInstance.GetComponent<PlayerStats>();
+        playerStats = ActivePlayerManager.Instance.CurrentPlayerInstance.GetComponent<PlayerStats>();
         damageBullet = playerStats.baseDamage;
         _targetEnemy = CheckDistance.Instance.FindClosestEnemy();
     }
@@ -36,7 +37,7 @@ public class PlayerBullet : BaseBullet
             {
                 ApplyDamage(enemyHealth);
                 PlayHitEffect(col);
-                Destroy(gameObject, 0.1f);
+                Destroy(gameObject, delayDestroyTime);
             }
         }
     }

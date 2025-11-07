@@ -18,7 +18,7 @@ public class PlayerHealth : LivingEntity
     }
     private void Start()
     {
-        playerStats = ActivePlayerManager.CurrentPlayerInstance.GetComponent<PlayerStats>();
+        playerStats = ActivePlayerManager.Instance.CurrentPlayerInstance.GetComponent<PlayerStats>();
         playerStats.onMaxHealthChanged += UpdateMaxHealth; // đăng ký sự kiện
         maxHealth = playerStats.maxHP;
         currentHealth = maxHealth;

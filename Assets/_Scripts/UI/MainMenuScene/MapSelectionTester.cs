@@ -17,7 +17,7 @@ public class MapSelectionTester : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             mapSelection.ResetProgress();
-            Debug.Log("Progress reset!");
+            Debug.Log("Map Progress reset!");
         }
     }
 }
