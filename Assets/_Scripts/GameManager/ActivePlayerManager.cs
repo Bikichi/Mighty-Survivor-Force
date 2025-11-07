@@ -20,13 +20,13 @@ public class ActivePlayerManager : MonoBehaviour
         }
     }
 
-    // Set prefab được chọn từ menu
+    //set prefab được chọn từ menu
     public static void SetCurrent(GameObject prefab)
     {
         CurrentPlayerPrefab = prefab;
     }
 
-    // Gán instance sau khi spawn
+    //gán instance sau khi spawn
     public static void SetInstance(GameObject instance)
     {
         CurrentPlayerInstance = instance;

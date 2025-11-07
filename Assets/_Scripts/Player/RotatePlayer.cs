@@ -13,9 +13,9 @@ public class RotatePlayer : MonoBehaviour
     public float rotateTimer;
     public float rotateInterval;
 
-    private PlayerStats playerStats;
+    [SerializeField] private PlayerStats playerStats;
 
-    void Awake()
+    void Start()
     {
         // Lấy PlayerStats từ CurrentPlayerInstance
         playerStats = ActivePlayerManager.CurrentPlayerInstance.GetComponent<PlayerStats>();

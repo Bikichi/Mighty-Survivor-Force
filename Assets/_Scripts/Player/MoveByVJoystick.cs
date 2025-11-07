@@ -14,40 +14,25 @@ public class MoveByVJoystick : MonoBehaviour
     public Transform playerTransform;
     public float movingSpeed;
 
-    private PlayerStats playerStats;
+    [SerializeField] private PlayerStats playerStats;
 
-    private void Awake()
+    private void Start()
     {
-        // Lấy PlayerStats từ CurrentPlayerInstance
-        if (ActivePlayerManager.CurrentPlayerInstance == null)
-        {
-            Debug.LogError("MoveByVJoystick: No player instance found!");
-            return;
-        }
-
         playerStats = ActivePlayerManager.CurrentPlayerInstance.GetComponent<PlayerStats>();
-        if (playerStats == null)
-        {
-            Debug.LogError("MoveByVJoystick: PlayerStats not found on player instance!");
-            return;
-        }
 
         movingSpeed = playerStats.baseMoveSpeed;
         playerStats.onMoveSpeedChanged += UpdateMovingSpeed;
 
-        transform.position = new Vector3(0.02f, 1.58f, -2.5f);
+        characterController = GetComponent<CharacterController>();
+        playerTransform = GetComponent<Transform>();
+
+        joystick = FindObjectOfType<Joystick>();
     }
 
     private void OnDestroy()
     {
         if (playerStats != null)
             playerStats.onMoveSpeedChanged -= UpdateMovingSpeed;
-    }
-
-    private void OnValidate()
-    {
-        characterController = GetComponent<CharacterController>();
-        playerTransform = GetComponent<Transform>();
     }
 
     private void Update()
@@ -58,7 +43,16 @@ public class MoveByVJoystick : MonoBehaviour
     public void Move()
     {
         if (joystick == null || characterController == null || playerTransform == null)
+        {
+            Debug.LogWarning($"Move skipped: joystick={joystick}, characterController={characterController}, playerTransform={playerTransform}");
             return;
+        }
+
+        if (anim == null)
+        {
+            Debug.LogWarning("Animator is null!");
+            return;
+        }
 
         float hInput = joystick.Horizontal;
         float vInput = joystick.Vertical;
@@ -95,6 +89,7 @@ public class MoveByVJoystick : MonoBehaviour
             anim.SetBool(runRightParaname, true);
         }
     }
+
 
     private void UpdateMovingSpeed()
     {

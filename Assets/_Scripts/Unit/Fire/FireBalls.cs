@@ -8,7 +8,6 @@ public class FireBalls : PlayerBullet
     [SerializeField] private GameObject fireFieldPrefab;
     [SerializeField] private float damageMultiplier;
 
-    private PlayerStats playerStats;
 
     protected override void Start()
     {

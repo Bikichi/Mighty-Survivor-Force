@@ -2,7 +2,7 @@
 public class PlayerBullet : BaseBullet
 {
     [SerializeField] protected Transform _targetEnemy;
-    private PlayerStats playerStats;
+    [SerializeField] protected PlayerStats playerStats;
 
     protected override void Start()
     {

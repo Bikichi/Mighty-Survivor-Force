@@ -5,6 +5,11 @@ using UnityEngine;
 public class SpawnPointManager : Singleton<SpawnPointManager>
 {
     public Transform playerTransform;
+
+    private void Awake()
+    {
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+    }
     public void ResetSpawnPoints(List<Transform> unusedSpawnPoints, Transform[] sourcePoints)
     {
         unusedSpawnPoints.Clear();

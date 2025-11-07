@@ -235,8 +235,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4246938355253283081}
+  - component: {fileID: -4420244729659786522}
   - component: {fileID: 6726863301776806946}
-  - component: {fileID: 7525522656535857213}
   - component: {fileID: 7805184277192154341}
   - component: {fileID: 2232077036906633407}
   - component: {fileID: 5817752869822469679}
@@ -272,6 +272,29 @@ Transform:
   - {fileID: 7679948475809034604}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!136 &-4420244729659786522
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1977410531628863824}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.85
+  m_Height: 3.25
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.85, z: 0.35}
 --- !u!54 &6726863301776806946
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -299,27 +322,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!65 &7525522656535857213
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1977410531628863824}
-  m_Material: {fileID: 13400000, guid: 473bd586f493ac74fae126a8727d465c, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.7043686, y: 1.65, z: 3.4346085}
-  m_Center: {x: 0.027706146, y: 0.81, z: 0.38694382}
 --- !u!114 &7805184277192154341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,6 +375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   childEnemyPrefab: {fileID: 1977410531628863824, guid: 36d4c88d889930d44b46cf0cbab7924a, type: 3}
   spawnOffset: 2
+  enemySpawner: {fileID: 0}
 --- !u!114 &5817752869822469679
 MonoBehaviour:
   m_ObjectHideFlags: 0

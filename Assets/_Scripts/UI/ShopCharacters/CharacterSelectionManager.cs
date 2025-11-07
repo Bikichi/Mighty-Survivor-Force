@@ -7,8 +7,14 @@ public class CharacterSelectionManager : MonoBehaviour
     public class CharacterData
     {
         public string characterName;
+
+        //Model hiển thị trong UI (không phải prefab gameplay)
         public GameObject characterModel;
-        public bool isUnlocked; //trạng thái khoa của nhân vật 
+
+        //Prefab dùng để spawn trong game scene
+        public GameObject characterPrefab;
+
+        public bool isUnlocked;
         public int unlockCost;
     }
 
@@ -24,28 +30,28 @@ public class CharacterSelectionManager : MonoBehaviour
 
     private int currentIndex = 0;
 
-    //Bỏ unlockPanel khỏi đây
-    // public GameObject unlockPanel;
-    //public Text txtUnlockCost;
-    //public Button btnUnlock;
-
     public void SelectCharacter(int index)
     {
         currentIndex = index;
         CharacterData c = characters[index];
 
+        // Bật model UI
         for (int i = 0; i < characters.Length; i++)
             characters[i].characterModel.SetActive(i == index);
 
-        PlayerStats ps = c.characterModel.GetComponent<PlayerStats>();
+        // Lấy stats từ prefab gameplay
+        PlayerStats ps = c.characterPrefab.GetComponent<PlayerStats>();
+
         if (ps == null)
         {
-            Debug.LogError("PlayerStats missing on prefab: " + c.characterModel.name);
+            Debug.LogError("PlayerStats missing on prefab: " + c.characterPrefab.name);
             return;
         }
 
-        ActivePlayerManager.SetCurrent(c.characterModel);
+        // Ghi lại prefab này để gameplay spawn
+        ActivePlayerManager.SetCurrent(c.characterPrefab);
 
+        // Cập nhật UI
         txtName.text = c.characterName;
         txtAttack.text = ps.baseDamage.ToString();
         txtAttackRate.text = ps.baseShootCooldown.ToString("0.0");

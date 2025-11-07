@@ -8,8 +8,6 @@ public class IceBalls : PlayerBullet
     [SerializeField] private GameObject iceFieldPrefab;
     [SerializeField] private float damageMultiplier;
 
-    private PlayerStats playerStats;
-
     protected override void Start()
     {
         base.Start();

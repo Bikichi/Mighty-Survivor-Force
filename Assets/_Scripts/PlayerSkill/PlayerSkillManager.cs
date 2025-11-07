@@ -15,7 +15,7 @@ public class PlayerSkillManager : MonoBehaviour
     public event Action<ScriptableObject> OnSkillLearned;
     public event Action<ScriptableObject, int> OnSkillLevelUp;
 
-    private PlayerStats playerStats;
+    [SerializeField ]private PlayerStats playerStats;
 
     private void Awake()
     {

@@ -7,19 +7,21 @@ public class PlayerHealth : LivingEntity
 
     [Header("Dodge Settings")]
     [SerializeField] private GameObject missTextPrefab;
-    [SerializeField] private Transform uiParent;
 
-    private PlayerStats playerStats;
+    [SerializeField] private PlayerStats playerStats;
 
     protected override void Awake()
     {
-        // Lấy PlayerStats trực tiếp từ CurrentPlayerInstance
-        playerStats = ActivePlayerManager.CurrentPlayerInstance.GetComponent<PlayerStats>();
-
-        UpdateMaxHealth(); // set lần đầu
+        //// Lấy PlayerStats trực tiếp từ CurrentPlayerInstance
+        //playerStats = ActivePlayerManager.CurrentPlayerInstance.GetComponent<PlayerStats>();
         base.Awake();
-
+    }
+    private void Start()
+    {
+        playerStats = ActivePlayerManager.CurrentPlayerInstance.GetComponent<PlayerStats>();
         playerStats.onMaxHealthChanged += UpdateMaxHealth; // đăng ký sự kiện
+        maxHealth = playerStats.maxHP;
+        currentHealth = maxHealth;
     }
 
     private void UpdateMaxHealth()
@@ -57,7 +59,7 @@ public class PlayerHealth : LivingEntity
 
     private void ShowMissText()
     {
-        GameObject missObj = Instantiate(missTextPrefab, uiParent);
+        GameObject missObj = Instantiate(missTextPrefab);
         Collider colPlayer = GetComponent<Collider>();
         missObj.transform.position = colPlayer.bounds.center + new Vector3(0, colPlayer.bounds.size.y * 0.6f, 0);
         missObj.GetComponent<FloatingText>().Setup("Dodge", Color.yellow);

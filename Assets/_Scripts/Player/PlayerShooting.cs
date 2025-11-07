@@ -2,7 +2,7 @@
 
 public class PlayerShooting : RangedShooterBase
 {
-    private PlayerStats playerStats;
+    [SerializeField] private PlayerStats playerStats;
 
     protected override void Start()
     {
