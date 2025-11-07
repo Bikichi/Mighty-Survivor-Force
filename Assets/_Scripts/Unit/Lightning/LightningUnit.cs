@@ -3,27 +3,34 @@ using System.Collections.Generic;
 
 public class LightningUnit : MonoBehaviour
 {
-    public float damageMultiplier;         //hệ số nhân damage dựa trên PlayerStats
-    public float damagePerHit;            //damage mỗi lần đánh
-    public float attackInterval;           //thời gian giữa các lần đánh
-    public int targetCount;                 //số lượng enemy tối đa bị đánh
-    public GameObject lightningEffectPrefab;  
-    public GameObject hitEffectPrefab;          
+    public float damageMultiplier;         // hệ số nhân damage dựa trên PlayerStats
+    public float damagePerHit;             // damage mỗi lần đánh
+    public float attackInterval;           // thời gian giữa các lần đánh
+    public int targetCount;                // số lượng enemy tối đa bị đánh
+    public GameObject lightningEffectPrefab;
+    public GameObject hitEffectPrefab;
 
     public float nextAttackTime;
 
+    private PlayerStats playerStats;
 
     private void OnEnable()
     {
-        CalculateDamage(); //gán lần đầu khi bật
-        PlayerStats.Instance.onDamageChanged += CalculateDamage;
+        // Lấy PlayerStats từ CurrentPlayerInstance
+        playerStats = ActivePlayerManager.CurrentPlayerInstance.GetComponent<PlayerStats>();
+
+        CalculateDamage(); // gán lần đầu khi bật
+
+        if (playerStats != null)
+            playerStats.onDamageChanged += CalculateDamage;
+
         nextAttackTime = Time.time + attackInterval / 2f;
     }
 
     private void OnDisable()
     {
-        if (PlayerStats.Instance != null)
-            PlayerStats.Instance.onDamageChanged -= CalculateDamage;
+        if (playerStats != null)
+            playerStats.onDamageChanged -= CalculateDamage;
     }
 
     void Update()
@@ -42,7 +49,8 @@ public class LightningUnit : MonoBehaviour
 
     private void CalculateDamage()
     {
-        damagePerHit = PlayerStats.Instance.baseDamage * damageMultiplier;
+        if (playerStats == null) return;
+        damagePerHit = playerStats.baseDamage * damageMultiplier;
     }
 
     void AttackEnemies(EnemyMovement[] enemies)
@@ -63,18 +71,17 @@ public class LightningUnit : MonoBehaviour
             {
                 float height = col.bounds.size.y;
 
-                //hiệu ứng tia sét
+                // hiệu ứng tia sét
                 Vector3 lightningPos = enemy.transform.position + Vector3.up * height;
                 Quaternion lightningRotation = Quaternion.Euler(-90f, 0f, 0f);
                 GameObject lightning = Instantiate(lightningEffectPrefab, lightningPos, lightningRotation, enemy.transform);
                 Destroy(lightning, 0.5f);
 
-                //hiệu ứng hit
+                // hiệu ứng hit
                 Vector3 hitEffectPos = enemy.transform.position + Vector3.up * height * 0.5f;
                 GameObject hitEffect = Instantiate(hitEffectPrefab, hitEffectPos, Quaternion.identity, enemy.transform);
                 Destroy(hitEffect, 0.3f);
             }
         }
     }
-
 }

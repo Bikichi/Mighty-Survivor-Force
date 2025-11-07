@@ -2,29 +2,44 @@
 
 public class AttackRangeVisualizer : MonoBehaviour
 {
+    private PlayerStats playerStats;
+
     private void Start()
     {
+        if (ActivePlayerManager.CurrentPlayerInstance == null)
+        {
+            Debug.LogError("AttackRangeVisualizer: No player instance found!");
+            return;
+        }
+
+        playerStats = ActivePlayerManager.CurrentPlayerInstance.GetComponent<PlayerStats>();
+        if (playerStats == null)
+        {
+            Debug.LogError("AttackRangeVisualizer: PlayerStats not found on player instance!");
+            return;
+        }
+
         UpdateScale();
 
-        PlayerStats.Instance.onAttackRangeChanged += UpdateScale;
+        playerStats.onAttackRangeChanged += UpdateScale;
     }
 
     public void UpdateScale()
     {
-        float attackRange = PlayerStats.Instance.baseAttackRange;
+        if (playerStats == null) return;
+
+        float attackRange = playerStats.baseAttackRange;
 
         // Tỷ lệ 8:20
         float scaleFactor = 8f / 20f;
-
         float newScale = attackRange * scaleFactor;
 
-        // Dùng transform của chính GameObject này
         transform.localScale = new Vector3(newScale, newScale, newScale);
     }
 
     private void OnDestroy()
     {
-        if (PlayerStats.Instance != null)
-            PlayerStats.Instance.onAttackRangeChanged -= UpdateScale;
+        if (playerStats != null)
+            playerStats.onAttackRangeChanged -= UpdateScale;
     }
 }

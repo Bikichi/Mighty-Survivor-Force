@@ -5,13 +5,18 @@ public class DroneBullet : PlayerBullet
     [SerializeField] private float damageMultiplier;
     [SerializeField] private float rotationSpeed;
 
+    private PlayerStats playerStats;
+
     protected override void Start()
     {
-        damageBullet = PlayerStats.Instance.baseDamage * damageMultiplier;
+        // Lấy PlayerStats từ CurrentPlayerInstance
+        playerStats = ActivePlayerManager.CurrentPlayerInstance.GetComponent<PlayerStats>();
+
+        damageBullet = playerStats.baseDamage * damageMultiplier;
         _targetEnemy = CheckDistance.Instance.FindLowestHealthEnemy();
     }
 
-    //Không crit
+    // Không crit
     protected override void ApplyDamage(EnemyHealth enemyHealth)
     {
         enemyHealth.TakeDamage(damageBullet);

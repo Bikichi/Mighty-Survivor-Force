@@ -2,7 +2,7 @@
 using UnityEngine;
 using static PassiveSkillScriptableObject;
 
-public class PlayerStats : Singleton<PlayerStats>
+public class PlayerStats : MonoBehaviour
 {
     public event Action onMaxHealthChanged;
     public event Action onDamageChanged;

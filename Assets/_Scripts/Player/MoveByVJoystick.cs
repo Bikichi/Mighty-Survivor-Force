@@ -14,17 +14,34 @@ public class MoveByVJoystick : MonoBehaviour
     public Transform playerTransform;
     public float movingSpeed;
 
+    private PlayerStats playerStats;
+
     private void Awake()
     {
+        // Lấy PlayerStats từ CurrentPlayerInstance
+        if (ActivePlayerManager.CurrentPlayerInstance == null)
+        {
+            Debug.LogError("MoveByVJoystick: No player instance found!");
+            return;
+        }
+
+        playerStats = ActivePlayerManager.CurrentPlayerInstance.GetComponent<PlayerStats>();
+        if (playerStats == null)
+        {
+            Debug.LogError("MoveByVJoystick: PlayerStats not found on player instance!");
+            return;
+        }
+
+        movingSpeed = playerStats.baseMoveSpeed;
+        playerStats.onMoveSpeedChanged += UpdateMovingSpeed;
+
         transform.position = new Vector3(0.02f, 1.58f, -2.5f);
-        movingSpeed = PlayerStats.Instance.baseMoveSpeed;
-        PlayerStats.Instance.onMoveSpeedChanged += UpdateMovingSpeed;
     }
 
     private void OnDestroy()
     {
-        if (PlayerStats.Instance != null)
-            PlayerStats.Instance.onMoveSpeedChanged -= UpdateMovingSpeed;
+        if (playerStats != null)
+            playerStats.onMoveSpeedChanged -= UpdateMovingSpeed;
     }
 
     private void OnValidate()
@@ -40,11 +57,13 @@ public class MoveByVJoystick : MonoBehaviour
 
     public void Move()
     {
+        if (joystick == null || characterController == null || playerTransform == null)
+            return;
+
         float hInput = joystick.Horizontal;
         float vInput = joystick.Vertical;
 
         Vector3 directionOfMovement = new Vector3(hInput, 0f, vInput);
-
         characterController.SimpleMove(directionOfMovement * movingSpeed);
 
         if (directionOfMovement.sqrMagnitude < 0.0001f)
@@ -63,7 +82,6 @@ public class MoveByVJoystick : MonoBehaviour
         moveDir.Normalize();
 
         float angle = Vector3.Angle(moveDir, pointerDir);
-
         bool isRunForward = angle <= 45 || angle >= 135;
 
         if (isRunForward)
@@ -80,6 +98,7 @@ public class MoveByVJoystick : MonoBehaviour
 
     private void UpdateMovingSpeed()
     {
-        movingSpeed = PlayerStats.Instance.baseMoveSpeed;
+        if (playerStats != null)
+            movingSpeed = playerStats.baseMoveSpeed;
     }
 }

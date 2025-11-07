@@ -2,15 +2,21 @@
 
 public class IceFieldDealDamage : FieldDealDamageBase
 {
-    [SerializeField] private float baseSlowPercent;           //lần đầu dính băng
-    [SerializeField] private float slowIncreasePerTick;       //mỗi lần dính tiếp cộng dồn
-    [SerializeField] private float slowDuration;               //thời gian slow tồn tại
-    [SerializeField] private GameObject iceVFXPrefab;               //VFX hiệu ứng băng
+    [SerializeField] private float baseSlowPercent;           // lần đầu dính băng
+    [SerializeField] private float slowIncreasePerTick;       // mỗi lần dính tiếp cộng dồn
+    [SerializeField] private float slowDuration;              // thời gian slow tồn tại
+    [SerializeField] private GameObject iceVFXPrefab;         // VFX hiệu ứng băng
+
+    private PlayerStats playerStats;
 
     protected override void OnEnable()
     {
-        //cập nhật damage trước khi chạy Coroutine và Destroy
-        fieldDamage = PlayerStats.Instance.baseDamage;
+        // Lấy PlayerStats từ CurrentPlayerInstance
+        playerStats = ActivePlayerManager.CurrentPlayerInstance.GetComponent<PlayerStats>();
+
+        // cập nhật damage trước khi chạy Coroutine và Destroy
+        fieldDamage = playerStats.baseDamage;
+
         base.OnEnable();
     }
 

@@ -9,21 +9,30 @@ public class MineDealDamage : MonoBehaviour
     [SerializeField] private float explosionRadius;
     [SerializeField] private GameObject explosionEffect;
 
+    private PlayerStats playerStats;
 
     private void OnEnable()
     {
+        // Lấy PlayerStats từ CurrentPlayerInstance
+        playerStats = ActivePlayerManager.CurrentPlayerInstance.GetComponent<PlayerStats>();
+
         CalculateDamage();
-        PlayerStats.Instance.onDamageChanged += CalculateDamage;
+
+        if (playerStats != null)
+            playerStats.onDamageChanged += CalculateDamage;
     }
 
     private void OnDisable()
     {
-        PlayerStats.Instance.onDamageChanged -= CalculateDamage;
+        if (playerStats != null)
+            playerStats.onDamageChanged -= CalculateDamage;
     }
 
     private void CalculateDamage()
     {
-        mineDamage = PlayerStats.Instance.baseDamage * damageMultiplier;
+        if (playerStats == null) return;
+
+        mineDamage = playerStats.baseDamage * damageMultiplier;
     }
 
     private void OnTriggerEnter(Collider col)
@@ -48,7 +57,7 @@ public class MineDealDamage : MonoBehaviour
 
         for (int i = 0; i < affectedObjects.Length; i++)
         {
-            //nếu là enemy thì gây damage
+            // nếu là enemy thì gây damage
             if (affectedObjects[i].CompareTag("Enemy"))
             {
                 EnemyHealth enemy = affectedObjects[i].GetComponent<EnemyHealth>();
@@ -56,7 +65,7 @@ public class MineDealDamage : MonoBehaviour
                 {
                     enemy.TakeDamage(mineDamage);
                     Collider col = enemy.GetComponent<Collider>();
-                    //DamageUIManager.Instance.ShowDamageUI(mineDamage, col);
+                    // DamageUIManager.Instance.ShowDamageUI(mineDamage, col);
                 }
             }
         }

@@ -8,16 +8,22 @@ public class IceBalls : PlayerBullet
     [SerializeField] private GameObject iceFieldPrefab;
     [SerializeField] private float damageMultiplier;
 
+    private PlayerStats playerStats;
+
     protected override void Start()
     {
         base.Start();
-        damageBullet = PlayerStats.Instance.baseDamage * damageMultiplier;
+
+        // Lấy PlayerStats từ CurrentPlayerInstance
+        playerStats = ActivePlayerManager.CurrentPlayerInstance.GetComponent<PlayerStats>();
+        damageBullet = playerStats.baseDamage * damageMultiplier;
     }
 
     protected override void Update()
     {
         base.Update();
     }
+
     protected override void MoveBullet()
     {
         if (_targetEnemy == null)
@@ -29,7 +35,7 @@ public class IceBalls : PlayerBullet
 
         Vector3 enemyCenter = _targetEnemy.position + new Vector3(0, _targetEnemy.GetComponent<Collider>().bounds.size.y, 0);
         Vector3 direction = (enemyCenter - transform.position).normalized;
-        
+
         if (direction != Vector3.zero)
         {
             transform.rotation = Quaternion.LookRotation(direction);
@@ -37,6 +43,7 @@ public class IceBalls : PlayerBullet
 
         transform.Translate(Vector3.forward * _speedBullet * Time.deltaTime);
     }
+
     protected override void ApplyDamage(EnemyHealth enemyHealth)
     {
         enemyHealth.TakeDamage(damageBullet);

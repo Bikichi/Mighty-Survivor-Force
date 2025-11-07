@@ -15,6 +15,14 @@ public class PlayerSkillManager : MonoBehaviour
     public event Action<ScriptableObject> OnSkillLearned;
     public event Action<ScriptableObject, int> OnSkillLevelUp;
 
+    private PlayerStats playerStats;
+
+    private void Awake()
+    {
+        // Lấy PlayerStats từ CurrentPlayerInstance
+        playerStats = ActivePlayerManager.CurrentPlayerInstance.GetComponent<PlayerStats>();
+    }
+
     public void LearnSkill(ScriptableObject skill)
     {
         var entry = learnedSkills.Find(e => e.skill == skill);
@@ -34,7 +42,7 @@ public class PlayerSkillManager : MonoBehaviour
         //áp dụng skill và log thông tin theo loại
         if (skill is PassiveSkillScriptableObject passiveSkill)
         {
-            PlayerStats.Instance.ApplySkill(passiveSkill);
+            playerStats.ApplySkill(passiveSkill); // dùng prefab-based stats
         }
         else if (skill is ActiveSkillScriptableObject activeSkill)
         {

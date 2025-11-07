@@ -4886,7 +4886,7 @@ GameObject:
   - component: {fileID: 8815918612442146202}
   - component: {fileID: 5393081941591732956}
   - component: {fileID: 305480011045117915}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: HealthValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13496,7 +13496,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3688632175842572021}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sensor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29230,7 +29230,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 288988043445509779}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31927,7 +31927,7 @@ GameObject:
   - component: {fileID: 5608664862449861848}
   - component: {fileID: 1719544238558412196}
   - component: {fileID: 4086970710499371327}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32305,7 +32305,7 @@ GameObject:
   - component: {fileID: 97870909733832214}
   - component: {fileID: 5317902739806434831}
   m_Layer: 6
-  m_Name: Player 1
+  m_Name: Chester
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32410,6 +32410,9 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls: []
+  onTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
   missTextPrefab: {fileID: 64370307864958366, guid: b8f9e806141623d4fb1a5b2eba7edc23, type: 3}
   uiParent: {fileID: 0}
 --- !u!114 &612150664457377394
@@ -32424,14 +32427,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034b0cf6e8aa9604fb010a875b57b7df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 1000
-  baseDamage: 150
+  maxHP: 100
+  baseDamage: 10
   baseShootCooldown: 1.5
   baseAttackRange: 15
-  baseMoveSpeed: 8
+  baseMoveSpeed: 10
   baseDodgeChance: 0
-  baseCritChance: 0
-  baseCritMultiplier: 1.1
+  baseCritChance: 50
+  baseCritMultiplier: 1.5
 --- !u!54 &9180099300682952820
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -32597,7 +32600,7 @@ MonoBehaviour:
   anim: {fileID: 2957530214666580576}
   joystick: {fileID: 0}
   playerTransform: {fileID: 8613889229553008670}
-  movingSpeed: 8
+  movingSpeed: 10
 --- !u!114 &3504887057015135929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35014,7 +35017,7 @@ GameObject:
   - component: {fileID: 908187614492679649}
   - component: {fileID: 9182169140866841146}
   - component: {fileID: 7788781364192954068}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39963,7 +39966,7 @@ GameObject:
   - component: {fileID: 7170605708845854884}
   - component: {fileID: 864650156468424561}
   - component: {fileID: 931741912450439036}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42920,7 +42923,7 @@ GameObject:
   - component: {fileID: 6289734050518213405}
   - component: {fileID: 5071895168660775070}
   - component: {fileID: 3542017145670189345}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42974,7 +42977,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 200
+  m_text: 0000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -45760,7 +45763,7 @@ GameObject:
   - component: {fileID: 589015870955410126}
   - component: {fileID: 5869507576608260272}
   - component: {fileID: 1307732452480848916}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Stats
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45774,7 +45777,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8426503961447070560}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -45782,10 +45785,10 @@ RectTransform:
   - {fileID: 908187614492679649}
   m_Father: {fileID: 8613889229553008670}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.15, y: 1.35}
-  m_SizeDelta: {x: 4, y: 3}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 1.5}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &589015870955410126
 Canvas:
@@ -45807,8 +45810,8 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1612216517
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &5869507576608260272
 MonoBehaviour:

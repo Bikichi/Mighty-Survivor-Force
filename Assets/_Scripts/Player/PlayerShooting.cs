@@ -2,22 +2,28 @@
 
 public class PlayerShooting : RangedShooterBase
 {
+    private PlayerStats playerStats;
+
     protected override void Start()
     {
         base.Start();
+        playerStats = ActivePlayerManager.CurrentPlayerInstance.GetComponent<PlayerStats>();
 
         UpdateShootCoolDown();
-        PlayerStats.Instance.onShootCooldownChanged += UpdateShootCoolDown;
 
+        // Subscribe sự kiện nếu có thay đổi cooldown
+        playerStats.onShootCooldownChanged += UpdateShootCoolDown;
     }
 
     private void UpdateShootCoolDown()
     {
-        shootCooldown = PlayerStats.Instance.baseShootCooldown;
+        if (playerStats != null)
+            shootCooldown = playerStats.baseShootCooldown;
     }
 
     private void OnDestroy()
     {
-        PlayerStats.Instance.onShootCooldownChanged -= UpdateShootCoolDown;
+        if (playerStats != null)
+            playerStats.onShootCooldownChanged -= UpdateShootCoolDown;
     }
 }

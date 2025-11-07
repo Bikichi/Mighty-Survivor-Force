@@ -9,26 +9,31 @@ public class DealDamageByWeapon : MonoBehaviour
     [SerializeField] private float damageMultiplier = 1f;
     [SerializeField] private float weaponDamage;
 
+    private PlayerStats playerStats;
 
     private void Start()
     {
+        // Lấy PlayerStats từ CurrentPlayerInstance
+        playerStats = ActivePlayerManager.CurrentPlayerInstance.GetComponent<PlayerStats>();
         CalculateWeaponDamage();
     }
 
     private void OnEnable()
     {
-        PlayerStats.Instance.onDamageChanged += CalculateWeaponDamage;
+        if (playerStats != null)
+            playerStats.onDamageChanged += CalculateWeaponDamage;
     }
 
     private void OnDisable()
     {
-        if (PlayerStats.Instance != null)
-            PlayerStats.Instance.onDamageChanged -= CalculateWeaponDamage;
+        if (playerStats != null)
+            playerStats.onDamageChanged -= CalculateWeaponDamage;
     }
 
     private void CalculateWeaponDamage()
     {
-        weaponDamage = PlayerStats.Instance.baseDamage * damageMultiplier;
+        if (playerStats == null) return;
+        weaponDamage = playerStats.baseDamage * damageMultiplier;
     }
 
     private void OnTriggerEnter(Collider col)

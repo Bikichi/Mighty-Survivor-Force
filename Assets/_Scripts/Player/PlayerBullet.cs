@@ -2,11 +2,14 @@
 public class PlayerBullet : BaseBullet
 {
     [SerializeField] protected Transform _targetEnemy;
+    private PlayerStats playerStats;
 
     protected override void Start()
     {
         base.Start();
-        damageBullet = PlayerStats.Instance.baseDamage;
+
+        playerStats = ActivePlayerManager.CurrentPlayerInstance.GetComponent<PlayerStats>();
+        damageBullet = playerStats.baseDamage;
         _targetEnemy = CheckDistance.Instance.FindClosestEnemy();
     }
 

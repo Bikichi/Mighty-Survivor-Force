@@ -8,10 +8,15 @@ public class FireBalls : PlayerBullet
     [SerializeField] private GameObject fireFieldPrefab;
     [SerializeField] private float damageMultiplier;
 
+    private PlayerStats playerStats;
+
     protected override void Start()
     {
         base.Start();
-        damageBullet = PlayerStats.Instance.baseDamage * damageMultiplier;
+
+        // Lấy PlayerStats từ CurrentPlayerInstance
+        playerStats = ActivePlayerManager.CurrentPlayerInstance.GetComponent<PlayerStats>();
+        damageBullet = playerStats.baseDamage * damageMultiplier;
     }
 
     protected override void Update()
@@ -38,6 +43,7 @@ public class FireBalls : PlayerBullet
 
         transform.Translate(Vector3.forward * _speedBullet * Time.deltaTime);
     }
+
     protected override void ApplyDamage(EnemyHealth enemyHealth)
     {
         enemyHealth.TakeDamage(damageBullet);
