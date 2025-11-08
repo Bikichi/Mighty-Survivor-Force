@@ -73,4 +73,23 @@ public class PlayerStats : MonoBehaviour
                 break;
         }
     }
+    public void NotifyMaxHealthChanged()
+    {
+        onMaxHealthChanged?.Invoke();
+    }
+
+    public void NotifyDamageChanged()
+    {
+        onDamageChanged?.Invoke();
+    }
+
+    public void NotifyMoveSpeedChanged()
+    {
+        onMoveSpeedChanged?.Invoke();
+    }
+
+    public void NotifyShootCooldownChanged()
+    {
+        onShootCooldownChanged?.Invoke();
+    }
 }
