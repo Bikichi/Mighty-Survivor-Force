@@ -4933,14 +4933,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.6686392, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 91ac892889b2da74db442a23debf0857, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f1ca9e76a7c95ec4e91fe87161dd9078, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -32303,6 +32303,7 @@ GameObject:
   - component: {fileID: 5695800872805606829}
   - component: {fileID: 3504887057015135929}
   - component: {fileID: 97870909733832214}
+  - component: {fileID: -694432088885682907}
   m_Layer: 6
   m_Name: Chester
   m_TagString: Player
@@ -32549,14 +32550,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034b0cf6e8aa9604fb010a875b57b7df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 100
-  baseDamage: 30
-  baseShootCooldown: 1.5
+  maxHP: 160
+  baseDamage: 45
+  baseShootCooldown: 1.3
   baseAttackRange: 15
-  baseMoveSpeed: 13
-  baseDodgeChance: 0
-  baseCritChance: 0
-  baseCritMultiplier: 1.5
+  baseMoveSpeed: 10
+  baseDodgeChance: 0.1
+  baseCritChance: 0.1
+  baseCritMultiplier: 2
 --- !u!114 &8674062407455327818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32599,7 +32600,7 @@ MonoBehaviour:
   anim: {fileID: 2957530214666580576}
   joystick: {fileID: 3881087803549984439, guid: ec536a7718376554185e4a856d5ae230, type: 3}
   playerTransform: {fileID: 8613889229553008670}
-  movingSpeed: 10
+  movingSpeed: 0
   playerStats: {fileID: 0}
 --- !u!114 &3504887057015135929
 MonoBehaviour:
@@ -32636,6 +32637,21 @@ MonoBehaviour:
   anim: {fileID: 2957530214666580576}
   lastShootTime: 0
   playerStats: {fileID: 0}
+--- !u!114 &-694432088885682907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6186176650844262797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fe672f0095de0b4f97a28bfafe8457f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectPrefab: {fileID: 5979332343504013795, guid: 49a15e4920b6dee47b61d2f1da2be66a, type: 3}
+  destroyAfter: 3
+  yOffset: 1.5
 --- !u!1 &6204548771435921291
 GameObject:
   m_ObjectHideFlags: 0
@@ -35031,7 +35047,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.125, y: 1.117299}
+  m_AnchoredPosition: {x: -0.125, y: 0.92}
   m_SizeDelta: {x: 1, y: 1.3093}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &9182169140866841146
@@ -40001,14 +40017,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 91ac892889b2da74db442a23debf0857, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f9e80be8c5e85e542a06a8a377296e23, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -42965,7 +42981,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0000
+  m_text: 000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -42974,8 +42990,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4290313984
-  m_fontColor: {r: 0, g: 1, b: 0.7198553, a: 1}
+    rgba: 4282056448
+  m_fontColor: {r: 0, g: 1, b: 0.22835565, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -45775,7 +45791,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1.5}
+  m_AnchoredPosition: {x: 0, y: 1.6}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &589015870955410126

@@ -6,18 +6,12 @@ public class MapSelectionTester : MonoBehaviour
 
     void Update()
     {
-        // Nhấn U để mở khóa map kế tiếp
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            mapSelection.UnlockNextMap();
-            Debug.Log("Unlocked next map!");
-        }
-
         // Nhấn R để reset tiến độ
         if (Input.GetKeyDown(KeyCode.R))
         {
-            mapSelection.ResetProgress();
-            Debug.Log("Map Progress reset!");
+            MapProgressManager.ResetProgress(mapSelection.maps.Length);
+  
+            Debug.Log("Map Progress reset! Tắt đi bật lại PLAYMODE để load lại");
         }
     }
 }

@@ -13,10 +13,12 @@ public class EnemySpawner : MonoBehaviour
     public int enemiesAlive;
     public int currentWaveIndex;
     public float totalEnemiesKilled;
-    [SerializeField] private GameObject waveAlertUI;
-
-    [SerializeField] private BossSpawner bossSpawner;
     
+    [SerializeField] private GameObject waveAlertUI;
+    [SerializeField] private ScoreUI scoreUI;
+    [SerializeField] private BossSpawner bossSpawner;
+
+
     public UnityEvent onWaveCompleted;
 
     private bool _isWaveTransitioning;
@@ -135,6 +137,8 @@ public class EnemySpawner : MonoBehaviour
     {
         enemiesAlive--;
         totalEnemiesKilled++;;
+
+        scoreUI.UpdateScoreUI();
 
         WaveData currentWave = waves[currentWaveIndex];
         currentWave.enemiesKilled++;

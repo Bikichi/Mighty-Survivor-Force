@@ -12,7 +12,7 @@ public class MapData
     public bool isUnlocked = false;
 }
 
-public class MapSelection : Singleton<MapSelection>
+public class MapSelection : MonoBehaviour
 {
     public Image previewImage;
     public TMP_Text mapNameText;
@@ -32,18 +32,23 @@ public class MapSelection : Singleton<MapSelection>
             maps[i].isUnlocked = MapProgressManager.LoadProgress(i);
         }
 
+        MapSelectionData.maps = maps;
+        MapSelectionData.currentIndex = currentIndex;
+
         UpdateMapDisplay();
     }
 
     public void NextMap()
     {
         currentIndex = (currentIndex + 1) % maps.Length;
+        MapSelectionData.currentIndex = currentIndex;
         UpdateMapDisplay();
     }
 
     public void PrevMap()
     {
         currentIndex = (currentIndex - 1 + maps.Length) % maps.Length;
+        MapSelectionData.currentIndex = currentIndex;
         UpdateMapDisplay();
     }
 
@@ -75,24 +80,5 @@ public class MapSelection : Singleton<MapSelection>
         {
             SceneManager.LoadScene(currentMap.sceneName);
         }
-    }
-
-    //gọi khi người chơi thắng level hiện tại
-    public void UnlockNextMap()
-    {
-        int nextIndex = currentIndex + 1;
-
-        if (nextIndex < maps.Length)
-        {
-            maps[nextIndex].isUnlocked = true;
-            MapProgressManager.SaveProgress(nextIndex, true); //lưu duy nhất map vừa mở khóa
-        }
-    }
-
-    //xóa toàn bộ dữ liệu
-    public void ResetProgress()
-    {
-        MapProgressManager.ResetProgress(maps.Length);
-        UpdateMapDisplay();
     }
 }

@@ -1,10 +1,11 @@
-using UnityEngine.UI;
+﻿using UnityEngine.UI;
 using UnityEngine;
 
 public class ScoreUI : MonoBehaviour
 {
     [SerializeField] private EnemySpawner enemySpawner;
-    [SerializeField] private Text _scoreText;
+    [SerializeField] private Text _scoreTextInGameplay;
+    [SerializeField] private Text _scoreTextInGameCompletedPanel;
     void Start()
     {
         if (enemySpawner == null)
@@ -13,12 +14,11 @@ public class ScoreUI : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    //Update khi quái vật chết
+    public void UpdateScoreUI()
     {
-        if (_scoreText != null && enemySpawner != null)
-        {
-            _scoreText.text = enemySpawner.totalEnemiesKilled.ToString();
-        }
+        //Update ngay cả khi gameobject chứa _scoreTextInGameCompletedPanel không enable
+        _scoreTextInGameplay.text = enemySpawner.totalEnemiesKilled.ToString();
+        _scoreTextInGameCompletedPanel.text = enemySpawner.totalEnemiesKilled.ToString();
     }
 }

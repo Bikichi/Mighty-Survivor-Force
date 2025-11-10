@@ -7,6 +7,11 @@ public class LearnedSkillsUIController : MonoBehaviour
     [SerializeField] private PlayerSkillManager playerSkillManager;
     [SerializeField] private LearnedSkillSlotUI[] learnedSkillSlots; // kéo thả 5 ô UI từ Inspector
 
+    private void OnEnable()
+    {
+        ShowLearnedSkills();
+    }
+
     public void ShowLearnedSkills()
     {
         List<SkillEntry> learnedSkills = playerSkillManager.LearnedSkills;

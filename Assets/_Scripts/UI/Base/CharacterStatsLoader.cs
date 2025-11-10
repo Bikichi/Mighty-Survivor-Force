@@ -10,6 +10,14 @@ public class CharacterStatsLoader : MonoBehaviour
         LoadAllStats();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            LoadAllStats();
+        }
+    }
+
     public void LoadAllStats()
     {
         //load trực tiếp dữ liệu từ prefab gốc

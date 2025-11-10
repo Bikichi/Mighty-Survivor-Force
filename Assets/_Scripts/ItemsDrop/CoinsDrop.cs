@@ -9,8 +9,9 @@ public class CoinsDrop : MonoBehaviour
         if(other.CompareTag(Const.PLAYER_TAG))
         {
             CoinManager.Instance.totalCoinValue += 1;
-
             CoinManager.Instance.SaveCoinValue();
+
+            CoinManager.Instance.inGameCoin += 1;
 
             CoinUIManager coinUI = FindObjectOfType<CoinUIManager>();
             coinUI.UpdateCoinUI();

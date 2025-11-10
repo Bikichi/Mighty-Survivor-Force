@@ -8,7 +8,7 @@ public class CheckDistance : Singleton<CheckDistance>
     [SerializeField] private Transform playerTransform;
     private PlayerStats playerStats;
 
-    private void Awake()
+    private void Start()
     {
         if (playerTransform == null)
         {

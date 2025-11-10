@@ -1474,7 +1474,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 11.3625}
+  m_AnchoredPosition: {x: 0, y: 12.02}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &7420833592426228001
@@ -1679,7 +1679,7 @@ MonoBehaviour:
   targetPlayer: {fileID: 0}
   anim: {fileID: 0}
   attackPoint: {fileID: 4487135373187091629}
-  attackDamage: 200
+  attackDamage: 120
   attackTimer: 0
   attackCooldown: 2
   attackRanged: 6
@@ -2521,7 +2521,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 91ac892889b2da74db442a23debf0857, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f9e80be8c5e85e542a06a8a377296e23, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2617,6 +2617,7 @@ GameObject:
   - component: {fileID: 5291666042336396825}
   - component: {fileID: 6309332657933419739}
   - component: {fileID: -4576882257471864862}
+  - component: {fileID: -1124494196375257125}
   m_Layer: 9
   m_Name: _DemonLordBoss
   m_TagString: Enemy
@@ -2730,9 +2731,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d964ad1eb7f5014484053c3468f015f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20000
+  maxHealth: 30000
   currentHealth: 0
-  defense: 0
+  defense: 15
   onHealthChange:
     m_PersistentCalls:
       m_Calls: []
@@ -2908,6 +2909,20 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   arrow: {fileID: 6830961463818351030}
   player: {fileID: 0}
+--- !u!114 &-1124494196375257125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6734382366527976799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfdf14545bbc240488f6f06dc519999d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectPrefab: {fileID: 6938866391253264847, guid: b1fbd637380c55d4e98a4a4b71514b2a, type: 3}
+  destroyAfter: 1.5
 --- !u!1 &6741329774302311461
 GameObject:
   m_ObjectHideFlags: 0
@@ -2966,14 +2981,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 91ac892889b2da74db442a23debf0857, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 335839a805970dc4f8bbb53f1f0286a3, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3247,8 +3262,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7393444125537385597}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.006}
-  m_LocalScale: {x: 0.5, y: -0.5, z: -0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0.373}
+  m_LocalScale: {x: 0.5, y: -0.2, z: -0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5507614527013428092}
@@ -3257,7 +3272,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.728}
+  m_AnchoredPosition: {x: 0, y: -0.601}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8677419619387015439
@@ -4001,7 +4016,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd5e53998d6b8144fb7a0feb39d942fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagePerSecond: 1
+  damagePerSecond: 35
   playerInZone: {fileID: 0}
   col: {fileID: 0}
 --- !u!65 &834286495741912705

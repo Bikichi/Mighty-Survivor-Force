@@ -244,6 +244,7 @@ GameObject:
   - component: {fileID: 306640168911163636}
   - component: {fileID: 4081615600901503255}
   - component: {fileID: 6694308285770870279}
+  - component: {fileID: -3371757661502696027}
   m_Layer: 8
   m_Name: Split Wolf 1
   m_TagString: Enemy
@@ -333,8 +334,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d97ea094b89fe5e4c84174bf4de854d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  currentHealth: 200
+  maxHealth: 300
+  currentHealth: 0
   defense: 0
   onHealthChange:
     m_PersistentCalls:
@@ -470,6 +471,20 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   arrow: {fileID: 3875937752768580147}
   player: {fileID: 0}
+--- !u!114 &-3371757661502696027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1977410531628863824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfdf14545bbc240488f6f06dc519999d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectPrefab: {fileID: 7012795163374760622, guid: 3af369a12b8af534aa2b23dcf52f6c54, type: 3}
+  destroyAfter: 1.5
 --- !u!1 &2228447546079854136
 GameObject:
   m_ObjectHideFlags: 0
@@ -1519,7 +1534,7 @@ MonoBehaviour:
   targetPlayer: {fileID: 0}
   anim: {fileID: 0}
   attackPoint: {fileID: 4246938355253283081}
-  attackDamage: 100
+  attackDamage: 25
   attackTimer: 0
   attackCooldown: 2.5
   attackRanged: 3.75

@@ -8225,6 +8225,7 @@ GameObject:
   - component: {fileID: 1575603992385603476}
   - component: {fileID: -543520251623825491}
   - component: {fileID: 1949218573647490947}
+  - component: {fileID: -3004648381924192907}
   m_Layer: 8
   m_Name: BrownGolem
   m_TagString: Enemy
@@ -8320,7 +8321,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1000
   currentHealth: 0
-  defense: 0
+  defense: 15
   onHealthChange:
     m_PersistentCalls:
       m_Calls: []
@@ -8456,6 +8457,20 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   arrow: {fileID: 5128849267951489724}
   player: {fileID: 0}
+--- !u!114 &-3004648381924192907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4459301653538735250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfdf14545bbc240488f6f06dc519999d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectPrefab: {fileID: 7012795163374760622, guid: 3af369a12b8af534aa2b23dcf52f6c54, type: 3}
+  destroyAfter: 1.5
 --- !u!1 &4684050166033397021
 GameObject:
   m_ObjectHideFlags: 0
@@ -8474,7 +8489,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &441355545680941006
 RectTransform:
   m_ObjectHideFlags: 0

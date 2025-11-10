@@ -12,7 +12,7 @@ public class CameraFollow : MonoBehaviour
     public float smoothTime;
     public float xPosMin, xPosMax;
 
-    private void Awake()
+    private void Start()
     {
         FindOffsetPosition();
     }

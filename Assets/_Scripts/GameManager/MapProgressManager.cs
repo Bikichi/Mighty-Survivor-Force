@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
 
 public static class MapProgressManager
 {
@@ -26,6 +27,21 @@ public static class MapProgressManager
         }
 
         return PlayerPrefs.GetInt(MapKeyPrefix + index, 0) == 1;
+    }
+
+    public static void UnlockNextMap()
+    {
+        if (MapSelectionData.maps == null || MapSelectionData.maps.Length == 0)
+            return;
+
+        int nextMapIndex = MapSelectionData.currentIndex + 1;
+
+        // Nếu map tiếp theo tồn tại
+        if (nextMapIndex < MapSelectionData.maps.Length)
+        {
+            MapSelectionData.maps[nextMapIndex].isUnlocked = true;
+            SaveProgress(nextMapIndex, true);
+        }
     }
 
     /// <summary>

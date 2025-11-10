@@ -153,7 +153,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2764627714235270046
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5705,6 +5705,7 @@ GameObject:
   - component: {fileID: 4385750233214744437}
   - component: {fileID: 1065544175878232582}
   - component: {fileID: 9063384446065047695}
+  - component: {fileID: 6273864944013331576}
   m_Layer: 8
   m_Name: Bomber 1
   m_TagString: Enemy
@@ -5854,7 +5855,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prepareDelay: 1.5
   explosionRadius: 5.29
-  explosionDamage: 500
+  explosionDamage: 100
   explosionEffect: {fileID: 1176654089724485879, guid: cab88b38088bbd44cb3ddd5243c4ea41, type: 3}
   explosionArea: {fileID: 7243765428123010116}
   prepareAnimationBool: Prepare
@@ -5948,6 +5949,20 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   arrow: {fileID: 6193349325392112564}
   player: {fileID: 0}
+--- !u!114 &6273864944013331576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5441410157401210778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfdf14545bbc240488f6f06dc519999d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectPrefab: {fileID: 7012795163374760622, guid: 3af369a12b8af534aa2b23dcf52f6c54, type: 3}
+  destroyAfter: 1.5
 --- !u!1 &5579294952189441835
 GameObject:
   m_ObjectHideFlags: 0

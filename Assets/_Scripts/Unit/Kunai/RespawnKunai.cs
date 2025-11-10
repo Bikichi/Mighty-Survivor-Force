@@ -63,7 +63,7 @@ public class RespawnKunai : MonoBehaviour
     
         controller.ResetCoroutines();
 
-        Debug.LogWarning("1 - Cần thêm ObjectPooling ở đây để tránh lỗi null tham chiếu trail khi destroy kunai!");
+        //Debug.LogWarning("1 - Cần thêm ObjectPooling ở đây để tránh lỗi null tham chiếu trail khi destroy kunai!");
 
         Destroy(gameObject); // destroy cũ an toàn
     }

@@ -2,11 +2,23 @@
 using System.Linq;
 using UnityEngine;
 
-public class SpawnPointManager : Singleton<SpawnPointManager>
+public class SpawnPointManager : MonoBehaviour
 {
-    public Transform playerTransform;
+    public static SpawnPointManager Instance;
 
     private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+    }
+    public Transform playerTransform;
+
+    private void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }

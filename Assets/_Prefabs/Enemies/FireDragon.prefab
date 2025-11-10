@@ -927,6 +927,7 @@ GameObject:
   - component: {fileID: 5513026296752081341}
   - component: {fileID: 133367784759081793}
   - component: {fileID: 5627984459492981279}
+  - component: {fileID: 1275563638535596167}
   m_Layer: 8
   m_Name: FireDragon
   m_TagString: Enemy
@@ -1044,7 +1045,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 500
   currentHealth: 0
-  defense: 0
+  defense: 5
   onHealthChange:
     m_PersistentCalls:
       m_Calls: []
@@ -1138,6 +1139,20 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   arrow: {fileID: 6210762347209380893}
   player: {fileID: 0}
+--- !u!114 &1275563638535596167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3677971375640770530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfdf14545bbc240488f6f06dc519999d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectPrefab: {fileID: 7012795163374760622, guid: 3af369a12b8af534aa2b23dcf52f6c54, type: 3}
+  destroyAfter: 1.5
 --- !u!1 &3689314199111042851
 GameObject:
   m_ObjectHideFlags: 0
@@ -1564,7 +1579,7 @@ RectTransform:
   m_Father: {fileID: 8355499826744185398}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0.00000023841858, y: -0.000000059604645}
   m_SizeDelta: {x: 0, y: -0.000000089407}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2115,7 +2130,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3098103824418528406
 RectTransform:
   m_ObjectHideFlags: 0

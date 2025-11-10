@@ -25,13 +25,13 @@ public class UpgradeButtonData : MonoBehaviour
     [Header("purchased visual")]
     public GameObject purchasedBG;
 
-    [HideInInspector] public bool isPurchased = false;
+    public bool isPurchased = false;
 
     //key playerprefs tự động dựa vào index trong parent manager
     private string PurchaseKey => $"UpgradeButton_{buttonIndex}_Purchased";
 
     //index của nút trong mảng buttons
-    private int buttonIndex;
+    public int buttonIndex;
 
     //gọi bởi manager khi khởi tạo
     public void LoadButtonPurchaseState(int index)

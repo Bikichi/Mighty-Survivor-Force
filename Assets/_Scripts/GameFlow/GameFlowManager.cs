@@ -4,6 +4,7 @@ public class GameFlowManager : Singleton<GameFlowManager>
 {
     public void OnAllWavesCompleted()
     {
-        MapSelection.Instance.UnlockNextMap();
+        MapProgressManager.UnlockNextMap();
+        FindAnyObjectByType<UIManager>().ShowGameComplete();
     }
 }

@@ -14,18 +14,16 @@ public class ShowLearningSkillUI : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.G))
         {
             FindObjectOfType<SkillSelectionManager>().GetRandomSkillChoices();
-            FindObjectOfType<LearnedSkillsUIController>().ShowLearnedSkills();
             FindObjectOfType<SkillSelectionUIController>().ShowSkillChoices();
-            FindObjectOfType<UIManager>().ShowSkillPanel();
+            FindAnyObjectByType<UIManager>().ShowSkillPanel(); //SkillPanel sẽ tự show Learned Skills mỗi khi đươc Enable
         }
     }
 
     public void Show()
     {
         FindObjectOfType<SkillSelectionManager>().GetRandomSkillChoices();
-        FindObjectOfType<LearnedSkillsUIController>().ShowLearnedSkills();
         FindObjectOfType<SkillSelectionUIController>().ShowSkillChoices();
-        FindObjectOfType<UIManager>().ShowSkillPanel();
+        FindAnyObjectByType<UIManager>().ShowSkillPanel();
     }
 
     public void ReRoll()

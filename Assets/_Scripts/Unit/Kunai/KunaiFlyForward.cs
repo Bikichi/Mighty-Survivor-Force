@@ -27,7 +27,7 @@ public class KunaiFlyForward : MonoBehaviour
         if (other.CompareTag(Const.BACKWALL_TAG))
         {
             respawnKunai.NotifyKunaiDestroyed();
-            Debug.LogWarning("2 - Cần thêm ObjectPooling ở đây để tránh lỗi null tham chiếu trail khi destroy kunai!");
+            //Debug.LogWarning("2 - Cần thêm ObjectPooling ở đây để tránh lỗi null tham chiếu trail khi destroy kunai!");
             Destroy(gameObject);
         }
     }

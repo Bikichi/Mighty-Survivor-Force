@@ -7,9 +7,11 @@ using UnityEngine.UI;
 public class CoinManager : Singleton<CoinManager>
 {
     public int totalCoinValue = 0;
+    public int inGameCoin;
 
     private void Awake()
     {
+        inGameCoin = 0;
         LoadCoinValue();
     }
 

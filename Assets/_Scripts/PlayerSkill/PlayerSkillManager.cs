@@ -49,6 +49,8 @@ public class PlayerSkillManager : MonoBehaviour
             var skillModule = System.Array.Find(skillModuleManager.skillModules, s => s.skillName == skill.name);
             skillModuleManager.UpdateModules(skillModule, entry.level);
         }
+
+        FindAnyObjectByType<PlayerPowerUPEffect>().TriggerEffect();
     }
     public int GetSkillLevel(ScriptableObject skill)
     {

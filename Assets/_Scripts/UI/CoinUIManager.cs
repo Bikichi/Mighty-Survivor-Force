@@ -1,10 +1,12 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
 public class CoinUIManager : MonoBehaviour
 {
-    [SerializeField] private Text coinText;
+    [SerializeField] private Text coinTextInGameplay;
+    [SerializeField] private Text coinTextInGameCompletedPanel;
+
 
     private void Start()
     {
@@ -13,6 +15,13 @@ public class CoinUIManager : MonoBehaviour
         
     public void UpdateCoinUI()
     {
-        coinText.text = $"{CoinManager.Instance.totalCoinValue}";
+        if (coinTextInGameplay != null)
+            coinTextInGameplay.text = $"{CoinManager.Instance.inGameCoin}";
+
+        //Update ngay cả khi gameobject chứa coinTextInGameCompletedPanel không enable
+        if (coinTextInGameCompletedPanel != null)
+        {
+            coinTextInGameCompletedPanel.text = $"{CoinManager.Instance.totalCoinValue}";
+        }
     }
 }

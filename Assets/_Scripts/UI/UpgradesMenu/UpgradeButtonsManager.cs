@@ -12,6 +12,9 @@ public class UpgradeButtonsManager : MonoBehaviour
     [Header("Character Selection")]
     public CharacterSelectionManager characterSelection;
 
+    [Header("Upgrade LineConnector")]
+    public UpgradeLineConnector lineConnector;
+
     [SerializeField] private PlayerStats currentStats;
 
     private void Start()
@@ -32,7 +35,10 @@ public class UpgradeButtonsManager : MonoBehaviour
             if (btn.purchasedBG != null)
                 btn.purchasedBG.SetActive(btn.isPurchased);
 
-            btn.button.interactable = true;
+            if (i == 0)
+                btn.button.interactable = true; // nút đầu tiên luôn mở
+            else
+                btn.button.interactable = buttons[i - 1].isPurchased;
         }
     }
 
@@ -40,8 +46,9 @@ public class UpgradeButtonsManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            ResetPlayerPrefs();
-            Debug.Log("PlayerPrefs đã được reset!");
+            ResetStatsPlayerInPlayerPref();
+            Debug.Log("Stats player đã được reset!, TẤT BẬT LẠI EDITOR ĐỂ LOAD LẠI");
+            ResetAllButtons();
         }
     }
 
@@ -51,20 +58,30 @@ public class UpgradeButtonsManager : MonoBehaviour
         upgradePanel.Show(button, currentStat);
     }
 
-    public void PurchaseSelectedUpgrade()
+    public void OnPurchase()
     {
         var b = upgradePanel.GetSelectedUpgradeButon();
+        int index = b.buttonIndex; //nhớ index của buttons vừa mua để mở khoá buttons có index kế tiếp
 
         CoinManager.Instance.totalCoinValue -= b.cost;
         CoinManager.Instance.SaveCoinValue();
 
-        ApplyUpgrade(b);
+        CoinUIManager coinUI = FindObjectOfType<CoinUIManager>();
+        coinUI.UpdateCoinUI();
+
+    ApplyUpgrade(b);
 
         b.isPurchased = true;
         b.SavePurchaseState();
 
         if (b.purchasedBG != null)
             b.purchasedBG.SetActive(true);
+
+        lineConnector.AddFill(0.1f);
+
+        //mở nút kế tiếp
+        if (index + 1 < buttons.Length)
+            buttons[index + 1].button.interactable = true;
 
         upgradePanel.Close();
     }
@@ -149,7 +166,7 @@ public class UpgradeButtonsManager : MonoBehaviour
         }
     }
 
-    private void ResetPlayerPrefs()
+    private void ResetStatsPlayerInPlayerPref()
     {
         for (int i = 0; i < characterSelection.characters.Length; i++)
         {
@@ -169,5 +186,15 @@ public class UpgradeButtonsManager : MonoBehaviour
 
             b.button.interactable = true;
         }
+    }
+    private void ResetAllButtons()
+    {
+        foreach (var b in buttons)
+        {
+            b.ResetPurchaseState();
+            b.purchasedBG.SetActive(false);   // Nếu bạn có visual trạng thái đã mua
+        }
+
+        Debug.Log("All upgrade buttons have been reset!");
     }
 }
