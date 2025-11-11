@@ -5,11 +5,23 @@ public class UIManager : MonoBehaviour
 {
     public GameObject skillPanel;
     [SerializeField] private GameObject waveAlertUI;
+    private PlayerHealth playerHealthRef;
 
     [Header("Game State Panels")]
     public GameObject pausePanel;
     public GameObject gameOverPanel;
     public GameObject gameCompletePanel;
+
+    private void OnEnable()
+    {
+        playerHealthRef = FindAnyObjectByType<PlayerHealth>();
+        playerHealthRef.onDeath.AddListener(ShowGameOver);
+    }
+
+    private void OnDisable()
+    {
+        playerHealthRef.onDeath.RemoveListener(ShowGameOver);
+    }
 
     #region Skill Panel
     public void ShowSkillPanel()
@@ -100,4 +112,12 @@ public class UIManager : MonoBehaviour
         // Load scene Main Menu (đổi tên scene nếu khác)
         SceneManager.LoadScene("_MainMenuScene");
     }
+    #region Retry
+    public void RetryScene()
+    {
+        Time.timeScale = 1f; // Reset timeScale nếu trước đó bị pause
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
+    }
+    #endregion
 }

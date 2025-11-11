@@ -11,7 +11,7 @@ public class PlayerShooting : RangedShooterBase
 
         UpdateShootCoolDown();
 
-        // Subscribe sự kiện nếu có thay đổi cooldown
+        //subscribe sự kiện nếu có thay đổi cooldown
         playerStats.onShootCooldownChanged += UpdateShootCoolDown;
     }
 

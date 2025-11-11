@@ -32584,6 +32584,12 @@ MonoBehaviour:
       m_Calls: []
   missTextPrefab: {fileID: 64370307864958366, guid: b8f9e806141623d4fb1a5b2eba7edc23, type: 3}
   playerStats: {fileID: 0}
+  componentsToDisable:
+  - {fileID: 5695800872805606829}
+  - {fileID: 3504887057015135929}
+  - {fileID: 97870909733832214}
+  anim: {fileID: 2957530214666580576}
+  deathAnimationTime: 2
 --- !u!114 &5695800872805606829
 MonoBehaviour:
   m_ObjectHideFlags: 0

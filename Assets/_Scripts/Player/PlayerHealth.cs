@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using System.Collections;
+using System.Collections.Generic;
+
 
 public class PlayerHealth : LivingEntity
 {
@@ -9,6 +12,10 @@ public class PlayerHealth : LivingEntity
     [SerializeField] private GameObject missTextPrefab;
 
     [SerializeField] private PlayerStats playerStats;
+
+    [SerializeField] protected List<MonoBehaviour> componentsToDisable;
+    [SerializeField] private Animator anim;           
+    [SerializeField] private float deathAnimationTime = 1f;
 
     protected override void Awake()
     {
@@ -67,8 +74,25 @@ public class PlayerHealth : LivingEntity
 
     protected override void Die()
     {
-        base.Die();
-        Debug.Log("Player Die!!!");
+        IsActive = false;
+        IsDead = true;
+        DisableEnemyActions();
+        anim.SetTrigger("Dead");
+        StartCoroutine(HandleDeath());
+    }
+
+    private IEnumerator HandleDeath()
+    {
+        yield return new WaitForSeconds(deathAnimationTime);
+
+        onDeath?.Invoke();
+    }
+    private void DisableEnemyActions()
+    {
+        foreach (var comp in componentsToDisable)
+        {
+            comp.enabled = false;
+        }
     }
 
     private void OnDestroy()

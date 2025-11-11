@@ -17,12 +17,19 @@ public class RotatePlayer : MonoBehaviour
 
     void Start()
     {
-        // Lấy PlayerStats từ CurrentPlayerInstance
+        //lấy PlayerStats từ CurrentPlayerInstance
         playerStats = ActivePlayerManager.Instance.CurrentPlayerInstance.GetComponent<PlayerStats>();
     }
 
     void Update()
     {
+        ////nếu player chết thì không xoay
+        //if (playerStats.GetComponent<PlayerHealth>().IsDead)
+        //{
+        //    Debug.Log("RotatePlayer blocked because player is dead");
+        //    return;
+        //}
+
         RotateMovePointerInDirection();
         RotatePlayerInDirection();
     }

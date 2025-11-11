@@ -43,18 +43,6 @@ public class MoveByVJoystick : MonoBehaviour
 
     public void Move()
     {
-        if (joystick == null || characterController == null || playerTransform == null)
-        {
-            Debug.LogWarning($"Move skipped: joystick={joystick}, characterController={characterController}, playerTransform={playerTransform}");
-            return;
-        }
-
-        if (anim == null)
-        {
-            Debug.LogWarning("Animator is null!");
-            return;
-        }
-
         float hInput = joystick.Horizontal;
         float vInput = joystick.Vertical;
 

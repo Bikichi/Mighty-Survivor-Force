@@ -7,6 +7,7 @@ public class TimerUI : MonoBehaviour
     public Text timerTextInGameplay;
     public TMP_Text timerTextInGameCompleted;
     public TMP_Text bestTimeTextInGameCompleted;
+    public TMP_Text bestTimeTextInGameOver; // thêm biến mới
 
     [SerializeField] public BestTimeManager bestTimeManager;
     private float elapsedTime = 0f;
@@ -15,11 +16,19 @@ public class TimerUI : MonoBehaviour
     private void Start()
     {
         bestTimeManager = FindAnyObjectByType<BestTimeManager>();
+
         // load best time lên UI trong bảng hoàn thành
         if (bestTimeTextInGameCompleted != null)
         {
             float best = bestTimeManager.GetBestTime();
-            bestTimeTextInGameCompleted.text = "Best " + bestTimeManager.FormatTime(best);
+            bestTimeTextInGameCompleted.text = "BEST " + bestTimeManager.FormatTime(best);
+        }
+
+        // load best time lên UI trong bảng Game Over
+        if (bestTimeTextInGameOver != null)
+        {
+            float best = bestTimeManager.GetBestTime();
+            bestTimeTextInGameOver.text = "BEST " + bestTimeManager.FormatTime(best);
         }
     }
 
@@ -34,7 +43,6 @@ public class TimerUI : MonoBehaviour
         if (timerTextInGameplay != null)
             timerTextInGameplay.text = formatted;
 
-        //Update ngay cả khi gameobject chứa bestTimeTextInGameCompleted không enable
         if (timerTextInGameCompleted != null)
             timerTextInGameCompleted.text = formatted;
     }
@@ -49,11 +57,12 @@ public class TimerUI : MonoBehaviour
         bestTimeManager.SaveIfBest(elapsedTime);
 
         // cập nhật lại best time sau khi lưu
+        float best = bestTimeManager.GetBestTime();
         if (bestTimeTextInGameCompleted != null)
-        {
-            float best = bestTimeManager.GetBestTime();
             bestTimeTextInGameCompleted.text = "BEST " + bestTimeManager.FormatTime(best);
-        }
+
+        if (bestTimeTextInGameOver != null)
+            bestTimeTextInGameOver.text = "BEST " + bestTimeManager.FormatTime(best);
     }
 
     public void ResetBestTime()

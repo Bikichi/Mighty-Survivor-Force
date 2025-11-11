@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7464935704671701010
 Transform:
   m_ObjectHideFlags: 0
@@ -87,6 +87,10 @@ PrefabInstance:
       propertyPath: minePrefab
       value: 
       objectReference: {fileID: 1804805745488347848, guid: bcf9aa67f4191d044a01f0a3aab4f153, type: 3}
+    - target: {fileID: 7580862730308227883, guid: 72cd33ee37ecacf4385c7fdcf244b98f, type: 3}
+      propertyPath: checkRadius
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7580862730308227883, guid: 72cd33ee37ecacf4385c7fdcf244b98f, type: 3}
       propertyPath: spawnTimeInterval
       value: 2.5
@@ -163,6 +167,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7270767524542369019, guid: adacd30136aced24fb276def60a15e68, type: 3}
     - target: {fileID: 6736539668338102318, guid: e39b6f78dfb03304ca5c5b973e0690d4, type: 3}
+      propertyPath: checkRadius
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6736539668338102318, guid: e39b6f78dfb03304ca5c5b973e0690d4, type: 3}
       propertyPath: spawnTimeInterval
       value: 2
       objectReference: {fileID: 0}
@@ -199,7 +207,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1368960725811664289, guid: 7a49bce38cb1aac4eb15e87697aee481, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3401710325599611532, guid: 7a49bce38cb1aac4eb15e87697aee481, type: 3}
+      propertyPath: checkRadius
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3401710325599611532, guid: 7a49bce38cb1aac4eb15e87697aee481, type: 3}
       propertyPath: spawnTimeInterval
@@ -272,6 +284,10 @@ PrefabInstance:
       propertyPath: minePrefab
       value: 
       objectReference: {fileID: 3509201991711682907, guid: 84b727b3e97fef54b920723a81d6dc9c, type: 3}
+    - target: {fileID: 391486965331906999, guid: 2568270bea3acac4abf6deff8bc0377c, type: 3}
+      propertyPath: checkRadius
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 391486965331906999, guid: 2568270bea3acac4abf6deff8bc0377c, type: 3}
       propertyPath: spawnTimeInterval
       value: 2

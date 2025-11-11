@@ -5371,8 +5371,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eb3f6596c0b8724fa46e3639d31bc0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinTextInGameplay: {fileID: 0}
-  coinTextInGameCompletedPanel: {fileID: 724186495}
+  totalCoinText: {fileID: 724186495}
+  coinTextGameplay: {fileID: 0}
+  coinTextCompletedPanel: {fileID: 0}
+  coinTextOverPanel: {fileID: 0}
 --- !u!224 &2999
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16556,6 +16558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b7229978dd69e48b0888d9a886fcd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  persistAcrossScenes: 1
   totalCoinValue: 0
   inGameCoin: 0
 --- !u!4 &457680276
@@ -20893,6 +20896,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e86a1785047d82419ddf1bb0eea63f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  persistAcrossScenes: 1
   CurrentPlayerPrefab: {fileID: 0}
   CurrentPlayerInstance: {fileID: 0}
   allPrefabs:
