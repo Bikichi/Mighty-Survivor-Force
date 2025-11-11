@@ -24406,6 +24406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillPanel: {fileID: 657}
   waveAlertUI: {fileID: 601}
+  asyncLoaderPrefab: {fileID: 2227350392011767865, guid: 22202f5a83d3cf048a07d8200485d81e, type: 3}
   pausePanel: {fileID: 666}
   gameOverPanel: {fileID: 22}
   gameCompletePanel: {fileID: 579}
@@ -26450,6 +26451,9 @@ MonoBehaviour:
   turns:
   - enemyTypes:
     - enemyPrefab: {fileID: 6643027116863268232, guid: 56a346e54c96bf741be188c7d1f23580, type: 3}
+      enemyCount: 1
+      spawnedCount: 0
+    - enemyPrefab: {fileID: 3677971375640770530, guid: 77e39f372c1d8504ca2e9dc335e0738e, type: 3}
       enemyCount: 1
       spawnedCount: 0
   currentTurnIndex: 0

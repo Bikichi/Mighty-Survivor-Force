@@ -6,6 +6,7 @@ public class UIManager : MonoBehaviour
     public GameObject skillPanel;
     [SerializeField] private GameObject waveAlertUI;
     private PlayerHealth playerHealthRef;
+    public GameObject asyncLoaderPrefab;
 
     [Header("Game State Panels")]
     public GameObject pausePanel;
@@ -53,6 +54,7 @@ public class UIManager : MonoBehaviour
     public void ShowPausePanel()
     {
         Time.timeScale = 0f;
+        AudioController.Instance.PlaySound(AudioController.Instance.UI_ButtonsClick);
         pausePanel.SetActive(true);
     }
 
@@ -63,6 +65,7 @@ public class UIManager : MonoBehaviour
         {
             Time.timeScale = 1f;
         }
+        AudioController.Instance.PlaySound(AudioController.Instance.UI_ButtonsClick);
         pausePanel.SetActive(false);
     }
 
@@ -108,16 +111,36 @@ public class UIManager : MonoBehaviour
     public void ExitToHome()
     {
         Time.timeScale = 1f;
-
-        // Load scene Main Menu (đổi tên scene nếu khác)
-        SceneManager.LoadScene("_MainMenuScene");
+        AudioController.Instance.PlaySound(AudioController.Instance.UI_ButtonsClick);
+        if (asyncLoaderPrefab != null)
+        {
+            GameObject loaderGO = Instantiate(asyncLoaderPrefab);
+            AsyncSceneLoader loader = loaderGO.GetComponent<AsyncSceneLoader>();
+            loader.StartLoadScene("_MainMenuScene");
+        }
+        else
+        {
+            SceneManager.LoadScene("_MainMenuScene");
+        }
     }
+
     #region Retry
     public void RetryScene()
     {
-        Time.timeScale = 1f; // Reset timeScale nếu trước đó bị pause
+        Time.timeScale = 1f;
+        AudioController.Instance.PlaySound(AudioController.Instance.UI_ButtonsClick);
         Scene currentScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(currentScene.name);
+
+        if (asyncLoaderPrefab != null)
+        {
+            GameObject loaderGO = Instantiate(asyncLoaderPrefab);
+            AsyncSceneLoader loader = loaderGO.GetComponent<AsyncSceneLoader>();
+            loader.StartLoadScene(currentScene.name);
+        }
+        else
+        {
+            SceneManager.LoadScene(currentScene.name);
+        }
     }
     #endregion
 }

@@ -34,6 +34,8 @@ public class MainPanelController : MonoBehaviour
     {
         TogglePanel(heroPanel);
 
+        AudioController.Instance.PlaySound(AudioController.Instance.UI_ButtonsClick);
+
         //load dữ liệu nhân vật ngay khi mở panel hero
         if (heroPanel.activeSelf)
         {
@@ -45,6 +47,14 @@ public class MainPanelController : MonoBehaviour
             //vì CharacterButtonImageManager và CharacterSelectionManager cùng gắn trên 1 game object
         }
     }
-    public void ToggleUpgradesPanel() => TogglePanel(upgradesPanel);
-    public void TogglePlayPanel() => TogglePanel(playPanel);
+    public void ToggleUpgradesPanel()
+    {
+        AudioController.Instance.PlaySound(AudioController.Instance.UI_ButtonsClick);
+        TogglePanel(upgradesPanel);
+    }
+    public void TogglePlayPanel()
+    {
+        AudioController.Instance.PlaySound(AudioController.Instance.UI_ButtonsClick);
+        TogglePanel(playPanel);
+    }
 }

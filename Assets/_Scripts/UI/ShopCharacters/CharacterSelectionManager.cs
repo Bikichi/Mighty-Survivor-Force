@@ -130,6 +130,8 @@ public class CharacterSelectionManager : MonoBehaviour
 
             // cập nhật UI nút CharacterButtonImageManager
             GetComponent<CharacterButtonImageManager>().SetActiveButton(currentIndex);
+
+            AudioController.Instance.PlaySound(AudioController.Instance.unlock);
         }
     }
 

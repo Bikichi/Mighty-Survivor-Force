@@ -13,6 +13,8 @@ public class CoinsDrop : MonoBehaviour
 
             CoinManager.Instance.inGameCoin += 1;
 
+            AudioController.Instance.PlaySound(AudioController.Instance.collectCoin);
+
             CoinUIManager coinUI = FindObjectOfType<CoinUIManager>();
             coinUI.UpdateCoinUI();
 

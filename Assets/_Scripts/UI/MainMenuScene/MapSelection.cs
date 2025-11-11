@@ -22,6 +22,8 @@ public class MapSelection : MonoBehaviour
     public CanvasGroup startButtonCanvasGroup;
     public PaginationController pagination;
 
+    public GameObject asyncLoaderPrefab;
+
     private int currentIndex = 0;
 
     void Start()
@@ -42,6 +44,7 @@ public class MapSelection : MonoBehaviour
     {
         currentIndex = (currentIndex + 1) % maps.Length;
         MapSelectionData.currentIndex = currentIndex;
+        AudioController.Instance.PlaySound(AudioController.Instance.UI_ButtonsClick);
         UpdateMapDisplay();
     }
 
@@ -49,6 +52,7 @@ public class MapSelection : MonoBehaviour
     {
         currentIndex = (currentIndex - 1 + maps.Length) % maps.Length;
         MapSelectionData.currentIndex = currentIndex;
+        AudioController.Instance.PlaySound(AudioController.Instance.UI_ButtonsClick);
         UpdateMapDisplay();
     }
 
@@ -76,8 +80,16 @@ public class MapSelection : MonoBehaviour
     public void StartGame()
     {
         var currentMap = maps[currentIndex];
+        AudioController.Instance.PlaySound(AudioController.Instance.UI_ButtonsClick);
         if (currentMap.isUnlocked)
         {
+            GameObject loaderGO = Instantiate(asyncLoaderPrefab);
+            AsyncSceneLoader loader = loaderGO.GetComponent<AsyncSceneLoader>();
+            loader.StartLoadScene(currentMap.sceneName);
+        }
+        else
+        {
+            // fallback
             SceneManager.LoadScene(currentMap.sceneName);
         }
     }

@@ -64,6 +64,7 @@ public class UpgradePanelUI : MonoBehaviour
 
     public void Close()
     {
+        AudioController.Instance.PlaySound(AudioController.Instance.UI_ButtonsClick);
         panel.SetActive(false);
     }
 

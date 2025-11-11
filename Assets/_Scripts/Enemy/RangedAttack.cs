@@ -15,23 +15,18 @@ public class RangedAttack : EnemyAttack
     }
     public override void Attack()
     {
-        attackTimer += Time.deltaTime;
+        isAttacking = true;
+        anim.SetTrigger(attackParaname);
 
-        bool isReadyToAttack = attackTimer >= attackCooldown;
-        bool canAttackPlayer = CheckDistance.Instance.CalculateDistanceToPlayer(targetPlayer.transform, transform) <= attackRanged;
-        if (isReadyToAttack && canAttackPlayer)
-        {
-            isAttacking = true;
-            anim.SetTrigger(attackParaname);
+        Vector3 directionToPlayer = (targetPlayer.transform.position - shootPoint.position).normalized;
 
-            Vector3 directionToPlayer = (targetPlayer.transform.position - shootPoint.position).normalized;
+        Quaternion finalRotation = Quaternion.LookRotation(directionToPlayer) * Quaternion.Euler(0, yRotationOffset, 0);
 
-            Quaternion finalRotation = Quaternion.LookRotation(directionToPlayer) * Quaternion.Euler(0, yRotationOffset, 0);
+        Instantiate(enemyBulletPrefabs, shootPoint.position, finalRotation);
 
-            Instantiate(enemyBulletPrefabs, shootPoint.position, finalRotation);
+        attackTimer = 0f;
 
-            attackTimer = 0f;
-        }
+        AudioController.Instance.PlaySound(AudioController.Instance.enemyRangedAttack);
     }
 
     public override void OnAttackAnimationEnd()

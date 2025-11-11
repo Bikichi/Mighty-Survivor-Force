@@ -28,6 +28,7 @@ public class ShowLearningSkillUI : MonoBehaviour
 
     public void ReRoll()
     {
+        AudioController.Instance.PlaySound(AudioController.Instance.reroll);
         FindObjectOfType<SkillSelectionManager>().GetRandomSkillChoices();
         FindObjectOfType<SkillSelectionUIController>().ShowSkillChoices();
     }

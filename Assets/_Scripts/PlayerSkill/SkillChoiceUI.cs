@@ -41,5 +41,7 @@ public class SkillChoiceUI : MonoBehaviour
     {
         playerSkillManager.LearnSkill(currentSkill);
         FindAnyObjectByType<UIManager>().HideSkillPanel();
+        AudioController.Instance.PlaySound(AudioController.Instance.learnSkils);
+
     }
 }

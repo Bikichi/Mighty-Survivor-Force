@@ -148,7 +148,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &23
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,7 +520,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &225
 GameObject:
   m_ObjectHideFlags: 0
@@ -24406,6 +24406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillPanel: {fileID: 657}
   waveAlertUI: {fileID: 601}
+  asyncLoaderPrefab: {fileID: 2227350392011767865, guid: 22202f5a83d3cf048a07d8200485d81e, type: 3}
   pausePanel: {fileID: 666}
   gameOverPanel: {fileID: 22}
   gameCompletePanel: {fileID: 579}

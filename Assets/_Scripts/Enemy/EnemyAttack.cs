@@ -32,19 +32,20 @@ public class EnemyAttack : MonoBehaviour
     public virtual void Update()
     {
         attackTimer += Time.deltaTime;
-        Attack();
+        bool isReadyToAttack = attackTimer >= attackCooldown;
+        if (isReadyToAttack && CheckDistance.Instance.CalculateDistanceToPlayer(targetPlayer.transform, transform) <= attackRanged)
+        {
+            Attack();
+        }
     }
 
     public virtual void Attack()
     {
-        bool isReadyToAttack = attackTimer >= attackCooldown;
-        if (isReadyToAttack && CheckDistance.Instance.CalculateDistanceToPlayer(targetPlayer.transform, transform) <= attackRanged)
-        {
-            isAttacking = true;
-            anim.SetTrigger(attackParaname);
-            SpawnAttackFlash();
-            attackTimer = 0f;
-        }
+        isAttacking = true;
+        anim.SetTrigger(attackParaname);
+        SpawnAttackFlash();
+        attackTimer = 0f;
+
     }
     public void SpawnAttackFlash()
     {

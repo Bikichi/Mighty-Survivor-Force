@@ -50,7 +50,10 @@ public class MeleeAttack : EnemyAttack, ISkillStatus
         {
             return;
         }
-        base.Attack(); 
+        base.Attack();
+
+        AudioController.Instance.PlaySound(AudioController.Instance.enemyMeleeAttack);
+
     }
     public virtual void DealDamageMelee()
     {

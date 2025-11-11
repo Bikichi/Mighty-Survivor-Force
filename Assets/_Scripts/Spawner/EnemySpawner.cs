@@ -75,7 +75,6 @@ public class EnemySpawner : MonoBehaviour
         if (currentWaveIndex >= waves.Count)
         {
             GameFlowManager.Instance.OnAllWavesCompleted();
-            Debug.Log("All waves completed!");
             yield break;
         }
         else

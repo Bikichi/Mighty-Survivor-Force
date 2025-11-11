@@ -42,6 +42,7 @@ public static class MapProgressManager
             MapSelectionData.maps[nextMapIndex].isUnlocked = true;
             SaveProgress(nextMapIndex, true);
         }
+        Debug.Log("Unlock Next Map!!!!");
     }
 
     /// <summary>

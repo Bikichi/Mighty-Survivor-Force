@@ -13,6 +13,7 @@ public class ScoreUI : MonoBehaviour
         {
             enemySpawner = FindObjectOfType<EnemySpawner>();
         }
+        UpdateScoreUI();
     }
 
     //Update khi quái vật chết

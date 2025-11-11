@@ -41,6 +41,7 @@ public class CharacterButtonImageManager : MonoBehaviour
     {
         SetActiveButton(index);
         selectionManager.SelectCharacter(index);
+        AudioController.Instance.PlaySound(AudioController.Instance.slectionButtonsClick);
     }
 
     public void SetActiveButton(int index)

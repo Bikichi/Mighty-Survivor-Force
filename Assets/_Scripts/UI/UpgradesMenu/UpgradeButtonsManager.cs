@@ -56,6 +56,7 @@ public class UpgradeButtonsManager : MonoBehaviour
     {
         float currentStat = GetCurrentStat(button.type);
         upgradePanel.Show(button, currentStat);
+        AudioController.Instance.PlaySound(AudioController.Instance.upGradesButtonsClick);
     }
 
     public void OnPurchase()
@@ -82,7 +83,7 @@ public class UpgradeButtonsManager : MonoBehaviour
         //mở nút kế tiếp
         if (index + 1 < buttons.Length)
             buttons[index + 1].button.interactable = true;
-
+        AudioController.Instance.PlaySound(AudioController.Instance.unlock);
         upgradePanel.Close();
     }
 

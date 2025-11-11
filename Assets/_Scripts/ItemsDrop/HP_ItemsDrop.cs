@@ -34,6 +34,8 @@ public class HP_ItemsDrop : MonoBehaviour
                 playerHealth.currentHealth = Mathf.Min(playerHealth.currentHealth, playerHealth.maxHealth);
                 playerHealth.onHealthChange?.Invoke(playerHealth.currentHealth, playerHealth.maxHealth);
 
+                AudioController.Instance.PlaySound(AudioController.Instance.health);
+
                 Destroy(gameObject);
             }
         }
