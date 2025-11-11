@@ -22666,6 +22666,7 @@ MonoBehaviour:
   timerTextInGameplay: {fileID: 131382813}
   timerTextInGameCompleted: {fileID: 412117668}
   bestTimeTextInGameCompleted: {fileID: 1527}
+  bestTimeManager: {fileID: 0}
 --- !u!114 &2248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23767,6 +23768,7 @@ MonoBehaviour:
   waveAlertUI: {fileID: 601}
   scoreUI: {fileID: 2246}
   bossSpawner: {fileID: 126297264}
+  checkAlertUIManager: {fileID: 0}
   onWaveCompleted:
     m_PersistentCalls:
       m_Calls:
@@ -24485,6 +24487,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdc78e9981d9ec645aed81a1f50f3185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  persistAcrossScenes: 1
 --- !u!4 &265424362
 Transform:
   m_ObjectHideFlags: 0
@@ -29778,6 +29781,7 @@ GameObject:
   - component: {fileID: 1304854060}
   - component: {fileID: 1304854061}
   - component: {fileID: 1304854062}
+  - component: {fileID: 1304854063}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -29812,6 +29816,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4abd3c66794a7ac40a1d216734b9bec1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  persistAcrossScenes: 0
   playerTransform: {fileID: 0}
 --- !u!114 &1304854060
 MonoBehaviour:
@@ -29850,6 +29855,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68949387be7e6d0448de84ed7622b0de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1304854063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1304854053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ab99cd2c59f04e4a940e9205f52ce35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1312134733

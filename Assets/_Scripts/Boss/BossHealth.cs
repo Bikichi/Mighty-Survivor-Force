@@ -18,7 +18,7 @@ public class BossHealth : EnemyHealth
 
         if (phaseController != null && phaseController.isPrePhase2Active)
         {
-            DamageUIManager.Instance.ShowDamageUI(0, GetComponent<Collider>(), isCrit);
+            damageUIManager.ShowDamageUI(0, GetComponent<Collider>(), isCrit);
             return;
         }
 
@@ -36,7 +36,7 @@ public class BossHealth : EnemyHealth
         onHealthChange?.Invoke(currentHealth, maxHealth);
 
         //Show damage UI
-        DamageUIManager.Instance.ShowDamageUI(finalDamage, GetComponent<Collider>(), isCrit);
+        damageUIManager.ShowDamageUI(finalDamage, GetComponent<Collider>(), isCrit);
         if (currentHealth <= 0 && !IsDead)
         {
             Die();

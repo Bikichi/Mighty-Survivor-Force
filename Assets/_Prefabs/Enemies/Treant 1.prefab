@@ -728,6 +728,7 @@ MonoBehaviour:
   - {fileID: 7916702332016666553}
   - {fileID: 1591903654919187702}
   - {fileID: 5964724972430470357}
+  damageUIManager: {fileID: 0}
 --- !u!114 &3200666939121337754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -853,7 +854,7 @@ MonoBehaviour:
   coinPrefab: {fileID: 1880245074145146, guid: 81848b6677705f2418649c87a28b45d4, type: 3}
   coinDropChance: 0.5
   healthPrefab: {fileID: 4581376860598887516, guid: b8638e2d0f157a147a3afc1423c92c30, type: 3}
-  healthDropChance: 1
+  healthDropChance: 0.2
   minCoins: 5
   maxCoins: 10
   areaCenter: {x: 0.02, y: 1.58, z: -2.5}

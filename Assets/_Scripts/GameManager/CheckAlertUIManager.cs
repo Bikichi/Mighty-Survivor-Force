@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CheckAlertUIManager : Singleton<CheckAlertUIManager>
+public class CheckAlertUIManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> waveAlertUIs = new List<GameObject>();
     public bool IsAnyWaveAlertActive()

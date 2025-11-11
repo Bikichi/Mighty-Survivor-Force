@@ -3,15 +3,17 @@ public class PlayerBullet : BaseBullet
 {
     [SerializeField] protected Transform _targetEnemy;
     [SerializeField] protected PlayerStats playerStats;
+    [SerializeField] protected CritManager critManager;
     [SerializeField] protected float delayDestroyTime = 0.1f;
 
     protected override void Start()
     {
         base.Start();
-
+        critManager = FindAnyObjectByType<CritManager>();
         playerStats = ActivePlayerManager.Instance.CurrentPlayerInstance.GetComponent<PlayerStats>();
         damageBullet = playerStats.baseDamage;
         _targetEnemy = CheckDistance.Instance.FindClosestEnemy();
+
     }
 
     protected override void MoveBullet()
@@ -44,7 +46,7 @@ public class PlayerBullet : BaseBullet
 
     protected virtual void ApplyDamage(EnemyHealth enemyHealth)
     {
-        var result = CritManager.Instance.CalculateCritDamage(damageBullet);
+        var result = critManager.CalculateCritDamage(damageBullet);
         enemyHealth.TakeDamage(result.damage, result.isCrit);
 
     }

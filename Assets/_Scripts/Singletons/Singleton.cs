@@ -1,11 +1,11 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
+    [SerializeField] protected bool persistAcrossScenes = true;
+
     private static T _instance;
+
     public static T Instance
     {
         get
@@ -13,27 +13,35 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
             if (_instance == null)
             {
                 T instanceInScene = FindAnyObjectByType<T>();
-                RegsisterInstance(instanceInScene);
+                RegisterInstance(instanceInScene);
             }
             return _instance;
         }
     }
+
     private void Awake()
     {
         if (_instance == null)
         {
-            RegsisterInstance((T)(MonoBehaviour)this);
+            RegisterInstance((T)(MonoBehaviour)this);
         }
         else if (_instance != this)
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 
-    private static void RegsisterInstance(T newInStance)
+    private static void RegisterInstance(T newInstance)
     {
-        if (newInStance == null) return;
-        _instance = newInStance;
-        DontDestroyOnLoad(_instance.transform.root.gameObject);
+        if (newInstance == null) return;
+
+        _instance = newInstance;
+
+        // ✅ CHỈ giữ lại nếu chọn persist
+        var singleton = newInstance as Singleton<T>;
+        if (singleton != null && singleton.persistAcrossScenes)
+        {
+            DontDestroyOnLoad(singleton.gameObject);
+        }
     }
 }

@@ -17,6 +17,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject waveAlertUI;
     [SerializeField] private ScoreUI scoreUI;
     [SerializeField] private BossSpawner bossSpawner;
+    [SerializeField] private CheckAlertUIManager checkAlertUIManager;
+
 
 
     public UnityEvent onWaveCompleted;
@@ -32,6 +34,7 @@ public class EnemySpawner : MonoBehaviour
     void Awake()
     {
         waves.AddRange(GetComponentsInChildren<WaveData>(true));
+        checkAlertUIManager = FindAnyObjectByType<CheckAlertUIManager>();
     }
 
     void Start()
@@ -47,14 +50,14 @@ public class EnemySpawner : MonoBehaviour
 
         WaveData currentWave = waves[currentWaveIndex];
 
-        if (currentWave.IsCompleted() && enemiesAlive == 0 && !CheckAlertUIManager.Instance.IsAnyWaveAlertActive())
+        if (currentWave.IsCompleted() && enemiesAlive == 0 && !checkAlertUIManager.IsAnyWaveAlertActive())
         {
             StartCoroutine(BeginNextWave());
         }
 
         spawnTimer += Time.deltaTime;
 
-        if (spawnTimer >= currentWave.turnInterval && enemiesAlive < currentWave.maxEnemiesAllowed && !CheckAlertUIManager.Instance.IsAnyWaveAlertActive())
+        if (spawnTimer >= currentWave.turnInterval && enemiesAlive < currentWave.maxEnemiesAllowed && !checkAlertUIManager.IsAnyWaveAlertActive())
         {
             SpawnEnemies(currentWave);
         }

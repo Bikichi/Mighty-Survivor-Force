@@ -8,9 +8,14 @@ public class EnemyHealth : LivingEntity
     public Animator _anim;
 
     [SerializeField] protected List<MonoBehaviour> componentsToDisable;
+    [SerializeField] protected DamageUIManager damageUIManager;
 
     protected EnemyLootDrop lootDrop;
-
+    protected override void Awake()
+    {
+        base.Awake();
+        damageUIManager = FindAnyObjectByType<DamageUIManager>();
+    }
     protected virtual void Start()
     {
         _anim = GetComponentInChildren<Animator>();
@@ -23,7 +28,7 @@ public class EnemyHealth : LivingEntity
 
         currentHealth = Mathf.Max(currentHealth - finalDamage, 0);
         onHealthChange?.Invoke(currentHealth, maxHealth);
-        DamageUIManager.Instance.ShowDamageUI(finalDamage, GetComponent<Collider>(), isCrit);
+        damageUIManager.ShowDamageUI(finalDamage, GetComponent<Collider>(), isCrit);
         if (currentHealth <= 0 && !IsDead)
         {
             Die();

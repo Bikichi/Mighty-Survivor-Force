@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class DamageUIManager : Singleton<DamageUIManager>
+public class DamageUIManager : MonoBehaviour
 {
     [SerializeField] private GameObject floatingTextPrefab;
     [SerializeField] private Transform uiParnet;

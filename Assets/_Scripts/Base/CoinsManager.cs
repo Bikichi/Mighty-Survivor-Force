@@ -11,10 +11,13 @@ public class CoinManager : Singleton<CoinManager>
 
     private void Awake()
     {
-        inGameCoin = 0;
         LoadCoinValue();
+        ResetInGameCoin();
     }
-
+    public void ResetInGameCoin()
+    {
+        inGameCoin = 0;
+    }
     public void LoadCoinValue()
     {
         totalCoinValue = PlayerPrefs.GetInt("totalCoinValue", 0);

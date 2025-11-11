@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class CritManager : Singleton<CritManager>
+public class CritManager : MonoBehaviour
 {
     [Header("Crit Settings")]
     [Range(0f, 100f)]

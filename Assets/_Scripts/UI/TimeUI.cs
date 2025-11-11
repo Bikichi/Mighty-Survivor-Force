@@ -8,16 +8,18 @@ public class TimerUI : MonoBehaviour
     public TMP_Text timerTextInGameCompleted;
     public TMP_Text bestTimeTextInGameCompleted;
 
+    [SerializeField] public BestTimeManager bestTimeManager;
     private float elapsedTime = 0f;
     private bool isRunning = true;
 
     private void Start()
     {
+        bestTimeManager = FindAnyObjectByType<BestTimeManager>();
         // load best time lên UI trong bảng hoàn thành
         if (bestTimeTextInGameCompleted != null)
         {
-            float best = BestTimeManager.Instance.GetBestTime();
-            bestTimeTextInGameCompleted.text = "Best " + BestTimeManager.Instance.FormatTime(best);
+            float best = bestTimeManager.GetBestTime();
+            bestTimeTextInGameCompleted.text = "Best " + bestTimeManager.FormatTime(best);
         }
     }
 
@@ -27,7 +29,7 @@ public class TimerUI : MonoBehaviour
 
         elapsedTime += Time.deltaTime;
 
-        string formatted = BestTimeManager.Instance.FormatTime(elapsedTime);
+        string formatted = bestTimeManager.FormatTime(elapsedTime);
 
         if (timerTextInGameplay != null)
             timerTextInGameplay.text = formatted;
@@ -44,18 +46,18 @@ public class TimerUI : MonoBehaviour
         isRunning = false;
 
         // lưu best time
-        BestTimeManager.Instance.SaveIfBest(elapsedTime);
+        bestTimeManager.SaveIfBest(elapsedTime);
 
         // cập nhật lại best time sau khi lưu
         if (bestTimeTextInGameCompleted != null)
         {
-            float best = BestTimeManager.Instance.GetBestTime();
-            bestTimeTextInGameCompleted.text = "BEST " + BestTimeManager.Instance.FormatTime(best);
+            float best = bestTimeManager.GetBestTime();
+            bestTimeTextInGameCompleted.text = "BEST " + bestTimeManager.FormatTime(best);
         }
     }
 
     public void ResetBestTime()
     {
-        BestTimeManager.Instance.ResetBestTime();
+        bestTimeManager.ResetBestTime();
     }
 }

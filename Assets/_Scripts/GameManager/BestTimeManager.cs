@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BestTimeManager : Singleton<BestTimeManager>
+public class BestTimeManager : MonoBehaviour
 {
     private const string BEST_TIME_KEY = "BestTime";
 
