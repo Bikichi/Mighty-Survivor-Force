@@ -15,7 +15,7 @@ public class BossHealth : EnemyHealth
     public override void TakeDamage(float damage, bool isCrit = false)
     {
         var phaseController = GetComponent<BossPhaseController>();
-
+        AudioController.Instance.PlaySound(AudioController.Instance.hitBoss);
         if (phaseController != null && phaseController.isPrePhase2Active)
         {
             damageUIManager.ShowDamageUI(0, GetComponent<Collider>(), isCrit);

@@ -84,7 +84,6 @@ public class EnemySpawner : MonoBehaviour
             yield return new WaitForSeconds(2.0f);
             FindObjectOfType<ShowLearningSkillUI>().Show();
             yield return new WaitForSeconds(0.25f);
-            AudioController.Instance.PlaySound(AudioController.Instance.waveAlertSound);
             onWaveCompleted?.Invoke();
             CheckBossSpawn(waves[currentWaveIndex]);
         }

@@ -937,11 +937,12 @@ MonoBehaviour:
   sfxVolume: 0.75
   musicAus: {fileID: 1741265372}
   sfxAus: {fileID: 1741265371}
-  menuBackgroundMusics: {fileID: 8300000, guid: 935625881b3731145841ab6c4a47ea8b, type: 3}
-  gamePlayBackgroundMusics: {fileID: 8300000, guid: 1843053937290594b9755dd9e50cc768, type: 3}
+  menuBackgroundMusics: {fileID: 8300000, guid: 1843053937290594b9755dd9e50cc768, type: 3}
+  gamePlayBackgroundMusics: {fileID: 8300000, guid: 935625881b3731145841ab6c4a47ea8b, type: 3}
   win: {fileID: 8300000, guid: 5e1a9f876d3dafd47bc6b3dde25135fa, type: 3}
   lose: {fileID: 8300000, guid: 21c4a490b24ba2045bc815f7626a40ef, type: 3}
   waveAlertSound: {fileID: 8300000, guid: c5afe5368506ee547b947e6dcd5b97cf, type: 3}
+  toturialSound: {fileID: 8300000, guid: ba39bf8baf6d13046889b2d64822381a, type: 3}
   UI_ButtonsClick: {fileID: 8300000, guid: d9a386efd91ea644b9be23d356ec2030, type: 3}
   slectionButtonsClick: {fileID: 8300000, guid: c6cefcaa83834494eae011230cadba67, type: 3}
   upGradesButtonsClick: {fileID: 8300000, guid: 984e1254af13e7b4ea379044527c63d7, type: 3}
@@ -953,6 +954,7 @@ MonoBehaviour:
   enemyMeleeAttack: {fileID: 8300000, guid: ef2f5a9cf24ce4a4e916acc368acb1fc, type: 3}
   enemyRangedAttack: {fileID: 8300000, guid: 15d85f7583587fe4694232b9d3af001d, type: 3}
   hitEnemy: {fileID: 8300000, guid: d9419ba0bfac1e84a95418ac5851caf6, type: 3}
+  hitBoss: {fileID: 8300000, guid: 7c47b20bb9874304a809dc5580d403ba, type: 3}
   hitPlayer: {fileID: 8300000, guid: 8b23b175a78d6b5458322e3a6c9905d0, type: 3}
   burnPlayer: {fileID: 8300000, guid: a652877b012108e41871f867ada9f176, type: 3}
   enemySpawn: {fileID: 8300000, guid: 1d74880bed4586644a16a79a2d9dc8af, type: 3}
@@ -970,7 +972,6 @@ MonoBehaviour:
   mineExplode: {fileID: 0}
   lightning: {fileID: 0}
   regenSkillTick: {fileID: 8300000, guid: cfce0cea076109f478783201b2a9f57f, type: 3}
-  bigTrikeAttack: {fileID: 0}
   charge: {fileID: 0}
   multiShoot: {fileID: 0}
   fireBreath: {fileID: 0}

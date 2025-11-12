@@ -26,7 +26,8 @@ public class BossBigStrike : MeleeAttack
         if (isReadyToAttack && inRange)
         {
             isAttacking = true;
-
+            //phát âm thanh "enemyMeleeAttack" 3 lần, mỗi lần cách nhau 0.3 giây
+            AudioController.Instance.PlaySoundMultipleTimes(AudioController.Instance.enemyMeleeAttack, 3, 0.33f);
             anim.SetTrigger(bigStrikeAnimName);
             //Debug.Log("Boss kích hoạt skill: CÚ ĐÁNH LỚN!");
 

@@ -41,6 +41,7 @@ public class UIManager : MonoBehaviour
     #region Wave Alert
     public void ShowWaveAlert()
     {
+        AudioController.Instance.PlaySound(AudioController.Instance.waveAlertSound);
         waveAlertUI.SetActive(true);
     }
 

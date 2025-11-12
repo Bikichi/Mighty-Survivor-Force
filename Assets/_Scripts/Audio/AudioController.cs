@@ -24,10 +24,11 @@ public class AudioController : Singleton<AudioController>
     public AudioClip menuBackgroundMusics;
     public AudioClip gamePlayBackgroundMusics;
 
-    [Header("Game sounds Buttons UI: ")]
+    [Header("Game sounds UI: ")]
     public AudioClip win;
     public AudioClip lose;
-    public AudioClip waveAlertSound;    
+    public AudioClip waveAlertSound;
+    public AudioClip toturialSound;
 
     [Header("Game sounds Buttons UI: ")]
     public AudioClip UI_ButtonsClick;
@@ -48,6 +49,7 @@ public class AudioController : Singleton<AudioController>
     public AudioClip enemyRangedAttack;
 
     public AudioClip hitEnemy;
+    public AudioClip hitBoss;
     public AudioClip hitPlayer;
     public AudioClip burnPlayer;
 
@@ -74,7 +76,6 @@ public class AudioController : Singleton<AudioController>
     public AudioClip regenSkillTick;
 
     [Header("Game sounds BossSkills: ")]
-    public AudioClip bigTrikeAttack;
     public AudioClip charge;
     public AudioClip multiShoot;
     public AudioClip fireBreath;
@@ -160,6 +161,24 @@ public class AudioController : Singleton<AudioController>
             musicAus.Play();
         }
     }
+
+    public void PlaySoundMultipleTimes(AudioClip clip, int times = 3, float interval = 0.3f, AudioSource aus = null)
+    {
+        if (!aus) aus = sfxAus;
+        if (clip == null || aus == null || times <= 0) return;
+
+        StartCoroutine(PlaySoundCoroutine(clip, aus, times, interval));
+    }
+
+    private IEnumerator PlaySoundCoroutine(AudioClip clip, AudioSource aus, int times, float interval)
+    {
+        for (int i = 0; i < times; i++)
+        {
+            aus.PlayOneShot(clip, sfxVolume);
+            yield return new WaitForSeconds(interval);
+        }
+    }
+
 
     // ==========================
     // 🎧 NEW: Toggle functions

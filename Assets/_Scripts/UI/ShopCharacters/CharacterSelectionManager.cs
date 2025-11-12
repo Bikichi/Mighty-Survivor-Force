@@ -41,7 +41,7 @@ public class CharacterSelectionManager : MonoBehaviour
     private void Update()
     {
         // Nhấn R → reset tất cả nhân vật unlock
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.S))
         {
             ResetAllUnlocks();
         }
