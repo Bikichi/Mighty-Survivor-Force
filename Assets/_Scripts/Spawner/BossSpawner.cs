@@ -20,8 +20,9 @@ public class BossSpawner : MonoBehaviour
 
     private IEnumerator SpawnBossWithDelay(GameObject bossPrefab)
     {
-        yield return new WaitForSeconds(delayBeforeSpawn); 
+        yield return new WaitForSeconds(delayBeforeSpawn);
 
+        AudioController.Instance.PlaySound(AudioController.Instance.bossSpawn);
         currentBoss = Instantiate(bossPrefab, bossSpawnPoint.position, bossSpawnPoint.rotation);
 
         BossHealth bossHealth = currentBoss.GetComponent<BossHealth>();

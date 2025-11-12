@@ -9,6 +9,7 @@ public class PlayerPowerUPEffect : MonoBehaviour
     public void TriggerEffect()
     {
         if (effectPrefab == null) return;
+        AudioController.Instance.PlaySound(AudioController.Instance.playerLVLUP);
 
         Vector3 spawnPos = new Vector3(
             transform.position.x,

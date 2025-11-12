@@ -937,6 +937,11 @@ MonoBehaviour:
   sfxVolume: 0.75
   musicAus: {fileID: 1741265372}
   sfxAus: {fileID: 1741265371}
+  menuBackgroundMusics: {fileID: 8300000, guid: 935625881b3731145841ab6c4a47ea8b, type: 3}
+  gamePlayBackgroundMusics: {fileID: 8300000, guid: 1843053937290594b9755dd9e50cc768, type: 3}
+  win: {fileID: 8300000, guid: 5e1a9f876d3dafd47bc6b3dde25135fa, type: 3}
+  lose: {fileID: 8300000, guid: 21c4a490b24ba2045bc815f7626a40ef, type: 3}
+  waveAlertSound: {fileID: 8300000, guid: c5afe5368506ee547b947e6dcd5b97cf, type: 3}
   UI_ButtonsClick: {fileID: 8300000, guid: d9a386efd91ea644b9be23d356ec2030, type: 3}
   slectionButtonsClick: {fileID: 8300000, guid: c6cefcaa83834494eae011230cadba67, type: 3}
   upGradesButtonsClick: {fileID: 8300000, guid: 984e1254af13e7b4ea379044527c63d7, type: 3}
@@ -944,11 +949,35 @@ MonoBehaviour:
   learnSkils: {fileID: 8300000, guid: d10457d34e8d3a14f9014e544bdf0337, type: 3}
   reroll: {fileID: 8300000, guid: 0815d2aaee6f43d488cffa801ddb13dc, type: 3}
   collectCoin: {fileID: 8300000, guid: 2005a8675b79ec14d95789c41a4c024d, type: 3}
-  health: {fileID: 8300000, guid: 8314e7b12dcfc9c47b54c669b349aa5f, type: 3}
+  health: {fileID: 8300000, guid: c48a972d3d024c2408a3331750786a29, type: 3}
   enemyMeleeAttack: {fileID: 8300000, guid: ef2f5a9cf24ce4a4e916acc368acb1fc, type: 3}
   enemyRangedAttack: {fileID: 8300000, guid: 15d85f7583587fe4694232b9d3af001d, type: 3}
-  menuBackgroundMusics: {fileID: 8300000, guid: 935625881b3731145841ab6c4a47ea8b, type: 3}
-  gamePlayBackgroundMusics: {fileID: 8300000, guid: 1843053937290594b9755dd9e50cc768, type: 3}
+  hitEnemy: {fileID: 8300000, guid: d9419ba0bfac1e84a95418ac5851caf6, type: 3}
+  hitPlayer: {fileID: 8300000, guid: 8b23b175a78d6b5458322e3a6c9905d0, type: 3}
+  burnPlayer: {fileID: 8300000, guid: a652877b012108e41871f867ada9f176, type: 3}
+  enemySpawn: {fileID: 8300000, guid: 1d74880bed4586644a16a79a2d9dc8af, type: 3}
+  bossSpawn: {fileID: 8300000, guid: a1a637e8c2d88c247a59583f7b0d66dd, type: 3}
+  playerLVLUP: {fileID: 8300000, guid: b1b9c1f0ea1fcae439ed1a4d44ff05fd, type: 3}
+  archerShot: {fileID: 8300000, guid: 56703418e3aed4c47a5f6622816b8e41, type: 3}
+  chesterShot: {fileID: 8300000, guid: af66162561d2eed40ad49268cab318bb, type: 3}
+  kunai: {fileID: 0}
+  sawBlade: {fileID: 0}
+  sword: {fileID: 0}
+  droneShot: {fileID: 0}
+  iceDragon: {fileID: 0}
+  fireDragon: {fileID: 0}
+  spawnMine: {fileID: 0}
+  mineExplode: {fileID: 0}
+  lightning: {fileID: 0}
+  regenSkillTick: {fileID: 8300000, guid: cfce0cea076109f478783201b2a9f57f, type: 3}
+  bigTrikeAttack: {fileID: 0}
+  charge: {fileID: 0}
+  multiShoot: {fileID: 0}
+  fireBreath: {fileID: 0}
+  lazeBreath: {fileID: 0}
+  dash: {fileID: 0}
+  buff: {fileID: 0}
+  explode: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

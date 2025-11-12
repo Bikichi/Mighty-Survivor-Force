@@ -46,6 +46,7 @@ public class PlayerHealth : LivingEntity
 
     public override void TakeDamage(float damage, bool isCrit = false)
     {
+        AudioController.Instance.PlaySound(AudioController.Instance.hitPlayer);
         // cập nhật tỉ lệ né trực tiếp từ PlayerStats
         float dodgeChance = playerStats.baseDodgeChance / 100f;
         if (Random.value < dodgeChance)
@@ -60,6 +61,7 @@ public class PlayerHealth : LivingEntity
 
     public void TakeDamageFromBeam(float damage)
     {
+        AudioController.Instance.PlaySound(AudioController.Instance.burnPlayer);
         base.TakeDamage(damage);
         onTakeDamage?.Invoke();
     }

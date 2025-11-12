@@ -82,6 +82,7 @@ public class UIManager : MonoBehaviour
     #region Game Over
     public void ShowGameOver()
     {
+        AudioController.Instance.PlaySound(AudioController.Instance.lose);
         Time.timeScale = 0f;
         gameOverPanel.SetActive(true);
     }
@@ -96,6 +97,7 @@ public class UIManager : MonoBehaviour
     #region Game Complete
     public void ShowGameComplete()
     {
+        AudioController.Instance.PlaySound(AudioController.Instance.win);
         Time.timeScale = 0f;
         FindAnyObjectByType<TimerUI>().StopTimer();
         gameCompletePanel.SetActive(true);

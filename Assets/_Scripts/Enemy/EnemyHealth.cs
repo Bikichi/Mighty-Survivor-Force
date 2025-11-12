@@ -24,6 +24,7 @@ public class EnemyHealth : LivingEntity
 
     public override void TakeDamage(float damage, bool isCrit = false)
     {
+        AudioController.Instance.PlaySound(AudioController.Instance.hitEnemy);
         float finalDamage = Mathf.Max(damage - defense, 1);
 
         currentHealth = Mathf.Max(currentHealth - finalDamage, 0);

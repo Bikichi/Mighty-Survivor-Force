@@ -53,6 +53,7 @@ public class AsyncSceneLoader : MonoBehaviour
         }
         else
         {
+            AudioController.Instance.PlaySound(AudioController.Instance.waveAlertSound);
             AudioController.Instance.PlayMusic(AudioController.Instance.gamePlayBackgroundMusics, true);
         }
     }

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -14,29 +14,77 @@ public class AudioController : Singleton<AudioController>
     [Range(0, 1)]
     public float sfxVolume = 1f;
 
+    private float lastMusicVolume = 0.3f;
+    private float lastSfxVolume = 1f;
+
     public AudioSource musicAus;
     public AudioSource sfxAus;
 
-    [Header("Game sounds: ")]
+    [Header("Game musics: ")]
+    public AudioClip menuBackgroundMusics;
+    public AudioClip gamePlayBackgroundMusics;
+
+    [Header("Game sounds Buttons UI: ")]
+    public AudioClip win;
+    public AudioClip lose;
+    public AudioClip waveAlertSound;    
+
+    [Header("Game sounds Buttons UI: ")]
     public AudioClip UI_ButtonsClick;
     public AudioClip slectionButtonsClick;
     public AudioClip upGradesButtonsClick;
     
     public AudioClip unlock;
-    
+
+    [Header("Game sounds Collect: ")]
     public AudioClip learnSkils;
     public AudioClip reroll;
     
     public AudioClip collectCoin;
     public AudioClip health;
 
+    [Header("Game sounds Battle: ")]
     public AudioClip enemyMeleeAttack;
     public AudioClip enemyRangedAttack;
 
+    public AudioClip hitEnemy;
+    public AudioClip hitPlayer;
+    public AudioClip burnPlayer;
 
-    [Header("Game musics: ")]
-    public AudioClip menuBackgroundMusics;
-    public AudioClip gamePlayBackgroundMusics;
+    [Header("Game sound VFX: ")]
+    public AudioClip enemySpawn;
+    public AudioClip bossSpawn;
+
+    public AudioClip playerLVLUP;
+
+    [Header("Game sounds PlayerShot: ")]
+    public AudioClip archerShot;
+    public AudioClip chesterShot;
+
+    [Header("Game sounds Unit: ")]
+    public AudioClip kunai; 
+    public AudioClip sawBlade;
+    public AudioClip sword;
+    public AudioClip droneShot;
+    public AudioClip iceDragon;
+    public AudioClip fireDragon;
+    public AudioClip spawnMine;
+    public AudioClip mineExplode;
+    public AudioClip lightning;
+    public AudioClip regenSkillTick;
+
+    [Header("Game sounds BossSkills: ")]
+    public AudioClip bigTrikeAttack;
+    public AudioClip charge;
+    public AudioClip multiShoot;
+    public AudioClip fireBreath;
+    public AudioClip lazeBreath;
+
+    [Header("Game sounds Special Enemy Attak: ")]
+    public AudioClip dash;
+    public AudioClip buff;
+    public AudioClip explode;
+
 
     private void Start()
     {
@@ -112,6 +160,45 @@ public class AudioController : Singleton<AudioController>
             musicAus.Play();
         }
     }
+
+    // ==========================
+    // 🎧 NEW: Toggle functions
+    // ==========================
+    public void ToggleMusic()
+    {
+        if (musicAus == null) return;
+
+        if (musicVolume > 0f)
+        {
+            lastMusicVolume = musicVolume;
+            musicVolume = 0f;
+        }
+        else
+        {
+            musicVolume = lastMusicVolume > 0 ? lastMusicVolume : 0.3f;
+        }
+
+        musicAus.volume = musicVolume;
+    }
+
+    public void ToggleSFX()
+    {
+        if (sfxAus == null) return;
+
+        if (sfxVolume > 0f)
+        {
+            lastSfxVolume = sfxVolume;
+            sfxVolume = 0f;
+        }
+        else
+        {
+            sfxVolume = lastSfxVolume > 0 ? lastSfxVolume : 1f;
+        }
+
+        sfxAus.volume = sfxVolume;
+    }
+    // ==========================
+
 
     /// <summary>
     /// Set volume for audiosource

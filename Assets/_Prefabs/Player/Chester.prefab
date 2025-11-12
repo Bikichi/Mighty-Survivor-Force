@@ -32643,6 +32643,7 @@ MonoBehaviour:
   anim: {fileID: 2957530214666580576}
   lastShootTime: 0
   playerStats: {fileID: 0}
+  weaponType: 0
 --- !u!114 &-694432088885682907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32657,7 +32658,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectPrefab: {fileID: 5979332343504013795, guid: 49a15e4920b6dee47b61d2f1da2be66a, type: 3}
   destroyAfter: 3
-  yOffset: 1.5
+  yOffset: 1.25
 --- !u!1 &6204548771435921291
 GameObject:
   m_ObjectHideFlags: 0

@@ -1066,7 +1066,13 @@ MonoBehaviour:
         m_CallState: 2
   deathAnimationTime: 1.2
   _anim: {fileID: 0}
-  componentsToDisable: []
+  componentsToDisable:
+  - {fileID: 6188752723617246566}
+  - {fileID: 729928483607138738}
+  - {fileID: 5513026296752081341}
+  - {fileID: 5627984459492981279}
+  - {fileID: 340286000162979055}
+  damageUIManager: {fileID: 0}
 --- !u!114 &340286000162979055
 MonoBehaviour:
   m_ObjectHideFlags: 0

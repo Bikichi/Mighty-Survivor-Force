@@ -34,6 +34,7 @@ public class RegenHPSkill : MonoBehaviour
 
             if (playerHealth.currentHealth > 0f && playerHealth.currentHealth < playerHealth.maxHealth)
             {
+                AudioController.Instance.PlaySound(AudioController.Instance.regenSkillTick);
                 float healAmount = playerHealth.maxHealth * (healPercent / 100f);
                 playerHealth.currentHealth = Mathf.Min(playerHealth.currentHealth + healAmount, playerHealth.maxHealth);
 

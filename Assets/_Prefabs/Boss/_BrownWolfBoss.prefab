@@ -535,6 +535,7 @@ MonoBehaviour:
   - {fileID: 7362635759140413201}
   - {fileID: 1632985159301262544}
   - {fileID: 8857601785228235150}
+  damageUIManager: {fileID: 0}
   attackPath: {fileID: 2243604302388190774}
   statsBars: {fileID: 7457406979399081245}
 --- !u!114 &3370930480678113787
@@ -1426,7 +1427,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4723362298815021206
 RectTransform:
   m_ObjectHideFlags: 0

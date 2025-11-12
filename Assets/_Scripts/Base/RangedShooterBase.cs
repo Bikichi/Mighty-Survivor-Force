@@ -26,11 +26,6 @@ public abstract class RangedShooterBase : MonoBehaviour
 
     protected virtual void Update()
     {
-        ShootBullet();
-    }
-
-    protected virtual void ShootBullet()
-    {
         Transform targetEnemy = CheckDistance.Instance.FindClosestEnemy();
         if (targetEnemy == null)
             return;
@@ -38,11 +33,16 @@ public abstract class RangedShooterBase : MonoBehaviour
 
         if (isReadyToShoot)
         {
-            if (anim != null)
-                anim.SetTrigger(shootParaname);
-
-            Instantiate(bulletPrefabs, shootPoint.position, shootPoint.rotation);
-            lastShootTime = Time.time;
+            ShootBullet();
         }
+    }
+
+    protected virtual void ShootBullet()
+    {
+        if (anim != null)
+            anim.SetTrigger(shootParaname);
+
+        Instantiate(bulletPrefabs, shootPoint.position, shootPoint.rotation);
+        lastShootTime = Time.time;
     }
 }

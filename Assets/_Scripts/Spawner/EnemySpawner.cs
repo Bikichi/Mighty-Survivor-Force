@@ -84,6 +84,7 @@ public class EnemySpawner : MonoBehaviour
             yield return new WaitForSeconds(2.0f);
             FindObjectOfType<ShowLearningSkillUI>().Show();
             yield return new WaitForSeconds(0.25f);
+            AudioController.Instance.PlaySound(AudioController.Instance.waveAlertSound);
             onWaveCompleted?.Invoke();
             CheckBossSpawn(waves[currentWaveIndex]);
         }
@@ -116,6 +117,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 var spawnPos = SpawnPointManager.Instance.GetSpawnPositionFarFromPlayer(unusedSpawnPoints, spawnDistance, spawnPositions);
                 Instantiate(type.enemyPrefab, spawnPos, Quaternion.identity);
+                AudioController.Instance.PlaySound(AudioController.Instance.enemySpawn);
                 enemiesAlive++;
                 type.spawnedCount++;
                 wave.totalSpawned++;

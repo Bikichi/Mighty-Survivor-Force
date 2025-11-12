@@ -25,7 +25,7 @@ public class SplitEnemySpawner : MonoBehaviour
         }
         Vector3 rightOffset = parentRotation * Vector3.right * spawnOffset;
         Vector3 leftOffset = parentRotation * Vector3.left * spawnOffset;
-
+        AudioController.Instance.PlaySound(AudioController.Instance.enemySpawn);
         Instantiate(childEnemyPrefab, parentPosition + rightOffset, parentRotation);
         Instantiate(childEnemyPrefab, parentPosition + leftOffset, parentRotation);
         enemySpawner.waves[enemySpawner.currentWaveIndex].totalSpawned += 2; //tăng tổng số quái vật đã spawn ở wave này thêm 2

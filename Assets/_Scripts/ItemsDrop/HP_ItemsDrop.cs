@@ -1,8 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class HP_ItemsDrop : MonoBehaviour
 {
-    public float moveSpeed = 100f; // tốc độ bay về player
+    public float moveSpeed = 100f;          // tốc độ bay về player
+    public GameObject healEffectPrefab;     // prefab hiệu ứng hồi máu
 
     private Transform player;
     private bool isMovingToPlayer = false;
@@ -20,6 +22,7 @@ public class HP_ItemsDrop : MonoBehaviour
             transform.position += direction * moveSpeed * Time.deltaTime;
         }
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(Const.PLAYER_TAG))
@@ -28,14 +31,8 @@ public class HP_ItemsDrop : MonoBehaviour
 
             if (playerHealth != null)
             {
-                float healAmount = playerHealth.maxHealth * 0.3f;
-                playerHealth.currentHealth += healAmount;
-
-                playerHealth.currentHealth = Mathf.Min(playerHealth.currentHealth, playerHealth.maxHealth);
-                playerHealth.onHealthChange?.Invoke(playerHealth.currentHealth, playerHealth.maxHealth);
-
-                AudioController.Instance.PlaySound(AudioController.Instance.health);
-
+                HealPlayer(playerHealth);
+                SpawnHealEffect(player);
                 Destroy(gameObject);
             }
         }
@@ -45,12 +42,45 @@ public class HP_ItemsDrop : MonoBehaviour
         }
     }
 
-
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag(Const.WALL_TAG))
         {
             isMovingToPlayer = false;
+        }
+    }
+
+    /// <summary>
+    /// Hồi máu cho người chơi và phát âm thanh.
+    /// </summary>
+    private void HealPlayer(PlayerHealth playerHealth)
+    {
+        float healAmount = playerHealth.maxHealth * 0.3f;
+        playerHealth.currentHealth += healAmount;
+        playerHealth.currentHealth = Mathf.Min(playerHealth.currentHealth, playerHealth.maxHealth);
+
+        playerHealth.onHealthChange?.Invoke(playerHealth.currentHealth, playerHealth.maxHealth);
+        AudioController.Instance.PlaySound(AudioController.Instance.health);
+    }
+
+    /// <summary>
+    /// Sinh hiệu ứng hồi máu, gắn vào Player (làm parent).
+    /// </summary>
+    private void SpawnHealEffect(Transform parent)
+    {
+        if (healEffectPrefab != null)
+        {
+            GameObject effect = Instantiate(
+                healEffectPrefab,
+                parent.position,
+                Quaternion.identity,
+                parent
+            );
+            AutoScaleDestroy auto = effect.GetComponent<AutoScaleDestroy>();
+            if (auto != null)
+            {
+                auto.StartScale(1.5f);
+            }
         }
     }
 }
