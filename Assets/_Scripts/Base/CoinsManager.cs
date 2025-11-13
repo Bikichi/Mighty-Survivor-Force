@@ -27,14 +27,4 @@ public class CoinManager : Singleton<CoinManager>
     {
         PlayerPrefs.SetInt("totalCoinValue", totalCoinValue);
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            totalCoinValue += 1000;
-            SaveCoinValue();
-            Debug.Log("+1000 coins!");
-        }
-    }
 }

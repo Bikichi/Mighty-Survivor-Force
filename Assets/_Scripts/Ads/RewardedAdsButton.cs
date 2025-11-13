@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Advertisements;
 
@@ -9,6 +9,9 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
     [SerializeField] string _iOSAdUnitId = "Rewarded_iOS";
     string _adUnitId = null; // This will remain null for unsupported platforms
 
+    [Header("Reward Type")]
+    [SerializeField] public bool isAddGold = false;
+    [SerializeField] public bool isReroll = false;
     void Awake()
     {
         // Get the Ad Unit ID for the current platform:
@@ -20,6 +23,26 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
 
         // Disable the button until the ad is ready to show:
         _showAdButton.interactable = false;
+    }
+    void Start()
+    {
+        // Nếu chế độ No Ads đang bật → bỏ qua quảng cáo
+        //không load đồng thời không show luôn, gọi thẳng Reward
+        //set _showAdButton.interactable = false; sau khi reward đảm bảo mỗi scene chỉ click được 1 lần mỗi khi khởi chạy
+        if (AdsInitializer.Instance.isNoAds)
+        {
+            Debug.Log("NoAds mode active — ads will be skipped.");  
+            _showAdButton.interactable = true;
+            _showAdButton.onClick.RemoveAllListeners();
+            _showAdButton.onClick.AddListener(GrantReward);
+            return;
+        }
+
+        // Nếu quảng cáo đã được khởi tạo → load
+        if (Advertisement.isInitialized)
+        {
+            LoadAd();
+        }
     }
 
     // Call this public method when you want to get an ad ready to show.
@@ -47,10 +70,27 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
     // Implement a method to execute when the user clicks the button:
     public void ShowAd()
     {
-        // Disable the button:
-        _showAdButton.interactable = false;
         // Then show the ad:
         Advertisement.Show(_adUnitId, this);
+    }
+
+     private void GrantReward()
+    {
+        _showAdButton.interactable = false;
+
+        if (isAddGold)
+        {
+            CoinManager.Instance.totalCoinValue += 10;
+            CoinManager.Instance.SaveCoinValue();
+
+            CoinUIManager coinUI = FindObjectOfType<CoinUIManager>();
+            coinUI.UpdateCoinUI();
+        }
+
+        if (isReroll)
+        {
+            FindAnyObjectByType<ShowLearningSkillUI>().ReRoll();
+        }
     }
 
     // Implement the Show Listener's OnUnityAdsShowComplete callback method to determine if the user gets a reward:
@@ -58,8 +98,10 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
     {
         if (adUnitId.Equals(_adUnitId) && showCompletionState.Equals(UnityAdsShowCompletionState.COMPLETED))
         {
+            if (AdsInitializer.Instance.isNoAds)
+                return;
             Debug.Log("Unity Ads Rewarded Ad Completed");
-            // Grant a reward.
+            GrantReward();
         }
     }
 
