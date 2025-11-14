@@ -1519,7 +1519,6 @@ GameObject:
   - component: {fileID: 3939}
   - component: {fileID: 4878}
   - component: {fileID: 4882}
-  - component: {fileID: 4887}
   m_Layer: 5
   m_Name: View - MasterMenu
   m_TagString: Untagged
@@ -2873,6 +2872,7 @@ GameObject:
   - component: {fileID: 2922}
   - component: {fileID: 5414}
   - component: {fileID: 5415}
+  - component: {fileID: 5416}
   m_Layer: 5
   m_Name: MenuUICanvas
   m_TagString: Untagged
@@ -9569,7 +9569,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4887}
+      - m_Target: {fileID: 5416}
         m_TargetAssemblyTypeName: SettingsUIController, Assembly-CSharp
         m_MethodName: ShowSettings
         m_Mode: 1
@@ -9874,7 +9874,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4887}
+      - m_Target: {fileID: 5416}
         m_TargetAssemblyTypeName: SettingsUIController, Assembly-CSharp
         m_MethodName: HideSettings
         m_Mode: 1
@@ -11704,20 +11704,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e68c7a0c367a32f48a03b9bf1b119095, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  settingsPanel: {fileID: 597}
-  buyAdsPanel: {fileID: 1487043328}
 --- !u!114 &4889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13323,6 +13309,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &5416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e68c7a0c367a32f48a03b9bf1b119095, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settingsPanel: {fileID: 597}
+  buyAdsPanel: {fileID: 1487043328}
 --- !u!114 &5417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13721,6 +13721,7 @@ GameObject:
   - component: {fileID: 67414189}
   - component: {fileID: 67414191}
   - component: {fileID: 67414190}
+  - component: {fileID: 67414192}
   m_Layer: 5
   m_Name: Button - Buy
   m_TagString: Untagged
@@ -13792,7 +13793,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 67414192}
+        m_TargetAssemblyTypeName: BuyNoAdsButton, Assembly-CSharp
+        m_MethodName: OnBuyNoAdsButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!225 &67414191
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -13805,6 +13818,21 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &67414192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67414188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c14e8364695cb0c42b6dd8ceebb49684, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buyButton: {fileID: 67414190}
+  buttonText: {fileID: 1058570069}
+  canvasGroup: {fileID: 67414191}
 --- !u!1 &76196160
 GameObject:
   m_ObjectHideFlags: 0
@@ -15632,7 +15660,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4887}
+      - m_Target: {fileID: 5416}
         m_TargetAssemblyTypeName: SettingsUIController, Assembly-CSharp
         m_MethodName: ShowBuyAds
         m_Mode: 1
@@ -19765,7 +19793,7 @@ GameObject:
   - component: {fileID: 1058570070}
   - component: {fileID: 1058570069}
   m_Layer: 5
-  m_Name: Big_Text
+  m_Name: TextMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19810,7 +19838,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Buy now
+  m_text: BUY NOW
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
@@ -25488,7 +25516,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4887}
+      - m_Target: {fileID: 5416}
         m_TargetAssemblyTypeName: SettingsUIController, Assembly-CSharp
         m_MethodName: HideBuyAds
         m_Mode: 1

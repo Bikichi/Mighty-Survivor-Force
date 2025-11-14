@@ -14,11 +14,17 @@ public class PlayerStats : MonoBehaviour
     public event Action onCritMultiplierChanged;
 
     [Header("Base Stats")]
-    public float maxHP = 100f;
-    public float baseDamage = 10f;
-    public float baseShootCooldown = 1.5f;
-    public float baseAttackRange = 20f;
-    public float baseMoveSpeed = 10f;
+    public float maxHP;
+    public float baseDamage;
+    public float baseShootCooldown;
+    public float baseAttackRange;
+    public float baseMoveSpeed;
+
+    [Header("DEFAULT Stats (Auto Cache)")]
+    public float defaultMaxHP;
+    public float defaultDamage;
+    public float defaultMoveSpeed;
+    public float defaultShootCooldown;
 
     [Header("Combat Stats")]
     [Range(0f, 100f)] public float baseDodgeChance = 0f;   // %

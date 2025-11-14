@@ -1089,13 +1089,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034b0cf6e8aa9604fb010a875b57b7df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 110
-  baseDamage: 30
-  baseShootCooldown: 1.3
+  maxHP: 0
+  baseDamage: 0
+  baseShootCooldown: 0
   baseAttackRange: 16
-  baseMoveSpeed: 11
-  baseDodgeChance: 0.1
-  baseCritChance: 0.1
+  baseMoveSpeed: 0
+  defaultMaxHP: 90
+  defaultDamage: 20
+  defaultMoveSpeed: 9
+  defaultShootCooldown: 1.4
+  baseDodgeChance: 10
+  baseCritChance: 10
   baseCritMultiplier: 2
 --- !u!114 &9190129465528163001
 MonoBehaviour:

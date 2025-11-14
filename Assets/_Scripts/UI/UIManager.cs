@@ -27,6 +27,7 @@ public class UIManager : MonoBehaviour
     #region Skill Panel
     public void ShowSkillPanel()
     {
+        AudioController.Instance.PlaySound(AudioController.Instance.UI_ButtonsClick);
         Time.timeScale = 0f;
         skillPanel.SetActive(true);
     }

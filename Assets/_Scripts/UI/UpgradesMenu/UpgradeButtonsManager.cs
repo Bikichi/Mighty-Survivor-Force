@@ -46,8 +46,6 @@ public class UpgradeButtonsManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            ResetStatsPlayerInPlayerPref();
-            Debug.Log("Stats player đã được reset!, TẤT BẬT LẠI EDITOR ĐỂ LOAD LẠI");
             ResetAllButtons();
         }
     }
@@ -154,39 +152,6 @@ public class UpgradeButtonsManager : MonoBehaviour
         PlayerPrefs.SetFloat($"Character_{index}_Speed", stats.baseMoveSpeed);
         PlayerPrefs.SetFloat($"Character_{index}_Cooldown", stats.baseShootCooldown);
         PlayerPrefs.Save();
-    }
-
-    //lưu toàn bộ nhân vật
-    private void SaveCurrentStats()
-    {
-        for (int i = 0; i < characterSelection.characters.Length; i++)
-        {
-            var characterPrefab = characterSelection.characters[i].characterPrefab;
-            var stats = characterPrefab.GetComponent<PlayerStats>();
-            SaveStatsForCharacter(i, stats);
-        }
-    }
-
-    private void ResetStatsPlayerInPlayerPref()
-    {
-        for (int i = 0; i < characterSelection.characters.Length; i++)
-        {
-            PlayerPrefs.DeleteKey($"Character_{i}_HP");
-            PlayerPrefs.DeleteKey($"Character_{i}_Damage");
-            PlayerPrefs.DeleteKey($"Character_{i}_Speed");
-            PlayerPrefs.DeleteKey($"Character_{i}_Cooldown");
-        }
-
-        PlayerPrefs.Save();
-
-        foreach (var b in buttons)
-        {
-            b.isPurchased = false;
-            if (b.purchasedBG != null)
-                b.purchasedBG.SetActive(false);
-
-            b.button.interactable = true;
-        }
     }
     private void ResetAllButtons()
     {

@@ -38,12 +38,18 @@ public class CharacterSelectionManager : MonoBehaviour
 
     #region Select & Display
 
+
+    private void Start()
+    {
+        LoadAllStatsCharacters();
+    }
     private void Update()
     {
         // Nhấn R → reset tất cả nhân vật unlock
         if (Input.GetKeyDown(KeyCode.S))
         {
             ResetAllUnlocks();
+            ResetAllStatsCharacters();
         }
     }
 
@@ -190,6 +196,73 @@ public class CharacterSelectionManager : MonoBehaviour
         Debug.Log("Reset all character unlocks!");
     }
 
+    public void LoadAllStatsCharacters()
+    {
+        for (int i = 0; i < characters.Length; i++)
+        {
+            var characterPrefab = characters[i].characterPrefab;
+            var stats = characterPrefab.GetComponent<PlayerStats>();
+
+            // Kiểm tra xem key đã tồn tại hay chưa, nếu chưa thì dùng default
+            stats.maxHP = PlayerPrefs.HasKey($"Character_{i}_HP")
+                ? PlayerPrefs.GetFloat($"Character_{i}_HP")
+                : stats.defaultMaxHP;
+
+            stats.baseDamage = PlayerPrefs.HasKey($"Character_{i}_Damage")
+                ? PlayerPrefs.GetFloat($"Character_{i}_Damage")
+                : stats.defaultDamage;
+
+            stats.baseMoveSpeed = PlayerPrefs.HasKey($"Character_{i}_Speed")
+                ? PlayerPrefs.GetFloat($"Character_{i}_Speed")
+                : stats.defaultMoveSpeed;
+
+            stats.baseShootCooldown = PlayerPrefs.HasKey($"Character_{i}_Cooldown")
+                ? PlayerPrefs.GetFloat($"Character_{i}_Cooldown")
+                : stats.defaultShootCooldown;
+
+            // Cập nhật lại các notify để gameplay nhận giá trị đúng
+            stats.NotifyMaxHealthChanged();
+            stats.NotifyDamageChanged();
+            stats.NotifyMoveSpeedChanged();
+            stats.NotifyShootCooldownChanged();
+        }
+
+        Debug.Log("All character stats have been loaded from PlayerPrefs (or defaults if none exist).");
+    }
+
+
+    // Reset toàn bộ stats của tất cả nhân vật về giá trị gốc (mặc định trong prefab)
+    public void ResetAllStatsCharacters()
+    {
+        for (int i = 0; i < characters.Length; i++)
+        {
+            // Xóa PlayerPrefs
+            PlayerPrefs.DeleteKey($"Character_{i}_HP");
+            PlayerPrefs.DeleteKey($"Character_{i}_Damage");
+            PlayerPrefs.DeleteKey($"Character_{i}_Speed");
+            PlayerPrefs.DeleteKey($"Character_{i}_Cooldown");
+
+            // Lấy prefab nhân vật và component stats
+            var characterPrefab = characters[i].characterPrefab;
+            var stats = characterPrefab.GetComponent<PlayerStats>();
+
+            // Khôi phục về giá trị gốc trong prefab (nếu bạn có biến default)
+            stats.maxHP = stats.defaultMaxHP;
+            stats.baseDamage = stats.defaultDamage;
+            stats.baseMoveSpeed = stats.defaultMoveSpeed;
+            stats.baseShootCooldown = stats.defaultShootCooldown;
+
+            // Gọi Notify để gameplay nhận giá trị đúng
+            stats.NotifyMaxHealthChanged();
+            stats.NotifyDamageChanged();
+            stats.NotifyMoveSpeedChanged();
+            stats.NotifyShootCooldownChanged();
+        }
+
+        PlayerPrefs.Save();
+
+        Debug.Log("All character stats have been RESET to default values.");
+    }
 
     #endregion
 }

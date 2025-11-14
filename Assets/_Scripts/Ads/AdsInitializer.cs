@@ -8,7 +8,9 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
     [SerializeField] bool _testMode = true;
     private string _gameId;
 
+    // Trạng thái NoAds
     [SerializeField] public bool isNoAds = false;
+
     public static AdsInitializer Instance { get; private set; }
 
     void Awake()
@@ -23,6 +25,8 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
+        LoadNoAdsState();     //Load trạng thái NoAds trước
+
         InitializeAds();
     }
 
@@ -35,12 +39,48 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
 #elif UNITY_EDITOR
         _gameId = _androidGameId; //Only for testing the functionality in the Editor
 #endif
-        if (!Advertisement.isInitialized && Advertisement.isSupported)
+        if (!isNoAds)  //Chỉ init Ads nếu chưa mua NoAds
         {
-            Advertisement.Initialize(_gameId, _testMode, this);
+            if (!Advertisement.isInitialized && Advertisement.isSupported)
+            {
+                Advertisement.Initialize(_gameId, _testMode, this);
+            }
         }
     }
 
+    public void BuyNoAds()
+    {
+        isNoAds = true;
+        PlayerPrefs.SetInt("NoAds", 1);
+        PlayerPrefs.Save();
+
+        Debug.Log("No Ads purchased. Ads disabled.");
+    }
+
+    private void LoadNoAdsState()
+    {
+        isNoAds = PlayerPrefs.GetInt("NoAds", 0) == 1;
+        Debug.Log("Load NoAds State: " + isNoAds);
+    }
+
+    public void ResetNoAds()
+    {
+        PlayerPrefs.DeleteKey("NoAds");
+        PlayerPrefs.Save();
+
+        isNoAds = false;
+
+        Debug.Log("NoAds reset. Ads enabled again.");
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ResetNoAds();
+            Debug.Log("Pressed R → ResetNoAds()");
+        }
+    }
 
     public void OnInitializationComplete()
     {
