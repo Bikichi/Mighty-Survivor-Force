@@ -953,32 +953,38 @@ MonoBehaviour:
   health: {fileID: 8300000, guid: c48a972d3d024c2408a3331750786a29, type: 3}
   enemyMeleeAttack: {fileID: 8300000, guid: ef2f5a9cf24ce4a4e916acc368acb1fc, type: 3}
   enemyRangedAttack: {fileID: 8300000, guid: 15d85f7583587fe4694232b9d3af001d, type: 3}
+  enemyDeath: {fileID: 8300000, guid: 566d2ea6240b489479a6e9fd608c2621, type: 3}
   hitEnemy: {fileID: 8300000, guid: d9419ba0bfac1e84a95418ac5851caf6, type: 3}
   hitBoss: {fileID: 8300000, guid: 7c47b20bb9874304a809dc5580d403ba, type: 3}
   hitPlayer: {fileID: 8300000, guid: 8b23b175a78d6b5458322e3a6c9905d0, type: 3}
+  hitMissPlayer: {fileID: 8300000, guid: f11db4559b3ffff45b62e9327fc5535d, type: 3}
   burnPlayer: {fileID: 8300000, guid: a652877b012108e41871f867ada9f176, type: 3}
   enemySpawn: {fileID: 8300000, guid: 1d74880bed4586644a16a79a2d9dc8af, type: 3}
   bossSpawn: {fileID: 8300000, guid: a1a637e8c2d88c247a59583f7b0d66dd, type: 3}
   playerLVLUP: {fileID: 8300000, guid: b1b9c1f0ea1fcae439ed1a4d44ff05fd, type: 3}
-  archerShot: {fileID: 8300000, guid: 56703418e3aed4c47a5f6622816b8e41, type: 3}
+  archerShot: {fileID: 8300000, guid: bf6b281a661731a4bb08737544f4f1a7, type: 3}
   chesterShot: {fileID: 8300000, guid: af66162561d2eed40ad49268cab318bb, type: 3}
-  kunai: {fileID: 0}
-  sawBlade: {fileID: 0}
-  sword: {fileID: 0}
-  droneShot: {fileID: 0}
-  iceDragon: {fileID: 0}
-  fireDragon: {fileID: 0}
-  spawnMine: {fileID: 0}
-  mineExplode: {fileID: 0}
-  lightning: {fileID: 0}
+  kunaiFly: {fileID: 8300000, guid: 8514d85ffe684b141a74d0c5c46888c4, type: 3}
+  weaponsSpin: {fileID: 8300000, guid: 224af083795c4424e87a882c15b901d5, type: 3}
+  sword: {fileID: 8300000, guid: 8514d85ffe684b141a74d0c5c46888c4, type: 3}
+  droneShot: {fileID: 8300000, guid: e00c8c5fd3f729842bd4b9c94131799f, type: 3}
+  iceDragon: {fileID: 8300000, guid: 5c7b6d4002009e842bd2621585546d19, type: 3}
+  fireDragon: {fileID: 8300000, guid: 5c7b6d4002009e842bd2621585546d19, type: 3}
+  spawnMine: {fileID: 8300000, guid: c5cb2ac29e89dbf43a9b644caaad45e6, type: 3}
+  mineExplode: {fileID: 8300000, guid: fd6e563eadd2aae458d942273642c66a, type: 3}
+  lightning: {fileID: 8300000, guid: 02930ca11d7ca7b47ab08039e20ca538, type: 3}
   regenSkillTick: {fileID: 8300000, guid: cfce0cea076109f478783201b2a9f57f, type: 3}
-  charge: {fileID: 0}
-  multiShoot: {fileID: 0}
-  fireBreath: {fileID: 0}
-  lazeBreath: {fileID: 0}
-  dash: {fileID: 0}
-  buff: {fileID: 0}
-  explode: {fileID: 0}
+  charge: {fileID: 8300000, guid: c91fcf414acc0344cb03b13996f1bf3b, type: 3}
+  multiShoot: {fileID: 8300000, guid: 15d85f7583587fe4694232b9d3af001d, type: 3}
+  fireBreath: {fileID: 8300000, guid: 15d85f7583587fe4694232b9d3af001d, type: 3}
+  lazeBreath: {fileID: 8300000, guid: 4310474905e266640852f43bd609a1a4, type: 3}
+  bossPreCharge: {fileID: 8300000, guid: 681e5aae8ccf0a349878840dea63609e, type: 3}
+  bossStartPhase2: {fileID: 8300000, guid: b0e62ed71b1538648b719821f4f63b4c, type: 3}
+  bossPrePhase2: {fileID: 8300000, guid: a1a637e8c2d88c247a59583f7b0d66dd, type: 3}
+  bossExplode: {fileID: 8300000, guid: 054e1889406b82c419a99b0a61ba7139, type: 3}
+  dash: {fileID: 8300000, guid: 95abc412a4359834a9d054d8cc3ad065, type: 3}
+  buff: {fileID: 8300000, guid: 78ad99fd0a0a5144280b07bbdba84815, type: 3}
+  explode: {fileID: 8300000, guid: 054e1889406b82c419a99b0a61ba7139, type: 3}
 --- !u!1 &1931790662
 GameObject:
   m_ObjectHideFlags: 0

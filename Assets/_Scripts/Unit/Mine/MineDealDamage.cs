@@ -53,6 +53,7 @@ public class MineDealDamage : MonoBehaviour
 
     private void BlowObjects()
     {
+        AudioController.Instance.PlaySound(AudioController.Instance.mineExplode);
         Collider[] affectedObjects = Physics.OverlapSphere(transform.position, explosionRadius);
 
         for (int i = 0; i < affectedObjects.Length; i++)

@@ -46,6 +46,7 @@ public class SpawnMine : MonoBehaviour
             }
         }
         Vector3 spawnPos = playerTransform.position;
+        AudioController.Instance.PlaySound(AudioController.Instance.spawnMine);
         var newMine = Instantiate(minePrefab, spawnPos, Quaternion.identity);
         Destroy(newMine, destroyInterval);
 

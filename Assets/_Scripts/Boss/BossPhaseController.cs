@@ -49,6 +49,8 @@ public class BossPhaseController : MonoBehaviour, ISkillStatus
     {
         isPrePhase2Active = true;
 
+        AudioController.Instance.PlaySoundMultipleTimes(AudioController.Instance.bossPrePhase2, 2, prePhase2Duration / 2);
+
         BossFireBreath fireBreath = GetComponent<BossFireBreath>();
         if (fireBreath != null)
             fireBreath.StopFire();

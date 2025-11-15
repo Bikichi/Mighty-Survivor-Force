@@ -57,6 +57,7 @@ public class LightningUnit : MonoBehaviour
     {
         if (enemies == null || enemies.Length == 0) return;
 
+        AudioController.Instance.PlaySound(AudioController.Instance.lightning);
         foreach (EnemyMovement enemy in enemies)
         {
             if (enemy == null) continue;

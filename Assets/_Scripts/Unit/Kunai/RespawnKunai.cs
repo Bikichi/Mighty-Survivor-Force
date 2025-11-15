@@ -29,6 +29,11 @@ public class RespawnKunai : MonoBehaviour
             skillModuleManager = FindAnyObjectByType<SkillModuleManager>();
     }
 
+    //private void OnEnable()
+    //{
+    //    AudioController.Instance.PlaySoundMultipleTimes(AudioController.Instance.weaponsSpin, 2, 2f);
+    //}
+
     private void Start()
     {
         totalKunai = GetComponentsInChildren<KunaiFlyForward>().Length;
@@ -48,6 +53,8 @@ public class RespawnKunai : MonoBehaviour
     private IEnumerator RespawnKunaiGroup()
     {
         yield return new WaitForSeconds(respawnDelay);
+
+        //AudioController.Instance.PlaySoundMultipleTimes(AudioController.Instance.weaponsSpin, 2, 2f);
 
         Transform kunaiUnitParent = transform.parent;
 

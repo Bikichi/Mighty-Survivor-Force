@@ -1446,7 +1446,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1000
   currentHealth: 0
-  defense: 20
+  defense: 15
   onHealthChange:
     m_PersistentCalls:
       m_Calls: []
@@ -1468,6 +1468,7 @@ MonoBehaviour:
   deathAnimationTime: 1
   _anim: {fileID: 5265821192481451426}
   componentsToDisable: []
+  damageUIManager: {fileID: 0}
 --- !u!114 &7376467540423699401
 MonoBehaviour:
   m_ObjectHideFlags: 0

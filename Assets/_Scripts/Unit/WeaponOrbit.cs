@@ -33,7 +33,6 @@ public class WeaponOrbit : MonoBehaviour
         if (skillManager != null)
             skillManager.OnSkillLevelUp -= UpdateOrbitSpeed;
     }
-
     private void UpdateOrbitSpeed(ScriptableObject skill, int skillLevel)
     {
         if (skill.name != relatedSkillName) return;

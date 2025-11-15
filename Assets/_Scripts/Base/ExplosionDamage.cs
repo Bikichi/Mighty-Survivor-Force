@@ -9,6 +9,7 @@ public class ExplosionDamage : MonoBehaviour
 
     private void Start()
     {
+        AudioController.Instance.PlaySound(AudioController.Instance.bossExplode);
         DealDamage();
     }
 

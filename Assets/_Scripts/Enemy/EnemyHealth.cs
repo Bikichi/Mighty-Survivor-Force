@@ -39,6 +39,7 @@ public class EnemyHealth : LivingEntity
     protected override void Die()
     {
         base.Die();
+        AudioController.Instance.PlaySound(AudioController.Instance.enemyDeath);
         DisableEnemyActions();
         StartCoroutine(HandleDeath());
 

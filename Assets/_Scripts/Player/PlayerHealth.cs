@@ -46,29 +46,43 @@ public class PlayerHealth : LivingEntity
 
     public override void TakeDamage(float damage, bool isCrit = false)
     {
-        AudioController.Instance.PlaySound(AudioController.Instance.hitPlayer);
+
         // cập nhật tỉ lệ né trực tiếp từ PlayerStats
         float dodgeChance = playerStats.baseDodgeChance / 100f;
         if (Random.value < dodgeChance)
         {
+            AudioController.Instance.PlaySound(AudioController.Instance.hitMissPlayer);
             ShowMissText();
             return;
         }
-
+        AudioController.Instance.PlaySound(AudioController.Instance.hitPlayer);
         base.TakeDamage(damage);
         onTakeDamage?.Invoke();
     }
 
     public void TakeDamageFromBeam(float damage)
     {
-        AudioController.Instance.PlaySound(AudioController.Instance.burnPlayer);
-        base.TakeDamage(damage);
+        //nếu damage <= 0 thì bỏ qua
+        if (damage <= 0f) return;
+
+        //đặt min damage = 0.02 cho beam
+        float finalDamage = Mathf.Max(damage - defense, 0.0333f);
+
+        currentHealth = Mathf.Max(currentHealth - finalDamage, 0);
+        onHealthChange?.Invoke(currentHealth, maxHealth);
+
+        if (currentHealth <= 0 && !IsDead)
+        {
+            Die();
+        }
+
         onTakeDamage?.Invoke();
     }
 
     private void ShowMissText()
     {
-        GameObject missObj = Instantiate(missTextPrefab);
+        GameObject parent = GameObject.Find("DodgeUI");
+        GameObject missObj = Instantiate(missTextPrefab, parent.transform);
         Collider colPlayer = GetComponent<Collider>();
         missObj.transform.position = colPlayer.bounds.center + new Vector3(0, colPlayer.bounds.size.y * 0.6f, 0);
         missObj.GetComponent<FloatingText>().Setup("Dodge", Color.yellow);

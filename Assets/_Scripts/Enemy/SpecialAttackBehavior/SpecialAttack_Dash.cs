@@ -49,6 +49,7 @@ public class SpecialAttack_Dash : SpecialAttackBehavior
 
         yield return new WaitForSeconds(prepareDelay);
 
+        AudioController.Instance.PlaySoundMultipleTimes(AudioController.Instance.dash, 3, dashDuration / 3);
         anim.SetBool(prepareAnimationBool, false);
         anim.SetBool(dashAnimationBool, true);
         move.lerpSpeed = 0f;

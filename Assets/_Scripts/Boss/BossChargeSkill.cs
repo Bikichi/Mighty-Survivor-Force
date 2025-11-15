@@ -64,6 +64,7 @@ public class BossChargeSkill : MonoBehaviour, ISkillStatus
 
     private void BeginWindUp()
     {
+        AudioController.Instance.PlaySoundMultipleTimes(AudioController.Instance.bossPreCharge, 3, windUpTime/3);
         attackPath.SetActive(true);
         anim.SetBool(preChargeParaname, true);
         isWindUp = true;
@@ -87,6 +88,7 @@ public class BossChargeSkill : MonoBehaviour, ISkillStatus
     {
         if (!isWindUp && !isCharging)
         {
+            AudioController.Instance.PlaySound(AudioController.Instance.charge);
             BeginWindUp();
         }
     }

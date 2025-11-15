@@ -47,6 +47,7 @@ public class SpecialAttack_Buff : SpecialAttackBehavior
 
         yield return new WaitForSeconds(prepareDelay);
 
+        AudioController.Instance.PlaySound(AudioController.Instance.buff);
         skinnedMeshRenderer.material = buffMaterial;
 
         anim.SetBool(prepareAnimationBool, false);

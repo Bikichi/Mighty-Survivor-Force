@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Advertisements;
 
 public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
@@ -11,6 +12,7 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
     // Trạng thái NoAds
     [SerializeField] public bool isNoAds = false;
 
+    public event Action OnNoAdsPurchased;
     public static AdsInitializer Instance { get; private set; }
 
     void Awake()
@@ -53,6 +55,8 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
         isNoAds = true;
         PlayerPrefs.SetInt("NoAds", 1);
         PlayerPrefs.Save();
+
+        OnNoAdsPurchased?.Invoke();
 
         Debug.Log("No Ads purchased. Ads disabled.");
     }

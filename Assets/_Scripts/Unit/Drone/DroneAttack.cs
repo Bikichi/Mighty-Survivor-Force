@@ -30,6 +30,7 @@ public class DroneAttack : RangedShooterBase
         for (int i = 0; i < count; i++)
         {
             Instantiate(bulletPrefabs, shootPoint.position, shootPoint.rotation);
+            AudioController.Instance.PlaySound(AudioController.Instance.droneShot);
             if (i < count - 1) //khi viên cuối bắn ra thì không cần chờ nữa
                 yield return new WaitForSeconds(multiShootDelay);
         }

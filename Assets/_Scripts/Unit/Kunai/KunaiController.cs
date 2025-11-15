@@ -21,6 +21,7 @@ public class KunaiController : MonoBehaviour
     private IEnumerator HandleKunaiState()
     {
         yield return new WaitForSeconds(delayBeforeFly);
+        AudioController.Instance.PlaySound(AudioController.Instance.kunaiFly);
         orbit.canOrbit = false;
         canFly = true;
     }

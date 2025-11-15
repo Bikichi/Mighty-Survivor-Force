@@ -84,6 +84,8 @@ public class SwordController : UnitFollowerBase
                 isReturning = false;
                 lastAttackTime = Time.time;
 
+                AudioController.Instance.PlaySound(AudioController.Instance.sword);
+
                 float enemyHeight = targetEnemy.GetComponent<Collider>().bounds.size.y;
                 Vector3 enemyHeadPosition = targetEnemy.position + new Vector3(0, enemyHeight / 2, 0);
 
@@ -106,6 +108,7 @@ public class SwordController : UnitFollowerBase
             {
                 isAttacking = false;
                 isReturning = true;
+                AudioController.Instance.PlaySound(AudioController.Instance.sword);
             }
         }
     }
@@ -114,6 +117,7 @@ public class SwordController : UnitFollowerBase
     {
         if (!isAttacking && isReturning)
         {
+
             Vector3 returnPosition = player.position + currentOffset;
             float distance = Vector3.Distance(transform.position, returnPosition);
             transform.position = Vector3.MoveTowards(transform.position, returnPosition, returnSpeed * Time.deltaTime);

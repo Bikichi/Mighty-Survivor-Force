@@ -52,6 +52,7 @@ public class BossFireBreath : MonoBehaviour, ISkillStatus
     {
         if (timer >= fireDuration)
         {
+            AudioController.Instance.PlaySoundMultipleTimes(AudioController.Instance.fireBreath, 15, fireDuration / 15);
             StopFire();
             timer = 0f; //reset timer để bắt đầu cooldown
         }

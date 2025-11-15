@@ -35,7 +35,7 @@ public class SpecialAttack_Explode : SpecialAttackBehavior
         GetComponent<EnemyMovement>().enabled = false;
 
         yield return new WaitForSeconds(prepareDelay);
-
+        AudioController.Instance.PlaySound(AudioController.Instance.explode);
         anim.SetBool(prepareAnimationBool, false);
 
         if (explosionEffect != null)

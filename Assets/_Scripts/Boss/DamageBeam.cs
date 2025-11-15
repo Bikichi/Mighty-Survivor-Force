@@ -4,7 +4,7 @@
 public class DamageBeam : MonoBehaviour
 {
     [Header("Damage Settings")]
-    public float damagePerSecond = 20f;
+    public float damagePerSecond;
 
     [SerializeField] private PlayerHealth playerInZone;
     [SerializeField] private Collider col;
@@ -20,6 +20,7 @@ public class DamageBeam : MonoBehaviour
         PlayerHealth player = other.GetComponent<PlayerHealth>(); //tìm kiếm PlayerHealth trong other 
         if (player != null) //player != null tức là other có PlayerHealth, other chính là Player hay nói cách khác other có tag là "Player"
         {
+            AudioController.Instance.PlaySound(AudioController.Instance.burnPlayer);
             playerInZone = player;
         }
     }
@@ -41,7 +42,8 @@ public class DamageBeam : MonoBehaviour
     {
         if (playerInZone != null)
         {
-            playerInZone.TakeDamageFromBeam(damagePerSecond * Time.deltaTime);
+            float damageThisFrame = damagePerSecond * Time.deltaTime; //nhớ công thức
+            playerInZone.TakeDamageFromBeam(damageThisFrame);
         }
     }
 }

@@ -24,6 +24,7 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
         // Disable the button until the ad is ready to show:
         _showAdButton.interactable = false;
     }
+
     void Start()
     {
         // Nếu chế độ No Ads đang bật → bỏ qua quảng cáo
@@ -31,10 +32,7 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
         //set _showAdButton.interactable = false; sau khi reward đảm bảo mỗi scene chỉ click được 1 lần mỗi khi khởi chạy
         if (AdsInitializer.Instance.isNoAds)
         {
-            Debug.Log("NoAds mode active — ads will be skipped.");  
-            _showAdButton.interactable = true;
-            _showAdButton.onClick.RemoveAllListeners();
-            _showAdButton.onClick.AddListener(GrantReward);
+            ApplyNoAdsMode();
             return;
         }
 
@@ -43,6 +41,24 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
         {
             LoadAd();
         }
+    }
+
+    private void OnEnable()
+    {
+        AdsInitializer.Instance.OnNoAdsPurchased += ApplyNoAdsMode;
+    }
+
+    private void OnDisable()
+    {
+        AdsInitializer.Instance.OnNoAdsPurchased -= ApplyNoAdsMode;
+    }
+    private void ApplyNoAdsMode()
+    {
+        Debug.Log("Applying NO ADS mode to RewardedAdsButton");
+
+        _showAdButton.interactable = true;
+        _showAdButton.onClick.RemoveAllListeners();
+        _showAdButton.onClick.AddListener(GrantReward);
     }
 
     // Call this public method when you want to get an ad ready to show.

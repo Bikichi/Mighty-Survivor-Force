@@ -12,7 +12,7 @@ public class FireBalls : PlayerBullet
     protected override void Start()
     {
         base.Start();
-
+        AudioController.Instance.PlaySound(AudioController.Instance.fireDragon);
         // Lấy PlayerStats từ CurrentPlayerInstance
         playerStats = ActivePlayerManager.Instance.CurrentPlayerInstance.GetComponent<PlayerStats>();
         damageBullet = playerStats.baseDamage * damageMultiplier;

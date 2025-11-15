@@ -47,10 +47,12 @@ public class AudioController : Singleton<AudioController>
     [Header("Game sounds Battle: ")]
     public AudioClip enemyMeleeAttack;
     public AudioClip enemyRangedAttack;
+    public AudioClip enemyDeath;
 
     public AudioClip hitEnemy;
     public AudioClip hitBoss;
     public AudioClip hitPlayer;
+    public AudioClip hitMissPlayer;
     public AudioClip burnPlayer;
 
     [Header("Game sound VFX: ")]
@@ -64,8 +66,8 @@ public class AudioController : Singleton<AudioController>
     public AudioClip chesterShot;
 
     [Header("Game sounds Unit: ")]
-    public AudioClip kunai; 
-    public AudioClip sawBlade;
+    public AudioClip kunaiFly;
+    public AudioClip weaponsSpin;
     public AudioClip sword;
     public AudioClip droneShot;
     public AudioClip iceDragon;
@@ -80,6 +82,10 @@ public class AudioController : Singleton<AudioController>
     public AudioClip multiShoot;
     public AudioClip fireBreath;
     public AudioClip lazeBreath;
+    public AudioClip bossPreCharge;
+    public AudioClip bossStartPhase2;
+    public AudioClip bossPrePhase2;
+    public AudioClip bossExplode;
 
     [Header("Game sounds Special Enemy Attak: ")]
     public AudioClip dash;
@@ -127,6 +133,7 @@ public class AudioController : Singleton<AudioController>
             aus.PlayOneShot(clip, sfxVolume);
         }
     }
+
 
     /// <summary>
     /// Play Music

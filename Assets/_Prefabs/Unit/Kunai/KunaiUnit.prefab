@@ -69,8 +69,9 @@ MonoBehaviour:
   baseOrbitSpeed: 250
   speedIncreasePercent: 10
   followOffset: {x: 0.1, y: 0, z: 0}
-  orbitSpeed: 0
   skillManager: {fileID: 0}
+  canOrbit: 1
+  orbitSpeed: 0
 --- !u!1001 &339928149359311733
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -164,7 +165,7 @@ PrefabInstance:
     - target: {fileID: -2073533859628525493, guid: 4aaa5a0b1a9edc14fb8d81b37a9474bf, type: 3}
       propertyPath: kunaiGroupPrefab
       value: 
-      objectReference: {fileID: 126816733237000876}
+      objectReference: {fileID: 0}
     - target: {fileID: 2082054853978015569, guid: 4aaa5a0b1a9edc14fb8d81b37a9474bf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -211,18 +212,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4252014603944044442, guid: 4aaa5a0b1a9edc14fb8d81b37a9474bf, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4aaa5a0b1a9edc14fb8d81b37a9474bf, type: 3}
---- !u!1 &126816733237000876 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4252014603944044442, guid: 4aaa5a0b1a9edc14fb8d81b37a9474bf, type: 3}
-  m_PrefabInstance: {fileID: 4233590240607018294}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2748403308821338727 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2082054853978015569, guid: 4aaa5a0b1a9edc14fb8d81b37a9474bf, type: 3}

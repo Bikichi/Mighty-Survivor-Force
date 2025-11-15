@@ -56,6 +56,7 @@ public class BossMultiShoot : MonoBehaviour, ISkillStatus
 
     public void FireMulti()
     {
+        AudioController.Instance.PlaySound(AudioController.Instance.multiShoot);
         isShooting = true;
         bossAnimator.SetTrigger(shootTriggerName);
         foreach (Transform spawn in spawnPoints)
