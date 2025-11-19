@@ -5893,14 +5893,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae8dab888db044eb33135dd0b21c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 1
+  cost: 300
   value: 10
   type: 1
   button: {fileID: 155736082}
   icon: {fileID: 21300000, guid: 942d7338aa48c8f4d83648ae48b88fde, type: 2}
   purchasedBG: {fileID: 813245628}
   isPurchased: 0
-  buttonIndex: 0
+  buttonIndex: 3
 --- !u!224 &3367
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7130,14 +7130,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae8dab888db044eb33135dd0b21c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 1
+  cost: 200
   value: 1
   type: 2
   button: {fileID: 189369574}
   icon: {fileID: 21300000, guid: ae6352687935d3a439037152b8537864, type: 2}
   purchasedBG: {fileID: 1525673977}
   isPurchased: 0
-  buttonIndex: 0
+  buttonIndex: 2
 --- !u!224 &3562
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8626,7 +8626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae8dab888db044eb33135dd0b21c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 1
+  cost: 50
   value: 0.1
   type: 3
   button: {fileID: 4753}
@@ -9001,14 +9001,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae8dab888db044eb33135dd0b21c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 1
+  cost: 100
   value: 20
   type: 0
   button: {fileID: 707900595}
   icon: {fileID: 21300000, guid: 5c22dee7f07341d488b7718abdb5945e, type: 2}
   purchasedBG: {fileID: 554271280}
   isPurchased: 0
-  buttonIndex: 0
+  buttonIndex: 1
 --- !u!224 &3860
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10480,6 +10480,7 @@ MonoBehaviour:
   upgradeIcon: {fileID: 346348198}
   purchaseButton: {fileID: 1287919538}
   purchaseButtonCanvasGroup: {fileID: 1287919539}
+  purchasedText: {fileID: 1089767528}
   playerModels:
   - {fileID: 408658134}
   - {fileID: 1762015050}
@@ -11259,7 +11260,7 @@ MonoBehaviour:
     characterModel: {fileID: 1981309472062174206}
     characterPrefab: {fileID: 1981309472699212516, guid: 985b2b450b4243548b31c3faf048840b, type: 3}
     isUnlocked: 0
-    unlockCost: 1
+    unlockCost: 9999
   - characterName: COMING SOON
     characterModel: {fileID: 1452555644404866}
     characterPrefab: {fileID: 1452553761990968, guid: f6a956915692ee04db89cd1da943e2a8, type: 3}
@@ -13702,14 +13703,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae8dab888db044eb33135dd0b21c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 1
+  cost: 400
   value: 20
   type: 0
   button: {fileID: 498680129}
   icon: {fileID: 21300000, guid: b9fd9fd33e027424e8b99934f28eea01, type: 3}
   purchasedBG: {fileID: 394005447}
   isPurchased: 0
-  buttonIndex: 0
+  buttonIndex: 4
 --- !u!1 &67414188
 GameObject:
   m_ObjectHideFlags: 0
@@ -13979,6 +13980,7 @@ GameObject:
   - component: {fileID: 81121202}
   - component: {fileID: 81121201}
   - component: {fileID: 81121200}
+  - component: {fileID: 81121203}
   m_Layer: 5
   m_Name: Achievement - Button
   m_TagString: Untagged
@@ -14048,19 +14050,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 81121201}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: RewardedAds, Assembly-CSharp
-        m_MethodName: ShowRewardedAd
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &81121201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14099,6 +14089,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 81121198}
   m_CullTransparentMesh: 1
+--- !u!114 &81121203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81121198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6f96b5ad535d884f80af3361bfc5932, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openAchievementButton: {fileID: 81121200}
+  achievementSceneName: Achievement
 --- !u!1 &97478151
 GameObject:
   m_ObjectHideFlags: 0
@@ -15943,14 +15947,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae8dab888db044eb33135dd0b21c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 1
+  cost: 900
   value: 1
   type: 2
   button: {fileID: 893327166}
   icon: {fileID: 21300000, guid: ae6352687935d3a439037152b8537864, type: 2}
   purchasedBG: {fileID: 1752490934}
   isPurchased: 0
-  buttonIndex: 0
+  buttonIndex: 9
 --- !u!1 &394005447
 GameObject:
   m_ObjectHideFlags: 0
@@ -17870,6 +17874,7 @@ GameObject:
   - component: {fileID: 740566186}
   - component: {fileID: 740566185}
   - component: {fileID: 740566184}
+  - component: {fileID: 740566187}
   m_Layer: 5
   m_Name: Leaderboad - Button
   m_TagString: Untagged
@@ -17939,19 +17944,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 740566185}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: RewardedAds, Assembly-CSharp
-        m_MethodName: ShowRewardedAd
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &740566185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17990,6 +17983,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 740566182}
   m_CullTransparentMesh: 1
+--- !u!114 &740566187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740566182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3495d2fd9684a844896adccdff6e7c0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openLeaderboardButton: {fileID: 740566184}
+  leaderboardSceneName: Leaderboard
+  asyncLoaderPrefab: {fileID: 2227350392011767865, guid: 22202f5a83d3cf048a07d8200485d81e, type: 3}
 --- !u!1 &810508616
 GameObject:
   m_ObjectHideFlags: 0
@@ -18621,6 +18629,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 893327164}
   m_CullTransparentMesh: 1
+--- !u!1 &897320666
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 897320668}
+  - component: {fileID: 897320667}
+  m_Layer: 0
+  m_Name: ScoreManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &897320667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897320666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4432232633b646c478ebbcca4f7ffb28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalKills: 0
+--- !u!4 &897320668
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897320666}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 895.25, y: 382.8413, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &914100097
 GameObject:
   m_ObjectHideFlags: 0
@@ -19144,14 +19197,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae8dab888db044eb33135dd0b21c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 1
+  cost: 800
   value: 10
   type: 1
   button: {fileID: 1564652033}
   icon: {fileID: 21300000, guid: 71aea309a963f4748a8b76254f385904, type: 3}
   purchasedBG: {fileID: 243227735}
   isPurchased: 0
-  buttonIndex: 0
+  buttonIndex: 8
 --- !u!1 &952945635
 GameObject:
   m_ObjectHideFlags: 0
@@ -19564,14 +19617,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae8dab888db044eb33135dd0b21c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 1
+  cost: 600
   value: 20
   type: 0
   button: {fileID: 1270467609}
   icon: {fileID: 21300000, guid: b9fd9fd33e027424e8b99934f28eea01, type: 3}
   purchasedBG: {fileID: 534800061}
   isPurchased: 0
-  buttonIndex: 0
+  buttonIndex: 6
 --- !u!1 &994806138
 GameObject:
   m_ObjectHideFlags: 0
@@ -20003,12 +20056,12 @@ GameObject:
   - component: {fileID: 1089767531}
   - component: {fileID: 1089767530}
   m_Layer: 5
-  m_Name: Purchases_Text (1)
+  m_Name: 'Purchased_Text '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1089767529
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22956,6 +23009,7 @@ MonoBehaviour:
   _showAdButton: {fileID: 1554688700}
   _androidAdUnitId: Rewarded_Android
   _iOSAdUnitId: Rewarded_iOS
+  _adsIcon: {fileID: 0}
   isAddGold: 1
   isReroll: 0
 --- !u!1 &1555573179
@@ -23705,14 +23759,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae8dab888db044eb33135dd0b21c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 1
+  cost: 100
   value: 10
   type: 1
   button: {fileID: 1544126655}
   icon: {fileID: 21300000, guid: 942d7338aa48c8f4d83648ae48b88fde, type: 2}
   purchasedBG: {fileID: 1431127605}
   isPurchased: 0
-  buttonIndex: 0
+  buttonIndex: 10
 --- !u!114 &1626398605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24035,14 +24089,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae8dab888db044eb33135dd0b21c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 1
+  cost: 500
   value: 10
   type: 1
   button: {fileID: 1988900051}
   icon: {fileID: 21300000, guid: 71aea309a963f4748a8b76254f385904, type: 3}
   purchasedBG: {fileID: 484041678}
   isPurchased: 0
-  buttonIndex: 0
+  buttonIndex: 5
 --- !u!1 &1665757645
 GameObject:
   m_ObjectHideFlags: 0
@@ -24276,14 +24330,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae8dab888db044eb33135dd0b21c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 1
+  cost: 700
   value: 0.1
   type: 3
   button: {fileID: 172505941}
   icon: {fileID: 21300000, guid: a58f361e7787b9644bccb896acd99e1d, type: 2}
   purchasedBG: {fileID: 2126710672}
   isPurchased: 0
-  buttonIndex: 0
+  buttonIndex: 7
 --- !u!1 &1752490934
 GameObject:
   m_ObjectHideFlags: 0
@@ -27312,6 +27366,7 @@ SceneRoots:
   - {fileID: 1320}
   - {fileID: 1321}
   - {fileID: 457680276}
+  - {fileID: 897320668}
   - {fileID: 1322}
   - {fileID: 1324}
   - {fileID: 3898}

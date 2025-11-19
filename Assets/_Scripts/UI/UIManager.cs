@@ -34,7 +34,7 @@ public class UIManager : MonoBehaviour
 
     public void HideSkillPanel()
     {
-        Time.timeScale = 1f;
+        Time.timeScale = SpeedButton.CurrentSpeed;
         skillPanel.SetActive(false);
     }
     #endregion
@@ -65,7 +65,7 @@ public class UIManager : MonoBehaviour
         // chỉ resume nếu skillPanel không bật
         if (!skillPanel.activeSelf)
         {
-            Time.timeScale = 1f;
+            Time.timeScale = SpeedButton.CurrentSpeed;
         }
         AudioController.Instance.PlaySound(AudioController.Instance.UI_ButtonsClick);
         pausePanel.SetActive(false);
@@ -91,7 +91,7 @@ public class UIManager : MonoBehaviour
 
     public void HideGameOver()
     {
-        Time.timeScale = 1f;
+        Time.timeScale = SpeedButton.CurrentSpeed;
         gameOverPanel.SetActive(false);
     }
     #endregion
@@ -106,7 +106,7 @@ public class UIManager : MonoBehaviour
     }
     public void HideGameComplete()
     {
-        Time.timeScale = 1f;
+        Time.timeScale = SpeedButton.CurrentSpeed;
         gameCompletePanel.SetActive(false);
     }
 
@@ -114,6 +114,7 @@ public class UIManager : MonoBehaviour
 
     public void ExitToHome()
     {
+        SpeedButton.CurrentSpeed = 1f;
         Time.timeScale = 1f;
         AudioController.Instance.PlaySound(AudioController.Instance.UI_ButtonsClick);
         if (asyncLoaderPrefab != null)
@@ -131,7 +132,7 @@ public class UIManager : MonoBehaviour
     #region Retry
     public void RetryScene()
     {
-        Time.timeScale = 1f;
+        SpeedButton.CurrentSpeed = 1f;
         AudioController.Instance.PlaySound(AudioController.Instance.UI_ButtonsClick);
         Scene currentScene = SceneManager.GetActiveScene();
 

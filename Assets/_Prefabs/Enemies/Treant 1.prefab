@@ -700,9 +700,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca8d883a57f3414a803641df6ad81cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 600
+  maxHealth: 200
   currentHealth: 0
-  defense: 10
+  defense: 2
   onHealthChange:
     m_PersistentCalls:
       m_Calls: []
@@ -749,6 +749,7 @@ MonoBehaviour:
   lerpSpeed: 10
   stoppingDistance: 2.5
   checkInterval: 0.05
+  isMovementDisabled: 0
 --- !u!114 &94987589701145454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -854,7 +855,7 @@ MonoBehaviour:
   coinPrefab: {fileID: 1880245074145146, guid: 81848b6677705f2418649c87a28b45d4, type: 3}
   coinDropChance: 0.5
   healthPrefab: {fileID: 4581376860598887516, guid: b8638e2d0f157a147a3afc1423c92c30, type: 3}
-  healthDropChance: 0.15
+  healthDropChance: 0.1
   minCoins: 5
   maxCoins: 10
   areaCenter: {x: 0.02, y: 1.58, z: -2.5}
@@ -1569,7 +1570,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3796314691554373621
 Transform:
   m_ObjectHideFlags: 0
@@ -1668,7 +1669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea107619e373ddf4ebee6c1fdac729c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyDamage: 70
+  enemyDamage: 50
 --- !u!1 &7223584684022511953
 GameObject:
   m_ObjectHideFlags: 0

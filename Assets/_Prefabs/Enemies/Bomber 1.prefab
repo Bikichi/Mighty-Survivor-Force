@@ -5793,7 +5793,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca8d883a57f3414a803641df6ad81cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 7
   currentHealth: 0
   defense: 9999
   onHealthChange:
@@ -5801,10 +5801,23 @@ MonoBehaviour:
       m_Calls: []
   onDeath:
     m_PersistentCalls:
-      m_Calls: []
-  deathAnimationTime: 0
+      m_Calls:
+      - m_Target: {fileID: 6414705695726070387}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: isDead
+          m_BoolArgument: 0
+        m_CallState: 2
+  deathAnimationTime: 1.5
   _anim: {fileID: 0}
-  componentsToDisable: []
+  componentsToDisable:
+  - {fileID: 4623354068955882609}
   damageUIManager: {fileID: 0}
 --- !u!114 &4623354068955882609
 MonoBehaviour:
@@ -5826,6 +5839,7 @@ MonoBehaviour:
   lerpSpeed: 10
   stoppingDistance: 2
   checkInterval: 0.05
+  isMovementDisabled: 0
 --- !u!114 &1108835056736545368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5856,7 +5870,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prepareDelay: 1.5
   explosionRadius: 5.29
-  explosionDamage: 80
+  explosionDamage: 40
   explosionEffect: {fileID: 1176654089724485879, guid: cab88b38088bbd44cb3ddd5243c4ea41, type: 3}
   explosionArea: {fileID: 7243765428123010116}
   prepareAnimationBool: Prepare

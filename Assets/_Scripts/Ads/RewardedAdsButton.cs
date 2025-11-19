@@ -9,6 +9,8 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
     [SerializeField] string _iOSAdUnitId = "Rewarded_iOS";
     string _adUnitId = null; // This will remain null for unsupported platforms
 
+
+    [SerializeField] private GameObject _adsIcon;
     [Header("Reward Type")]
     [SerializeField] public bool isAddGold = false;
     [SerializeField] public bool isReroll = false;
@@ -23,6 +25,9 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
 
         // Disable the button until the ad is ready to show:
         _showAdButton.interactable = false;
+        if (_adsIcon != null)
+            _adsIcon.SetActive(false);
+
     }
 
     void Start()
@@ -57,6 +62,8 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
         Debug.Log("Applying NO ADS mode to RewardedAdsButton");
 
         _showAdButton.interactable = true;
+        if (_adsIcon != null)
+            _adsIcon.SetActive(true);
         _showAdButton.onClick.RemoveAllListeners();
         _showAdButton.onClick.AddListener(GrantReward);
     }
@@ -80,6 +87,8 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
             _showAdButton.onClick.AddListener(ShowAd);
             // Enable the button for users to click:
             _showAdButton.interactable = true;
+            if (_adsIcon != null)
+                _adsIcon.SetActive(true);
         }
     }
 
@@ -90,12 +99,15 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
         Advertisement.Show(_adUnitId, this);
     }
 
-     private void GrantReward()
+    private void GrantReward()
     {
         _showAdButton.interactable = false;
+        if (_adsIcon != null)
+            _adsIcon.SetActive(false);
 
         if (isAddGold)
         {
+            AudioController.Instance.PlaySound(AudioController.Instance.collectCoin);
             CoinManager.Instance.totalCoinValue += 10;
             CoinManager.Instance.SaveCoinValue();
 

@@ -27,4 +27,20 @@ public class CoinManager : Singleton<CoinManager>
     {
         PlayerPrefs.SetInt("totalCoinValue", totalCoinValue);
     }
+    public void ResetAllData()
+    {
+        totalCoinValue = 0;
+
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
+
+        Debug.Log("PlayerPrefs cleared. Coin reset to 0.");
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ResetAllData();
+        }
+    }
 }

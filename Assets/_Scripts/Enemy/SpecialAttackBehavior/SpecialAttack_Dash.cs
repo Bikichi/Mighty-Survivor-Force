@@ -36,25 +36,23 @@ public class SpecialAttack_Dash : SpecialAttackBehavior
     {
         isAttacking = true;
 
-        //tạm dừng di chuyển
         EnemyMovement move = GetComponent<EnemyMovement>();
-        float originalSpeed;
-        float originalLerpSpeed;
-
-        originalSpeed = move.enemyMoveSpeed;
-        originalLerpSpeed = move.lerpSpeed;
-        move.enemyMoveSpeed = 0f;
+        float originalLerpSpeed = move.lerpSpeed;
+        // Tắt movement trong lúc chuẩn bị dash
+        move.isMovementDisabled = true;
 
         anim.SetBool(prepareAnimationBool, true);
 
         yield return new WaitForSeconds(prepareDelay);
 
+        // Bắt đầu dash
         AudioController.Instance.PlaySoundMultipleTimes(AudioController.Instance.dash, 3, dashDuration / 3);
         anim.SetBool(prepareAnimationBool, false);
         anim.SetBool(dashAnimationBool, true);
+
         move.lerpSpeed = 0f;
 
-        Vector3 direction = (target.position - self.position).normalized;
+        Vector3 direction = (target.position - transform.position).normalized;
 
         damageArea.SetActive(true);
 
@@ -63,18 +61,20 @@ public class SpecialAttack_Dash : SpecialAttackBehavior
         {
             if (GetComponent<EnemyHealth>().IsDead)
                 yield break;
+
             rb.velocity = direction * dashSpeed;
             timer += Time.deltaTime;
             yield return null;
         }
-        rb.velocity = Vector3.zero;
 
+        rb.velocity = Vector3.zero;
         damageArea.SetActive(false);
 
-        move.enemyMoveSpeed = originalSpeed;
         move.lerpSpeed = originalLerpSpeed;
+        move.isMovementDisabled = false;
 
         anim.SetBool(dashAnimationBool, false);
         isAttacking = false;
     }
+
 }

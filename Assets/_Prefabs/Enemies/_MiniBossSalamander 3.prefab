@@ -21214,7 +21214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1349039440326145702}
   - component: {fileID: 2461864858552355694}
-  - component: {fileID: 7886990123576320738}
+  - component: {fileID: 9184455813514263733}
   - component: {fileID: 5381405722864629960}
   - component: {fileID: 7724029115360542334}
   - component: {fileID: 8785106408818426411}
@@ -21280,14 +21280,14 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!135 &7886990123576320738
-SphereCollider:
+--- !u!136 &9184455813514263733
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6417650926075035654}
-  m_Material: {fileID: 13400000, guid: 473bd586f493ac74fae126a8727d465c, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -21298,9 +21298,11 @@ SphereCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.8
-  m_Center: {x: 0, y: 0.36, z: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1.75
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &5381405722864629960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21313,9 +21315,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca8d883a57f3414a803641df6ad81cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 4000
+  maxHealth: 1000
   currentHealth: 0
-  defense: 12
+  defense: 3
   onHealthChange:
     m_PersistentCalls:
       m_Calls: []
@@ -21361,6 +21363,7 @@ MonoBehaviour:
   lerpSpeed: 10
   stoppingDistance: 3.5
   checkInterval: 0.05
+  isMovementDisabled: 0
 --- !u!114 &8785106408818426411
 MonoBehaviour:
   m_ObjectHideFlags: 0

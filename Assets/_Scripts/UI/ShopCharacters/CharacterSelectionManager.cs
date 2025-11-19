@@ -227,7 +227,7 @@ public class CharacterSelectionManager : MonoBehaviour
             stats.NotifyShootCooldownChanged();
         }
 
-        Debug.Log("All character stats have been loaded from PlayerPrefs (or defaults if none exist).");
+        //Debug.Log("All character stats have been loaded from PlayerPrefs (or defaults if none exist).");
     }
 
 

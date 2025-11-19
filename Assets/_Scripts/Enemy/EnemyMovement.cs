@@ -20,6 +20,7 @@ public class EnemyMovement : MonoBehaviour
 
     private Vector3 lastPosition;
     protected bool isMoving;
+    public bool isMovementDisabled = false;
 
     private void Start()
     {
@@ -51,6 +52,10 @@ public class EnemyMovement : MonoBehaviour
 
     protected virtual void MoveEnemy()
     {
+        if (isMovementDisabled)
+        {
+            return;
+        }
         Vector3 direction = (targetPlayer.transform.position - transform.position).normalized;
         direction.y = 0; // chỉ di chuyển theo chiều ngang
 

@@ -1,21 +1,41 @@
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BestTimeManager : MonoBehaviour
 {
-    private const string BEST_TIME_KEY = "BestTime";
+    private const string BEST_TIME_KEY_PREFIX = "BestTime_";
 
-    public float GetBestTime()
+
+    private string GetKeyForScene(string sceneName)
     {
-        return PlayerPrefs.GetFloat(BEST_TIME_KEY, float.MaxValue);
+        return BEST_TIME_KEY_PREFIX + sceneName;
+    }
+
+    private string GetKeyForCurrentScene()
+    {
+        return GetKeyForScene(SceneManager.GetActiveScene().name);
+    }
+
+    public float GetBestTimeCurrentScene()
+    {
+        string key = GetKeyForCurrentScene();
+        return PlayerPrefs.GetFloat(key, float.MaxValue);
+    }
+
+    public float GetBestTimeForScene(string sceneName)
+    {
+        string key = GetKeyForScene(sceneName);
+        return PlayerPrefs.GetFloat(key, float.MaxValue);
     }
 
     public void SaveIfBest(float newTime)
     {
-        float best = GetBestTime();
+        string key = GetKeyForCurrentScene();
+        float best = GetBestTimeCurrentScene();
 
         if (newTime < best)
         {
-            PlayerPrefs.SetFloat(BEST_TIME_KEY, newTime);
+            PlayerPrefs.SetFloat(key, newTime);
             PlayerPrefs.Save();
         }
     }
@@ -32,6 +52,14 @@ public class BestTimeManager : MonoBehaviour
 
     public void ResetBestTime()
     {
-        PlayerPrefs.DeleteKey(BEST_TIME_KEY);
+        string key = GetKeyForCurrentScene();
+        PlayerPrefs.DeleteKey(key);
     }
+
+    public void ResetBestTimeForScene(string sceneName)
+    {
+        string key = GetKeyForScene(sceneName);
+        PlayerPrefs.DeleteKey(key);
+    }
+
 }

@@ -16,10 +16,12 @@ public class UpgradePanelUI : MonoBehaviour
     [Header("Purchase Button UI")]
     public Button purchaseButton;
     public CanvasGroup purchaseButtonCanvasGroup;
+    public GameObject purchasedText;
 
     [Header("Player Models UI")]
     public GameObject[] playerModels;
 
+    [Header("References Button Data")]
     private UpgradeButtonData currentButton;
 
     public void Show(UpgradeButtonData buttonData, float currentStat)
@@ -57,6 +59,7 @@ public class UpgradePanelUI : MonoBehaviour
         bool canPurchase = CoinManager.Instance.totalCoinValue >= currentButton.cost && !currentButton.isPurchased;
         purchaseButton.interactable = canPurchase;
         purchaseButton.gameObject.SetActive(!currentButton.isPurchased);
+        purchasedText.gameObject.SetActive(currentButton.isPurchased);
 
         purchaseButtonCanvasGroup.alpha = canPurchase ? 1f : 0.5f;
         purchaseButtonCanvasGroup.blocksRaycasts = canPurchase;

@@ -983,7 +983,7 @@ CapsuleCollider:
   m_Radius: 1
   m_Height: 1
   m_Direction: 1
-  m_Center: {x: 0, y: 0.57, z: 0.3}
+  m_Center: {x: 0, y: 0.8, z: 0.3}
 --- !u!54 &5672183146542396557
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1031,6 +1031,7 @@ MonoBehaviour:
   lerpSpeed: 10
   stoppingDistance: 20
   checkInterval: 0.05
+  isMovementDisabled: 0
 --- !u!114 &6608983698216811983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1043,9 +1044,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca8d883a57f3414a803641df6ad81cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 200
+  maxHealth: 40
   currentHealth: 0
-  defense: 2
+  defense: 0
   onHealthChange:
     m_PersistentCalls:
       m_Calls: []
@@ -1125,7 +1126,7 @@ MonoBehaviour:
   coinPrefab: {fileID: 1880245074145146, guid: 81848b6677705f2418649c87a28b45d4, type: 3}
   coinDropChance: 0.5
   healthPrefab: {fileID: 0}
-  healthDropChance: 0.1
+  healthDropChance: 0.05
   minCoins: 5
   maxCoins: 10
   areaCenter: {x: 0.02, y: 1.58, z: -2.5}

@@ -41,34 +41,31 @@ public class SpecialAttack_Buff : SpecialAttackBehavior
         isBuffing = true;
 
         anim.SetBool(prepareAnimationBool, true);
-
-        float originalSpeed = movement.enemyMoveSpeed;
-        movement.enemyMoveSpeed = 0f;
+        movement.isMovementDisabled = true;
 
         yield return new WaitForSeconds(prepareDelay);
 
         AudioController.Instance.PlaySound(AudioController.Instance.buff);
-        skinnedMeshRenderer.material = buffMaterial;
-
+        
         anim.SetBool(prepareAnimationBool, false);
+        skinnedMeshRenderer.material = buffMaterial;
+        movement.isMovementDisabled = false;
 
-        movement.enemyMoveSpeed = originalSpeed;
-        movement.enemyMoveSpeed *= speedMultiplier;
+        float originalSpeed = movement.enemyMoveSpeed;
 
+        movement.enemyMoveSpeed = originalSpeed * speedMultiplier;
         attack.attackDamage *= damageMultiplier;
-
         attack.attackCooldown *= cooldownMultiplier;
 
         yield return new WaitForSeconds(buffDuration);
 
         skinnedMeshRenderer.material = originalMaterial;
 
-        movement.enemyMoveSpeed /= speedMultiplier;
-
+        movement.enemyMoveSpeed = originalSpeed;
         attack.attackDamage /= damageMultiplier;
-
         attack.attackCooldown /= cooldownMultiplier;
 
         isBuffing = false;
     }
+
 }

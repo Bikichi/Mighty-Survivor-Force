@@ -1679,7 +1679,7 @@ MonoBehaviour:
   targetPlayer: {fileID: 0}
   anim: {fileID: 0}
   attackPoint: {fileID: 4487135373187091629}
-  attackDamage: 120
+  attackDamage: 40
   attackTimer: 0
   attackCooldown: 2
   attackRanged: 6
@@ -2731,9 +2731,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d964ad1eb7f5014484053c3468f015f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 30000
+  maxHealth: 7000
   currentHealth: 0
-  defense: 15
+  defense: 7
   onHealthChange:
     m_PersistentCalls:
       m_Calls: []
@@ -2785,6 +2785,7 @@ MonoBehaviour:
   lerpSpeed: 8
   stoppingDistance: 5.9
   checkInterval: 0.05
+  isMovementDisabled: 0
   bossSkills:
   - {fileID: 2640274177501680838}
   - {fileID: 1879404320822655176}
@@ -2829,7 +2830,7 @@ MonoBehaviour:
   - {fileID: 7440290394671188070}
   - {fileID: 5841130995081272193}
   bulletPrefab: {fileID: 2825169026703870844, guid: db90f7097caf4e74bb5504d7f7d72fba, type: 3}
-  fireCooldown: 3
+  fireCooldown: 6
   fireTimer: 0
   isShooting: 0
   bossAnimator: {fileID: 211888154905498082}
@@ -2853,7 +2854,7 @@ MonoBehaviour:
   enemyMovement: {fileID: 7914920682783904966}
   slowTimer: 0
   currentSlowPercent: 0
-  maxSlowPercent: 0
+  maxSlowPercent: 35
   vfxInstance: {fileID: 0}
   vfxPoint: {fileID: 4487135373187091629}
 --- !u!114 &5291666042336396825
@@ -2872,7 +2873,7 @@ MonoBehaviour:
   burnTimer: 0
   currentDamage: 0
   maxDamage: 0
-  maxDamagePercent: 3
+  maxDamagePercent: 5
   vfxInstance: {fileID: 0}
   vfxPoint: {fileID: 4487135373187091629}
 --- !u!114 &6309332657933419739
@@ -2888,9 +2889,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinPrefab: {fileID: 1880245074145146, guid: 81848b6677705f2418649c87a28b45d4, type: 3}
-  coinDropChance: 0.5
+  coinDropChance: 1
   healthPrefab: {fileID: 4581376860598887516, guid: b8638e2d0f157a147a3afc1423c92c30, type: 3}
-  healthDropChance: 0.2
+  healthDropChance: 1
   minCoins: 5
   maxCoins: 10
   areaCenter: {x: 0.02, y: 1.58, z: -2.5}

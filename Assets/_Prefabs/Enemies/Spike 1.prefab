@@ -13733,6 +13733,7 @@ MonoBehaviour:
   lerpSpeed: 10
   stoppingDistance: 2
   checkInterval: 0.05
+  isMovementDisabled: 0
 --- !u!114 &8717380183846545915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13745,7 +13746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca8d883a57f3414a803641df6ad81cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 30
   currentHealth: 0
   defense: 0
   onHealthChange:
@@ -13828,7 +13829,7 @@ MonoBehaviour:
   coinPrefab: {fileID: 1880245074145146, guid: 81848b6677705f2418649c87a28b45d4, type: 3}
   coinDropChance: 0.5
   healthPrefab: {fileID: 4581376860598887516, guid: b8638e2d0f157a147a3afc1423c92c30, type: 3}
-  healthDropChance: 0.1
+  healthDropChance: 0
   minCoins: 5
   maxCoins: 10
   areaCenter: {x: 0.02, y: 1.58, z: -2.5}
@@ -14420,7 +14421,7 @@ MonoBehaviour:
   targetPlayer: {fileID: 0}
   anim: {fileID: 1915859285371239603}
   attackPoint: {fileID: 5227369519336421102}
-  attackDamage: 25
+  attackDamage: 10
   attackTimer: 0
   attackCooldown: 1
   attackRanged: 2.15

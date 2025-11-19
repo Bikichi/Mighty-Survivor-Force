@@ -12,7 +12,7 @@ public class EnemySpawner : MonoBehaviour
     [Header("Runtime Data")]
     public int enemiesAlive;
     public int currentWaveIndex;
-    public float totalEnemiesKilled;
+    public int totalEnemiesKilled;
     
     [SerializeField] private GameObject waveAlertUI;
     [SerializeField] private ScoreUI scoreUI;
@@ -140,6 +140,7 @@ public class EnemySpawner : MonoBehaviour
     {
         enemiesAlive--;
         totalEnemiesKilled++;;
+        ScoreManager.Instance.AddKill();
 
         scoreUI.UpdateScoreUI();
 

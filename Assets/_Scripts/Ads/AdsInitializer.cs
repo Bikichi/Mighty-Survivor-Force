@@ -64,7 +64,7 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
     private void LoadNoAdsState()
     {
         isNoAds = PlayerPrefs.GetInt("NoAds", 0) == 1;
-        Debug.Log("Load NoAds State: " + isNoAds);
+        //Debug.Log("Load NoAds State: " + isNoAds);
     }
 
     public void ResetNoAds()
@@ -79,16 +79,16 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.A))
         {
             ResetNoAds();
-            Debug.Log("Pressed R → ResetNoAds()");
+            Debug.Log("Pressed A → ResetNoAds()");
         }
     }
 
     public void OnInitializationComplete()
     {
-        Debug.Log("Unity Ads initialization complete.");
+        //Debug.Log("Unity Ads initialization complete.");
     }
 
     public void OnInitializationFailed(UnityAdsInitializationError error, string message)

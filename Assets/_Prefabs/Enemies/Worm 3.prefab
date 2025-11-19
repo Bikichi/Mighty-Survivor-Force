@@ -1444,9 +1444,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca8d883a57f3414a803641df6ad81cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1500
+  maxHealth: 700
   currentHealth: 0
-  defense: 20
+  defense: 5
   onHealthChange:
     m_PersistentCalls:
       m_Calls: []
@@ -1489,6 +1489,7 @@ MonoBehaviour:
   lerpSpeed: 10
   stoppingDistance: 9999
   checkInterval: 0.05
+  isMovementDisabled: 0
 --- !u!114 &1783935919286827098
 MonoBehaviour:
   m_ObjectHideFlags: 0
