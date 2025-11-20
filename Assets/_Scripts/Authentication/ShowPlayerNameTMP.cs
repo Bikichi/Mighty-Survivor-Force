@@ -11,7 +11,7 @@ public class ShowPlayerNameTMP : MonoBehaviour
     {
         if (playerNameText == null)
             return;
-
+        await Task.Delay(100); // chờ domain ổn định
         // Đợi cho tới khi Authentication chắc chắn đã đăng nhập
         await WaitForSignedIn();
 

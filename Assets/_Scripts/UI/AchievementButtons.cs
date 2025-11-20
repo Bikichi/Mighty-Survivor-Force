@@ -1,34 +1,26 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class AchievementButtons : MonoBehaviour
 {
-    [SerializeField] private Button openAchievementButton;
-    [SerializeField] private string achievementSceneName = "Achievement"; // tên scene Achievement
+    [SerializeField] private AchievenmentListIngame achievementUI;
 
-    private void Awake()
+    private void Start()
     {
-        if (openAchievementButton != null)
-        {
-            openAchievementButton.onClick.AddListener(OpenAchievementScene);
-        }
-        else
-        {
-            Debug.LogWarning("Button chưa được gán trong AchievementButtons!");
-        }
+        achievementUI = FindObjectOfType<AchievenmentListIngame>();
     }
 
-    private void OpenAchievementScene()
+    public void Open()
     {
-        if (!string.IsNullOrEmpty(achievementSceneName))
-        {
-            SceneManager.LoadScene(achievementSceneName);
-        }
-        else
-        {
-            Debug.LogWarning("Tên Scene Achievement chưa được đặt!");
-        }
+        achievementUI.OpenWindow();
     }
 
+    public void Close()
+    {
+        achievementUI.CloseWindow();
+    }
+
+    public void Toggle()
+    {
+        achievementUI.ToggleWindow();
+    }
 }

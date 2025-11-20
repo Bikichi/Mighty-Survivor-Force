@@ -14,6 +14,7 @@ public class LeaderboardsMenu : Panel
     [SerializeField] private Button nextButton = null;
     [SerializeField] private Button prevButton = null;
     [SerializeField] private Button closeButton = null;
+    [SerializeField] private GameObject asyncLoaderPrefab;
     private int lastRecordedKills = 0;
 
     private int currentPage = 1;
@@ -44,7 +45,7 @@ public class LeaderboardsMenu : Panel
         int totalKills = ScoreManager.Instance.GetTotalKills();
         int newKills = totalKills - lastRecordedKills;
 
-        Debug.Log($"TotalKills = {totalKills}, LastRecordedKills = {lastRecordedKills}, NewKills = {newKills}");
+        //Debug.Log($"TotalKills = {totalKills}, LastRecordedKills = {lastRecordedKills}, NewKills = {newKills}");
 
         newKills = Mathf.Max(newKills, 0);
 
@@ -123,7 +124,17 @@ public class LeaderboardsMenu : Panel
     private void ClosePanel()
     {
         base.Close(); // Tắt panel hiện tại
-        SceneManager.LoadScene("_MainMenuScene"); // Load lại scene chính
+        if (asyncLoaderPrefab != null)
+        {
+            GameObject loaderGO = Instantiate(asyncLoaderPrefab);
+            AsyncSceneLoader loader = loaderGO.GetComponent<AsyncSceneLoader>();
+            loader.StartLoadScene("_MainMenuScene");
+        }
+        else
+        {
+            SceneManager.LoadScene("_MainMenuScene");
+        }
+
     }
 
     private void ClearPlayersList()

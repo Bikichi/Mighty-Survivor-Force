@@ -51,6 +51,10 @@ public class AsyncSceneLoader : MonoBehaviour
         {
             AudioController.Instance.PlayMusic(AudioController.Instance.menuBackgroundMusics, true);
         }
+        else if(sceneName.Contains("Leaderboard")) 
+        {
+            AudioController.Instance.PlayMusic(AudioController.Instance.learderboardBackgroundMusics, true);
+        } 
         else
         {
             AudioController.Instance.PlaySound(AudioController.Instance.waveAlertSound);

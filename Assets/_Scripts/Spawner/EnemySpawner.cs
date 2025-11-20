@@ -144,6 +144,9 @@ public class EnemySpawner : MonoBehaviour
 
         scoreUI.UpdateScoreUI();
 
+        AchievementManager.Instance.AddAchievementProgress("kill10Enemies", 1f);
+        AchievementManager.Instance.AddAchievementProgress("kill100Enemies", 1f);
+
         WaveData currentWave = waves[currentWaveIndex];
         currentWave.enemiesKilled++;
 

@@ -286,6 +286,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3069}
   - component: {fileID: 2137}
+  - component: {fileID: 3070}
   m_Layer: 5
   m_Name: Topdrop
   m_TagString: Untagged
@@ -5218,6 +5219,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6f96b5ad535d884f80af3361bfc5932, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  achievementUI: {fileID: 0}
 --- !u!224 &3077
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13980,7 +13994,6 @@ GameObject:
   - component: {fileID: 81121202}
   - component: {fileID: 81121201}
   - component: {fileID: 81121200}
-  - component: {fileID: 81121203}
   m_Layer: 5
   m_Name: Achievement - Button
   m_TagString: Untagged
@@ -14050,7 +14063,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 81121201}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3070}
+        m_TargetAssemblyTypeName: AchievementButtons, Assembly-CSharp
+        m_MethodName: Open
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &81121201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14089,20 +14114,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 81121198}
   m_CullTransparentMesh: 1
---- !u!114 &81121203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 81121198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6f96b5ad535d884f80af3361bfc5932, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  openAchievementButton: {fileID: 81121200}
-  achievementSceneName: Achievement
 --- !u!1 &97478151
 GameObject:
   m_ObjectHideFlags: 0

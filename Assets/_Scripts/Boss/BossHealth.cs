@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BossHealth : EnemyHealth
 {
+    [SerializeField] private int bossIndex; // 0 = Boss1, 1 = Boss2, 2 = Boss3
     [SerializeField] private GameObject attackPath;
     [SerializeField] private GameObject statsBars;
     protected override void Start()
@@ -52,7 +53,7 @@ public class BossHealth : EnemyHealth
         {
             lootDrop.DropBossLoot(transform.position, transform.rotation);
         }
-
+        BossAchievementManager.UnlockBoss(bossIndex);
         Destroy(gameObject);
     }
 

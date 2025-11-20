@@ -18,12 +18,14 @@ public class LeaderboardButtons : MonoBehaviour
     {
         if (asyncLoaderPrefab != null)
         {
+            AudioController.Instance.PlaySound(AudioController.Instance.UI_ButtonsClick);
             GameObject loaderGO = Instantiate(asyncLoaderPrefab);
             AsyncSceneLoader loader = loaderGO.GetComponent<AsyncSceneLoader>();
             loader.StartLoadScene(leaderboardSceneName);
         }
         else
         {
+            AudioController.Instance.PlaySound(AudioController.Instance.UI_ButtonsClick);
             SceneManager.LoadScene(leaderboardSceneName);
         }
     }

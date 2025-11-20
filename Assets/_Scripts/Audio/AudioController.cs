@@ -23,6 +23,7 @@ public class AudioController : Singleton<AudioController>
     [Header("Game musics: ")]
     public AudioClip menuBackgroundMusics;
     public AudioClip gamePlayBackgroundMusics;
+    public AudioClip learderboardBackgroundMusics;
 
     [Header("Game sounds UI: ")]
     public AudioClip win;
