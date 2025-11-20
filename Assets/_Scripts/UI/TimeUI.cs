@@ -16,14 +16,14 @@ public class TimerUI : MonoBehaviour
     {
         bestTimeManager = FindAnyObjectByType<BestTimeManager>();
 
-        // load best time lên UI trong bảng hoàn thành
+        //load best time lên UI trong bảng hoàn thành
         if (bestTimeTextInGameCompleted != null)
         {
             float best = bestTimeManager.GetBestTimeCurrentScene();
             bestTimeTextInGameCompleted.text = "BEST " + bestTimeManager.FormatTime(best);
         }
 
-        // load best time lên UI trong bảng Game Over
+        //load best time lên UI trong bảng Game Over
         if (bestTimeTextInGameOver != null)
         {
             float best = bestTimeManager.GetBestTimeCurrentScene();
@@ -52,10 +52,10 @@ public class TimerUI : MonoBehaviour
 
         isRunning = false;
 
-        // lưu best time cho scene hiện tại
+        //lưu best time cho scene hiện tại
         bestTimeManager.SaveIfBest(elapsedTime);
 
-        // cập nhật lại best time sau khi lưu
+        //cập nhật lại best time sau khi lưu
         float best = bestTimeManager.GetBestTimeCurrentScene();
         if (bestTimeTextInGameCompleted != null)
             bestTimeTextInGameCompleted.text = "BEST " + bestTimeManager.FormatTime(best);

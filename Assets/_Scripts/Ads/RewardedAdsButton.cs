@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Advertisements;
+using System.Collections;
 
 public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
 {
@@ -17,6 +18,7 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
     void Awake()
     {
         // Get the Ad Unit ID for the current platform:
+
 #if UNITY_IOS
         _adUnitId = _iOSAdUnitId;
 #elif UNITY_ANDROID
@@ -30,7 +32,7 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
 
     }
 
-    void Start()
+    IEnumerator Start()
     {
         // Nếu chế độ No Ads đang bật → bỏ qua quảng cáo
         //không load đồng thời không show luôn, gọi thẳng Reward
@@ -38,14 +40,17 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
         if (AdsInitializer.Instance.isNoAds)
         {
             ApplyNoAdsMode();
-            return;
+            yield break;
         }
 
-        // Nếu quảng cáo đã được khởi tạo → load
-        if (Advertisement.isInitialized)
+        // Chờ cho đến khi Unity Ads init xong
+        while (!Advertisement.isInitialized)
         {
-            LoadAd();
+            yield return null;   // đợi 1 frame
         }
+
+        // Khi initialized → load quảng cáo
+        LoadAd();
     }
 
     private void OnEnable()

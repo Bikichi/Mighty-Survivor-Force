@@ -13,6 +13,10 @@ public class UIManager : MonoBehaviour
     public GameObject gameOverPanel;
     public GameObject gameCompletePanel;
 
+    void Start()
+    {
+        Application.targetFrameRate = 120;   // hoặc 90/120 nếu muốn
+    }
     private void OnEnable()
     {
         playerHealthRef = FindAnyObjectByType<PlayerHealth>();

@@ -34,6 +34,7 @@ public class LeaderboardsMenu : Panel
 
     private void Start()
     {
+        Application.targetFrameRate = 120;   // hoặc 90/120 nếu muốn
         Open();
     }
 

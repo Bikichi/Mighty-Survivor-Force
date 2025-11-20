@@ -1,10 +1,14 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SettingsUIController : MonoBehaviour
 {
     [SerializeField] private GameObject settingsPanel;
     [SerializeField] private GameObject buyAdsPanel;
 
+    void Start()
+    {
+        Application.targetFrameRate = 120;   // hoặc 90/120 nếu muốn
+    }
     public void ShowSettings()
     {
         AudioController.Instance.PlaySound(AudioController.Instance.UI_ButtonsClick);

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameBoot : MonoBehaviour
@@ -19,4 +19,9 @@ public class GameBoot : MonoBehaviour
             SceneManager.LoadScene("_MainMenuScene");
         }
     }
+    void Start()
+    {
+        Application.targetFrameRate = 120;   // hoặc 90/120 nếu muốn
+    }
+
 }
