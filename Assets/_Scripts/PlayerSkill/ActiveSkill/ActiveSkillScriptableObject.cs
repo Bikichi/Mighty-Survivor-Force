@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-
+//ScriptableObject là một loại asset trong Unity dùng để lưu dữ liệu tách biệt khỏi scene và GameObject
+//Lưu data không phụ thuộc vào instance
+//Giảm số lượng instance trong RAM → giúp tối ưu game.
 [CreateAssetMenu(fileName = "New Active Skill", menuName = "Skill/Active Skill")]
 public class ActiveSkillScriptableObject : ScriptableObject
 {
