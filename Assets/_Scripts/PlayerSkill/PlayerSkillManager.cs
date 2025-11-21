@@ -8,7 +8,7 @@ public class PlayerSkillManager : MonoBehaviour
 
     public SkillModuleManager skillModuleManager;
 
-    // Expose danh sách và số lượng skill đã học
+    //expose danh sách và số lượng skill đã học
     public List<SkillEntry> LearnedSkills => learnedSkills;
     public int LearnedSkillCount => learnedSkills.Count;
 
@@ -19,7 +19,7 @@ public class PlayerSkillManager : MonoBehaviour
 
     private void Awake()
     {
-        // Lấy PlayerStats từ CurrentPlayerInstance
+        //lấy PlayerStats từ CurrentPlayerInstance
         playerStats = ActivePlayerManager.Instance.CurrentPlayerInstance.GetComponent<PlayerStats>();
     }
 

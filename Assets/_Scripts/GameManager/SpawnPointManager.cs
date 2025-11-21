@@ -42,8 +42,30 @@ public class SpawnPointManager : MonoBehaviour
             .Where(p => Vector3.Distance(playerTransform.position, p.position) >= minDistance)
             .ToList();
 
+        //Vì tất cẩ SpawnPoints chỉ được reset khi turn spawn xong, mà ở đây lại đang dùng tạm xoá spawnpoint trước đấy đã spawn để tránh trùng
+        //nếu số lượng quái trong turn mà nhiều mà số spawnpoints còn lại không đủ hoặc đủ nhưng không thoải mãi điều kiện Distance
+        //sẽ gây lỗi crash game nên phải thêm điều kiện kiểm tra
 
-            //lấy ngẫu nhiên 1 điểm trong các điểm hợp lệ
+        //nếu KHÔNG có điểm nào thỏa khoảng cách → reset points
+        if (farPoints.Count == 0)
+        {
+            ResetSpawnPoints(unusedSpawnPoints, allSpawnPoints);
+
+            //lấy lại danh sách sau reset
+            farPoints = unusedSpawnPoints
+                .Where(p => Vector3.Distance(playerTransform.position, p.position) >= minDistance)
+                .ToList();
+
+            //nếu vẫn không có, fallback lại cho kĩ
+            if (farPoints.Count == 0)
+            {
+                return allSpawnPoints[Random.Range(0, allSpawnPoints.Length)].position;
+            }
+        }
+
+
+
+        //lấy ngẫu nhiên 1 điểm trong các điểm hợp lệ
         int randomIndex = Random.Range(0, farPoints.Count);
         Transform chosen = farPoints[randomIndex];
         unusedSpawnPoints.Remove(chosen);
