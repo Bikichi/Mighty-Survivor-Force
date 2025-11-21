@@ -3570,7 +3570,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!108 &1873
 Light:
@@ -5907,7 +5906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae8dab888db044eb33135dd0b21c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 300
+  cost: 30
   value: 10
   type: 1
   button: {fileID: 155736082}
@@ -7144,7 +7143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae8dab888db044eb33135dd0b21c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 200
+  cost: 30
   value: 1
   type: 2
   button: {fileID: 189369574}
@@ -8640,7 +8639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae8dab888db044eb33135dd0b21c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 50
+  cost: 30
   value: 0.1
   type: 3
   button: {fileID: 4753}
@@ -9015,7 +9014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae8dab888db044eb33135dd0b21c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 100
+  cost: 30
   value: 20
   type: 0
   button: {fileID: 707900595}
@@ -11274,7 +11273,7 @@ MonoBehaviour:
     characterModel: {fileID: 1981309472062174206}
     characterPrefab: {fileID: 1981309472699212516, guid: 985b2b450b4243548b31c3faf048840b, type: 3}
     isUnlocked: 0
-    unlockCost: 9999
+    unlockCost: 100
   - characterName: COMING SOON
     characterModel: {fileID: 1452555644404866}
     characterPrefab: {fileID: 1452553761990968, guid: f6a956915692ee04db89cd1da943e2a8, type: 3}
@@ -13717,7 +13716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae8dab888db044eb33135dd0b21c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 400
+  cost: 30
   value: 20
   type: 0
   button: {fileID: 498680129}
@@ -15958,7 +15957,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae8dab888db044eb33135dd0b21c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 900
+  cost: 30
   value: 1
   type: 2
   button: {fileID: 893327166}
@@ -19208,7 +19207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae8dab888db044eb33135dd0b21c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 800
+  cost: 30
   value: 10
   type: 1
   button: {fileID: 1564652033}
@@ -19628,7 +19627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae8dab888db044eb33135dd0b21c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 600
+  cost: 30
   value: 20
   type: 0
   button: {fileID: 1270467609}
@@ -23770,7 +23769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae8dab888db044eb33135dd0b21c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 100
+  cost: 30
   value: 10
   type: 1
   button: {fileID: 1544126655}
@@ -24100,7 +24099,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae8dab888db044eb33135dd0b21c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 500
+  cost: 30
   value: 10
   type: 1
   button: {fileID: 1988900051}
@@ -24341,7 +24340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae8dab888db044eb33135dd0b21c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 700
+  cost: 30
   value: 0.1
   type: 3
   button: {fileID: 172505941}

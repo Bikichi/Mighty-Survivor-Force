@@ -26,7 +26,7 @@ public class SkillSelectionManager : MonoBehaviour
             //lấy các skill đã học nhưng chưa max level 4
             pool = playerSkillManager.LearnedSkills
                 .FindAll(entry => entry.level < 4)
-                .ConvertAll(entry => entry.skill);
+                .ConvertAll(entry => entry.skill); //ConvertAll chuyển đổi phần tử sang dạng khác và thêm vào 1 list mới
         }
         else if (playerSkillManager.LearnedSkillCount < 5)
         {

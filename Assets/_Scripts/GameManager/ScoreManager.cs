@@ -31,7 +31,7 @@ public class ScoreManager : MonoBehaviour
         totalKills += count;
         PlayerPrefs.SetInt("TotalKills", totalKills);
         PlayerPrefs.Save();  // Lưu ngay
-        Debug.Log("Tổng số quái đã tiêu diệt: " + totalKills);
+        //Debug.Log("Tổng số quái đã tiêu diệt: " + totalKills);
     }
 
     private void Update()
